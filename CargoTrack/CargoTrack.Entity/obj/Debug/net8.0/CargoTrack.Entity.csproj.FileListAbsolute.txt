@@ -1,0 +1,12 @@
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\bin\Debug\net8.0\CargoTrack.Entity.deps.json
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\bin\Debug\net8.0\CargoTrack.Entity.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\bin\Debug\net8.0\CargoTrack.Entity.pdb
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.AssemblyInfoInputs.cache
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.AssemblyInfo.cs
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.csproj.CoreCompileInputs.cache
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.sourcelink.json
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\refint\CargoTrack.Entity.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.pdb
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\ref\CargoTrack.Entity.dll
