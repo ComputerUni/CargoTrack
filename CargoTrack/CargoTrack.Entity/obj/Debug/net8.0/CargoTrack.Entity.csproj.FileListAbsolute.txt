@@ -10,3 +10,4 @@ C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\refint\CargoTrack.Entity.dll
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.pdb
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\ref\CargoTrack.Entity.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.Entity\obj\Debug\net8.0\CargoTrack.Entity.csproj.AssemblyReference.cache
