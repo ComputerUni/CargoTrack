@@ -1,9 +1,11 @@
 using CargoTrack.Business;
 using CargoTrack.Business.Services.Abouts;
 using CargoTrack.Business.Services.Branches;
+using CargoTrack.Business.Services.Cities;
 using CargoTrack.DataAccess.Context;
 using CargoTrack.DataAccess.Repositories.Abouts;
 using CargoTrack.DataAccess.Repositories.Branches;
+using CargoTrack.DataAccess.Repositories.Cities;
 using CargoTrack.Entity.Entities;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -22,13 +24,18 @@ builder.Services.AddFluentValidationAutoValidation()
 
 builder.Services.AddScoped<IAboutRepository, AboutRepository>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
 
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IBranchService, BranchService>();
+builder.Services.AddScoped<ICityService, CityService>();
+
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaulConnection"));
+    options.UseLazyLoadingProxies();
 });
 
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<AppDbContext>();

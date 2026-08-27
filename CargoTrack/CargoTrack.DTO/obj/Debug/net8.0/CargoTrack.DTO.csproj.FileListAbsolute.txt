@@ -10,3 +10,7 @@ C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\refint\CargoTrack.DTO.dll
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\CargoTrack.DTO.pdb
 C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\ref\CargoTrack.DTO.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\bin\Debug\net8.0\CargoTrack.Entity.dll
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\bin\Debug\net8.0\CargoTrack.Entity.pdb
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\CargoTrack.DTO.csproj.AssemblyReference.cache
+C:\Users\BURHAN\Desktop\CargoProject\CargoTrack\CargoTrack.DTO\obj\Debug\net8.0\CargoTra.F7A2891D.Up2Date
