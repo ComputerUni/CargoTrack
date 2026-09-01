@@ -18,7 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 //IOC Container
 builder.Services.AddFluentValidationAutoValidation()
-    .AddFluentValidationClientsideAdapters()
     .AddValidatorsFromAssemblyContaining<BusinessAssembly>();
     //.AddValidatorsFromAssembly(typeof(BusinessAssembly).Assembly);
 
@@ -68,4 +67,56 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+    context.Database.EnsureCreated();
+    if (!context.Cities.Any())
+    {
+        var cities = new List<City>
+        {
+            new City { Id = Guid.NewGuid(), Name = "Ýstanbul" },
+            new City { Id = Guid.NewGuid(), Name = "Ankara" },
+            new City { Id = Guid.NewGuid(), Name = "Ýzmir" },
+            new City { Id = Guid.NewGuid(), Name = "Bursa" },
+            new City { Id = Guid.NewGuid(), Name = "Antalya" },
+            new City { Id = Guid.NewGuid(), Name = "Adana" },
+            new City { Id = Guid.NewGuid(), Name = "Konya" },
+            new City { Id = Guid.NewGuid(), Name = "Þanlýurfa" },
+            new City { Id = Guid.NewGuid(), Name = "Gaziantep" },
+            new City { Id = Guid.NewGuid(), Name = "Kocaeli" },
+            new City { Id = Guid.NewGuid(), Name = "Mersin" },
+            new City { Id = Guid.NewGuid(), Name = "Diyarbakýr" },
+            new City { Id = Guid.NewGuid(), Name = "Hatay" },
+            new City { Id = Guid.NewGuid(), Name = "Kayseri" },
+            new City { Id = Guid.NewGuid(), Name = "Samsun" },
+            new City { Id = Guid.NewGuid(), Name = "Balýkesir" },
+            new City { Id = Guid.NewGuid(), Name = "Kahramanmaraþ" },
+            new City { Id = Guid.NewGuid(), Name = "Van" },
+            new City { Id = Guid.NewGuid(), Name = "Aydýn" },
+            new City { Id = Guid.NewGuid(), Name = "Tekirdað" }
+        };
+
+        context.Cities.AddRange(cities);
+        context.SaveChanges();
+    }
+
+    if(!context.Roles.Any())
+    {
+        var roles = new List<AppRole>
+        {
+            new AppRole{Name="Admin"},
+            new AppRole{Name="Manager"},
+            new AppRole{Name="User"},
+        };
+
+        context.Roles.AddRange(roles);
+        context.SaveChanges();
+    }
+}
+
 app.Run();
+
+
