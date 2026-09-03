@@ -1,11 +1,13 @@
 ﻿using CargoTrack.Business.Services.Abouts;
 using CargoTrack.DTO.DTOs.AboutDtos;
 using CargoTrack.WebUI.Consts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CargoTrack.WebUI.Areas.Admin.Controllers
 {
     [Area(Area.Admin)]
+    [Authorize(Roles = Area.Admin)]
     public class AboutController(IAboutService _aboutService) : Controller
     {
         public async Task<IActionResult> Index()
@@ -23,7 +25,7 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateAboutDto aboutDto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(aboutDto);
             }
@@ -42,7 +44,7 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(UpdateAboutDto aboutDto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(aboutDto);
             }
