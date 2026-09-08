@@ -7,6 +7,7 @@ using CargoTrack.DataAccess.Repositories.Abouts;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cities;
 using CargoTrack.Entity.Entities;
+using CargoTrack.Entity.Entities.Enums;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -124,6 +125,26 @@ using (var scope = app.Services.CreateScope())
         context.Roles.AddRange(roles);
         context.SaveChanges();
     }
+
+    //if (!context.Cargos.Any())
+    //{
+    //    var cargo = new Cargo
+    //    {
+    //        Id = Guid.NewGuid(),
+    //        SenderId = Guid.Parse("9b7f437a-f6ce-41bf-399a-08df085cb218"),
+    //        ReceiverId = Guid.Parse("f1b8f752-63fd-44a3-399b-08df085cb218"),
+    //        OriginBranchId = Guid.Parse("fc847b38-61a8-40e7-81a8-67cd79941988"),
+    //        DestinationBranchId = Guid.Parse("54bfeb0a-75da-4d9c-8cd1-410ad93dbb9a"),
+    //        TrackCode = "CT20260908202612345",
+    //        ShipmentDate = DateTime.Now,
+    //        EstimatedArrivalDate = DateTime.Now.AddDays(2),
+    //        Weight = 2.5,
+    //        CargoType = CargoType.Standart,
+    //        CargoStatus = CargoStatus.DispatchedFromTransferCenter
+    //    };
+    //    context.Add(cargo);
+    //    context.SaveChanges();
+    //}
 }
 
 app.Run();
