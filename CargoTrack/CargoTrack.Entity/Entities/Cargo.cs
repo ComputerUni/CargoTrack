@@ -14,6 +14,9 @@ namespace CargoTrack.Entity.Entities
         public DateTime ShipmentDate { get; set; }
         public DateTime EstimatedArrivalDate { get; set; }
         public double Weight { get; set; }
+        public double Desi { get; set; }
+        public decimal Price { get; set; }
+        public int FailedAttemptCount { get; set; } = 0;
         public CargoType CargoType { get; set; }
         public CargoStatus CargoStatus { get; set; }
         public Guid SenderId { get; set; }
@@ -27,5 +30,8 @@ namespace CargoTrack.Entity.Entities
         public virtual AppUser Receiver { get; set; }
         public virtual Branch OriginBranch { get; set; }
         public virtual Branch DestinationBranch { get; set; }
+        public virtual Delivery Delivery { get; set; }
+        public virtual IList<CargoMovement> CargoMovements { get; set; }
+        public virtual IList<DeliveryException> DeliveryExceptions { get; set; }
     }
 }
