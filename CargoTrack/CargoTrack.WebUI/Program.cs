@@ -4,8 +4,16 @@ using CargoTrack.Business.Services.Branches;
 using CargoTrack.Business.Services.Cities;
 using CargoTrack.DataAccess.Context;
 using CargoTrack.DataAccess.Repositories.Abouts;
+using CargoTrack.DataAccess.Repositories.AuditLogs;
 using CargoTrack.DataAccess.Repositories.Branches;
+using CargoTrack.DataAccess.Repositories.CargoMovements;
+using CargoTrack.DataAccess.Repositories.CargoPrices;
+using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DataAccess.Repositories.Cities;
+using CargoTrack.DataAccess.Repositories.Deliveries;
+using CargoTrack.DataAccess.Repositories.DeliveryExceptions;
+using CargoTrack.DataAccess.Repositories.Employees;
+using CargoTrack.DataAccess.Repositories.TransferCenters;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using FluentValidation;
@@ -23,8 +31,16 @@ builder.Services.AddFluentValidationAutoValidation()
     //.AddValidatorsFromAssembly(typeof(BusinessAssembly).Assembly);
 
 builder.Services.AddScoped<IAboutRepository, AboutRepository>();
+builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
+builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();
+builder.Services.AddScoped<ICargoMovementRepository, CargoMovementRepository>();
+builder.Services.AddScoped<ICargoPricesRepository, CargoPricesRepository>();
+builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+builder.Services.AddScoped<IDeliveryExceptionRepository, DeliveryExceptionRepository>();
+builder.Services.AddScoped<ITransferCenterRepository, TransferCenterRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IBranchService, BranchService>();

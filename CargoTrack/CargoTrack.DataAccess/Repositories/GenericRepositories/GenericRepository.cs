@@ -6,7 +6,7 @@ namespace CargoTrack.DataAccess.Repositories.GenericRepositories
 {
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly AppDbContext _context;
+        protected readonly AppDbContext _context;
 
         public GenericRepository(AppDbContext context)
         {
