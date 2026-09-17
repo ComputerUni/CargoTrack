@@ -9,5 +9,6 @@ namespace CargoTrack.Business.Services.Deliveries
     public interface IDeliveryService
     {
         Task<string> GenerateDeliveryCodeAsync(Guid cargoId);
+        Task VerifyAndCompleteDeliveryAsync(Guid cargoId, string deliveryCode, string receiverName, Guid employeeId, string note);
     }
 }

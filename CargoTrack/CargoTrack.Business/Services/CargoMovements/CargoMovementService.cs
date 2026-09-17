@@ -47,9 +47,7 @@ namespace CargoTrack.Business.Services.CargoMovements
             cargo.CargoStatus = newStatus;
 
             await _cargoRepository.UpdateAsync(cargo);
-            await _repository.CreateAsync(movement);
-
-          
+            await _repository.CreateAsync(movement); 
         }
 
         public async Task<List<ResultCargoMovementDto>> GetByCargoIdAsync(Guid cargoId)
