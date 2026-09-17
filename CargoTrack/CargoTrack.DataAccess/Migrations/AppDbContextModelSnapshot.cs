@@ -292,6 +292,9 @@ namespace CargoTrack.DataAccess.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DeliveryCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Desi")
                         .HasColumnType("float");
 

@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CargoTrack.Business.Services.Deliveries
+{
+    public interface IDeliveryService
+    {
+        Task<string> GenerateDeliveryCodeAsync(Guid cargoId);
+    }
+}

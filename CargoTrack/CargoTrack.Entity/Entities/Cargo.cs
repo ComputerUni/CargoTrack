@@ -16,6 +16,7 @@ namespace CargoTrack.Entity.Entities
         public double Weight { get; set; }
         public double Desi { get; set; }
         public decimal Price { get; set; }
+        public string? DeliveryCode { get; set; }
         public int FailedAttemptCount { get; set; } = 0;
         public CargoType CargoType { get; set; }
         public CargoStatus CargoStatus { get; set; }

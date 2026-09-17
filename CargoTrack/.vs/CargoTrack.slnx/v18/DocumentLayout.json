@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.entity\\entities\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|solutionrelative:cargotrack.entity\\entities\\cargo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\deliveries\\deliveryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\deliveries\\deliveryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\cargomovements\\cargomovementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\cargomovements\\cargomovementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\cargopricings\\cargopricingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\cargopricings\\cargopricingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\cargopricings\\icargopricingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\cargopricings\\icargopricingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|solutionrelative:cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\cargoprices\\cargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\cargoprices\\cargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\cargomovements\\icargomovementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\cargomovements\\icargomovementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\deliveries\\ideliveryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\deliveries\\ideliveryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\cargomovements\\cargomovementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\cargomovements\\cargomovementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\cargomovements\\icargomovementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\cargomovements\\icargomovementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.entity\\entities\\delivery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|solutionrelative:cargotrack.entity\\entities\\delivery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.business\\services\\branches\\branchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8FBC3B2-33D9-EA50-302B-2CD590C5DE82}|CargoTrack.Business\\CargoTrack.Business.csproj|solutionrelative:cargotrack.business\\services\\branches\\branchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\cargoprices\\icargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\cargoprices\\icargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\cargoprices\\cargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\cargoprices\\cargopricesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0ECF8321-577C-155F-4B56-C5B4A70BC932}|CargoTrack.DTO\\CargoTrack.DTO.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dto\\dtos\\cargosdtos\\createcargodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +66,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 948,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,20 +86,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "Cargo.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Cargo.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Entity\\Entities\\Cargo.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Cargo.cs",
+              "RelativeToolTip": "CargoTrack.Entity\\Entities\\Cargo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T12:24:57.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CargoMovementRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoMovements\\CargoMovementRepository.cs",
+              "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\CargoMovements\\CargoMovementRepository.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoMovements\\CargoMovementRepository.cs",
+              "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\CargoMovements\\CargoMovementRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T12:17:37.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IDeliveryService.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Deliveries\\IDeliveryService.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\Deliveries\\IDeliveryService.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Deliveries\\IDeliveryService.cs",
+              "RelativeToolTip": "CargoTrack.Business\\Services\\Deliveries\\IDeliveryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T11:46:57.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICargoMovementService.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoMovements\\ICargoMovementService.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\CargoMovements\\ICargoMovementService.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoMovements\\ICargoMovementService.cs",
+              "RelativeToolTip": "CargoTrack.Business\\Services\\CargoMovements\\ICargoMovementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T09:47:06.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeliveryService.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Deliveries\\DeliveryService.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\Deliveries\\DeliveryService.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Deliveries\\DeliveryService.cs",
+              "RelativeToolTip": "CargoTrack.Business\\Services\\Deliveries\\DeliveryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T11:47:12.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ICargoMovementRepository.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoMovements\\ICargoMovementRepository.cs",
+              "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\CargoMovements\\ICargoMovementRepository.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoMovements\\ICargoMovementRepository.cs",
+              "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\CargoMovements\\ICargoMovementRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T10:02:31.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ICargoPricesRepository.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoPrices\\ICargoPricesRepository.cs",
               "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\CargoPrices\\ICargoPricesRepository.cs",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoPrices\\ICargoPricesRepository.cs",
               "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\CargoPrices\\ICargoPricesRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-16T15:52:57.459Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "CargoPricesRepository.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\CargoPrices\\CargoPricesRepository.cs",
               "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\CargoPrices\\CargoPricesRepository.cs",
@@ -71,12 +185,11 @@
               "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\CargoPrices\\CargoPricesRepository.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-16T15:52:55.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-16T15:52:55.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 13,
               "Title": "CreateCargoDto.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DTO\\DTOs\\CargosDtos\\CreateCargoDto.cs",
               "RelativeDocumentMoniker": "CargoTrack.DTO\\DTOs\\CargosDtos\\CreateCargoDto.cs",
@@ -84,33 +197,77 @@
               "RelativeToolTip": "CargoTrack.DTO\\DTOs\\CargosDtos\\CreateCargoDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-16T15:47:04.338Z",
-              "EditorCaption": ""
-            },
+              "WhenOpened": "2026-09-16T15:47:04.338Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 948,
+          "SelectedChildIndex": 2,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CargoPricingService.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoPricings\\CargoPricingService.cs",
               "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\CargoPricings\\CargoPricingService.cs",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoPricings\\CargoPricingService.cs",
               "RelativeToolTip": "CargoTrack.Business\\Services\\CargoPricings\\CargoPricingService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-16T15:38:58.828Z",
+              "WhenOpened": "2026-09-17T12:18:37.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ICargoPricingService.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoPricings\\ICargoPricingService.cs",
-              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\CargoPricings\\ICargoPricingService.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoPricings\\ICargoPricingService.cs",
-              "RelativeToolTip": "CargoTrack.Business\\Services\\CargoPricings\\ICargoPricingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABrAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "Delivery.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Delivery.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Entity\\Entities\\Delivery.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Delivery.cs",
+              "RelativeToolTip": "CargoTrack.Entity\\Entities\\Delivery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-16T15:38:44.306Z",
+              "WhenOpened": "2026-09-17T12:10:46.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CargoMovementService.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoMovements\\CargoMovementService.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\CargoMovements\\CargoMovementService.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\CargoMovements\\CargoMovementService.cs",
+              "RelativeToolTip": "CargoTrack.Business\\Services\\CargoMovements\\CargoMovementService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAACYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T09:46:53.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BranchService.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Branches\\BranchService.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Business\\Services\\Branches\\BranchService.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Business\\Services\\Branches\\BranchService.cs",
+              "RelativeToolTip": "CargoTrack.Business\\Services\\Branches\\BranchService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABYAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T09:59:44.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CargoStatus.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
+              "RelativeDocumentMoniker": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
+              "RelativeToolTip": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-17T10:27:20.088Z",
               "EditorCaption": ""
             }
           ]

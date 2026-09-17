@@ -11,5 +11,6 @@ namespace CargoTrack.Business.Services.CargoPricings
     {
         Task<decimal> CalculatePriceAsync(double weight, double desi, CargoType cargoType, bool isIntercity);
         Task<DateTime> CalculateEstimatedDeliveryDateAsync(Guid originalBranchId, Guid destinationBranchId, CargoType cargoType);
+        Task<string> GenerateTrackCode();
     }
 }

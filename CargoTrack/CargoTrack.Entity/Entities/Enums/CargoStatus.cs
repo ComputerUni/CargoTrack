@@ -11,13 +11,13 @@ namespace CargoTrack.Entity.Entities.Enums
     public enum CargoStatus
     {
         [Display(Name = "Oluşturuldu")]
-        Received = 1,
+        Created = 1,
 
         [Display(Name = "Gönderici Şubesinde")]
-        InTransferCenter = 2,
+        AtOriginBranch = 2,
 
         [Display(Name = "Transfer Merkezinde")]
-        DispatchedFromTransferCenter = 3,
+        InTransferCenter = 3,
 
         [Display(Name = "Varış Şubesinde")]
         ArrivedAtDeliveryBranch = 4,

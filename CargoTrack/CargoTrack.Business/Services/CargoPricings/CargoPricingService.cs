@@ -40,5 +40,11 @@ namespace CargoTrack.Business.Services.CargoPricings
             return price;
 
         }
+        public async Task<string> GenerateTrackCode()
+        {
+            var year = DateTime.Now.Year;
+            var random = new Random().Next(100000, 999999);
+            return $"CT-{year}-{random}";
+        }
     }
 }
