@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CargoTrack - Personel Yönetimi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#dce9ff","tertiary-container":"#171e24","on-surface-variant":"#43474e","outline":"#74777e","secondary":"#904d00","background":"#f8f9ff","error":"#ba1a1a","on-background":"#0b1c30","surface-bright":"#f8f9ff","primary-fixed":"#d3e3ff","primary-container":"#001e3c","on-primary-fixed":"#001c39","primary":"#00040c","on-primary":"#ffffff","secondary-container":"#fd8b00","outline-variant":"#c4c6ce","surface-container":"#e5eeff","on-primary-container":"#6f87aa","on-surface":"#0b1c30","surface-container-low":"#eff4ff","inverse-primary":"#afc8ee","surface-tint":"#486081","surface-container-lowest":"#ffffff","surface":"#f8f9ff","on-secondary":"#ffffff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"}}}}</script>
+<style>body{font-family:'Hanken Grotesk',sans-serif;background:#f8f9ff;color:#0b1c30;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}.filled-icon{font-variation-settings:'FILL' 1;}.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:8px;color:#6f87aa;font-size:15px;font-weight:500;transition:all .15s;cursor:pointer;}.sidebar-link:hover{background:#1a3050;color:#d3e3ff;}.sidebar-link.active{background:#d3e3ff;color:#001e3c;font-weight:600;}.sidebar-link.active .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;}.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;}</style>
+</head>
+<body class="min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 min-h-screen flex flex-col flex-shrink-0" style="background:#001e3c;">
+  <div class="flex items-center gap-3 px-6 py-5 border-b" style="border-color:#1a3050;">
+    <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">package_2</span>
+    <div><div class="font-bold text-white text-lg leading-tight">CargoTrack</div><div style="color:#6f87aa;font-size:12px;">Admin Paneli</div></div>
+  </div>
+  <nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 16px 4px;">GENEL</div>
+    <a href="01_admin_dashboard.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard</a>
+    <a href="02_cargo_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar</a>
+    <a href="08_audit_log.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">history</span>Audit Log</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">YÖNETİM</div>
+    <a href="03_branch_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">store</span>Şubeler</a>
+    <a href="04_transfer_center_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri</a>
+    <a href="05_employee_list.html" class="sidebar-link active"><span class="material-symbols-outlined" style="font-size:20px;">badge</span>Personel</a>
+    <a href="06_user_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar</a>
+    <a href="07_price_rules.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">RAPORLAR</div>
+    <a href="09_reports.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">analytics</span>Performans Raporları</a>
+  </nav>
+  <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
+    <div class="sidebar-link" style="cursor:default;"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">A</div><div><div class="text-white text-sm font-semibold leading-tight">Admin</div><div style="color:#6f87aa;font-size:11px;">Sistem Yöneticisi</div></div></div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col min-w-0">
+  <header class="bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+    <div>
+      <h1 class="font-bold text-xl text-on-background">Personel Yönetimi</h1>
+      <p style="color:#43474e;font-size:13px;">Kuryeler, şube personelleri ve operasyon çalışanları</p>
+    </div>
+    <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-colors" style="background:#fd8b00;color:#fff;">
+      <span class="material-symbols-outlined" style="font-size:18px;">person_add</span>Yeni Personel
+    </button>
+  </header>
+
+  <main class="flex-1 p-8 overflow-y-auto">
+    <!-- Filter Bar -->
+    <div class="bg-white rounded-xl border border-outline-variant p-4 mb-6 flex flex-wrap gap-3 items-end">
+      <div class="flex-1 min-w-56">
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">PERSONEL ARA</label>
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size:18px;">search</span>
+          <input type="text" placeholder="Ad, Soyad, TC No, E-posta..." class="w-full pl-9 pr-4 py-2 border border-outline-variant rounded-lg text-sm focus:outline-none"/>
+        </div>
+      </div>
+      <div class="w-44">
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">GÖREV / POZİSYON</label>
+        <select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white">
+          <option>Tümü</option>
+          <option>Kurye (Saha Dağıtım)</option>
+          <option>Şube Yöneticisi</option>
+          <option>Şube Gişe Görevlisi</option>
+          <option>TM Operatörü</option>
+        </select>
+      </div>
+      <div class="w-44">
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">ÇALIŞTIĞI BİRİM</label>
+        <select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white">
+          <option>Tüm Birimler</option>
+          <option>İstanbul Anadolu Şubesi</option>
+          <option>Ankara Merkez Şubesi</option>
+          <option>Marmara Transfer Merkezi</option>
+        </select>
+      </div>
+      <button class="px-4 py-2 rounded-lg text-sm font-semibold text-white" style="background:#001e3c;">Filtrele</button>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-xl border border-outline-variant overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead style="background:#f8f9ff;">
+            <tr style="border-bottom:2px solid #e5eeff;">
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">Personel</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">Pozisyon</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">Görev Yeri</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">İletişim</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">Teslimat Başarısı</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">Durum</th>
+              <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">İşlemler</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-outline-variant hover:bg-surface-container-low">
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs" style="background:#e5eeff;color:#001e3c;">AK</div>
+                  <div>
+                    <div class="font-semibold text-on-background">Ali Koç</div>
+                    <div class="text-xs text-slate-500">Sicil: PER-9841</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#fff3e0;color:#e65100;">Kurye (Moto)</span></td>
+              <td class="py-3.5 px-4 text-on-surface-variant">İstanbul Anadolu Şb.</td>
+              <td class="py-3.5 px-4 text-xs">ali.koc@cargotrack.com<br/><span class="text-slate-500">+90 532 111 2233</span></td>
+              <td class="py-3.5 px-4 font-semibold text-green-700">%97.8 (340 teslim)</td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Vardiyada</span></td>
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-1">
+                  <button title="Detay" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#486081;">visibility</span></button>
+                  <button title="Düzenle" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#001e3c;">edit</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="border-b border-outline-variant hover:bg-surface-container-low">
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs" style="background:#e5eeff;color:#001e3c;">MY</div>
+                  <div>
+                    <div class="font-semibold text-on-background">Murat Yılmaz</div>
+                    <div class="text-xs text-slate-500">Sicil: PER-7420</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#e5eeff;color:#001e3c;">Şube Müdürü</span></td>
+              <td class="py-3.5 px-4 text-on-surface-variant">İstanbul Anadolu Şb.</td>
+              <td class="py-3.5 px-4 text-xs">murat.yilmaz@cargotrack.com<br/><span class="text-slate-500">+90 533 444 5566</span></td>
+              <td class="py-3.5 px-4 font-semibold text-slate-700">-</td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-1">
+                  <button title="Detay" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#486081;">visibility</span></button>
+                  <button title="Düzenle" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#001e3c;">edit</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="border-b border-outline-variant hover:bg-surface-container-low">
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs" style="background:#e5eeff;color:#001e3c;">EC</div>
+                  <div>
+                    <div class="font-semibold text-on-background">Emel Çetin</div>
+                    <div class="text-xs text-slate-500">Sicil: PER-6512</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#f1f5f9;color:#334155;">Gişe Görevlisi</span></td>
+              <td class="py-3.5 px-4 text-on-surface-variant">Ankara Merkez Şb.</td>
+              <td class="py-3.5 px-4 text-xs">emel.cetin@cargotrack.com<br/><span class="text-slate-500">+90 535 777 8899</span></td>
+              <td class="py-3.5 px-4 font-semibold text-slate-700">-</td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-1">
+                  <button title="Detay" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#486081;">visibility</span></button>
+                  <button title="Düzenle" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#001e3c;">edit</span></button>
+                </div>
+              </td>
+            </tr>
+            <tr class="hover:bg-surface-container-low">
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-full flex items-center justify-center font-bold text-xs" style="background:#fee2e2;color:#ba1a1a;">BT</div>
+                  <div>
+                    <div class="font-semibold text-on-background">Burak Tekin</div>
+                    <div class="text-xs text-slate-500">Sicil: PER-5104</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#fff3e0;color:#e65100;">Kurye (Araçlı)</span></td>
+              <td class="py-3.5 px-4 text-on-surface-variant">İzmir Bornova Şb.</td>
+              <td class="py-3.5 px-4 text-xs">burak.tekin@cargotrack.com<br/><span class="text-slate-500">+90 536 222 3344</span></td>
+              <td class="py-3.5 px-4 font-semibold text-amber-600">%89.2 (İzinde)</td>
+              <td class="py-3.5 px-4"><span class="badge" style="background:#fef3c7;color:#92400e;">İzinde</span></td>
+              <td class="py-3.5 px-4">
+                <div class="flex items-center gap-1">
+                  <button title="Detay" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#486081;">visibility</span></button>
+                  <button title="Düzenle" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#001e3c;">edit</span></button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

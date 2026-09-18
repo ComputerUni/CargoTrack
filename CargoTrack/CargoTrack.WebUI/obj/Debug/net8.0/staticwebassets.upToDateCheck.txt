@@ -1,3 +1,11 @@
+wwwroot\admin_cargo_theme\01_admin_dashboard.html
+wwwroot\admin_cargo_theme\02_cargo_list.html
+wwwroot\admin_cargo_theme\audit_log.html
+wwwroot\admin_cargo_theme\branch_list.html
+wwwroot\admin_cargo_theme\employee_list.html
+wwwroot\admin_cargo_theme\price_rules.html
+wwwroot\admin_cargo_theme\reports.html
+wwwroot\admin_cargo_theme\transfer_center.html
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js

@@ -1,0 +1,93 @@
+﻿<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CargoTrack - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-high": "#dce9ff", "tertiary-container": "#171e24", "tertiary-fixed": "#dce3eb", "on-surface-variant": "#43474e", "on-secondary-container": "#603100", "outline": "#74777e", "secondary-fixed": "#ffdcc3", "secondary": "#904d00", "background": "#f8f9ff", "inverse-on-surface": "#eaf1ff", "error": "#ba1a1a", "on-background": "#0b1c30", "on-primary-fixed-variant": "#2f4868", "surface-bright": "#f8f9ff", "primary-fixed-dim": "#afc8ee", "primary-fixed": "#d3e3ff", "on-secondary-fixed": "#2f1500", "primary-container": "#001e3c", "surface-container-highest": "#d3e4fe", "on-primary-fixed": "#001c39", "primary": "#00040c", "on-primary": "#ffffff", "secondary-fixed-dim": "#ffb77d", "surface-variant": "#d3e4fe", "surface-dim": "#cbdbf5", "error-container": "#ffdad6", "outline-variant": "#c4c6ce", "surface-container": "#e5eeff", "inverse-surface": "#213145", "on-primary-container": "#6f87aa", "tertiary-fixed-dim": "#c0c7cf", "on-tertiary-fixed": "#151c22", "on-surface": "#0b1c30", "on-tertiary": "#ffffff", "surface-container-low": "#eff4ff", "inverse-primary": "#afc8ee", "on-error-container": "#93000a", "surface-tint": "#486081", "surface-container-lowest": "#ffffff", "on-error": "#ffffff", "surface": "#f8f9ff", "tertiary": "#000307", "secondary-container": "#fd8b00", "on-secondary": "#ffffff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "section-padding": "4rem", "container-max-width": "1200px", "stack-sm": "0.5rem", "stack-md": "1rem", "stack-lg": "2rem", "gutter": "1.5rem", "margin-mobile": "1rem" }, fontFamily: { "status-label": ["Hanken Grotesk"], "body-lg": ["Hanken Grotesk"], "headline-md": ["Hanken Grotesk"], "headline-lg": ["Hanken Grotesk"], "body-md": ["Hanken Grotesk"], "headline-xl": ["Hanken Grotesk"], "label-caps": ["Hanken Grotesk"] }, fontSize: { "status-label": ["13px", { "lineHeight": "18px", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }] } } } }</script>
+    <style>
+            body {
+                font-family: 'Hanken Grotesk',sans-serif;
+                background: #f8f9ff;
+                color: #0b1c30;
+            }
+
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+            }
+
+            .filled-icon {
+                font-variation-settings: 'FILL' 1;
+            }
+
+            .sidebar-link {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 10px 16px;
+                border-radius: 8px;
+                color: #6f87aa;
+                font-size: 15px;
+                font-weight: 500;
+                transition: all .15s;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+
+                .sidebar-link:hover {
+                    background: #1a3050;
+                    color: #d3e3ff;
+                }
+
+                .sidebar-link.active {
+                    background: #d3e3ff;
+                    color: #001e3c;
+                    font-weight: 600;
+                }
+
+                    .sidebar-link.active .material-symbols-outlined {
+                        font-variation-settings: 'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;
+                    }
+
+            .stat-card {
+                background: #fff;
+                border: 1px solid #c4c6ce;
+                border-radius: 12px;
+                padding: 24px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mini-bar {
+                height: 4px;
+                border-radius: 99px;
+                background: #e5eeff;
+                margin-top: 16px;
+            }
+
+            .mini-bar-fill {
+                height: 100%;
+                border-radius: 99px;
+            }
+
+            .chart-bar {
+                border-radius: 4px 4px 0 0;
+                transition: opacity .15s;
+            }
+
+                .chart-bar:hover {
+                    opacity: .75;
+                }
+
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                padding: 3px 10px;
+                border-radius: 99px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+    </style>
+</head>

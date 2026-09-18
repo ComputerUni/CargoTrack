@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CargoTrack - Performans ve Operasyon Raporları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#dce9ff","tertiary-container":"#171e24","on-surface-variant":"#43474e","outline":"#74777e","secondary":"#904d00","background":"#f8f9ff","error":"#ba1a1a","on-background":"#0b1c30","surface-bright":"#f8f9ff","primary-fixed":"#d3e3ff","primary-container":"#001e3c","on-primary-fixed":"#001c39","primary":"#00040c","on-primary":"#ffffff","secondary-container":"#fd8b00","outline-variant":"#c4c6ce","surface-container":"#e5eeff","on-primary-container":"#6f87aa","on-surface":"#0b1c30","surface-container-low":"#eff4ff","inverse-primary":"#afc8ee","surface-tint":"#486081","surface-container-lowest":"#ffffff","surface":"#f8f9ff","on-secondary":"#ffffff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"}}}}</script>
+<style>body{font-family:'Hanken Grotesk',sans-serif;background:#f8f9ff;color:#0b1c30;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}.filled-icon{font-variation-settings:'FILL' 1;}.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:8px;color:#6f87aa;font-size:15px;font-weight:500;transition:all .15s;cursor:pointer;}.sidebar-link:hover{background:#1a3050;color:#d3e3ff;}.sidebar-link.active{background:#d3e3ff;color:#001e3c;font-weight:600;}.sidebar-link.active .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;}.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;}</style>
+</head>
+<body class="min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 min-h-screen flex flex-col flex-shrink-0" style="background:#001e3c;">
+  <div class="flex items-center gap-3 px-6 py-5 border-b" style="border-color:#1a3050;">
+    <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">package_2</span>
+    <div><div class="font-bold text-white text-lg leading-tight">CargoTrack</div><div style="color:#6f87aa;font-size:12px;">Admin Paneli</div></div>
+  </div>
+  <nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 16px 4px;">GENEL</div>
+    <a href="01_admin_dashboard.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard</a>
+    <a href="02_cargo_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar</a>
+    <a href="08_audit_log.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">history</span>Audit Log</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">YÖNETİM</div>
+    <a href="03_branch_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">store</span>Şubeler</a>
+    <a href="04_transfer_center_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri</a>
+    <a href="05_employee_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">badge</span>Personel</a>
+    <a href="06_user_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar</a>
+    <a href="07_price_rules.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">RAPORLAR</div>
+    <a href="09_reports.html" class="sidebar-link active"><span class="material-symbols-outlined" style="font-size:20px;">analytics</span>Performans Raporları</a>
+  </nav>
+  <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
+    <div class="sidebar-link" style="cursor:default;"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">A</div><div><div class="text-white text-sm font-semibold leading-tight">Admin</div><div style="color:#6f87aa;font-size:11px;">Sistem Yöneticisi</div></div></div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col min-w-0">
+  <header class="bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+    <div>
+      <h1 class="font-bold text-xl text-on-background">Performans ve Operasyon Raporları</h1>
+      <p style="color:#43474e;font-size:13px;">Şube SLA başarı oranları, personel teslimat istatistikleri ve gecikme analizleri</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <select class="px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white font-medium">
+        <option>Bu Ay (Eylül 2026)</option>
+        <option>Son 30 Gün</option>
+        <option>Geçen Ay</option>
+        <option>2026 Q3</option>
+      </select>
+      <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">
+        <span class="material-symbols-outlined" style="font-size:18px;">download</span>PDF Raporu
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 p-8 overflow-y-auto">
+    <!-- Top KPI Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">ZAMANINDA TESLİMAT (SLA)</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">%94.6</div>
+        <div class="text-xs text-green-700 mt-1 flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;">trending_up</span>+1.2% hedefin üzerinde</div>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">ORTALAMA TESLİM SÜRESİ</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">28.4 Saat</div>
+        <div class="text-xs text-green-700 mt-1 flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;">arrow_downward</span>2.1 saat hızlandı</div>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">İADE VE İPTAL ORANI</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">%2.8</div>
+        <div class="text-xs text-slate-500 mt-1">359 iade / 12,847 toplam</div>
+      </div>
+      <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">GECİKEN TESLİMAT ORANI</div>
+        <div class="text-2xl font-bold mt-1 text-amber-600">%1.45</div>
+        <div class="text-xs text-green-700 mt-1">Geçen aya göre -0.4% azalış</div>
+      </div>
+    </div>
+
+    <!-- Comparative Branch Performance Table -->
+    <div class="bg-white rounded-xl border border-outline-variant p-6 mb-8">
+      <h3 class="font-bold text-lg text-on-background mb-1">Şube Bazlı Teslimat ve Gecikme Karnesi</h3>
+      <p style="color:#43474e;font-size:13px;" class="mb-4">Hacim, başarı oranı ve operasyonel aksaklıkların karşılaştırması</p>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b" style="border-color:#e5eeff;">
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Şube Adı</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Toplam Çıkan</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Teslim Edilen</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Başarı (SLA)</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Geciken Kargo</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">İade Oranı</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Durum Puanı</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">İstanbul Anadolu</td>
+              <td class="py-3.5 px-3 font-bold">2,341</td>
+              <td class="py-3.5 px-3 text-green-700 font-semibold">2,250</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%96.1</span></td>
+              <td class="py-3.5 px-3 text-slate-700">32</td>
+              <td class="py-3.5 px-3 font-mono">%1.8</td>
+              <td class="py-3.5 px-3 font-bold text-green-700">A+</td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">Ankara Merkez</td>
+              <td class="py-3.5 px-3 font-bold">1,874</td>
+              <td class="py-3.5 px-3 text-green-700 font-semibold">1,780</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%95.0</span></td>
+              <td class="py-3.5 px-3 text-slate-700">28</td>
+              <td class="py-3.5 px-3 font-mono">%2.1</td>
+              <td class="py-3.5 px-3 font-bold text-green-700">A</td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">İzmir Bornova</td>
+              <td class="py-3.5 px-3 font-bold">1,512</td>
+              <td class="py-3.5 px-3 text-green-700 font-semibold">1,418</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%93.8</span></td>
+              <td class="py-3.5 px-3 text-amber-600">41</td>
+              <td class="py-3.5 px-3 font-mono">%2.6</td>
+              <td class="py-3.5 px-3 font-bold text-blue-700">B+</td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">Bursa Nilüfer</td>
+              <td class="py-3.5 px-3 font-bold">1,203</td>
+              <td class="py-3.5 px-3 text-green-700 font-semibold">1,130</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%93.9</span></td>
+              <td class="py-3.5 px-3 text-slate-700">22</td>
+              <td class="py-3.5 px-3 font-mono">%2.4</td>
+              <td class="py-3.5 px-3 font-bold text-blue-700">B+</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-3 font-semibold">Antalya Lara</td>
+              <td class="py-3.5 px-3 font-bold">987</td>
+              <td class="py-3.5 px-3 text-green-700 font-semibold">894</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#fff3e0;color:#e65100;">%90.5</span></td>
+              <td class="py-3.5 px-3 text-rose-700 font-bold">48</td>
+              <td class="py-3.5 px-3 font-mono text-rose-700">%4.2</td>
+              <td class="py-3.5 px-3 font-bold text-amber-600">C</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Exception Reason Analysis -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <h3 class="font-bold text-lg text-on-background mb-3">Teslimat Başarısızlık (Exception) Nedenleri</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span>Alıcı adreste bulunamadı</span>
+              <span>%48 (172 kargo)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:48%;background:#fd8b00;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span>Hatalı veya eksik teslimat adresi</span>
+              <span>%26 (93 kargo)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:26%;background:#001e3c;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span>Alıcı paketi kabul etmedi / iptal</span>
+              <span>%14 (50 kargo)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:14%;background:#ba1a1a;"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-semibold mb-1">
+              <span>Hava muhalefeti / Ulaşım engeli</span>
+              <span>%12 (44 kargo)</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:12%;background:#6f87aa;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <h3 class="font-bold text-lg text-on-background mb-3">En Yüksek Performanslı Kuryeler</h3>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-amber-100 text-amber-800">1</div>
+              <div>
+                <div class="font-semibold text-slate-800">Ali Koç (Kadıköy)</div>
+                <div class="text-xs text-slate-500">340 teslimat • 6 dk ortalama teslim süresi</div>
+              </div>
+            </div>
+            <span class="font-bold text-green-700 text-sm">%98.4 SLA</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-slate-200 text-slate-800">2</div>
+              <div>
+                <div class="font-semibold text-slate-800">Serdar Çetin (Çankaya)</div>
+                <div class="text-xs text-slate-500">298 teslimat • 8 dk ortalama teslim süresi</div>
+              </div>
+            </div>
+            <span class="font-bold text-green-700 text-sm">%97.2 SLA</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-orange-100 text-orange-800">3</div>
+              <div>
+                <div class="font-semibold text-slate-800">Caner Güven (Nilüfer)</div>
+                <div class="text-xs text-slate-500">265 teslimat • 7 dk ortalama teslim süresi</div>
+              </div>
+            </div>
+            <span class="font-bold text-green-700 text-sm">%96.5 SLA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

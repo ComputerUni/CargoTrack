@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CargoTrack - Transfer Merkezleri</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#dce9ff","tertiary-container":"#171e24","on-surface-variant":"#43474e","outline":"#74777e","secondary":"#904d00","background":"#f8f9ff","error":"#ba1a1a","on-background":"#0b1c30","surface-bright":"#f8f9ff","primary-fixed":"#d3e3ff","primary-container":"#001e3c","on-primary-fixed":"#001c39","primary":"#00040c","on-primary":"#ffffff","secondary-container":"#fd8b00","outline-variant":"#c4c6ce","surface-container":"#e5eeff","on-primary-container":"#6f87aa","on-surface":"#0b1c30","surface-container-low":"#eff4ff","inverse-primary":"#afc8ee","surface-tint":"#486081","surface-container-lowest":"#ffffff","surface":"#f8f9ff","on-secondary":"#ffffff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"}}}}</script>
+<style>body{font-family:'Hanken Grotesk',sans-serif;background:#f8f9ff;color:#0b1c30;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}.filled-icon{font-variation-settings:'FILL' 1;}.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:8px;color:#6f87aa;font-size:15px;font-weight:500;transition:all .15s;cursor:pointer;}.sidebar-link:hover{background:#1a3050;color:#d3e3ff;}.sidebar-link.active{background:#d3e3ff;color:#001e3c;font-weight:600;}.sidebar-link.active .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;}.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;}</style>
+</head>
+<body class="min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 min-h-screen flex flex-col flex-shrink-0" style="background:#001e3c;">
+  <div class="flex items-center gap-3 px-6 py-5 border-b" style="border-color:#1a3050;">
+    <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">package_2</span>
+    <div><div class="font-bold text-white text-lg leading-tight">CargoTrack</div><div style="color:#6f87aa;font-size:12px;">Admin Paneli</div></div>
+  </div>
+  <nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 16px 4px;">GENEL</div>
+    <a href="01_admin_dashboard.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard</a>
+    <a href="02_cargo_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar</a>
+    <a href="08_audit_log.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">history</span>Audit Log</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">YÖNETİM</div>
+    <a href="03_branch_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">store</span>Şubeler</a>
+    <a href="04_transfer_center_list.html" class="sidebar-link active"><span class="material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri</a>
+    <a href="05_employee_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">badge</span>Personel</a>
+    <a href="06_user_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar</a>
+    <a href="07_price_rules.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">RAPORLAR</div>
+    <a href="09_reports.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">analytics</span>Performans Raporları</a>
+  </nav>
+  <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
+    <div class="sidebar-link" style="cursor:default;"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">A</div><div><div class="text-white text-sm font-semibold leading-tight">Admin</div><div style="color:#6f87aa;font-size:11px;">Sistem Yöneticisi</div></div></div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col min-w-0">
+  <header class="bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+    <div>
+      <h1 class="font-bold text-xl text-on-background">Transfer Merkezleri (HUB)</h1>
+      <p style="color:#43474e;font-size:13px;">Bölgesel aktarma merkezleri, araç rotaları ve kargo ayrıştırma kapasiteleri</p>
+    </div>
+    <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-colors" style="background:#fd8b00;color:#fff;">
+      <span class="material-symbols-outlined" style="font-size:18px;">add</span>Yeni Transfer Merkezi
+    </button>
+  </header>
+
+  <main class="flex-1 p-8 overflow-y-auto">
+    <!-- Hub KPI Row -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+      <div class="bg-white p-6 rounded-xl border border-outline-variant">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold" style="color:#43474e;letter-spacing:.05em;">AKTİF TM SAYISI</span>
+          <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;">hub</span>
+        </div>
+        <div class="text-3xl font-bold text-on-background">12 Merkez</div>
+        <div class="text-xs mt-2" style="color:#43474e;">Türkiye genelinde 7 ana lojistik koridoru</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl border border-outline-variant">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold" style="color:#43474e;letter-spacing:.05em;">ANLIK AYRIŞTIRMA YÜKÜ</span>
+          <span class="material-symbols-outlined filled-icon" style="color:#001e3c;">conveyor_belt</span>
+        </div>
+        <div class="text-3xl font-bold text-on-background">%74.2</div>
+        <div class="w-full bg-blue-100 h-2 rounded-full mt-2"><div class="h-full rounded-full" style="width:74%;background:#001e3c;"></div></div>
+      </div>
+      <div class="bg-white p-6 rounded-xl border border-outline-variant">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold" style="color:#43474e;letter-spacing:.05em;">GÜNLÜK TRANSİT KARGO</span>
+          <span class="material-symbols-outlined filled-icon" style="color:#2e7d32;">local_shipping</span>
+        </div>
+        <div class="text-3xl font-bold text-on-background">8,420 Adet</div>
+        <div class="text-xs text-green-700 mt-2 flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;">check</span>Tüm hatlar zamanında sevk</div>
+      </div>
+    </div>
+
+    <!-- Hub Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-8">
+      <!-- Hub Card 1 -->
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <div class="flex items-start justify-between border-b pb-4 mb-4" style="border-color:#e5eeff;">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded" style="background:#e5eeff;color:#001e3c;">TM-001</span>
+              <h3 class="font-bold text-lg text-on-background">Marmara Ana Transfer Merkezi</h3>
+            </div>
+            <p style="color:#43474e;font-size:13px;" class="mt-1">Kocaeli / Gebze Lojistik Üssü • Sorumlu: Kemal Soylu</p>
+          </div>
+          <span class="badge" style="background:#e8f5e9;color:#2e7d32;">Operasyonel</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-center mb-4">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Bağlı Şube</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">18 Şube</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Günlük Hacim</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">3,450 kargo</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Kapasite Doluluk</div>
+            <div class="text-lg font-bold text-amber-600 mt-0.5">%82</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-xs text-slate-500">Son sevkiyat: 12 dk önce (Ankara Konvoyu)</span>
+          <button class="text-xs font-bold px-3 py-1.5 rounded border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">Merkez Detayı →</button>
+        </div>
+      </div>
+
+      <!-- Hub Card 2 -->
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <div class="flex items-start justify-between border-b pb-4 mb-4" style="border-color:#e5eeff;">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded" style="background:#e5eeff;color:#001e3c;">TM-002</span>
+              <h3 class="font-bold text-lg text-on-background">İç Anadolu Transfer Merkezi</h3>
+            </div>
+            <p style="color:#43474e;font-size:13px;" class="mt-1">Ankara / Kazan Sanayi • Sorumlu: Tarık Erdem</p>
+          </div>
+          <span class="badge" style="background:#e8f5e9;color:#2e7d32;">Operasyonel</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-center mb-4">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Bağlı Şube</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">12 Şube</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Günlük Hacim</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">2,180 kargo</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Kapasite Doluluk</div>
+            <div class="text-lg font-bold text-green-700 mt-0.5">%68</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-xs text-slate-500">Son sevkiyat: 34 dk önce (İzmir Çıkışlı)</span>
+          <button class="text-xs font-bold px-3 py-1.5 rounded border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">Merkez Detayı →</button>
+        </div>
+      </div>
+
+      <!-- Hub Card 3 -->
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <div class="flex items-start justify-between border-b pb-4 mb-4" style="border-color:#e5eeff;">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded" style="background:#e5eeff;color:#001e3c;">TM-003</span>
+              <h3 class="font-bold text-lg text-on-background">Ege Transfer Merkezi</h3>
+            </div>
+            <p style="color:#43474e;font-size:13px;" class="mt-1">İzmir / Kemalpaşa Lojistik • Sorumlu: Serkan Varol</p>
+          </div>
+          <span class="badge" style="background:#e8f5e9;color:#2e7d32;">Operasyonel</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-center mb-4">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Bağlı Şube</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">9 Şube</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Günlük Hacim</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">1,640 kargo</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Kapasite Doluluk</div>
+            <div class="text-lg font-bold text-green-700 mt-0.5">%58</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-xs text-slate-500">Son sevkiyat: 50 dk önce (Bursa Ring)</span>
+          <button class="text-xs font-bold px-3 py-1.5 rounded border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">Merkez Detayı →</button>
+        </div>
+      </div>
+
+      <!-- Hub Card 4 -->
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <div class="flex items-start justify-between border-b pb-4 mb-4" style="border-color:#e5eeff;">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded" style="background:#e5eeff;color:#001e3c;">TM-004</span>
+              <h3 class="font-bold text-lg text-on-background">Akdeniz Transfer Merkezi</h3>
+            </div>
+            <p style="color:#43474e;font-size:13px;" class="mt-1">Antalya / Döşemealtı Üssü • Sorumlu: Erkan Şen</p>
+          </div>
+          <span class="badge" style="background:#e8f5e9;color:#2e7d32;">Operasyonel</span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 text-center mb-4">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Bağlı Şube</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">7 Şube</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Günlük Hacim</div>
+            <div class="text-lg font-bold text-slate-900 mt-0.5">1,150 kargo</div>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+            <div class="text-xs text-slate-500 font-medium">Kapasite Doluluk</div>
+            <div class="text-lg font-bold text-green-700 mt-0.5">%49</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-2">
+          <span class="text-xs text-slate-500">Son sevkiyat: 1 saat önce (Konya Aktarma)</span>
+          <button class="text-xs font-bold px-3 py-1.5 rounded border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">Merkez Detayı →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

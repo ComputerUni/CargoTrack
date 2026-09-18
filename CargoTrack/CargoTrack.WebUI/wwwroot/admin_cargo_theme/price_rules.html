@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CargoTrack - Fiyatlandırma Kuralları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#dce9ff","tertiary-container":"#171e24","on-surface-variant":"#43474e","outline":"#74777e","secondary":"#904d00","background":"#f8f9ff","error":"#ba1a1a","on-background":"#0b1c30","surface-bright":"#f8f9ff","primary-fixed":"#d3e3ff","primary-container":"#001e3c","on-primary-fixed":"#001c39","primary":"#00040c","on-primary":"#ffffff","secondary-container":"#fd8b00","outline-variant":"#c4c6ce","surface-container":"#e5eeff","on-primary-container":"#6f87aa","on-surface":"#0b1c30","surface-container-low":"#eff4ff","inverse-primary":"#afc8ee","surface-tint":"#486081","surface-container-lowest":"#ffffff","surface":"#f8f9ff","on-secondary":"#ffffff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"}}}}</script>
+<style>body{font-family:'Hanken Grotesk',sans-serif;background:#f8f9ff;color:#0b1c30;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}.filled-icon{font-variation-settings:'FILL' 1;}.sidebar-link{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:8px;color:#6f87aa;font-size:15px;font-weight:500;transition:all .15s;cursor:pointer;}.sidebar-link:hover{background:#1a3050;color:#d3e3ff;}.sidebar-link.active{background:#d3e3ff;color:#001e3c;font-weight:600;}.sidebar-link.active .material-symbols-outlined{font-variation-settings:'FILL' 1,'wght' 600,'GRAD' 0,'opsz' 24;}.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;}</style>
+</head>
+<body class="min-h-screen flex">
+
+<!-- SIDEBAR -->
+<aside class="w-64 min-h-screen flex flex-col flex-shrink-0" style="background:#001e3c;">
+  <div class="flex items-center gap-3 px-6 py-5 border-b" style="border-color:#1a3050;">
+    <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">package_2</span>
+    <div><div class="font-bold text-white text-lg leading-tight">CargoTrack</div><div style="color:#6f87aa;font-size:12px;">Admin Paneli</div></div>
+  </div>
+  <nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 16px 4px;">GENEL</div>
+    <a href="01_admin_dashboard.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard</a>
+    <a href="02_cargo_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar</a>
+    <a href="08_audit_log.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">history</span>Audit Log</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">YÖNETİM</div>
+    <a href="03_branch_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">store</span>Şubeler</a>
+    <a href="04_transfer_center_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri</a>
+    <a href="05_employee_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">badge</span>Personel</a>
+    <a href="06_user_list.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar</a>
+    <a href="07_price_rules.html" class="sidebar-link active"><span class="material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları</a>
+    <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">RAPORLAR</div>
+    <a href="09_reports.html" class="sidebar-link"><span class="material-symbols-outlined" style="font-size:20px;">analytics</span>Performans Raporları</a>
+  </nav>
+  <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
+    <div class="sidebar-link" style="cursor:default;"><div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">A</div><div><div class="text-white text-sm font-semibold leading-tight">Admin</div><div style="color:#6f87aa;font-size:11px;">Sistem Yöneticisi</div></div></div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="flex-1 flex flex-col min-w-0">
+  <header class="bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+    <div>
+      <h1 class="font-bold text-xl text-on-background">Dinamik Fiyatlandırma Kuralları</h1>
+      <p style="color:#43474e;font-size:13px;">CargoPricingService: Ağırlık, Desi (En×Boy×Yükseklik/3000), Mesafe ve Ek Hizmetler</p>
+    </div>
+    <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-colors" style="background:#fd8b00;color:#fff;">
+      <span class="material-symbols-outlined" style="font-size:18px;">add</span>Yeni Tarife Kuralı
+    </button>
+  </header>
+
+  <main class="flex-1 p-8 overflow-y-auto">
+    <!-- Formula Box -->
+    <div class="bg-slate-900 text-white rounded-xl p-5 mb-8 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:#fd8b00;">
+          <span class="material-symbols-outlined text-white" style="font-size:24px;">calculate</span>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider font-semibold text-amber-400">Aktif Fiyatlandırma Formülü</div>
+          <div class="font-mono text-sm mt-0.5">Ücret = Taban Fiyat + (Max(Ağırlık_kg, Desi) × Birim_Fiyat) + Bölge_Mesafe_Katsayısı + Ek_Hizmetler</div>
+          <div class="text-xs text-slate-400 mt-1 font-mono">Desi Hesabı = (En × Boy × Yükseklik) / 3000</div>
+        </div>
+      </div>
+      <button class="px-4 py-2 rounded-lg text-xs font-bold border border-slate-700 hover:bg-slate-800 text-slate-200">Formülü Düzenle</button>
+    </div>
+
+    <!-- Desi & Weight Tier Table -->
+    <div class="bg-white rounded-xl border border-outline-variant p-6 mb-8">
+      <h3 class="font-bold text-lg text-on-background mb-1">Ağırlık ve Desi Kademeleri</h3>
+      <p style="color:#43474e;font-size:13px;" class="mb-4">Standart yurt içi kargo gönderim taban tarifesi</p>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b" style="border-color:#e5eeff;">
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Kademe Adı</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Desi / Kg Aralığı</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Taban Ücret (₺)</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Ekstra Kg/Desi Başı (₺)</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Durum</th>
+              <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">İşlemler</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">Dosya / Evrak (Mini)</td>
+              <td class="py-3.5 px-3">0 - 1 Desi/Kg</td>
+              <td class="py-3.5 px-3 font-mono font-bold">₺45.00</td>
+              <td class="py-3.5 px-3 font-mono">₺0.00</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-3"><button class="text-xs font-semibold px-2 py-1 rounded hover:bg-slate-100" style="color:#001e3c;">Güncelle</button></td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">Küçük Paket</td>
+              <td class="py-3.5 px-3">1 - 5 Desi/Kg</td>
+              <td class="py-3.5 px-3 font-mono font-bold">₺75.00</td>
+              <td class="py-3.5 px-3 font-mono">+ ₺8.50 / kg</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-3"><button class="text-xs font-semibold px-2 py-1 rounded hover:bg-slate-100" style="color:#001e3c;">Güncelle</button></td>
+            </tr>
+            <tr class="border-b border-outline-variant">
+              <td class="py-3.5 px-3 font-semibold">Orta Koli</td>
+              <td class="py-3.5 px-3">5 - 15 Desi/Kg</td>
+              <td class="py-3.5 px-3 font-mono font-bold">₺140.00</td>
+              <td class="py-3.5 px-3 font-mono">+ ₺11.00 / kg</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-3"><button class="text-xs font-semibold px-2 py-1 rounded hover:bg-slate-100" style="color:#001e3c;">Güncelle</button></td>
+            </tr>
+            <tr>
+              <td class="py-3.5 px-3 font-semibold">Büyük Hacimli Gönderi</td>
+              <td class="py-3.5 px-3">15 - 50+ Desi/Kg</td>
+              <td class="py-3.5 px-3 font-mono font-bold">₺260.00</td>
+              <td class="py-3.5 px-3 font-mono">+ ₺14.50 / kg</td>
+              <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">Aktif</span></td>
+              <td class="py-3.5 px-3"><button class="text-xs font-semibold px-2 py-1 rounded hover:bg-slate-100" style="color:#001e3c;">Güncelle</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Extra Services & Distance Multipliers -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <h3 class="font-bold text-lg text-on-background mb-3">Mesafe / Bölge Katsayıları</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Şehir İçi Teslimat (0 - 50 km)</div>
+              <div class="text-xs text-slate-500">Aynı gün veya ertesi gün yerel dağıtım</div>
+            </div>
+            <span class="font-mono font-bold text-green-700">1.00x (Standart)</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Komşu Şehirler (50 - 300 km)</div>
+              <div class="text-xs text-slate-500">Marmara - Ege veya İç Anadolu geçişleri</div>
+            </div>
+            <span class="font-mono font-bold text-blue-700">1.25x</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Uzak Mesafe (300 - 800 km)</div>
+              <div class="text-xs text-slate-500">Bölgeler arası transit geçişler</div>
+            </div>
+            <span class="font-mono font-bold text-amber-700">1.50x</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Doğu / Güneydoğu / Ada Hatları (800+ km)</div>
+              <div class="text-xs text-slate-500">Özel aktarma veya feribot/uçak entegrasyonu</div>
+            </div>
+            <span class="font-mono font-bold text-purple-700">1.85x</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-outline-variant p-6">
+        <h3 class="font-bold text-lg text-on-background mb-3">Ek Hizmetler (Add-ons)</h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Kapıda Ödeme (Nakit / POS)</div>
+              <div class="text-xs text-slate-500">Müşteri teslimatta ödeme tahsilatı</div>
+            </div>
+            <span class="font-mono font-bold text-slate-800">+ ₺25.00</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Değerli Kargo Sigortası</div>
+              <div class="text-xs text-slate-500">Beyan edilen kargo değerinin %1.5'i</div>
+            </div>
+            <span class="font-mono font-bold text-slate-800">%1.5 Prim</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Kırılabilir / Hassas Ürün Etiketi</div>
+              <div class="text-xs text-slate-500">Özel paketleme ve manuel elleçleme</div>
+            </div>
+            <span class="font-mono font-bold text-slate-800">+ ₺18.00</span>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+            <div>
+              <div class="font-semibold text-slate-800">Randevulu Teslimat</div>
+              <div class="text-xs text-slate-500">Alıcının belirlediği saat dilimi aralığı</div>
+            </div>
+            <span class="font-mono font-bold text-slate-800">+ ₺35.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

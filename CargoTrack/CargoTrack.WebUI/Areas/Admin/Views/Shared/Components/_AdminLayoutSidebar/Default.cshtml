@@ -1,0 +1,58 @@
+﻿﻿@{
+var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+}
+
+<aside id="sidebar" class="w-64 min-h-screen flex flex-col" style="background:#001e3c;">
+    <div class="flex items-center gap-3 px-6 py-5 border-b" style="border-color:#1a3050;">
+        <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">package_2</span>
+        <div>
+            <div class="font-bold text-white text-lg leading-tight">CargoTrack</div>
+            <div style="color:#6f87aa;font-size:12px;">Admin Paneli</div>
+        </div>
+    </div>
+
+    <nav class="flex-1 px-3 py-4 flex flex-col gap-1 overflow-y-auto">
+        <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:8px 16px 4px;">GENEL</div>
+        <a href="01_admin_dashboard.html" class="sidebar-link @(currentController == "Dashboard" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard
+        </a>
+        <a href="02_cargo_list.html" class="sidebar-link @(currentController == "Cargo" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar
+        </a>
+        <a href="08_audit_log.html" class="sidebar-link @(currentController == "AuditLog" ? "active" : "") ">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">history</span>Audit Log
+        </a>
+
+        <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">YÖNETİM</div>
+        <a href="/Admin/Branch/Index" class="sidebar-link @(currentController == "Branch" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">store</span>Şubeler
+        </a>
+        <a href="04_transfer_center_list.html" class="sidebar-link @(currentController == "TransferCenter" ? "active" : "") ">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri
+        </a>
+        <a href="05_employee_list.html" class="sidebar-link @(currentController == "Employee" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">badge</span>Personel
+        </a>
+        <a href="06_user_list.html" class="sidebar-link @(currentController == "User" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar
+        </a>
+        <a href="07_price_rules.html" class="sidebar-link @(currentController == "CargoPrice" ? "active" : "") ">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları
+        </a>
+
+        <div style="color:#486081;font-size:11px;font-weight:700;letter-spacing:.08em;padding:12px 16px 4px;">RAPORLAR</div>
+        <a href="09_reports.html" class="sidebar-link @(currentController == "Default" ? "active" : "") ">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">analytics</span>Performans Raporları
+        </a>
+    </nav>
+
+    <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
+        <div class="sidebar-link" style="cursor:default;">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">A</div>
+            <div>
+                <div class="text-white text-sm font-semibold leading-tight">Admin</div>
+                <div style="color:#6f87aa;font-size:11px;">Sistem Yöneticisi</div>
+            </div>
+        </div>
+    </div>
+</aside>
