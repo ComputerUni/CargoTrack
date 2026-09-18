@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CargoTrack.Business.Services.CargoMovements
 {
-    internal class CargoMovementService(ICargoMovementRepository _repository, ICargoRepository _cargoRepository) : ICargoMovementService
+    public class CargoMovementService(ICargoMovementRepository _repository, ICargoRepository _cargoRepository) : ICargoMovementService
     {
         public async Task CreateMovementAsync(Guid cargoId, CargoStatus newStatus, Guid? branchId, Guid? transferCenterId, Guid? employeeId, string description)
         {

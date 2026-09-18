@@ -307,8 +307,14 @@ namespace CargoTrack.DataAccess.Migrations
                     b.Property<int>("FailedAttemptCount")
                         .HasColumnType("int");
 
+                    b.Property<double>("Height")
+                        .HasColumnType("float");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<double>("Length")
+                        .HasColumnType("float");
 
                     b.Property<Guid>("OriginBranchId")
                         .HasColumnType("uniqueidentifier");
@@ -333,6 +339,9 @@ namespace CargoTrack.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<double>("Weight")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Width")
                         .HasColumnType("float");
 
                     b.HasKey("Id");

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CargoTrack.Business")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a58800d2497887ffb559841e068339eb5c72bf80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+736a0d894820ed0b7b526e4b841f0d9cfb1b5460")]
 [assembly: System.Reflection.AssemblyProductAttribute("CargoTrack.Business")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CargoTrack.Business")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

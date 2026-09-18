@@ -1,7 +1,15 @@
 using CargoTrack.Business;
 using CargoTrack.Business.Services.Abouts;
+using CargoTrack.Business.Services.AuditLogs;
 using CargoTrack.Business.Services.Branches;
+using CargoTrack.Business.Services.CargoMovements;
+using CargoTrack.Business.Services.CargoPricings;
+using CargoTrack.Business.Services.Cargos;
 using CargoTrack.Business.Services.Cities;
+using CargoTrack.Business.Services.Deliveries;
+using CargoTrack.Business.Services.DeliveryExceptions;
+using CargoTrack.Business.Services.Employees;
+using CargoTrack.Business.Services.TransferCenters;
 using CargoTrack.DataAccess.Context;
 using CargoTrack.DataAccess.Repositories.Abouts;
 using CargoTrack.DataAccess.Repositories.AuditLogs;
@@ -44,8 +52,15 @@ builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IBranchService, BranchService>();
+builder.Services.AddScoped<IAuditLogService, AuditLogService>();
+builder.Services.AddScoped<ICargoMovementService, CargoMovementService>();
+builder.Services.AddScoped<ICargoPricingService, CargoPricingService>();
+builder.Services.AddScoped<ICargoService, CargoService>();
 builder.Services.AddScoped<ICityService, CityService>();
-
+builder.Services.AddScoped<IDeliveryService, DeliveryService>();
+builder.Services.AddScoped<IDeliveryExceptionService, DeliveryExceptionService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<ITransferCenterService, TransferCenterService>();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>

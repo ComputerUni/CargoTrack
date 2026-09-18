@@ -14,6 +14,9 @@ namespace CargoTrack.Entity.Entities
         public DateTime ShipmentDate { get; set; }
         public DateTime EstimatedArrivalDate { get; set; }
         public double Weight { get; set; }
+        public double Length { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
         public double Desi { get; set; }
         public decimal Price { get; set; }
         public string? DeliveryCode { get; set; }
