@@ -16,6 +16,9 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
         <a href="01_admin_dashboard.html" class="sidebar-link @(currentController == "Dashboard" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">dashboard</span>Dashboard
         </a>
+        <a href="/Admin/About/Index" class="sidebar-link @(currentController == "About" ? "active" : "")">
+            <span class="nav-item material-symbols-outlined" style="font-size:20px;">info</span>Hakkımızda
+        </a>
         <a href="02_cargo_list.html" class="sidebar-link @(currentController == "Cargo" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar
         </a>

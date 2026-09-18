@@ -6,8 +6,9 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-
             return View();
         }
+
+
     }
 }
