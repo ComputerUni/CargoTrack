@@ -2,11 +2,13 @@
 using CargoTrack.Business.Services.CargoPricings;
 using CargoTrack.DTO.DTOs.CargoPriceDtos;
 using CargoTrack.Entity.Entities.Enums;
+using CargoTrack.WebUI.Consts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CargoTrack.WebUI.Areas.Admin.Controllers
 {
+    [Area(Area.Admin)]
     public class CargoPriceController(ICargoPricingService _cargoPricingService) : Controller
     {
         private async Task GetCargoTypes()
@@ -23,7 +25,7 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var pricings = await _cargoPricingService.GetAllAsync();
-            return View();
+            return View(pricings);
         }
 
         [HttpGet]

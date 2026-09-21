@@ -13,7 +13,7 @@
             <h2 class="text-xl font-bold text-on-background">Kargo Fiyatlandırma Yönetimi</h2>
             <p class="text-xs text-on-surface-variant mt-0.5">Sistemde kayıtlı tüm kargo fiyatlandırma yöntemlerini bu sayfa üzerinden yönetebilirsiniz.</p>
         </div>
-        <a asp-area="Admin" asp-controller="Branch" asp-action="Create"
+        <a asp-area="Admin" asp-controller="CargoPrice" asp-action="Create"
            class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-opacity hover:opacity-90 shadow-sm"
            style="background:#fd8b00;">
             <span class="material-symbols-outlined" style="font-size:18px;">add</span>Yeni Kargo Fiyatlandırması Ekle
@@ -26,12 +26,12 @@
                 <thead style="background:#f8f9ff;">
                     <tr style="border-bottom:2px solid #e5eeff;">
                         <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">#</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">MİNİMUM AĞIRLIK</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">MAKSİMUM AĞIRLIK</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">MİNİMUM AĞIRLIK (kg)</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">MAKSİMUM AĞIRLIK (kg)</th>
                         <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">DESİ KATSAYISI</th>
                         <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">KARGO TÜRÜ</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">TEMEL FİYAT</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">EK HİZMET ÜCRETİ</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">TEMEL FİYAT (₺)</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">EK HİZMET ÜCRETİ (₺)</th>
                         <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">ŞEHİRLERARASI MI</th>
                         <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">İŞLEMLER</th>
                     </tr>
@@ -66,14 +66,15 @@
                                 </td>
                                 <td class="py-3.5 px-4">
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
-                                        @item.AdditionalServicePrice
+                                        @item.BasePrice
                                     </span>
                                 </td>
                                 <td class="py-3.5 px-4">
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
-                                        @item.BasePrice
+                                        @item.AdditionalServicePrice
                                     </span>
                                 </td>
+                               
                                 <td class="py-3.5 px-4">
                                     <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
                                         @(item.IsIntercity ? "Şehirlerarası" : "Şehir İçi")

@@ -39,7 +39,7 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
         <a href="06_user_list.html" class="sidebar-link @(currentController == "User" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar
         </a>
-        <a href="07_price_rules.html" class="sidebar-link @(currentController == "CargoPrice" ? "active" : "") ">
+        <a href="/Admin/CargoPrice/Index" class="sidebar-link @(currentController == "CargoPrice" ? "active" : "") ">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">sell</span>Fiyat Kuralları
         </a>
 
