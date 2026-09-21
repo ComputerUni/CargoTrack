@@ -31,7 +31,7 @@ namespace CargoTrack.Business.Services.Cargos
 
         public async Task<List<ResultCargoDto>> GetAllAsync()
         {
-            var cargos = await _repository.GetAllAsync();
+            var cargos = await _repository.GetAllWithDetailsAsync();
             return cargos.Adapt<List<ResultCargoDto>>();
         }
 

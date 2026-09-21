@@ -19,10 +19,10 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public int FailedAttemptCount { get; set; }
         public CargoType CargoType { get; set; }
         public CargoStatus CargoStatus { get; set; }
-        //public Guid SenderId { get; set; }
-        //public Guid ReceiverId { get; set; }
-        //public Guid OriginBranchId { get; set; }
-        //public Guid DestinationBranchId { get; set; }
+        public Guid SenderId { get; set; }
+        public Guid ReceiverId { get; set; }
+        public Guid OriginBranchId { get; set; }
+        public Guid DestinationBranchId { get; set; }
         public string SenderName { get; set; }
         public string ReceiverName { get; set; }
         public string OriginBranchName { get; set; }

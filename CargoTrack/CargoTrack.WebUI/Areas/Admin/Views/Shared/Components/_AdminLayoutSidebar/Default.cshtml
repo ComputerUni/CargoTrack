@@ -19,7 +19,7 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
         <a href="/Admin/About/Index" class="sidebar-link @(currentController == "About" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">info</span>Hakkımızda
         </a>
-        <a href="02_cargo_list.html" class="sidebar-link @(currentController == "Cargo" ? "active" : "")">
+        <a href="/Admin/Cargo/Index" class="sidebar-link @(currentController == "Cargo" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">inventory_2</span>Kargolar
         </a>
         <a href="08_audit_log.html" class="sidebar-link @(currentController == "AuditLog" ? "active" : "") ">
@@ -30,10 +30,10 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
         <a href="/Admin/Branch/Index" class="sidebar-link @(currentController == "Branch" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">store</span>Şubeler
         </a>
-        <a href="04_transfer_center_list.html" class="sidebar-link @(currentController == "TransferCenter" ? "active" : "") ">
+        <a href="/Admin/TransferCenter/Index" class="sidebar-link @(currentController == "TransferCenter" ? "active" : "") ">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">hub</span>Transfer Merkezleri
         </a>
-        <a href="05_employee_list.html" class="sidebar-link @(currentController == "Employee" ? "active" : "")">
+        <a href="/Admin/Employee/Index" class="sidebar-link @(currentController == "Employee" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">badge</span>Personel
         </a>
         <a href="06_user_list.html" class="sidebar-link @(currentController == "User" ? "active" : "")">

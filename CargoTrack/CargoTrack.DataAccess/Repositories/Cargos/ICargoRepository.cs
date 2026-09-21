@@ -11,5 +11,6 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
     public interface ICargoRepository : IRepository<Cargo>
     {
         Task<Cargo> GetByTrackCodeAsync(string trackCode);
+        Task<List<Cargo>> GetAllWithDetailsAsync();
     }
 }

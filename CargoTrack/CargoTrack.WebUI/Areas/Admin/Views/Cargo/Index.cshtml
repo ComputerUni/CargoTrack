@@ -1,0 +1,114 @@
+﻿@using CargoTrack.Business.Extensions
+@model List<ResultCargoDto>
+
+@{
+    ViewData["Title"] = "Kargolarımız";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="w-full space-y-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <h2 class="text-xl font-bold text-on-background">Kargo Yönetimi</h2>
+            <p class="text-xs text-on-surface-variant mt-0.5">Sistemde kayıtlı tüm kargoları bu sayfadan yönetebilirsiniz.</p>
+        </div>
+        <a asp-area="Admin" asp-controller="Cargo" asp-action="Create"
+           class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-opacity hover:opacity-90 shadow-sm"
+           style="background:#fd8b00;">
+            <span class="material-symbols-outlined" style="font-size:18px;">add</span>Yeni Kargo Ekle
+        </a>
+    </div>
+
+    <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead style="background:#f8f9ff;">
+                    <tr style="border-bottom:2px solid #e5eeff;">
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">#</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">TAKİP NO</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">GÖNDERICI</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">ALICI</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">ÇIKIŞ ŞUBESİ</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">VARIŞ ŞUBESİ</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">DURUM</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">FİYAT</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">TAHMİNİ TESLİMAT</th>
+                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">İŞLEMLER</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+                                <td class="py-3.5 px-4 font-semibold text-slate-500">@count</td>
+                                <td class="py-3.5 px-4 font-bold text-on-background">@item.TrackCode</td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.SenderName
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.ReceiverName
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.OriginBranchName
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.DestinationBranchName
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.CargoStatus.GetDisplayName()
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.Price
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold" style="background:#e5eeff;color:#001e3c;">
+                                        @item.EstimatedArrivalDate
+                                    </span>
+                                </td>
+                                <td class="py-3.5 px-4">
+                                    <div class="flex items-center gap-2">
+                                        <a asp-area="Admin" asp-controller="Branch" asp-action="Update" asp-route-id="@item.Id"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-surface-container"
+                                           style="color:#001e3c; border: 1px solid #c4c6ce;">
+                                            <span class="material-symbols-outlined" style="font-size:16px;">edit</span>Düzenle
+                                        </a>
+                                        <a asp-area="Admin" asp-controller="Branch" asp-action="Delete" asp-route-id="@item.Id"
+                                           onclick="return confirm('Bu şubeyi silmek istediğinize emin misiniz?')"
+                                           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-rose-50"
+                                           style="color:#ba1a1a; border: 1px solid #ffdad6;">
+                                            <span class="material-symbols-outlined" style="font-size:16px;">delete</span>Sil
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="py-6 text-center text-xs text-slate-500">
+                                Kayıtlı kargo bulunamadı.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

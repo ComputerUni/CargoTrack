@@ -1,0 +1,57 @@
+﻿@model CreateEmployeeDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="w-full bg-white rounded-xl border border-outline-variant p-6 shadow-sm">
+    <div class="border-b border-outline-variant pb-4 mb-6">
+        <h2 class="text-lg font-bold text-on-background">Yeni Çalışan Tanımla</h2>
+        <p class="text-xs text-on-surface-variant mt-0.5">Sisteme yeni bir çalışan ekleyin.</p>
+    </div>
+    <form method="post" asp-area="Admin" asp-controller="Employee" asp-action="Create" class="space-y-5">
+        <div>
+            <label asp-for="FirstName" class="block text-xs font-semibold mb-1.5" style="color:#43474e;">ÇALIŞAN ADI</label>
+            <input type="text" asp-for="FirstName" placeholder="Örn: İstanbul Anadolu Şubesi"
+                   class="w-full px-3.5 py-2.5 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none focus:border-primary-container" />
+            <span asp-validation-for="FirstName" class="text-xs font-medium text-rose-600 mt-1 block"></span>
+        </div>
+
+        <div>
+            <label asp-for="LastName" class="block text-xs font-semibold mb-1.5" style="color:#43474e;">ÇALIŞAN SOYADI</label>
+            <input type="text" asp-for="LastName" placeholder="Örn: İstanbul Anadolu Şubesi"
+                   class="w-full px-3.5 py-2.5 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none focus:border-primary-container" />
+            <span asp-validation-for="LastName" class="text-xs font-medium text-rose-600 mt-1 block"></span>
+        </div>
+
+        <div>
+            <label asp-for="Phone" class="block text-xs font-semibold mb-1.5" style="color:#43474e;">TELEFON NUMARASI</label>
+            <input type="text" asp-for="Phone" placeholder="Örn: 0555 555 00 00"
+                   class="w-full px-3.5 py-2.5 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none focus:border-primary-container" />
+            <span asp-validation-for="Phone" class="text-xs font-medium text-rose-600 mt-1 block"></span>
+        </div>
+
+        <div>
+            <label asp-for="BranchId" class="block text-xs font-semibold mb-1.5" style="color:#43474e;">ŞUBE</label>
+            <select asp-for="BranchId" asp-items="@ViewBag.branches"
+                    class="w-full px-3.5 py-2.5 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none focus:border-primary-container">
+                <option disabled selected value="">--- Şube Seçiniz ---</option>
+            </select>
+            <span asp-validation-for="BranchId" class="text-xs font-medium text-rose-600 mt-1 block"></span>
+        </div>
+
+        <div class="flex items-center gap-3 pt-4 border-t border-outline-variant">
+            <button type="submit"
+                    class="px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-opacity hover:opacity-95"
+                    style="background:#001e3c;">
+                Çalışanı Kaydet
+            </button>
+            <a asp-area="Admin" asp-controller="Employee" asp-action="Index"
+               class="px-4 py-2.5 rounded-lg text-sm font-semibold border border-outline-variant hover:bg-surface-container-low transition-colors"
+               style="color:#43474e;">
+                Vazgeç
+            </a>
+        </div>
+    </form>
+</div>

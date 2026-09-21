@@ -1,4 +1,5 @@
 using CargoTrack.Business;
+using CargoTrack.Business.Mappings.CargoMappings;
 using CargoTrack.Business.Services.Abouts;
 using CargoTrack.Business.Services.AuditLogs;
 using CargoTrack.Business.Services.Branches;
@@ -177,6 +178,8 @@ using (var scope = app.Services.CreateScope())
     //    context.SaveChanges();
     //}
 }
+
+CargoMappingConfig.RegisterMappings();
 
 app.Run();
 

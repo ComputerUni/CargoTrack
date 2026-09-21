@@ -16,6 +16,16 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
         {
         }
 
+        public async Task<List<Cargo>> GetAllWithDetailsAsync()
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .ToListAsync();
+        }
+
         public async Task<Cargo> GetByTrackCodeAsync(string trackCode)
         {
             return await _context.Cargos.FirstOrDefaultAsync(x => x.TrackCode == trackCode);

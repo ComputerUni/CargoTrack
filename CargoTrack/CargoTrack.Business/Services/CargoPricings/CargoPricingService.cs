@@ -1,8 +1,12 @@
 ﻿using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.CargoPrices;
+using CargoTrack.DTO.DTOs.CargoPriceDtos;
+using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
+using Mapster;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,11 +44,54 @@ namespace CargoTrack.Business.Services.CargoPricings
             return price;
 
         }
+
+        public async Task CreateAsync(CreateCargoPriceDto createCargoPriceDto)
+        {
+            var cargoPrice = createCargoPriceDto.Adapt<CargoPrice>();
+            await _repository.CreateAsync(cargoPrice);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var cargoPrice = await _repository.GetByIdAsync(id);
+
+            if (cargoPrice is null)
+            {
+                throw new ValidationException("Cargo Price Not Found");
+            }
+
+            await _repository.DeleteAsync(cargoPrice);
+        }
+
         public async Task<string> GenerateTrackCode()
         {
             var year = DateTime.Now.Year;
             var random = new Random().Next(100000, 999999);
             return $"CT-{year}-{random}";
+        }
+
+        public async Task<List<ResultCargoPriceDto>> GetAllAsync()
+        {
+            var cargoPrices = await _repository.GetAllAsync();
+            return cargoPrices.Adapt<List<ResultCargoPriceDto>>();
+        }
+
+        public async Task<UpdateCargoPriceDto> GetByIdAsync(Guid id)
+        {
+            var cargoPrice = await _repository.GetByIdAsync(id);
+
+            if(cargoPrice is null)
+            {
+                throw new ValidationException("Cargo Price Not Found");
+            }
+
+            return cargoPrice.Adapt<UpdateCargoPriceDto>();
+        }
+
+        public async Task UpdateAsync(UpdateCargoPriceDto updateCargoPriceDto)
+        {
+            var cargoPrice = updateCargoPriceDto.Adapt<CargoPrice>();
+            await _repository.UpdateAsync(cargoPrice);
         }
     }
 }
