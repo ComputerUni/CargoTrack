@@ -14,6 +14,7 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public double Width { get; set; }
         public double Height { get; set; }
         public CargoType CargoType { get; set; }
+        public Guid SenderId { get; set; }
         public Guid ReceiverId { get; set; }
         public Guid OriginBranchId { get; set; }
         public Guid DestinationBranchId { get; set; }

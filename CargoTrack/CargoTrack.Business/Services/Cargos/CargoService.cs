@@ -1,21 +1,47 @@
-﻿using CargoTrack.DataAccess.Repositories.Cargos;
+﻿using CargoTrack.Business.Services.CargoPricings;
+using CargoTrack.DataAccess.Repositories.Branches;
+using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.Entity.Entities;
+using CargoTrack.Entity.Entities.Enums;
 using Mapster;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTrack.Business.Services.Cargos
 {
-    public class CargoService(ICargoRepository _repository) : ICargoService
+    public class CargoService(ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository) : ICargoService
     {
         public async Task CreateAsync(CreateCargoDto createCargoDto)
         {
-            var cargo = createCargoDto.Adapt<Cargo>();
+            var desi = (createCargoDto.Length * createCargoDto.Width * createCargoDto.Height) / 3000;
+
+            var originBranch = await _branchRepository.GetByIdAsync(createCargoDto.OriginBranchId);
+            var destinationBranch = await _branchRepository.GetByIdAsync(createCargoDto.DestinationBranchId);
+            var isIntercity = originBranch.CityId != destinationBranch.CityId;
+
+            var price = await _cargoPricingService.CalculatePriceAsync(createCargoDto.Weight, desi, createCargoDto.CargoType, isIntercity);
+            var estimatedDate = await _cargoPricingService.CalculateEstimatedDeliveryDateAsync(createCargoDto.OriginBranchId, createCargoDto.DestinationBranchId, createCargoDto.CargoType);
+            var trackCode = await _cargoPricingService.GenerateTrackCode();
+
+            var cargo = new Cargo
+            {
+                TrackCode = trackCode,
+                ShipmentDate = DateTime.Now,
+                EstimatedArrivalDate = estimatedDate,
+                Weight = createCargoDto.Weight,
+                Length = createCargoDto.Length,   
+                Width = createCargoDto.Width,     
+                Height = createCargoDto.Height,   
+                Desi = desi,
+                Price = price,
+                CargoType = createCargoDto.CargoType,
+                CargoStatus = CargoStatus.Created,
+                SenderId = createCargoDto.SenderId,
+                ReceiverId = createCargoDto.ReceiverId,
+                OriginBranchId = createCargoDto.OriginBranchId,
+                DestinationBranchId = createCargoDto.DestinationBranchId
+            };
+
             await _repository.CreateAsync(cargo);
         }
 

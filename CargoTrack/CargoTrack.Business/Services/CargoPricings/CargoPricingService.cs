@@ -4,12 +4,8 @@ using CargoTrack.DTO.DTOs.CargoPriceDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using Mapster;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CargoTrack.Business.Services.CargoPricings
 {
@@ -39,6 +35,10 @@ namespace CargoTrack.Business.Services.CargoPricings
         public async Task<decimal> CalculatePriceAsync(double weight, double desi, CargoType cargoType, bool isIntercity)
         {
             var priceRule = await _repository.GetMatchingRuleAsync(weight, cargoType, isIntercity);
+            if(priceRule is null)
+            {
+                throw new Exception("Bu kargo tipi için fiyat kuralı tanımlanmamış.");
+            }
             var effectiveWeight = (decimal)Math.Max(weight, desi);
             var price = priceRule.BasePrice + (effectiveWeight * (decimal)priceRule.DesiCoefficient) + priceRule.AdditionalServicePrice;
             return price;

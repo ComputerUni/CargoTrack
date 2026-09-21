@@ -83,13 +83,13 @@
                                 </td>
                                 <td class="py-3.5 px-4">
                                     <div class="flex items-center gap-2">
-                                        <a asp-area="Admin" asp-controller="Branch" asp-action="Update" asp-route-id="@item.Id"
+                                        <a asp-area="Admin" asp-controller="Cargo" asp-action="Update" asp-route-id="@item.Id"
                                            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-surface-container"
                                            style="color:#001e3c; border: 1px solid #c4c6ce;">
                                             <span class="material-symbols-outlined" style="font-size:16px;">edit</span>Düzenle
                                         </a>
-                                        <a asp-area="Admin" asp-controller="Branch" asp-action="Delete" asp-route-id="@item.Id"
-                                           onclick="return confirm('Bu şubeyi silmek istediğinize emin misiniz?')"
+                                        <a asp-area="Admin" asp-controller="Cargo" asp-action="Delete" asp-route-id="@item.Id"
+                                           onclick="return confirm('Bu kargoyu silmek istediğinize emin misiniz?')"
                                            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-rose-50"
                                            style="color:#ba1a1a; border: 1px solid #ffdad6;">
                                             <span class="material-symbols-outlined" style="font-size:16px;">delete</span>Sil
