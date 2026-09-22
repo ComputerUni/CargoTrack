@@ -115,6 +115,12 @@ namespace CargoTrack.DataAccess.Context
                .HasForeignKey(t => t.UserId)
                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<AppUser>()
+                .HasOne(x => x.Branch)
+                .WithMany(x => x.Managers)
+                .HasForeignKey(x => x.BranchId)
+                .IsRequired(false);
+
 
             base.OnModelCreating(modelBuilder);
         }

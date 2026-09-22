@@ -20,5 +20,6 @@ namespace CargoTrack.Entity.Entities
         public virtual IList<Cargo> DestinationCargos { get; set; }
         public virtual IList<CargoMovement> CargoMovements { get; set; }
         public virtual IList<Employee> Employees { get; set; }
+        public virtual IList<AppUser> Managers { get; set; }
     }
 }

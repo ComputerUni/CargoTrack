@@ -135,6 +135,9 @@ namespace CargoTrack.DataAccess.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("BranchId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -188,6 +191,8 @@ namespace CargoTrack.DataAccess.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BranchId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -776,6 +781,15 @@ namespace CargoTrack.DataAccess.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("CargoTrack.Entity.Entities.AppUser", b =>
+                {
+                    b.HasOne("CargoTrack.Entity.Entities.Branch", "Branch")
+                        .WithMany("Managers")
+                        .HasForeignKey("BranchId");
+
+                    b.Navigation("Branch");
+                });
+
             modelBuilder.Entity("CargoTrack.Entity.Entities.AuditLog", b =>
                 {
                     b.HasOne("CargoTrack.Entity.Entities.AppUser", "User")
@@ -994,6 +1008,8 @@ namespace CargoTrack.DataAccess.Migrations
                     b.Navigation("DestinationCargos");
 
                     b.Navigation("Employees");
+
+                    b.Navigation("Managers");
 
                     b.Navigation("OriginCargos");
                 });

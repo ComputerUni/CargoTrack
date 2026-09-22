@@ -11,6 +11,7 @@ namespace CargoTrack.Entity.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public Guid? BranchId { get; set; }
 
 
         //Navigation Properties
@@ -18,5 +19,6 @@ namespace CargoTrack.Entity.Entities
         public virtual IList<Cargo> ReceivedCargos { get; set; }
         public virtual IList<Address> Addresses { get; set; }
         public virtual IList<AuditLog> AuditLogs { get; set; }
+        public virtual Branch Branch { get; set; }
     }
 }

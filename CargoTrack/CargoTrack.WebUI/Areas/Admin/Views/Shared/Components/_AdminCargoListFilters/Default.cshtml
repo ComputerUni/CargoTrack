@@ -1,0 +1,50 @@
+﻿<div class="bg-white rounded-xl border border-outline-variant p-5 mb-5">
+    <div class="flex flex-wrap gap-3 items-end">
+        <div class="flex-1 min-w-48">
+            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">ARAMA</label>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size:18px;">search</span>
+                <input type="text" placeholder="Takip no, gönderici, alıcı..." class="w-full pl-9 pr-4 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" />
+            </div>
+        </div>
+        <div class="w-40">
+            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">DURUM</label>
+            <select class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white">
+                <option>Tümü</option>
+                <option>Oluşturuldu</option>
+                <option>Gönderici Şubesinde</option>
+                <option>Transfer Merkezinde</option>
+                <option>Varış Şubesinde</option>
+                <option>Dağıtıma Çıktı</option>
+                <option>Teslim Edildi</option>
+                <option>Gecikiyor</option>
+                <option>İade Sürecinde</option>
+            </select>
+        </div>
+        <div class="w-40">
+            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">ŞEHİR</label>
+            <select class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white">
+                <option>Tüm Şehirler</option>
+                <option>İstanbul</option>
+                <option>Ankara</option>
+                <option>İzmir</option>
+                <option>Bursa</option>
+                <option>Antalya</option>
+            </select>
+        </div>
+        <div class="w-40">
+            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">TARİH (BAŞLANGIÇ)</label>
+            <input type="date" class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white" />
+        </div>
+        <div class="w-40">
+            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">TARİH (BİTİŞ)</label>
+            <input type="date" class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white" />
+        </div>
+        <button class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#001e3c;color:#fff;">
+            <span class="material-symbols-outlined" style="font-size:16px;">filter_list</span>Filtrele
+        </button>
+        <button class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-outline-variant" style="color:#43474e;">
+            <span class="material-symbols-outlined" style="font-size:16px;">clear</span>Temizle
+        </button>
+    </div>
+</div>

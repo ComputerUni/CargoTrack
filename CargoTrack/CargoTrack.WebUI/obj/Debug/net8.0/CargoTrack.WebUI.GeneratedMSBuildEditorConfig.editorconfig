@@ -35,6 +35,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWJvdXRcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/AuditLog/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXVkaXRMb2dcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Branch/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQnJhbmNoXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -89,6 +93,42 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/RoleAssign/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZUFzc2lnblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminAboutHeader/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQWJvdXRIZWFkZXJcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminBranchFilters/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQnJhbmNoRmlsdGVyc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminBranchHeader/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQnJhbmNoSGVhZGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminBranchSummaryCards/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQnJhbmNoU3VtbWFyeUNhcmRzXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminBranchTable/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQnJhbmNoVGFibGVcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminCargoListFilters/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQ2FyZ29MaXN0RmlsdGVyc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminCargoListHeader/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQ2FyZ29MaXN0SGVhZGVyXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminCargoListResultCountExport/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQ2FyZ29MaXN0UmVzdWx0Q291bnRFeHBvcnRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminCargoListTable/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcX0FkbWluQ2FyZ29MaXN0VGFibGVcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Admin/Views/Shared/Components/_AdminLayoutFooter/Default.cshtml]

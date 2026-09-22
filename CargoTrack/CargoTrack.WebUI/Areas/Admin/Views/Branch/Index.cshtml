@@ -3,10 +3,29 @@
 @{
     ViewData["Title"] = "Şubelerimiz";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-    int count = 0;
 }
 
-<div class="w-full space-y-6">
+<div class="flex-1 flex flex-col min-w-0">
+
+    @await Component.InvokeAsync("_AdminBranchHeader")
+
+    <main class="flex-1 p-8 overflow-y-auto">
+
+        <!-- Stat Summary Cards -->
+        @await Component.InvokeAsync("_AdminBranchSummaryCards")
+
+        <!-- Filters -->
+        @await Component.InvokeAsync("_AdminBranchFilters")
+
+        <!-- Branches Table -->
+        @await Component.InvokeAsync("_AdminBranchTable", new { branches = Model })
+    </main>
+</div>
+
+
+
+
+@* <div class="w-full space-y-6">
     <div class="flex items-center justify-between">
         <div>
             <h2 class="text-xl font-bold text-on-background">Şube Yönetimi</h2>
@@ -74,4 +93,4 @@
             </table>
         </div>
     </div>
-</div>
+</div> *@

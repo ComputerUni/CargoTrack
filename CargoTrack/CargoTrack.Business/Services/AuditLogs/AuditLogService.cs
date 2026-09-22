@@ -1,5 +1,7 @@
 ﻿using CargoTrack.DataAccess.Repositories.AuditLogs;
+using CargoTrack.DTO.DTOs.AuditLogDtos;
 using CargoTrack.Entity.Entities;
+using Mapster;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -33,5 +35,13 @@ namespace CargoTrack.Business.Services.AuditLogs
 
             await _auditLogRepository.CreateAsync(auditLog);
         }
+
+        public async Task<List<ResultAuditLogDto>> GetAllAsync()
+        {
+            var logs = await _auditLogRepository.GetAllAsync();
+            return logs.Adapt<List<ResultAuditLogDto>>();
+        }
     }
+
+    
 }

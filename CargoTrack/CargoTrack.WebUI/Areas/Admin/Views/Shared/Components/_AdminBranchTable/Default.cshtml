@@ -1,0 +1,55 @@
+﻿@model List<ResultBranchDto>
+
+@{
+    int count = 0;
+}
+
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead style="background:#f8f9ff;">
+                <tr style="border-bottom:2px solid #e5eeff;">
+                    <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">#</th>
+                    <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">ŞUBE İSMİ</th>
+                    <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">ŞEHİR</th>
+                    <th class="text-left py-3.5 px-4 font-semibold" style="color:#43474e;">İŞLEMLER</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr class="border-b border-outline-variant hover:bg-surface-container-low">
+                            <td class="py-3.5 px-4 font-mono font-semibold text-xs text-on-background">@count</td>
+                            <td class="py-3.5 px-4 font-semibold">@item.Name</td>
+                            <td class="py-3.5 px-4 text-on-surface-variant">@item.City.Name</td>
+                            <td>
+                                <div class="flex items-center gap-1">
+                                    <button title="Detay" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#486081;">visibility</span></button>
+                                    <button title="Düzenle" class="p-1.5 rounded-lg hover:bg-surface-container"><span class="material-symbols-outlined" style="font-size:18px;color:#001e3c;">edit</span></button>
+                                    <button title="Sil" class="p-1.5 rounded-lg hover:bg-error-container"><span class="material-symbols-outlined" style="font-size:18px;color:#ba1a1a;">block</span></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+
+                  
+            </tbody>
+        </table>
+    </div>
+
+    <div class="flex items-center justify-between px-4 py-3.5" style="border-top:1px solid #c4c6ce;">
+        <span style="color:#43474e;font-size:13px;">1–5 / 48 şube gösteriliyor</span>
+        <div class="flex items-center gap-1">
+            <button class="px-3 py-1 rounded text-sm border border-outline-variant text-gray-400" disabled>Önceki</button>
+            <button class="px-3 py-1 rounded text-sm font-bold text-white" style="background:#001e3c;">1</button>
+            <button class="px-3 py-1 rounded text-sm border border-outline-variant">2</button>
+            <button class="px-3 py-1 rounded text-sm border border-outline-variant">3</button>
+            <button class="px-3 py-1 rounded text-sm border border-outline-variant">Sonraki</button>
+        </div>
+    </div>
+
+</div>

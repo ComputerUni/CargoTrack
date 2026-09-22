@@ -1,0 +1,22 @@
+﻿@model List<ResultAboutDto>
+
+<header class="sticky top-0 z-10 bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between w-full">
+    <div>
+        <h1 class="font-bold text-xl text-on-background">Hakkımızda Yönetimi</h1>
+        <p style="color:#43474e;font-size:13px;">Sistemde kayıtlı hakkımda bilgilerini bu sayfadan yönetebilirsiniz.</p>
+    </div>
+    @if(Model.Any() && Model != null)
+    {
+        <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200 cursor-not-allowed select-none shadow-sm"
+             title="Yeni kayıt eklemek için önce mevcut kaydı silmelisiniz.">
+            <span class="material-symbols-outlined" style="font-size:18px;">lock</span>
+            <span>Mevcut Veri Dolu (Tekil Kayıt)</span>
+        </div>
+    }
+    else
+    {
+        <a asp-area="Admin" asp-controller="Cargo" asp-action="Create" class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-colors" style="background:#fd8b00;color:#fff;">
+            <span class="material-symbols-outlined" style="font-size:18px;">add</span>Yeni Hakkımızda
+        </a>
+    }  
+</header>

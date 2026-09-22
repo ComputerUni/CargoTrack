@@ -6,84 +6,65 @@
 }
 
 
-<div class="w-full space-y-6">
-    <div class="flex items-center justify-between">
-        <div>
-            <h2 class="text-xl font-bold text-on-background">Hakkımızda Yönetimi</h2>
-            <p class="text-xs text-on-surface-variant mt-0.5">Sistemde kayıtlı hakkımda bilgilerini bu sayfadan yönetebilirsiniz.</p>
-        </div>
+<div class="flex-1 flex flex-col min-w-0 min-h-screen">
 
-        @if (Model.Any() && Model != null)
-        {
-            <div class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200 cursor-not-allowed select-none shadow-sm"
-                 title="Yeni kayıt eklemek için önce mevcut kaydı silmelisiniz.">
-                <span class="material-symbols-outlined" style="font-size:18px;">lock</span>
-                <span>Mevcut Veri Dolu (Tekil Kayıt)</span>
-            </div>
-        }
-        else
-        {
-            <a asp-area="Admin" asp-controller="About" asp-action="Create"
-               class="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-opacity hover:opacity-90 shadow-sm"
-               style="background:#fd8b00;">
-                <text>Yeni Hakkımızda Ekle</text>
-            </a>
-        }
+    @await Component.InvokeAsync("_AdminAboutHeader")
 
-    </div>
-
-    <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
-        <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-                <thead style="background:#f8f9ff;">
-                    <tr style="border-bottom:2px solid #e5eeff;">
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">#</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">GÖRSEL</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">BAŞLIK</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">AÇIKLAMA</th>
-                        <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">İŞLEMLER</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        @foreach (var item in Model)
+    <div class="p-6">
+        <div class="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead style="background:#f8f9ff;">
+                        <tr style="border-bottom:2px solid #e5eeff;">
+                            <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">#</th>
+                            <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">GÖRSEL</th>
+                            <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">BAŞLIK</th>
+                            <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">AÇIKLAMA</th>
+                            <th class="text-left py-3.5 px-4 font-semibold text-xs tracking-wider" style="color:#43474e;">İŞLEMLER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
                         {
-                            count++;
-                            <tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
-                                <td class="py-3.5 px-4 font-semibold text-slate-500">@count</td>
-                                <td><img src="@item.ImageUrl" style="height:150px;width:250px; border-radius:5px;" /></td>
-                                <td>@item.Title</td>
-                                <td>@item.Description</td>
-                                <td class="py-3.5 px-4">
-                                    <div class="flex items-center gap-2">
-                                        <a asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id"
-                                           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-surface-container"
-                                           style="color:#001e3c; border: 1px solid #c4c6ce;">
-                                            <span class="material-symbols-outlined" style="font-size:16px;">edit</span>Düzenle
-                                        </a>
-                                        <a asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id"
-                                           onclick="return confirm('Bu şubeyi silmek istediğinize emin misiniz?')"
-                                           class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-rose-50"
-                                           style="color:#ba1a1a; border: 1px solid #ffdad6;">
-                                            <span class="material-symbols-outlined" style="font-size:16px;">delete</span>Sil
-                                        </a>
-                                    </div>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+                                    <td class="py-3.5 px-4 font-semibold text-slate-500">@count</td>
+                                    <td><img src="@item.ImageUrl" style="height:150px;width:250px; border-radius:5px;" /></td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td class="py-3.5 px-4">
+                                        <div class="flex items-center gap-2">
+                                            <a asp-area="Admin" asp-controller="About" asp-action="Update" asp-route-id="@item.Id"
+                                               class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-surface-container"
+                                               style="color:#001e3c; border: 1px solid #c4c6ce;">
+                                                <span class="material-symbols-outlined" style="font-size:16px;">edit</span>Düzenle
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="About" asp-action="Delete" asp-route-id="@item.Id"
+                                               onclick="return confirm('Bu şubeyi silmek istediğinize emin misiniz?')"
+                                               class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors hover:bg-rose-50"
+                                               style="color:#ba1a1a; border: 1px solid #ffdad6;">
+                                                <span class="material-symbols-outlined" style="font-size:16px;">delete</span>Sil
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="py-6 text-center text-xs text-slate-500">
+                                    Kayıtlı hakkımızda verisi bulunamadı.
                                 </td>
                             </tr>
                         }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="4" class="py-6 text-center text-xs text-slate-500">
-                                Kayıtlı hakkımızda verisi bulunamadı.
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     </div>
 </div>
 
