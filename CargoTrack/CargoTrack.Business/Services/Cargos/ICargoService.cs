@@ -16,5 +16,6 @@ namespace CargoTrack.Business.Services.Cargos
         Task DeleteAsync(Guid id);
         Task<ResultCargoDto> GetByTrackCodeAsync(string trackCode);
         Task UpdateStatusAsync(CargoStatusUpdateDto dto);
+        Task<List<ResultCargoDto>> GetByBranchIdAsync(Guid branchId);
     }
 }

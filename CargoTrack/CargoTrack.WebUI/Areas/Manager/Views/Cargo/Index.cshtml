@@ -1,0 +1,516 @@
+﻿@using CargoTrack.Entity.Entities.Enums
+@model List<ResultCargoDto>
+
+@{
+    ViewData["Title"] = "Kargolarımız";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+    int count = 0;
+}
+
+
+<div class="flex flex-col w-full pb-space-xl">
+    <!-- Operational Breadcrumb & Live Sync Header -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
+        <div class="flex flex-col">
+            <div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+                <span class="hover:text-primary cursor-pointer transition-colors">Operasyon</span>
+                <span class="material-symbols-outlined text-[13px] text-outline-variant">chevron_right</span>
+                <span class="text-on-surface font-semibold">Şube Kargoları &amp; Dağıtım Yönetimi</span>
+                <span class="ml-space-sm inline-flex items-center gap-1 bg-surface-container-high px-space-xs py-0.5 rounded-full font-code-dense text-code-dense text-on-surface">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    Canlı Eşzamanlı (2sn önce)
+                </span>
+            </div>
+            <div class="flex items-baseline gap-space-sm mt-space-xs">
+                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Şube Kargoları &amp; Dağıtım Listesi</h1>
+                <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">Kadıköy [BR-3401]</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Kadıköy Şubesi'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
+            </p>
+        </div>
+        <!-- Quick Action Toolset -->
+        <div class="flex items-center flex-wrap gap-space-sm">
+            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                <span class="material-symbols-outlined text-[18px] text-secondary">table_view</span>
+                <span>Excel Raporu Al</span>
+            </button>
+            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                <span class="material-symbols-outlined text-[18px] text-secondary">print</span>
+                <span>Toplu Barkod Yazdır</span>
+            </button>
+            <button class="inline-flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                <span class="material-symbols-outlined text-[19px]">add_box</span>
+                <span>+ Şube Kargo Kabulü</span>
+            </button>
+        </div>
+    </div>
+    <!-- Operational Metric Quick Strip (4 compact cards) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
+        <!-- Metric 1: Total Cargo -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Toplam Şube Kargosu</span>
+                <div class="flex items-baseline gap-space-xs mt-1">
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">184</span>
+                    <span class="font-label-sm text-label-sm text-primary font-semibold">+18 yeni</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bugün kabul &amp; varış</span>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[24px]">inventory_2</span>
+            </div>
+        </div>
+        <!-- Metric 2: Out for Delivery -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Dağıtımdaki Kargolar</span>
+                <div class="flex items-baseline gap-space-xs mt-1">
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">68</span>
+                    <span class="font-label-sm text-label-sm text-secondary font-semibold">4 Kurye Sahada</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">%37 rota doluluk</span>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined text-[24px]">two_wheeler</span>
+            </div>
+        </div>
+        <!-- Metric 3: Waiting on Shelf -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Şubede Bekleyen (Rafta)</span>
+                <div class="flex items-baseline gap-space-xs mt-1">
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">44</span>
+                    <span class="font-label-sm text-label-sm text-error font-semibold">12 Atama Bekliyor</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Depo Raf A-12 / C-04</span>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant">
+                <span class="material-symbols-outlined text-[24px]">shelves</span>
+            </div>
+        </div>
+        <!-- Metric 4: Outbound Transfers -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+            <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Giden / Çıkış Bekleyen</span>
+                <div class="flex items-baseline gap-space-xs mt-1">
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">72</span>
+                    <span class="font-label-sm text-label-sm text-primary font-semibold">18:30 Hat Aracı</span>
+                </div>
+                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ana Transfer Merkezine</span>
+            </div>
+            <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
+                <span class="material-symbols-outlined text-[24px] text-on-primary-container">local_shipping</span>
+            </div>
+        </div>
+    </div>
+    <!-- Operational Search & Multi-Filter Control Console -->
+    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-md">
+        <!-- Top Search Row -->
+        <div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm mb-space-md">
+            <div class="relative flex-1">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
+                <input class="w-full pl-10 pr-10 py-2 bg-surface-container-low text-on-surface placeholder:text-outline rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" id="cargo-search-input" placeholder="Kargo Takip No (MYC-...), Alıcı/Gönderici Adı veya Telefon..." type="text" />
+                <button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" title="Barkod Okuyucu Başlat" type="button">
+                    <span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                </button>
+            </div>
+            <div class="flex items-center gap-space-xs shrink-0">
+                <button class="inline-flex items-center gap-space-xs bg-inverse-surface text-inverse-on-surface hover:bg-on-surface px-space-lg py-2 rounded-lg font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                    <span class="material-symbols-outlined text-[17px]">filter_alt</span>
+                    <span>Filtrele</span>
+                </button>
+                <button class="inline-flex items-center gap-space-xs text-on-surface-variant hover:text-error px-space-md py-2 rounded-lg font-label-lg text-label-lg transition-colors" type="button">
+                    <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+                    <span>Temizle</span>
+                </button>
+            </div>
+        </div>
+        <!-- Filter Multi-Select Fields Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+            <!-- Filter: Direction -->
+            <div class="flex flex-col gap-1">
+                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Kargo Yönü</label>
+                <div class="relative">
+                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                        <option selected="">Tümü (Gelen &amp; Giden)</option>
+                        <option>Şubeye Gelen (Varış)</option>
+                        <option>Şubeden Çıkan (Gönderici)</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                </div>
+            </div>
+            <!-- Filter: Operational Status -->
+            <div class="flex flex-col gap-1">
+                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Operasyonel Durum</label>
+                <div class="relative">
+                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                        <option selected="">Tüm Durumlar (184)</option>
+                        <option>Varış Şubesinde (44)</option>
+                        <option>Dağıtıma Çıktı (68)</option>
+                        <option>Teslim Edildi (52)</option>
+                        <option>Sorunlu / Teslim Edilemedi (12)</option>
+                        <option>İade Sürecinde (8)</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                </div>
+            </div>
+            <!-- Filter: Assigned Courier -->
+            <div class="flex flex-col gap-1">
+                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Atanan Kurye</label>
+                <div class="relative">
+                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                        <option selected="">Tüm Kuryeler &amp; Hatlar</option>
+                        <option>Ahmet Yılmaz (Moda Sahası)</option>
+                        <option>Berkay Demir (Kalamış Sahası)</option>
+                        <option>Canan Şahin (Göztepe Sahası)</option>
+                        <option>Emre Koç (Koşuyolu Sahası)</option>
+                        <option class="text-error font-semibold">⚠️ Atama Bekleyenler (12)</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                </div>
+            </div>
+            <!-- Filter: Desi / Type -->
+            <div class="flex flex-col gap-1">
+                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Desi / Kargo Tipi</label>
+                <div class="relative">
+                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                        <option selected="">Tümü (Desi &amp; Paket)</option>
+                        <option>Dosya / Evrak (1-2 Desi)</option>
+                        <option>Koli (3-15 Desi)</option>
+                        <option>Ağır Kargo (15+ Desi)</option>
+                    </select>
+                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Cargo Operational Data Table -->
+    <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-md">
+        <!-- Active Table Action & Status Toolbar -->
+        <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+            <div class="flex items-center gap-space-md">
+                <div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface">
+                    <span class="material-symbols-outlined text-[18px] text-primary">view_list</span>
+                    <span>Aktif Liste: <strong>Kadıköy Şube Dağıtım &amp; Kabul Çizelgesi</strong></span>
+                </div>
+                <span class="bg-surface-container-high text-on-surface-variant font-code-dense text-code-dense px-space-xs py-0.5 rounded">Tablo Yoğunluğu: Standart</span>
+            </div>
+            <!-- Bulk action trigger pill -->
+            <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">Toplu Seçim:</span>
+                <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
+                    <span class="material-symbols-outlined text-[15px]">person_add</span>
+                    <span>Seçilenlere Kurye Ata</span>
+                </button>
+                <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
+                    <span class="material-symbols-outlined text-[15px]">receipt_long</span>
+                    <span>Toplu Dağıtım Fişi Bas</span>
+                </button>
+            </div>
+        </div>
+        <!-- Table Container -->
+        <div class="w-full overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider select-none">
+                        <th class="w-10 px-space-md py-3 text-center">
+                            <input class="rounded accent-primary w-4 h-4 cursor-pointer" id="check-all-cargo" type="checkbox" />
+                        </th>
+                        <th class="w-12 px-space-xs py-3 text-center">#</th>
+                        <th class="px-space-md py-3 font-semibold">Takip No</th>
+                        <th class="px-space-md py-3 font-semibold">Gönderici Bilgisi</th>
+                        <th class="px-space-md py-3 font-semibold">Alıcı & Teslimat Adresi</th>
+                        <th class="px-space-sm py-3 font-semibold text-center">Desi / Tip</th>
+                        <th class="px-space-md py-3 font-semibold">Güncel Durum</th>
+                        <th class="px-space-md py-3 font-semibold">Kargo Tipi</th>
+                        <th class="px-space-md py-3 font-semibold">Tahmini Teslimat</th>
+                        <th class="px-space-md py-3 text-right font-semibold">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+                    @foreach (var cargo in Model)
+                    {
+                        count++;
+
+                        <tr class="hover:bg-surface-container-low/60 transition-colors group">
+
+                            <td class="px-space-md py-3 text-center">
+                                <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                            </td>
+
+                            <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">
+                                @count
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">
+                                    @cargo.TrackCode
+                                </span>
+                                <div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                                    @cargo.ShipmentDate.ToString("dd MMM yyyy")
+                                </div>
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                <div class="font-label-lg text-label-lg font-semibold text-on-surface">@cargo.SenderName</div>
+                                <div class="font-body-sm text-body-sm text-on-surface-variant">@cargo.OriginBranchName</div>
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                <div class="font-label-lg text-label-lg font-semibold text-on-surface">@cargo.ReceiverName</div>
+                                <div class="font-body-sm text-body-sm text-on-surface-variant">@cargo.DestinationBranchName</div>
+                            </td>
+
+                            <td class="px-space-sm py-3 text-center">
+                                <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">
+                                    @cargo.Desi Desi
+                                </span>
+                                <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">
+                                    @cargo.Weight kg
+                                </span>
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                @{
+                                    var (bgClass, textClass, label) = cargo.CargoStatus switch
+                                    {
+                                        CargoStatus.Created => ("bg-surface-container-high", "text-on-surface-variant", "Oluşturuldu"),
+                                        CargoStatus.AtOriginBranch => ("bg-surface-container-highest", "text-on-surface", "Gönderici Şubesinde"),
+                                        CargoStatus.InTransferCenter => ("bg-secondary-container", "text-on-secondary-container", "Transfer Merkezinde"),
+                                        CargoStatus.ArrivedAtDeliveryBranch => ("bg-surface-container-highest", "text-on-surface", "Varış Şubesinde"),
+                                        CargoStatus.OutForDelivery => ("bg-secondary-container", "text-on-secondary-container", "Dağıtıma Çıktı"),
+                                        CargoStatus.Delivered => ("bg-primary-container", "text-on-primary-container", "Teslim Edildi"),
+                                        CargoStatus.DeliveryFailed => ("bg-error-container", "text-on-error-container", "Teslim Edilemedi"),
+                                        CargoStatus.ReturnInProcess => ("bg-error-container", "text-error", "İade Sürecinde"),
+                                        CargoStatus.ReturnedToSender => ("bg-surface-container", "text-on-surface-variant", "Göndericiye İade"),
+                                        _ => ("bg-surface-container", "text-on-surface-variant", cargo.CargoStatus.ToString())
+                                    };
+                                }
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-md text-label-md font-semibold @bgClass @textClass">
+                                    @label
+                                </span>
+                                @if (cargo.FailedAttemptCount > 0)
+                                {
+                                    <span class="block font-label-sm text-label-sm text-error mt-0.5">
+                                        @cargo.FailedAttemptCount. Deneme
+                                    </span>
+                                }
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-semibold">
+                                    @cargo.CargoType
+                                </span>
+                            </td>
+
+                            <td class="px-space-md py-3">
+                                <div class="font-code-dense text-code-dense font-semibold text-on-surface">
+                                    @cargo.EstimatedArrivalDate.ToString("dd MMM yyyy")
+                                </div>
+                                <div class="font-body-sm text-body-sm text-on-surface-variant">
+                                    @cargo.Price.ToString("C2")
+                                </div>
+                            </td>
+
+                            <td class="px-space-md py-3 text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a asp-area="Manager" asp-controller="Cargo" asp-action="Detail" asp-route-id="@cargo.Id"
+                                       class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors"
+                                       title="Detay">
+                                        <span class="material-symbols-outlined text-[18px]">info</span>
+                                    </a>
+                                    <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
+                                       class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
+                                       title="Hareket Ekle">
+                                        <span class="material-symbols-outlined text-[18px]">add_location_alt</span>
+                                    </a>
+                                    @if (cargo.CargoStatus == CargoStatus.OutForDelivery)
+                                    {
+                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="VerifyDelivery" asp-route-id="@cargo.Id"
+                                           class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
+                                           title="Teslimat Kodu Doğrula">
+                                            <span class="material-symbols-outlined text-[18px]">key</span>
+                                        </a>
+                                    }
+                                    @if (cargo.CargoStatus == CargoStatus.DeliveryFailed)
+                                    {
+                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="InitiateReturn" asp-route-id="@cargo.Id"
+                                           class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error-container transition-colors"
+                                           title="İade Başlat">
+                                            <span class="material-symbols-outlined text-[18px]">assignment_return</span>
+                                        </a>
+                                    }
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination and Table Context Footer -->
+        <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+            <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+                <span>Toplam <strong>184</strong> kargodan <strong>1-6</strong> arası gösteriliyor</span>
+                <div class="hidden md:flex items-center gap-space-xs">
+                    <span class="text-outline-variant">|</span>
+                    <label class="font-label-sm text-label-sm">Sayfa Başına:</label>
+                    <select class="bg-surface-container text-on-surface rounded px-1.5 py-0.5 text-code-dense font-code-dense focus:outline-none">
+                        <option selected="">6</option>
+                        <option>15</option>
+                        <option>30</option>
+                        <option>50</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Pagination Buttons -->
+            <div class="flex items-center gap-1">
+                <button class="px-2.5 py-1 rounded bg-surface-container text-outline opacity-50 cursor-not-allowed font-label-md text-label-md flex items-center gap-0.5" disabled="" type="button">
+                    <span class="material-symbols-outlined text-[15px]">chevron_left</span>
+                    <span>Önceki</span>
+                </button>
+                <button class="w-7 h-7 rounded bg-primary text-on-primary font-code-dense text-code-dense font-bold flex items-center justify-center shadow-sm" type="button">1</button>
+                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">2</button>
+                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">3</button>
+                <span class="px-1 text-outline font-code-dense">...</span>
+                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">31</button>
+                <button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-0.5 transition-colors" type="button">
+                    <span>Sonraki</span>
+                    <span class="material-symbols-outlined text-[15px]">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Real-Time Operational Activity Sub-Strip -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+        <!-- Courier Live Distribution Status -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+            <div class="flex items-center justify-between mb-space-sm">
+                <div class="flex items-center gap-space-xs">
+                    <span class="material-symbols-outlined text-[18px] text-primary">route</span>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Kurye Dağıtım Hızı</h3>
+                </div>
+                <span class="font-label-sm text-label-sm text-primary font-bold uppercase">4/4 Aktif</span>
+            </div>
+            <div class="space-y-space-sm">
+                <div>
+                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                        <span class="text-on-surface">Ahmet Yılmaz (Moda)</span>
+                        <span class="font-code-dense text-code-dense font-semibold text-primary">22 / 26 Teslim (%84)</span>
+                    </div>
+                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 84%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                        <span class="text-on-surface">Berkay Demir (Kalamış)</span>
+                        <span class="font-code-dense text-code-dense font-semibold text-primary">18 / 24 Teslim (%75)</span>
+                    </div>
+                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                        <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                        <span class="text-on-surface">Canan Şahin (Göztepe)</span>
+                        <span class="font-code-dense text-code-dense font-semibold text-secondary">14 / 22 Teslim (%63)</span>
+                    </div>
+                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                        <div class="bg-secondary h-1.5 rounded-full" style="width: 63%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Quick Barcode Verification Widget -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+            <div>
+                <div class="flex items-center gap-space-xs mb-space-xs">
+                    <span class="material-symbols-outlined text-[18px] text-primary">pin</span>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Hızlı Kod Doğrulama</h3>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                    Alıcı tarafından iletilen 6 haneli SMS onay kodunu girerek teslimatı tamamlayın.
+                </p>
+                <div class="flex items-center gap-space-xs">
+                    <input class="flex-1 px-3 py-2 bg-surface-container-low font-code-dense text-code-dense text-center tracking-widest text-on-surface uppercase rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" maxlength="6" placeholder="KOD: 849102" type="text" />
+                    <button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-lg text-label-lg font-semibold shadow-sm transition-colors" type="button">
+                        Onayla
+                    </button>
+                </div>
+            </div>
+            <div class="mt-space-sm pt-space-xs flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                <span>Kalan doğrulama kotası: Sınırsız</span>
+                <span class="text-primary font-semibold flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> SMS API Aktif</span>
+            </div>
+        </div>
+        <!-- Terminal System Overview -->
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-space-xs">
+                    <div class="flex items-center gap-space-xs">
+                        <span class="material-symbols-outlined text-[18px] text-primary">lan</span>
+                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Şube Ağ Durumu</h3>
+                    </div>
+                    <span class="bg-primary-container text-on-primary-container font-code-dense text-code-dense px-2 py-0.5 rounded-full font-bold">BR-3401</span>
+                </div>
+                <div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                        <span>El Terminali Eşleşmesi:</span>
+                        <span class="font-semibold text-on-surface">6 Cihaz Çevrimiçi</span>
+                    </div>
+                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                        <span>Zebra Barkod Yazıcı:</span>
+                        <span class="font-semibold text-primary">Hazır (IP: 192.168.1.140)</span>
+                    </div>
+                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                        <span>Sonraki Hat Aracı:</span>
+                        <span class="font-semibold text-on-surface">18:30 (Gebze Aktarma)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+                <span>Gecikme: 24ms</span>
+                <span class="hover:text-primary cursor-pointer transition-colors">Tanı &amp; Cihaz Yönetimi →</span>
+            </div>
+        </div>
+    </div>
+    <script>
+            (function() {
+                // Checkbox master toggle
+                const checkAll = document.getElementById('check-all-cargo');
+                const rowBoxes = document.querySelectorAll('.row-checkbox');
+                const bulkBar = document.getElementById('bulk-action-bar');
+
+                if (checkAll) {
+                    checkAll.addEventListener('change', function() {
+                        rowBoxes.forEach(function(box) {
+                            box.checked = checkAll.checked;
+                        });
+                        updateBulkState();
+                    });
+                }
+
+                rowBoxes.forEach(function(box) {
+                    box.addEventListener('change', function() {
+                        updateBulkState();
+                    });
+                });
+
+                function updateBulkState() {
+                    const checkedCount = Array.from(rowBoxes).filter(b => b.checked).length;
+                    if (bulkBar) {
+                        if (checkedCount > 0) {
+                            bulkBar.classList.remove('opacity-90');
+                            bulkBar.classList.add('opacity-100', 'ring-1', 'ring-primary', 'bg-surface-container-high', 'p-1', 'rounded-lg');
+                        } else {
+                            bulkBar.classList.remove('opacity-100', 'ring-1', 'ring-primary', 'bg-surface-container-high', 'p-1');
+                            bulkBar.classList.add('opacity-90');
+                        }
+                    }
+                }
+            })();
+    </script>
+</div>
+

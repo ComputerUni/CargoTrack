@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr">
+
+@await Component.InvokeAsync("_ManagerLayoutHead")
+
+<body class="bg-surface font-body-md text-on-surface antialiased">
+
+    @await Component.InvokeAsync("_ManagerLayoutSidebar")
+
+    <div class="pl-64 flex flex-col min-h-screen">
+
+        @await Component.InvokeAsync("_ManagerLayoutHeader")
+
+        <main class="relative pt-16 bg-surface w-full px-margin flex-1">
+
+            @RenderBody()
+
+        </main>
+
+        @await Component.InvokeAsync("_ManagerLayoutFooter")
+
+    </div>
+</body>
+</html>

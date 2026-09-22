@@ -66,5 +66,11 @@ wwwroot\lib\jquery\LICENSE.txt
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\manager_cargo_theme\dagitimlistes.html
+wwwroot\manager_cargo_theme\dashboard.html
+wwwroot\manager_cargo_theme\deliveryfailed.html
+wwwroot\manager_cargo_theme\kargohareketiteslimatkodu.html
+wwwroot\manager_cargo_theme\outfordelivery.html
+wwwroot\manager_cargo_theme\yenikargo.html
 wwwroot\ui-template\cargo details.html
 wwwroot\ui-template\index.html

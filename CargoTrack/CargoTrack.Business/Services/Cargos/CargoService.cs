@@ -83,6 +83,28 @@ namespace CargoTrack.Business.Services.Cargos
             await _repository.UpdateAsync(cargo);
         }
 
+        public async Task<List<ResultCargoDto>> GetByBranchIdAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetByBranchIdAsync(branchId);
+            return cargos.Select(x => new ResultCargoDto
+            {
+                Id = x.Id,
+                TrackCode = x.TrackCode,
+                ShipmentDate = x.ShipmentDate,
+                EstimatedArrivalDate = x.EstimatedArrivalDate,
+                Weight = x.Weight,
+                Desi = x.Desi,
+                Price = x.Price,
+                CargoStatus = x.CargoStatus,
+                CargoType = x.CargoType,
+                SenderName = x.Sender.FirstName + " " + x.Sender.LastName,
+                ReceiverName = x.Receiver.FirstName + " " + x.Receiver.LastName,
+                OriginBranchName = x.OriginBranch.Name,
+                DestinationBranchName = x.DestinationBranch.Name
+            }).ToList();
+        }
+
+
         public Task UpdateStatusAsync(CargoStatusUpdateDto dto)
         {
             throw new NotImplementedException();

@@ -1,17 +1,19 @@
-﻿using CargoTrack.DTO.DTOs.UserDtos;
+﻿using CargoTrack.Business.Services.Branches;
+using CargoTrack.DTO.DTOs.UserDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.WebUI.Consts;
 using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace CargoTrack.WebUI.Areas.Admin.Controllers
 {
     [Area(Area.Admin)]
     [Authorize(Roles = Area.Admin)]
-    public class RoleAssignController(UserManager<AppUser> _userManager, RoleManager<AppRole> _roleManager) : Controller
+    public class RoleAssignController(UserManager<AppUser> _userManager, RoleManager<AppRole> _roleManager, IBranchService _branchService) : Controller
     {
         public async Task<IActionResult> Index()
         {
@@ -36,6 +38,8 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
             var roleAssignList = new List<RoleAssingDto>();
 
             ViewBag.fullName = string.Join(" ", user.FirstName, user.LastName);
+            ViewBag.Branches = new SelectList(await _branchService.GetAllAsync(), "Id", "Name");
+            ViewBag.CurrentBranchId = user.BranchId;
 
             foreach (var role in roles)
             {
@@ -52,10 +56,13 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetUserForRoleAssign(List<RoleAssingDto> model)
+        public async Task<IActionResult> GetUserForRoleAssign(List<RoleAssingDto> model, Guid? branchId)
         {
             var userId = model.Select(x => x.UserId).FirstOrDefault();
             var user = await _userManager.FindByIdAsync(userId.ToString());
+
+            user.BranchId = branchId;
+            await _userManager.UpdateAsync(user);
 
             foreach(var assignRole in model)
             {

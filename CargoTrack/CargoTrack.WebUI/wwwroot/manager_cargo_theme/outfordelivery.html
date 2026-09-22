@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"on-primary":"#ffffff","on-secondary":"#ffffff","surface-container-low":"#eff4ff","surface-container-highest":"#d3e4fe","surface":"#f8f9ff","on-surface":"#0b1c30","tertiary-container":"#00855b","primary-fixed":"#85f8c4","tertiary-fixed":"#6ffbbe","surface-container-lowest":"#ffffff","on-primary-fixed":"#002114","on-tertiary-fixed":"#002113","on-primary-container":"#f5fff7","error-container":"#ffdad6","surface-bright":"#f8f9ff","outline":"#6d7a72","primary-fixed-dim":"#68dba9","inverse-surface":"#213145","on-background":"#0b1c30","tertiary":"#006947","inverse-primary":"#68dba9","tertiary-fixed-dim":"#4edea3","error":"#ba1a1a","on-tertiary-fixed-variant":"#005236","secondary":"#565e74","background":"#f8f9ff","on-error-container":"#93000a","surface-container-high":"#dce9ff","primary":"#006948","secondary-fixed":"#dae2fd","on-surface-variant":"#3d4a42","inverse-on-surface":"#eaf1ff","on-tertiary-container":"#f5fff6","on-primary-fixed-variant":"#005137","on-secondary-fixed":"#131b2e","surface-dim":"#cbdbf5","secondary-fixed-dim":"#bec6e0","on-secondary-container":"#5c647a","surface-tint":"#006c4a","secondary-container":"#dae2fd","on-tertiary":"#ffffff","primary-container":"#00855d","on-error":"#ffffff","surface-container":"#e5eeff","outline-variant":"#bccac0","surface-variant":"#d3e4fe","on-secondary-fixed-variant":"#3f465c"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1.25rem","gutter-dense":"0.5rem","space-sm":"0.5rem","space-md":"0.75rem","gutter":"1rem","margin-mobile":"1rem","margin":"1.5rem","space-xl":"1.75rem","space-xs":"0.25rem"},"fontFamily":{"label-lg":["Inter"],"body-md":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"],"code-dense":["JetBrains Mono"],"headline-xl":["Inter"],"headline-lg":["Inter"],"headline-sm":["Inter"],"label-md":["Inter"],"body-lg":["Inter"]},"fontSize":{"label-lg":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"600"}],"body-md":["13px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["10px",{"lineHeight":"14px","letterSpacing":"0.06em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0em","fontWeight":"400"}],"code-dense":["12px",{"lineHeight":"16px","letterSpacing":"0em","fontWeight":"500"}],"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["11px",{"lineHeight":"16px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">local_shipping</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface font-bold">CargoTrack</span><span class="font-label-sm text-label-sm text-primary uppercase">Şube Portalı</span></div></div><div class="flex-1 overflow-y-auto px-space-sm py-space-sm flex flex-col gap-space-md"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm"><div class="px-space-sm pt-space-xs pb-space-xs font-label-sm text-label-sm uppercase text-secondary tracking-wider">GENEL</div><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><div class="px-space-sm pt-space-md pb-space-xs font-label-sm text-label-sm uppercase text-secondary tracking-wider">KARGO İŞLEMLERİ</div><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="sube-kargolari" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Şube Kargoları</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="yeni-kargo-olustur" href="#"><span class="material-symbols-outlined text-[20px]">add_circle</span><span class="font-body-md text-body-md">Yeni Kargo Oluştur</span></a><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="hareket-girisi" href="#"><span class="material-symbols-outlined text-[20px]">sync_alt</span><span class="font-body-md text-body-md">Hareket Girişi</span></a><a aria-current="page" class="flex items-center justify-between px-space-sm py-space-xs transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg shadow-sm" data-path="dagitim-listesi" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-md text-body-md">Dağıtım Listesi</span></div><span class="px-space-xs py-0.5 rounded-full font-label-sm text-label-sm bg-surface-container-high text-primary font-bold">18</span></a><div class="px-space-sm pt-space-md pb-space-xs font-label-sm text-label-sm uppercase text-secondary tracking-wider">TESLİMAT</div><a class="flex items-center gap-space-sm px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="teslimat-kodu-dogrulama" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-md text-body-md">Teslimat Kodu Doğrulama</span></a><a class="flex items-center justify-between px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="sorunlu-kargolar" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">warning</span><span class="font-body-md text-body-md">Sorunlu Kargolar</span></div><span class="px-space-xs py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container font-bold">4</span></a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-surface-container-low flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm uppercase text-secondary">Terminal Durumu</span><span class="flex items-center gap-1 font-label-sm text-label-sm text-primary font-bold"><span class="w-2 h-2 rounded-full bg-primary"></span> Aktif</span></div><div class="font-code-dense text-code-dense text-on-surface-variant">Ping: 18ms • Sync: Anlık</div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-[18px] text-primary">store</span><span class="font-label-lg text-label-lg">Kadıköy Depo Şube</span><span class="font-code-dense text-code-dense text-secondary bg-surface-container-high px-space-xs py-0.5 rounded">BR-3401</span><span class="material-symbols-outlined text-[18px] text-secondary">arrow_drop_down</span></div><div class="hidden md:flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span class="font-body-sm text-body-sm">24 Ekim 2024, Perşembe</span></div></div><div class="flex items-center gap-space-md"><button aria-label="Bildirimler" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 bg-error text-on-error rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold leading-none">3</span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-lg text-label-lg text-on-surface">Murat Özdemir</span><span class="font-label-sm text-label-sm text-secondary">Şube Müdürü</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full px-margin pt-16 bg-surface min-h-[calc(100vh-32px)]"><div class="flex flex-col w-full pb-12">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-secondary">
+<span class="text-on-surface-variant font-medium">Operasyon</span>
+<span class="text-outline-variant">•</span>
+<span class="text-primary font-semibold">Dağıtım Listesi</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-code-dense text-[11px] font-semibold tracking-wide">68 AKTİF GÖREV</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Dağıtım Listesi (Sahadaki Kargolar)</h1>
+<p class="font-body-sm text-body-sm text-secondary">Kadıköy Şubesi bünyesinde bugün dağıtıma çıkarılan (“OutForDelivery”) ve kuryelerde zimmetli kargolar</p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high transition-colors font-label-lg text-label-lg font-medium" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">print</span>
+<span>Toplu Dağıtım Fişi Yazdır (PDF)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary shadow-sm hover:bg-primary-container transition-colors font-label-lg text-label-lg font-semibold" id="toggleMapBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span>Haritada Göster</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter py-space-sm">
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Toplam Dağıtımda</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">68</span>
+<span class="font-label-sm text-label-sm text-secondary">Kargo</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">local_shipping</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex flex-col gap-1.5">
+<div class="flex justify-between items-center font-label-sm text-label-sm text-secondary">
+<span>Dağıtım İlerlemesi</span>
+<span class="text-primary font-bold">%37 Tamamlandı (26 Teslim)</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 37%"></div>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Aktif Kurye Sayısı</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">4</span>
+<span class="font-label-sm text-label-sm text-secondary">Kurye Sahada</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">two_wheeler</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Kadıköy Merkez Ringleri Kesintisiz</span>
+</div>
+</div>
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Kalan Teslimat</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">42</span>
+<span class="font-label-sm text-label-sm text-secondary">Paket</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">pending_actions</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center gap-1 text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">schedule</span>
+<span>Hedef: Bugün 18:00'e kadar</span>
+</div>
+</div>
+<div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Ortalama Teslimat Süresi</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">22</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">dk</span>
+<span class="font-label-sm text-label-sm text-secondary">/ paket</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>Önceki vardiyaya kıyasla -4 dk hızlı</span>
+</div>
+</div>
+</div>
+<div class="hidden mb-space-md p-space-md rounded-xl bg-surface-container-lowest shadow-sm" id="mapDrawer">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Canlı Saha Kurye &amp; Teslimat Haritası</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary font-code-dense text-label-sm">Kadıköy 4 Bölge Aktif</span>
+</div>
+<button class="p-1 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors" id="closeMapBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="w-full h-80 rounded-lg overflow-hidden relative shadow-inner" data-location="Kadıköy, Istanbul, Turkey" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHoub8hQgN8v9AGLX4HQ3a0mI_jXczVCbNy3g0qvdACvS38SNz3SEhQNjvLB4We5aMCvgD7XTVQ_BmhhbhpHlz7qfVGa-shtOYPSiXcyeQB3y3cpafY-cTJiG5XwSaKrtjGfoQ0vAcGCm46KJ7F6jw6YhmwjVrkM1ibRwprgWeIVOo_fGg7qnJ9WTGshV7TugtyanvyL-4g-3FO7OyBfH37BlCxX_o0NYxoKMUTz7KAmDbgoOcL_m-PA')">
+<div class="absolute inset-0 bg-inverse-surface/15 backdrop-blur-[1px]"></div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur-md p-space-sm rounded-lg shadow-sm flex flex-col gap-1 max-w-xs">
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">Bölge Yoğunlukları</span>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface gap-4">
+<span>Moda &amp; Caferağa</span>
+<span class="font-code-dense font-bold text-primary">21 Paket</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface gap-4">
+<span>Kalamış &amp; Fenerbahçe</span>
+<span class="font-code-dense font-bold text-primary">14 Paket</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface gap-4">
+<span>Göztepe &amp; Feneryolu</span>
+<span class="font-code-dense font-bold text-primary">18 Paket</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-sm mt-space-md mb-space-sm">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-sm items-center">
+<div class="md:col-span-5 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-space-md rounded-lg bg-surface font-body-md text-body-md text-on-surface placeholder:text-secondary focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary transition-all" id="tableSearch" placeholder="Takip no, alıcı veya sokak adı ile ara..." type="text"/>
+</div>
+<div class="md:col-span-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">person</span>
+<select class="w-full h-10 pl-10 pr-8 rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer" id="courierFilter">
+<option value="all">Tüm Kuryeler (4 Saha)</option>
+<option value="Ahmet Yılmaz">Ahmet Yılmaz (Moda)</option>
+<option value="Berkay Demir">Berkay Demir (Kalamış)</option>
+<option value="Canan Şahin">Canan Şahin (Göztepe)</option>
+<option value="Emre Koç">Emre Koç (Koşuyolu)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="md:col-span-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[18px]">location_on</span>
+<select class="w-full h-10 pl-10 pr-8 rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer" id="districtFilter">
+<option value="all">Tüm Mahalleler / Bölgeler</option>
+<option value="Caferağa">Caferağa</option>
+<option value="Moda">Moda</option>
+<option value="Feneryolu">Feneryolu</option>
+<option value="Osmanağa">Osmanağa</option>
+<option value="Fenerbahçe">Fenerbahçe</option>
+<option value="Göztepe">Göztepe</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-secondary pointer-events-none text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="md:col-span-1 flex justify-end">
+<button class="w-full h-10 flex items-center justify-center rounded-lg bg-surface text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors" id="clearFiltersBtn" title="Filtreleri Temizle" type="button">
+<span class="material-symbols-outlined text-[20px]">filter_alt_off</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-space-md font-semibold">Takip No / Desi</th>
+<th class="py-3 px-space-md font-semibold">Alıcı &amp; İletişim</th>
+<th class="py-3 px-space-md font-semibold">Zimmetli Kurye &amp; Araç</th>
+<th class="py-3 px-space-md font-semibold">Çıkış &amp; Hedef</th>
+<th class="py-3 px-space-md font-semibold">Teslimat Kodu</th>
+<th class="py-3 px-space-md font-semibold">Durum</th>
+<th class="py-3 px-space-md font-semibold text-right">Hızlı Aksiyon</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface" id="packageTableBody">
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-code="MYC-2026-849251" data-courier="Ahmet Yılmaz" data-district="Moda" data-receiver="Zeynep Kaya">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<span class="font-code-dense text-code-dense font-bold text-primary">MYC-2026-849251</span>
+<span class="font-label-sm text-label-sm text-secondary">2.4 Desi • Kutu</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md max-w-xs">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Zeynep Kaya</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Moda Cad. No:42 D:3 • Moda</span>
+<span class="font-code-dense text-[11px] text-on-surface-variant">0 (532) *** 44 19</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md font-bold">
+                  AY
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Ahmet Yılmaz</span>
+<span class="font-code-dense text-[11px] text-secondary">34 MKT 82 • Motosiklet</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-code-dense text-code-dense">
+<span class="text-secondary">Çıkış: 09:30</span>
+<span class="font-semibold text-tertiary">Hedef: 14:30</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span>SMS OTP Gönderildi</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Dağıtıma Çıktı</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="openVerifyModal('MYC-2026-849251', 'Zeynep Kaya', 'Ahmet Yılmaz')" title="Teslim Kodunu Gir" type="button">
+                  Kodu Gir
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" onclick="callCourier('Ahmet Yılmaz', '0535 901 22 11')" title="Kuryeyi Ara" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" onclick="reportIssue('MYC-2026-849251')" title="Sorun Bildir" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-code="MYC-2026-849277" data-courier="Berkay Demir" data-district="Caferağa" data-receiver="Can Erdem">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<span class="font-code-dense text-code-dense font-bold text-primary">MYC-2026-849277</span>
+<span class="font-label-sm text-label-sm text-secondary">1.1 Desi • Zarf / Dosya</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md max-w-xs">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Can Erdem</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Neşet Ömer Sok. No:11 Kat:2 • Caferağa</span>
+<span class="font-code-dense text-[11px] text-on-surface-variant">0 (544) *** 88 02</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md font-bold">
+                  BD
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Berkay Demir</span>
+<span class="font-code-dense text-[11px] text-secondary">34 KDM 104 • Motosiklet</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-code-dense text-code-dense">
+<span class="text-secondary">Çıkış: 09:45</span>
+<span class="font-semibold text-tertiary">Hedef: 14:45</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span>SMS OTP Gönderildi</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Dağıtıma Çıktı</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="openVerifyModal('MYC-2026-849277', 'Can Erdem', 'Berkay Demir')" title="Teslim Kodunu Gir" type="button">
+                  Kodu Gir
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" onclick="callCourier('Berkay Demir', '0542 112 34 56')" title="Kuryeyi Ara" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" onclick="reportIssue('MYC-2026-849277')" title="Sorun Bildir" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-code="MYC-2026-849312" data-courier="Canan Şahin" data-district="Feneryolu" data-receiver="Burak Aydın">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<span class="font-code-dense text-code-dense font-bold text-primary">MYC-2026-849312</span>
+<span class="font-label-sm text-label-sm text-secondary">5.0 Desi • Koli</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md max-w-xs">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Burak Aydın</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Bağdat Cad. Selvili Köşk No:182 • Feneryolu</span>
+<span class="font-code-dense text-[11px] text-on-surface-variant">0 (533) *** 91 30</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-md font-bold">
+                  CŞ
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Canan Şahin</span>
+<span class="font-code-dense text-[11px] text-secondary">34 CRT 440 • Panelvan</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-code-dense text-code-dense">
+<span class="text-secondary">Çıkış: 10:10</span>
+<span class="font-semibold text-tertiary">Hedef: 15:15</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span>SMS OTP Gönderildi</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Dağıtıma Çıktı</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="openVerifyModal('MYC-2026-849312', 'Burak Aydın', 'Canan Şahin')" title="Teslim Kodunu Gir" type="button">
+                  Kodu Gir
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" onclick="callCourier('Canan Şahin', '0555 777 22 90')" title="Kuryeyi Ara" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" onclick="reportIssue('MYC-2026-849312')" title="Sorun Bildir" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-code="MYC-2026-849405" data-courier="Emre Koç" data-district="Osmanağa" data-receiver="Melis Varol">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<span class="font-code-dense text-code-dense font-bold text-primary">MYC-2026-849405</span>
+<span class="font-label-sm text-label-sm text-secondary">0.8 Desi • Küçük Paket</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md max-w-xs">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Melis Varol</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Söğütlüçeşme Cad. No:90 Kat:1 • Osmanağa</span>
+<span class="font-code-dense text-[11px] text-on-surface-variant">0 (537) *** 20 85</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md font-bold">
+                  EK
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Emre Koç</span>
+<span class="font-code-dense text-[11px] text-secondary">34 ERK 55 • Motosiklet</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-code-dense text-code-dense">
+<span class="text-secondary">Çıkış: 10:25</span>
+<span class="font-semibold text-tertiary">Hedef: 15:30</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span>SMS OTP Gönderildi</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Dağıtıma Çıktı</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="openVerifyModal('MYC-2026-849405', 'Melis Varol', 'Emre Koç')" title="Teslim Kodunu Gir" type="button">
+                  Kodu Gir
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" onclick="callCourier('Emre Koç', '0543 890 12 34')" title="Kuryeyi Ara" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" onclick="reportIssue('MYC-2026-849405')" title="Sorun Bildir" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/60 transition-colors" data-code="MYC-2026-849519" data-courier="Ahmet Yılmaz" data-district="Moda" data-receiver="Hasan Kılıç">
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col">
+<span class="font-code-dense text-code-dense font-bold text-primary">MYC-2026-849519</span>
+<span class="font-label-sm text-label-sm text-secondary">3.2 Desi • Kutu</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md max-w-xs">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Hasan Kılıç</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">Şair Nefi Sok. No:8 D:4 • Moda</span>
+<span class="font-code-dense text-[11px] text-on-surface-variant">0 (530) *** 15 48</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-label-md font-bold">
+                  AY
+                </div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Ahmet Yılmaz</span>
+<span class="font-code-dense text-[11px] text-secondary">34 MKT 82 • Motosiklet</span>
+</div>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<div class="flex flex-col font-code-dense text-code-dense">
+<span class="text-secondary">Çıkış: 09:30</span>
+<span class="font-semibold text-tertiary">Hedef: 16:00</span>
+</div>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">sms</span>
+<span>SMS OTP Gönderildi</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Dağıtıma Çıktı</span>
+</span>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="openVerifyModal('MYC-2026-849519', 'Hasan Kılıç', 'Ahmet Yılmaz')" title="Teslim Kodunu Gir" type="button">
+                  Kodu Gir
+                </button>
+<button class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors" onclick="callCourier('Ahmet Yılmaz', '0535 901 22 11')" title="Kuryeyi Ara" type="button">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors" onclick="reportIssue('MYC-2026-849519')" title="Sorun Bildir" type="button">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-sm bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-secondary">
+<div class="flex items-center gap-space-xs">
+<span>Görüntülenen: <strong class="text-on-surface font-code-dense font-bold" id="visibleCount">5</strong> / 68 kargo</span>
+<span class="text-outline-variant">•</span>
+<span>Otomatik yenileme: 30 sn</span>
+</div>
+<div class="flex items-center gap-1 font-code-dense">
+<button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">Önceki</button>
+<button class="px-2 py-1 rounded bg-primary text-on-primary font-bold" type="button">1</button>
+<button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">2</button>
+<button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">Sonraki</button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="verifyModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-2xl p-space-lg flex flex-col gap-space-md animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Teslimat Kodu Doğrulama</span>
+</div>
+<button class="text-secondary hover:text-on-surface" onclick="closeVerifyModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-secondary">Takip Numarası:</span>
+<span class="font-code-dense font-bold text-primary" id="modalTracking"></span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-secondary">Alıcı:</span>
+<span class="font-semibold text-on-surface" id="modalReceiver"></span>
+</div>
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-secondary">Kurye:</span>
+<span class="text-on-surface-variant font-medium" id="modalCourier"></span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="otpCode">6 Haneli Alıcı Teslimat Kodu (SMS OTP)</label>
+<div class="flex items-center gap-space-xs">
+<input class="w-full h-12 text-center text-headline-lg font-code-dense tracking-widest rounded-lg bg-surface text-on-surface focus:outline-none focus:ring-2 focus:ring-primary uppercase" id="otpCode" maxlength="6" placeholder="000000" type="text"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Alıcı telefona SMS olarak gönderilen doğrulama kodu girilmelidir.</span>
+</div>
+<div class="flex items-center justify-end gap-space-xs pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-container-highest transition-colors" onclick="closeVerifyModal()" type="button">
+          Vazgeç
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg font-semibold hover:bg-primary-container transition-colors shadow-sm" onclick="submitVerification()" type="button">
+          Teslimatı Onayla
+        </button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="issueModal">
+<div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-2xl p-space-lg flex flex-col gap-space-md animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs text-error">
+<span class="material-symbols-outlined text-[22px]">warning</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Sorun / İade Bildirimi</span>
+</div>
+<button class="text-secondary hover:text-on-surface" onclick="closeIssueModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-body-sm text-body-sm text-secondary">Kargo No: <strong class="font-code-dense text-on-surface" id="issueTracking"></strong></span>
+<label class="font-label-md text-label-md text-on-surface font-semibold mt-2" for="issueReason">Sorun Nedeni</label>
+<select class="h-10 px-space-sm rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary appearance-none cursor-pointer" id="issueReason">
+<option value="adreste_bulunamadi">Adreste Bulunamadı (Kapı Zili / Telefon Cevapsız)</option>
+<option value="hatali_adres">Hatalı / Eksik Adres Bilgisi</option>
+<option value="alici_reddi">Alıcı Kargoyu Kabul Etmiyor</option>
+<option value="hasarli_paket">Hasarlı / Ezik Koli Şüphesi</option>
+<option value="saat_gecikmesi">Müşteri Saat Aşımı Talebi</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface font-semibold" for="issueNotes">Saha Notu</label>
+<textarea class="p-space-sm rounded-lg bg-surface font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary resize-none" id="issueNotes" placeholder="Kurye ile yapılan görüşme veya adresteki durumu belirtin..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-end gap-space-xs pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg font-semibold hover:bg-surface-container-highest transition-colors" onclick="closeIssueModal()" type="button">
+          İptal
+        </button>
+<button class="px-space-md py-2 rounded-lg bg-error text-on-error font-label-lg text-label-lg font-semibold hover:opacity-90 transition-opacity shadow-sm" onclick="submitIssue()" type="button">
+          Sorun Kaydını Oluştur
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    const searchInput = document.getElementById('tableSearch');
+    const courierFilter = document.getElementById('courierFilter');
+    const districtFilter = document.getElementById('districtFilter');
+    const clearBtn = document.getElementById('clearFiltersBtn');
+    const tableBody = document.getElementById('packageTableBody');
+    const rows = tableBody ? Array.from(tableBody.querySelectorAll('tr')) : [];
+    const countDisplay = document.getElementById('visibleCount');
+
+    function filterTable() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      const courier = courierFilter.value;
+      const district = districtFilter.value;
+
+      let visible = 0;
+
+      rows.forEach(row => {
+        const rowCourier = row.getAttribute('data-courier');
+        const rowDistrict = row.getAttribute('data-district');
+        const rowText = row.innerText.toLowerCase();
+
+        const matchSearch = !query || rowText.includes(query);
+        const matchCourier = courier === 'all' || rowCourier === courier;
+        const matchDistrict = district === 'all' || rowDistrict === district;
+
+        if (matchSearch && matchCourier && matchDistrict) {
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      if (countDisplay) {
+        countDisplay.textContent = visible;
+      }
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filterTable);
+    if (courierFilter) courierFilter.addEventListener('change', filterTable);
+    if (districtFilter) districtFilter.addEventListener('change', filterTable);
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (courierFilter) courierFilter.value = 'all';
+        if (districtFilter) districtFilter.value = 'all';
+        filterTable();
+      });
+    }
+
+    const toggleMapBtn = document.getElementById('toggleMapBtn');
+    const closeMapBtn = document.getElementById('closeMapBtn');
+    const mapDrawer = document.getElementById('mapDrawer');
+
+    if (toggleMapBtn && mapDrawer) {
+      toggleMapBtn.addEventListener('click', () => {
+        mapDrawer.classList.toggle('hidden');
+        if (!mapDrawer.classList.contains('hidden')) {
+          mapDrawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    if (closeMapBtn && mapDrawer) {
+      closeMapBtn.addEventListener('click', () => {
+        mapDrawer.classList.add('hidden');
+      });
+    }
+
+    window.openVerifyModal = function(code, receiver, courier) {
+      document.getElementById('modalTracking').textContent = code;
+      document.getElementById('modalReceiver').textContent = receiver;
+      document.getElementById('modalCourier').textContent = courier;
+      document.getElementById('otpCode').value = '';
+      document.getElementById('verifyModal').classList.remove('hidden');
+      setTimeout(() => document.getElementById('otpCode').focus(), 50);
+    };
+
+    window.closeVerifyModal = function() {
+      document.getElementById('verifyModal').classList.add('hidden');
+    };
+
+    window.submitVerification = function() {
+      const code = document.getElementById('otpCode').value.trim();
+      if (!code || code.length < 4) {
+        alert('Lütfen geçerli en az 4 haneli teslim kodunu giriniz.');
+        return;
+      }
+      alert('Kargo teslimatı başarıyla onaylandı ve sistemde kapatıldı: ' + document.getElementById('modalTracking').textContent);
+      window.closeVerifyModal();
+    };
+
+    window.reportIssue = function(trackingCode) {
+      document.getElementById('issueTracking').textContent = trackingCode;
+      document.getElementById('issueNotes').value = '';
+      document.getElementById('issueModal').classList.remove('hidden');
+    };
+
+    window.closeIssueModal = function() {
+      document.getElementById('issueModal').classList.add('hidden');
+    };
+
+    window.submitIssue = function() {
+      const tracking = document.getElementById('issueTracking').textContent;
+      const reason = document.getElementById('issueReason').value;
+      alert('Sorun kaydı oluşturuldu (' + tracking + ') - Şube operasyon havuzuna aktarıldı.');
+      window.closeIssueModal();
+    };
+
+    window.callCourier = function(name, phone) {
+      const answer = confirm(name + ' ile telefon görüşmesi başlatılsın mı?\nNumara: ' + phone);
+      if (answer) {
+        window.location.href = 'tel:' + phone.replace(/\s+/g, '');
+      }
+    };
+  })();
+</script></main><footer class="w-full h-8 px-margin bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between font-label-sm text-label-sm text-secondary"><div class="flex items-center gap-space-md"><span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Sistem Aktif • Kadıköy BR-3401</span><span>Operasyon Sürümü: v3.12.4</span></div><div class="flex items-center gap-space-sm"><a class="hover:text-primary transition-colors" href="#">Kılavuz</a><span>•</span><a class="hover:text-primary transition-colors" href="#">Destek Masası</a></div></footer></div></body></html>

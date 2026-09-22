@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <style>
+        @layer base {
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            main > :first-child {
+                margin-top: 0 !important;
+            }
+
+            main > :last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#f5fff6", "surface-bright": "#f8f9ff", "on-surface-variant": "#3d4a42", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#3f465c", "surface-container-highest": "#d3e4fe", "surface-container-lowest": "#ffffff", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "secondary-fixed": "#dae2fd", "on-tertiary-fixed": "#002113", "on-error": "#ffffff", "on-secondary-container": "#5c647a", "primary-container": "#00855d", "outline": "#6d7a72", "tertiary-fixed-dim": "#4edea3", "surface-dim": "#cbdbf5", "outline-variant": "#bccac0", "surface-variant": "#d3e4fe", "on-secondary": "#ffffff", "on-primary-fixed": "#002114", "surface-container-low": "#eff4ff", "on-tertiary-fixed-variant": "#005236", "tertiary-fixed": "#6ffbbe", "secondary-container": "#dae2fd", "on-primary-fixed-variant": "#005137", "on-surface": "#0b1c30", "surface-container": "#e5eeff", "on-primary-container": "#f5fff7", "inverse-on-surface": "#eaf1ff", "on-secondary-fixed": "#131b2e", "surface-container-high": "#dce9ff", "tertiary-container": "#00855b", "primary": "#006948", "error": "#ba1a1a", "primary-fixed": "#85f8c4", "inverse-primary": "#68dba9", "surface-tint": "#006c4a", "background": "#f8f9ff", "secondary": "#565e74", "inverse-surface": "#213145", "on-background": "#0b1c30", "error-container": "#ffdad6", "surface": "#f8f9ff", "on-error-container": "#93000a", "tertiary": "#006947", "primary-fixed-dim": "#68dba9" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-mobile": "1rem", "space-xl": "1.75rem", "space-sm": "0.5rem", "space-lg": "1.25rem", "space-md": "0.75rem", "gutter": "1rem", "space-xs": "0.25rem", "margin": "1.5rem", "gutter-dense": "0.5rem" }, "fontFamily": { "label-lg": ["Inter"], "label-sm": ["Inter"], "code-dense": ["JetBrains Mono"], "headline-xl": ["Inter"], "body-md": ["Inter"], "headline-sm": ["Inter"], "headline-lg": ["Inter"], "body-sm": ["Inter"], "body-lg": ["Inter"], "label-md": ["Inter"] }, "fontSize": { "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }], "code-dense": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "500" }], "headline-xl": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0em", "fontWeight": "400" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }] } } } }</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+    <aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="p-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-[20px]">local_shipping</span></div><div><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight block leading-none">CargoTrack</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lojistik Ağı</span></div></div><span class="bg-primary-container text-on-primary-container font-label-sm text-label-sm px-space-sm py-space-xs rounded-full font-bold">Şube</span></div><div class="px-space-md mb-space-sm"><div class="bg-surface-container px-space-md py-space-sm rounded-xl flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-sm overflow-hidden"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse shrink-0"></span><div class="truncate"><div class="font-label-lg text-label-lg text-on-surface truncate">Kadıköy Şubesi</div><div class="font-code-dense text-code-dense text-on-surface-variant">BR-3401</div></div></div><span class="material-symbols-outlined text-[16px] text-on-surface-variant shrink-0">unfold_more</span></div></div><nav class="px-space-md flex flex-col gap-space-xs overflow-y-auto max-h-[calc(100vh-250px)]" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold uppercase tracking-wider">Genel</div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span><span>Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold uppercase tracking-wider">Operasyon &amp; Kargo</div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="sube-kargolari" href="#"><span class="material-symbols-outlined text-[18px]">inventory_2</span><span>Şube Kargoları</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="dagitim-listesi-ve-kuryeler" href="#"><span class="material-symbols-outlined text-[18px]">local_shipping</span><span>Dağıtım Listesi &amp; Kuryeler</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="kargo-hareketi-ve-teslimat-kodu" href="#"><span class="material-symbols-outlined text-[18px]">qr_code_scanner</span><span>Kargo Hareketi &amp; Kod</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="sorunlu-kargo-ve-iade" href="#"><span class="material-symbols-outlined text-[18px]">warning</span><span>Sorunlu Kargo &amp; İade</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-on-surface-variant font-bold uppercase tracking-wider">Yönetim &amp; Raporlar</div><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="sube-personeli" href="#"><span class="material-symbols-outlined text-[18px]">group</span><span>Şube Personeli</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-all" data-path="gunluk-islem-ozeti" href="#"><span class="material-symbols-outlined text-[18px]">query_stats</span><span>Günlük İşlem Özeti</span></a></nav></div><div class="p-space-md bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-surface-container-lowest p-space-sm rounded-xl flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">MÖ</div><div class="overflow-hidden"><div class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Murat Özdemir</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">Kadıköy Şube Müdürü</div></div></div><button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış veya Şube Değiştir" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button></div></div></aside><div class="pl-64 flex flex-col min-h-screen">
+        <header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-md py-space-xs rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-[16px] text-primary">storefront</span><span class="font-label-lg text-label-lg text-on-surface">Kadıköy Depo Şube</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px]">today</span><span>12 Mayıs 2026, Salı</span></div></div><div class="flex items-center gap-space-md"><button class="relative w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 bg-error text-on-error rounded-full font-label-sm text-label-sm flex items-center justify-center font-bold">3</span></button><button class="flex items-center gap-space-xs bg-primary text-on-primary px-space-md py-space-sm rounded-xl font-label-lg text-label-lg font-semibold hover:bg-primary-container hover:text-on-primary-container transition-all shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button"><span class="material-symbols-outlined text-[18px]">add</span><span class="hidden sm:inline">+ Yeni Kargo Girişi</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface w-full px-margin flex-1">
+            <div class="flex flex-col w-full pb-space-xl">
+                <!-- Operational Breadcrumb & Live Sync Header -->
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+                            <span class="hover:text-primary cursor-pointer transition-colors">Operasyon</span>
+                            <span class="material-symbols-outlined text-[13px] text-outline-variant">chevron_right</span>
+                            <span class="text-on-surface font-semibold">Şube Kargoları &amp; Dağıtım Yönetimi</span>
+                            <span class="ml-space-sm inline-flex items-center gap-1 bg-surface-container-high px-space-xs py-0.5 rounded-full font-code-dense text-code-dense text-on-surface">
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                                Canlı Eşzamanlı (2sn önce)
+                            </span>
+                        </div>
+                        <div class="flex items-baseline gap-space-sm mt-space-xs">
+                            <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Şube Kargoları &amp; Dağıtım Listesi</h1>
+                            <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">Kadıköy [BR-3401]</span>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                            Kadıköy Şubesi'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
+                        </p>
+                    </div>
+                    <!-- Quick Action Toolset -->
+                    <div class="flex items-center flex-wrap gap-space-sm">
+                        <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                            <span class="material-symbols-outlined text-[18px] text-secondary">table_view</span>
+                            <span>Excel Raporu Al</span>
+                        </button>
+                        <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                            <span class="material-symbols-outlined text-[18px] text-secondary">print</span>
+                            <span>Toplu Barkod Yazdır</span>
+                        </button>
+                        <button class="inline-flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                            <span class="material-symbols-outlined text-[19px]">add_box</span>
+                            <span>+ Şube Kargo Kabulü</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Operational Metric Quick Strip (4 compact cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
+                    <!-- Metric 1: Total Cargo -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Toplam Şube Kargosu</span>
+                            <div class="flex items-baseline gap-space-xs mt-1">
+                                <span class="font-headline-xl text-headline-xl text-on-surface font-bold">184</span>
+                                <span class="font-label-sm text-label-sm text-primary font-semibold">+18 yeni</span>
+                            </div>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bugün kabul &amp; varış</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+                            <span class="material-symbols-outlined text-[24px]">inventory_2</span>
+                        </div>
+                    </div>
+                    <!-- Metric 2: Out for Delivery -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Dağıtımdaki Kargolar</span>
+                            <div class="flex items-baseline gap-space-xs mt-1">
+                                <span class="font-headline-xl text-headline-xl text-on-surface font-bold">68</span>
+                                <span class="font-label-sm text-label-sm text-secondary font-semibold">4 Kurye Sahada</span>
+                            </div>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">%37 rota doluluk</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-[24px]">two_wheeler</span>
+                        </div>
+                    </div>
+                    <!-- Metric 3: Waiting on Shelf -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Şubede Bekleyen (Rafta)</span>
+                            <div class="flex items-baseline gap-space-xs mt-1">
+                                <span class="font-headline-xl text-headline-xl text-on-surface font-bold">44</span>
+                                <span class="font-label-sm text-label-sm text-error font-semibold">12 Atama Bekliyor</span>
+                            </div>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Depo Raf A-12 / C-04</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant">
+                            <span class="material-symbols-outlined text-[24px]">shelves</span>
+                        </div>
+                    </div>
+                    <!-- Metric 4: Outbound Transfers -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Giden / Çıkış Bekleyen</span>
+                            <div class="flex items-baseline gap-space-xs mt-1">
+                                <span class="font-headline-xl text-headline-xl text-on-surface font-bold">72</span>
+                                <span class="font-label-sm text-label-sm text-primary font-semibold">18:30 Hat Aracı</span>
+                            </div>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ana Transfer Merkezine</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
+                            <span class="material-symbols-outlined text-[24px] text-on-primary-container">local_shipping</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Operational Search & Multi-Filter Control Console -->
+                <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-md">
+                    <!-- Top Search Row -->
+                    <div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm mb-space-md">
+                        <div class="relative flex-1">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
+                            <input class="w-full pl-10 pr-10 py-2 bg-surface-container-low text-on-surface placeholder:text-outline rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" id="cargo-search-input" placeholder="Kargo Takip No (MYC-...), Alıcı/Gönderici Adı veya Telefon..." type="text" />
+                            <button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" title="Barkod Okuyucu Başlat" type="button">
+                                <span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-space-xs shrink-0">
+                            <button class="inline-flex items-center gap-space-xs bg-inverse-surface text-inverse-on-surface hover:bg-on-surface px-space-lg py-2 rounded-lg font-label-lg text-label-lg shadow-sm transition-all" type="button">
+                                <span class="material-symbols-outlined text-[17px]">filter_alt</span>
+                                <span>Filtrele</span>
+                            </button>
+                            <button class="inline-flex items-center gap-space-xs text-on-surface-variant hover:text-error px-space-md py-2 rounded-lg font-label-lg text-label-lg transition-colors" type="button">
+                                <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+                                <span>Temizle</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Filter Multi-Select Fields Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+                        <!-- Filter: Direction -->
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Kargo Yönü</label>
+                            <div class="relative">
+                                <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                                    <option selected="">Tümü (Gelen &amp; Giden)</option>
+                                    <option>Şubeye Gelen (Varış)</option>
+                                    <option>Şubeden Çıkan (Gönderici)</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        <!-- Filter: Operational Status -->
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Operasyonel Durum</label>
+                            <div class="relative">
+                                <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                                    <option selected="">Tüm Durumlar (184)</option>
+                                    <option>Varış Şubesinde (44)</option>
+                                    <option>Dağıtıma Çıktı (68)</option>
+                                    <option>Teslim Edildi (52)</option>
+                                    <option>Sorunlu / Teslim Edilemedi (12)</option>
+                                    <option>İade Sürecinde (8)</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        <!-- Filter: Assigned Courier -->
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Atanan Kurye</label>
+                            <div class="relative">
+                                <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                                    <option selected="">Tüm Kuryeler &amp; Hatlar</option>
+                                    <option>Ahmet Yılmaz (Moda Sahası)</option>
+                                    <option>Berkay Demir (Kalamış Sahası)</option>
+                                    <option>Canan Şahin (Göztepe Sahası)</option>
+                                    <option>Emre Koç (Koşuyolu Sahası)</option>
+                                    <option class="text-error font-semibold">⚠️ Atama Bekleyenler (12)</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        <!-- Filter: Desi / Type -->
+                        <div class="flex flex-col gap-1">
+                            <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Desi / Kargo Tipi</label>
+                            <div class="relative">
+                                <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                                    <option selected="">Tümü (Desi &amp; Paket)</option>
+                                    <option>Dosya / Evrak (1-2 Desi)</option>
+                                    <option>Koli (3-15 Desi)</option>
+                                    <option>Ağır Kargo (15+ Desi)</option>
+                                </select>
+                                <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Cargo Operational Data Table -->
+                <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-md">
+                    <!-- Active Table Action & Status Toolbar -->
+                    <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm">
+                        <div class="flex items-center gap-space-md">
+                            <div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface">
+                                <span class="material-symbols-outlined text-[18px] text-primary">view_list</span>
+                                <span>Aktif Liste: <strong>Kadıköy Şube Dağıtım &amp; Kabul Çizelgesi</strong></span>
+                            </div>
+                            <span class="bg-surface-container-high text-on-surface-variant font-code-dense text-code-dense px-space-xs py-0.5 rounded">Tablo Yoğunluğu: Standart</span>
+                        </div>
+                        <!-- Bulk action trigger pill -->
+                        <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Toplu Seçim:</span>
+                            <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
+                                <span class="material-symbols-outlined text-[15px]">person_add</span>
+                                <span>Seçilenlere Kurye Ata</span>
+                            </button>
+                            <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
+                                <span class="material-symbols-outlined text-[15px]">receipt_long</span>
+                                <span>Toplu Dağıtım Fişi Bas</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Table Container -->
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider select-none">
+                                    <th class="w-10 px-space-md py-3 text-center">
+                                        <input class="rounded accent-primary w-4 h-4 cursor-pointer" id="check-all-cargo" type="checkbox" />
+                                    </th>
+                                    <th class="w-12 px-space-xs py-3 text-center">#</th>
+                                    <th class="px-space-md py-3 font-semibold">Takip No</th>
+                                    <th class="px-space-md py-3 font-semibold">Gönderici Bilgisi</th>
+                                    <th class="px-space-md py-3 font-semibold">Alıcı &amp; Teslimat Adresi</th>
+                                    <th class="px-space-sm py-3 font-semibold text-center">Desi / Tip</th>
+                                    <th class="px-space-md py-3 font-semibold">Güncel Durum</th>
+                                    <th class="px-space-md py-3 font-semibold">Atanan Kurye / Araç</th>
+                                    <th class="px-space-md py-3 font-semibold">Tahmini Teslimat</th>
+                                    <th class="px-space-md py-3 text-right font-semibold">İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
+                                <!-- Row 1: Dağıtıma Çıktı (Ahmet Yılmaz) -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">01</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-849251</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span> Gelen Dağıtım
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Arzum Teknoloji</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Merkez Depo (Tuzla)</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1">
+                                            <span>Zeynep Kaya</span>
+                                            <span class="material-symbols-outlined text-[14px] text-outline">phone</span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Caferağa Mah. Moda Cad. No:42 D:3 Kadıköy">
+                                            Caferağa Mah. Moda Cad. No:42 D:3
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">4 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Koli</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+                                            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                            Dağıtıma Çıktı
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">AY</div>
+                                            <span class="font-label-lg text-label-lg font-medium text-on-surface">Ahmet Yılmaz</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">Bölge: Moda Sahası</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-on-surface">Bugün 16:00</div>
+                                        <span class="font-label-sm text-label-sm text-primary font-medium">SLA Zamanında</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Barkod Fişi Bas" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">print</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container hover:text-primary-container transition-colors" title="6 Haneli Teslimat Kodunu Doğrula" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">key</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Kargo Detayı &amp; Tarihçe" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-error-container hover:text-error transition-colors" title="Hata / Sorun Bildir" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">warning</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 2: Varış Şubesinde - Atama Bekliyor (Hepsiburada) -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group bg-error-container/10">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">02</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-772104</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-secondary flex items-center gap-1 mt-0.5">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span> Rafta (Depo B-03)
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Hepsiburada Lojistik</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Gebze Aktarma</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1">
+                                            <span>Mehmet Aksoy</span>
+                                            <span class="material-symbols-outlined text-[14px] text-outline">phone</span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Feneryolu Mah. Feneryolu Sok. No:12">
+                                            Feneryolu Mah. Feneryolu Sok. No:12
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">2 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Paket</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface font-label-md text-label-md font-semibold">
+                                            <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                                            Varış Şubesinde
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+                                            <span class="material-symbols-outlined text-[14px]">person_off</span>
+                                            Atama Bekliyor
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-on-surface">Bugün 18:00</div>
+                                        <span class="font-label-sm text-label-sm text-error font-medium">Acil Çıkış Gerekli</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="inline-flex items-center gap-1 px-2.5 py-1 bg-primary text-on-primary rounded font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm" type="button">
+                                                <span class="material-symbols-outlined text-[14px]">assignment_ind</span>
+                                                <span>Kuryeye Ata</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Barkod Yazdır" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">print</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Detay" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 3: Dağıtıma Çıktı (Berkay Demir) -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">03</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-910423</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span> Gelen Dağıtım
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Doğan Kitap Dağıtım</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Beyoğlu Şube</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1">
+                                            <span>Doruk Aydın</span>
+                                            <span class="material-symbols-outlined text-[14px] text-outline">phone</span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Kalamış Fener Cad. No:8 Daire:5">
+                                            Kalamış Fener Cad. No:8 D:5
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">1 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Dosya</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+                                            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                            Dağıtıma Çıktı
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">BD</div>
+                                            <span class="font-label-lg text-label-lg font-medium text-on-surface">Berkay Demir</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">Bölge: Kalamış Sahası</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-on-surface">Bugün 15:30</div>
+                                        <span class="font-label-sm text-label-sm text-primary font-medium">Hedef Öncesi</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Barkod Yazdır" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">print</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container hover:text-primary-container transition-colors" title="Kodu Doğrula" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">key</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Detay" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 4: Sorunlu / Teslim Edilemedi (Canan Şahin) -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group bg-error-container/5">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">04</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-339182</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-error flex items-center gap-1 mt-0.5">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-error shrink-0"></span> Sorun Bildirimi
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Burak Taş</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Bireysel Gönderi (İzmir)</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1">
+                                            <span>Ali Vural</span>
+                                            <span class="material-symbols-outlined text-[14px] text-error">phone_missed</span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Caddebostan Bağdat Cad. No:142">
+                                            Caddebostan Bağdat Cad. No:142
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">12 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Ağır Koli</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md font-semibold">
+                                            <span class="w-2 h-2 rounded-full bg-error"></span>
+                                            Teslim Edilemedi (Alıcı Yok)
+                                        </span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">1. Deneme Tamamlandı</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">CŞ</div>
+                                            <span class="font-label-lg text-label-lg font-medium text-on-surface">Canan Şahin</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">Göztepe Sahası</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-error">Tekrar Dağıtım</div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant">Yarın Sabah Turu</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors" title="Tekrar Gönderim Planla" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">replay</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error-container transition-colors" title="İade Sürecini Başlat" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">assignment_return</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Arama Notu Ekle" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">post_add</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 5: Teslim Edildi - 6 Haneli Kodlu (Emre Koç) -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">05</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-618290</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1 mt-0.5">
+                                            <span class="material-symbols-outlined text-[13px]">verified</span> Kod: 849-102
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Trendyol Lojistik</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Samandıra Hub</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface flex items-center gap-1">
+                                            <span>Sinem Çetin</span>
+                                            <span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Koşuyolu Mah. İsmail Zühtü Sk. No:19">
+                                            Koşuyolu Mah. İsmail Zühtü Sk. No:19
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">3 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Paket</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold">
+                                            <span class="material-symbols-outlined text-[15px]">done_all</span>
+                                            Teslim Edildi
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center font-label-sm text-label-sm font-bold text-on-surface">EK</div>
+                                            <span class="font-label-lg text-label-lg font-medium text-on-surface">Emre Koç</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">Koşuyolu Sahası</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-primary">Tamamlandı (13:15)</div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant">Zaman Hedefinde</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="inline-flex items-center gap-1 px-2 py-1 bg-surface-container hover:bg-surface-container-high text-on-surface rounded font-label-sm text-label-sm font-semibold transition-colors" type="button">
+                                                <span class="material-symbols-outlined text-[15px]">verified</span>
+                                                <span>Tutanak Gör</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Detay" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 6: Çıkış Yapan Giden Kargo - Hat Aracında -->
+                                <tr class="hover:bg-surface-container-low/60 transition-colors group">
+                                    <td class="px-space-md py-3 text-center">
+                                        <input class="row-checkbox rounded accent-primary w-4 h-4 cursor-pointer" type="checkbox" />
+                                    </td>
+                                    <td class="px-space-xs py-3 text-center font-code-dense text-code-dense text-outline">06</td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface group-hover:text-primary transition-colors cursor-pointer">MYC-2026-554219</span>
+                                            <span class="material-symbols-outlined text-[16px] text-outline hover:text-on-surface cursor-pointer" title="Barkodu Kopyala">content_copy</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1 mt-0.5">
+                                            <span class="material-symbols-outlined text-[13px]">outbox</span> Kadıköy Şube Çıkış (Giden)
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Ece Güler</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant">Kadıköy Şube Müşterisi</div>
+                                    </td>
+                                    <td class="px-space-md py-3 max-w-xs">
+                                        <div class="font-label-lg text-label-lg font-semibold text-on-surface">Ankara Çankaya Şubesi</div>
+                                        <div class="font-body-sm text-body-sm text-on-surface-variant truncate" title="Varış: Çankaya Mah. Atatürk Bulvarı No:88">
+                                            Varış: Çankaya Şube Aktarma
+                                        </div>
+                                    </td>
+                                    <td class="px-space-sm py-3 text-center">
+                                        <span class="inline-block px-2 py-0.5 rounded-full bg-surface-container font-code-dense text-code-dense font-semibold text-on-surface">6 Desi</span>
+                                        <span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">Koli</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">
+                                            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                                            Transfer Aracında
+                                        </span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="flex items-center gap-space-xs">
+                                            <span class="material-symbols-outlined text-[17px] text-primary">local_shipping</span>
+                                            <span class="font-code-dense text-code-dense font-bold text-on-surface">34 TN 99</span>
+                                        </div>
+                                        <span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">Hat Seferi: ANK-04</span>
+                                    </td>
+                                    <td class="px-space-md py-3">
+                                        <div class="font-code-dense text-code-dense font-semibold text-on-surface">Yarın 11:00</div>
+                                        <span class="font-label-sm text-label-sm text-primary font-medium">Planlı Sevkiyat</span>
+                                    </td>
+                                    <td class="px-space-md py-3 text-right">
+                                        <div class="flex items-center justify-end gap-1">
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors" title="Hat Takip" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">gps_fixed</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Fatura &amp; Taşıma İrsaliyesi" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">description</span>
+                                            </button>
+                                            <button class="w-8 h-8 rounded-lg flex items-center justify-center text-outline hover:bg-surface-container hover:text-on-surface transition-colors" title="Detay" type="button">
+                                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination and Table Context Footer -->
+                    <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+                        <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
+                            <span>Toplam <strong>184</strong> kargodan <strong>1-6</strong> arası gösteriliyor</span>
+                            <div class="hidden md:flex items-center gap-space-xs">
+                                <span class="text-outline-variant">|</span>
+                                <label class="font-label-sm text-label-sm">Sayfa Başına:</label>
+                                <select class="bg-surface-container text-on-surface rounded px-1.5 py-0.5 text-code-dense font-code-dense focus:outline-none">
+                                    <option selected="">6</option>
+                                    <option>15</option>
+                                    <option>30</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Pagination Buttons -->
+                        <div class="flex items-center gap-1">
+                            <button class="px-2.5 py-1 rounded bg-surface-container text-outline opacity-50 cursor-not-allowed font-label-md text-label-md flex items-center gap-0.5" disabled="" type="button">
+                                <span class="material-symbols-outlined text-[15px]">chevron_left</span>
+                                <span>Önceki</span>
+                            </button>
+                            <button class="w-7 h-7 rounded bg-primary text-on-primary font-code-dense text-code-dense font-bold flex items-center justify-center shadow-sm" type="button">1</button>
+                            <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">2</button>
+                            <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">3</button>
+                            <span class="px-1 text-outline font-code-dense">...</span>
+                            <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">31</button>
+                            <button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-0.5 transition-colors" type="button">
+                                <span>Sonraki</span>
+                                <span class="material-symbols-outlined text-[15px]">chevron_right</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Real-Time Operational Activity Sub-Strip -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+                    <!-- Courier Live Distribution Status -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+                        <div class="flex items-center justify-between mb-space-sm">
+                            <div class="flex items-center gap-space-xs">
+                                <span class="material-symbols-outlined text-[18px] text-primary">route</span>
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Kurye Dağıtım Hızı</h3>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-primary font-bold uppercase">4/4 Aktif</span>
+                        </div>
+                        <div class="space-y-space-sm">
+                            <div>
+                                <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                                    <span class="text-on-surface">Ahmet Yılmaz (Moda)</span>
+                                    <span class="font-code-dense text-code-dense font-semibold text-primary">22 / 26 Teslim (%84)</span>
+                                </div>
+                                <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-primary h-1.5 rounded-full" style="width: 84%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                                    <span class="text-on-surface">Berkay Demir (Kalamış)</span>
+                                    <span class="font-code-dense text-code-dense font-semibold text-primary">18 / 24 Teslim (%75)</span>
+                                </div>
+                                <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between font-label-md text-label-md mb-1">
+                                    <span class="text-on-surface">Canan Şahin (Göztepe)</span>
+                                    <span class="font-code-dense text-code-dense font-semibold text-secondary">14 / 22 Teslim (%63)</span>
+                                </div>
+                                <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+                                    <div class="bg-secondary h-1.5 rounded-full" style="width: 63%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick Barcode Verification Widget -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-space-xs mb-space-xs">
+                                <span class="material-symbols-outlined text-[18px] text-primary">pin</span>
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Hızlı Kod Doğrulama</h3>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+                                Alıcı tarafından iletilen 6 haneli SMS onay kodunu girerek teslimatı tamamlayın.
+                            </p>
+                            <div class="flex items-center gap-space-xs">
+                                <input class="flex-1 px-3 py-2 bg-surface-container-low font-code-dense text-code-dense text-center tracking-widest text-on-surface uppercase rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" maxlength="6" placeholder="KOD: 849102" type="text" />
+                                <button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-lg text-label-lg font-semibold shadow-sm transition-colors" type="button">
+                                    Onayla
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-space-sm pt-space-xs flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+                            <span>Kalan doğrulama kotası: Sınırsız</span>
+                            <span class="text-primary font-semibold flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> SMS API Aktif</span>
+                        </div>
+                    </div>
+                    <!-- Terminal System Overview -->
+                    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-space-xs">
+                                <div class="flex items-center gap-space-xs">
+                                    <span class="material-symbols-outlined text-[18px] text-primary">lan</span>
+                                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Şube Ağ Durumu</h3>
+                                </div>
+                                <span class="bg-primary-container text-on-primary-container font-code-dense text-code-dense px-2 py-0.5 rounded-full font-bold">BR-3401</span>
+                            </div>
+                            <div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
+                                <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                                    <span>El Terminali Eşleşmesi:</span>
+                                    <span class="font-semibold text-on-surface">6 Cihaz Çevrimiçi</span>
+                                </div>
+                                <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                                    <span>Zebra Barkod Yazıcı:</span>
+                                    <span class="font-semibold text-primary">Hazır (IP: 192.168.1.140)</span>
+                                </div>
+                                <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
+                                    <span>Sonraki Hat Aracı:</span>
+                                    <span class="font-semibold text-on-surface">18:30 (Gebze Aktarma)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+                            <span>Gecikme: 24ms</span>
+                            <span class="hover:text-primary cursor-pointer transition-colors">Tanı &amp; Cihaz Yönetimi →</span>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    (function () {
+                        // Checkbox master toggle
+                        const checkAll = document.getElementById('check-all-cargo');
+                        const rowBoxes = document.querySelectorAll('.row-checkbox');
+                        const bulkBar = document.getElementById('bulk-action-bar');
+
+                        if (checkAll) {
+                            checkAll.addEventListener('change', function () {
+                                rowBoxes.forEach(function (box) {
+                                    box.checked = checkAll.checked;
+                                });
+                                updateBulkState();
+                            });
+                        }
+
+                        rowBoxes.forEach(function (box) {
+                            box.addEventListener('change', function () {
+                                updateBulkState();
+                            });
+                        });
+
+                        function updateBulkState() {
+                            const checkedCount = Array.from(rowBoxes).filter(b => b.checked).length;
+                            if (bulkBar) {
+                                if (checkedCount > 0) {
+                                    bulkBar.classList.remove('opacity-90');
+                                    bulkBar.classList.add('opacity-100', 'ring-1', 'ring-primary', 'bg-surface-container-high', 'p-1', 'rounded-lg');
+                                } else {
+                                    bulkBar.classList.remove('opacity-100', 'ring-1', 'ring-primary', 'bg-surface-container-high', 'p-1');
+                                    bulkBar.classList.add('opacity-90');
+                                }
+                            }
+                        }
+                    })();
+                </script>
+            </div>
+        </main><footer class="w-full bg-surface-container-low py-space-md px-margin shadow-[0_1px_8px_rgba(0,0,0,0.04)] mt-auto"><div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><div>CargoTrack © 2026 Tüm Hakları Saklıdır.</div><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span> Kadıköy Şube Aktif</span><span class="hidden md:inline text-outline-variant">|</span><span class="hidden md:inline">Barkod Servisi Aktif</span><span class="hidden md:inline text-outline-variant">|</span><a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Destek &amp; Kılavuz</a></div></div></footer>
+    </div>
+</body>
+</html>

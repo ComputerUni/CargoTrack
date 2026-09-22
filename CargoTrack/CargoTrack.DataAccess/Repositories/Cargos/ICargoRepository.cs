@@ -12,5 +12,6 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
     {
         Task<Cargo> GetByTrackCodeAsync(string trackCode);
         Task<List<Cargo>> GetAllWithDetailsAsync();
+        Task<List<Cargo>> GetByBranchIdAsync(Guid branchId);
     }
 }

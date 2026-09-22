@@ -183,8 +183,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Cargo/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xEYXNoYm9hcmRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Shared/Components/_ManagerLayoutFooter/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xfTWFuYWdlckxheW91dEZvb3RlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Shared/Components/_ManagerLayoutHeader/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xfTWFuYWdlckxheW91dEhlYWRlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Shared/Components/_ManagerLayoutHead/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xfTWFuYWdlckxheW91dEhlYWRcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Shared/Components/_ManagerLayoutSidebar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xTaGFyZWRcQ29tcG9uZW50c1xfTWFuYWdlckxheW91dFNpZGViYXJcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Shared/_ManagerLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xTaGFyZWRcX01hbmFnZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/_ViewImports.cshtml]
