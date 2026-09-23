@@ -1,0 +1,251 @@
+﻿@model CargoMovementViewModel
+
+@{
+    ViewData["Title"] = "Kargolarımız";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+}
+
+
+<div class="pl-64 flex flex-col min-h-screen">
+    <div class="flex flex-col w-full gap-space-lg pb-space-xl">
+        <!-- Page Header & Operasyonel Bilgi -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pt-space-sm">
+            <div class="flex flex-col gap-space-xs">
+                <div class="flex items-center gap-space-xs">
+                    <span class="font-code-dense text-code-dense text-primary font-bold uppercase tracking-wider">Terminal Operasyonu</span>
+                </div>
+                <h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Kargo Hareketi Ekleme &amp; Teslimat Kodu Doğrulama</h1>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                    Şube operasyonunda güvenli durum geçişleri, 6 haneli SMS kod doğrulama ve gerçek zamanlı CargoMovement denetim izi
+                </p>
+            </div>
+            <div class="flex items-center gap-space-sm self-start md:self-auto">
+                <div class="flex items-center gap-space-xs bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                    <div class="flex flex-col">
+                        <span class="font-label-sm text-label-sm text-on-surface-variant uppercase">İşlem Noktası</span>
+                        <span class="font-label-lg text-label-lg text-on-surface font-bold">@Model.Cargo.OriginBranchName</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Top Quick Search & Scan Section -->
+        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+            <div class="flex flex-col lg:flex-row items-stretch lg:items-center gap-space-md">
+                <div class="relative flex-1">
+                    <div class="absolute inset-y-0 left-0 pl-space-md flex items-center pointer-events-none text-on-surface-variant">
+                        <span class="material-symbols-outlined text-[20px]">barcode_scanner</span>
+                    </div>
+                    <input class="w-full h-11 pl-11 pr-space-md bg-surface-container-low text-on-surface font-code-dense text-body-lg rounded-xl focus:bg-surface-container-lowest focus:outline-none transition-all shadow-inner" id="trackingInput" placeholder="Kargo Takip No (MYC-2026-XXXXXX) veya Barkod Okutunuz..." type="text" value="@Model.Cargo.TrackCode" />
+                    <div class="absolute inset-y-0 right-0 pr-space-sm flex items-center gap-space-xs">
+                        <button class="px-space-sm py-1 bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded-lg transition-colors flex items-center gap-1" type="button">
+                            <span class="material-symbols-outlined text-[14px]">sensors</span>
+                            Barkod Hazır
+                        </button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-space-sm shrink-0">
+                    <button class="h-11 px-space-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-space-xs shadow-sm" type="button">
+                        <span class="material-symbols-outlined text-[18px]">search</span>
+                        <span>Sorgula &amp; Yükle</span>
+                    </button>
+                    <button class="h-11 w-11 bg-surface-container text-on-surface-variant hover:text-on-surface rounded-xl flex items-center justify-center transition-colors" title="Kamera ile Tara" type="button">
+                        <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Hizli Bilgi Seridi -->
+            <div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+                <div class="flex flex-wrap items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+                    <span class="font-label-sm text-label-sm bg-surface-container px-space-sm py-0.5 rounded text-on-surface font-semibold">Örnek Aktif Kargo</span>
+                    <button class="font-code-dense text-primary hover:underline font-bold" onclick="document.getElementById('trackingInput').value='MYC-2026-849251'" type="button">MYC-2026-849251</button>
+                    <span>•</span>
+                    <span class="text-on-surface font-medium">Zeynep Kaya</span>
+                    <span>•</span>
+                    <span>Moda Cad. No:42 Kadıköy</span>
+                </div>
+                <div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+                    <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+                    <span>Kargo Dağıtım Zimmetinde (Canlı Takip Aktif)</span>
+                </div>
+            </div>
+        </div>
+        <!-- Two Main Operational Workspaces -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+            <!-- RIGHT CARD: Yeni Kargo Hareketi Girişi (Manuel / Ara Durum Kaydı) -->
+            <div class="lg:col-span-12 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+                <!-- Card Banner -->
+                <div class="bg-surface-container-high text-on-surface p-space-md flex items-center justify-between">
+                    <div class="flex items-center gap-space-sm">
+                        <div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface">
+                            <span class="material-symbols-outlined text-[20px]">alt_route</span>
+                        </div>
+                        <div>
+                            <h2 class="font-headline-sm text-headline-sm font-bold leading-tight">Yeni Kargo Hareketi Girişi</h2>
+                            <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Kural 2: Kontrollü Durum Akışı &amp; CargoMovement Kaydı</span>
+                        </div>
+                    </div>
+                </div>
+                <form method="post" asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement">
+                    <input type="hidden" asp-for="@Model.Cargo.Id" />
+                    <div class="p-space-lg flex flex-col gap-space-lg">
+                        <!-- Hedef ve Mevcut Durum Barı -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="flex flex-col gap-space-xs">
+                                <span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Hedef Takip Kodu</span>
+                                <div class="h-10 px-space-md bg-surface-container-low rounded-xl flex items-center justify-between">
+                                    <span class="font-code-dense text-code-dense font-bold text-on-surface">@Model.Cargo.TrackCode</span>
+                                    <span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-space-xs">
+                                <span class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Mevcut Sistem Durumu</span>
+                                <div class="h-10 px-space-md bg-surface-container-highest text-on-surface rounded-xl flex items-center gap-space-xs font-label-md text-label-md font-bold">
+                                    <span class="w-2 h-2 rounded-full bg-primary"></span>
+                                    <span class="truncate">@Model.Cargo.CargoStatus.GetDisplayName()</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Yeni Durum Secimi (Business Logic) -->
+                        <div class="flex flex-col gap-space-xs">
+                            <div class="flex items-center justify-between">
+                                <label class="font-label-lg text-label-lg font-bold text-on-surface">Geçiş Yapılacak Yeni Durum</label>
+                                <span class="font-label-sm text-label-sm text-error font-semibold flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[14px]">lock</span>
+                                    Teslim Edildi Kilitlidir
+                                </span>
+                            </div>
+                            <div class="relative">
+                                <select asp-for="@Model.StatusUpdate.NewStatus" asp-items="@ViewBag.CargoStatus" class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer">
+                                    <option value="" disabled selected>Lütfen Yeni Durum Seçiniz</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-space-md flex items-center pointer-events-none text-on-surface-variant">
+                                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                                </div>
+                            </div>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">
+                                Yalnızca iş kurallarına uygun geçerli ara durum ve istisna (exception) geçişlerine izin verilir.
+                            </span>
+                        </div>
+                        <!-- Lokasyon & Personel -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                            <div class="flex flex-col gap-space-xs">
+                                <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">İşlemin Yapıldığı Lokasyon</label>
+                                <div class="h-10 px-space-md bg-surface-container-low rounded-xl flex items-center justify-between">
+                                    <span class="font-label-lg text-label-lg font-medium text-on-surface">@Model.Cargo.OriginBranchName</span>
+                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-space-xs">
+                                <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Sorumlu Yetkili Personel</label>
+                                <div class="h-10 px-space-md bg-surface-container-low rounded-xl flex items-center justify-between">
+                                    <select asp-for="@Model.StatusUpdate.EmployeeId" asp-items="@ViewBag.Employees" class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer">
+                                        <option value="" disabled selected>Lütfen İşlem Yapacak Elemanı Seçiniz</option>
+                                    </select>
+                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant">badge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Aciklama / Operasyon Notu -->
+                        <div class="flex flex-col gap-space-xs">
+                            <label class="font-label-lg text-label-lg font-bold text-on-surface">Açıklama &amp; Operasyon Notu</label>
+                            <textarea asp-for="@Model.StatusUpdate.Description" class="w-full p-space-md bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none shadow-sm" placeholder="Zorunlu durum açıklaması giriniz (örn: Kapı zili çalındı, telefona ulaşılamadı. SMS bilgilendirmesi yapıldı...)" rows="3">Alıcı Zeynep Kaya ile 09:45'te telefon görüşmesi yapıldı. Saat 17:30 sonrası evde olacağını bildirdi; şubeden teslim veya 2. dağıtım planlanacak.</textarea>
+                        </div>
+                        <!-- Buton Kaydet -->
+                        <button type="submit" class="w-full h-12 bg-on-surface hover:bg-inverse-surface text-surface-bright font-headline-sm text-headline-sm font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-space-sm" type="button">
+                            <span class="material-symbols-outlined text-[20px]">sync_saved_locally</span>
+                            <span>Kargo Hareketini Kaydet &amp; Bildirim Gönder</span>
+                        </button>
+                    </div>
+                </form>
+
+               
+            </div>
+        </div>
+        <!-- Bottom Section: Kargonun Gecmis Hareket Kayitlari (CargoMovement Audit Trail) -->
+        <div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs">
+                <div class="flex items-center gap-space-sm">
+                    <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-[20px]">history</span>
+                    </div>
+                    <div>
+                        <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Kargonun Geçmiş Hareket Kayıtları (CargoMovement Audit Trail)</h2>
+                        <span class="font-body-sm text-body-sm text-on-surface-variant">Takip No: MYC-2026-849251 • Toplam 6 Kayıt Bulundu • Değiştirilemez Günlük Kaydı</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-space-xs">
+                    <button class="px-space-md py-space-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-lg transition-colors flex items-center gap-1" type="button">
+                        <span class="material-symbols-outlined text-[16px]">print</span>
+                        Yazdır
+                    </button>
+                    <button class="px-space-md py-space-xs bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm rounded-lg transition-colors flex items-center gap-1" type="button">
+                        <span class="material-symbols-outlined text-[16px]">file_download</span>
+                        Excel Dökümü
+                    </button>
+                </div>
+            </div>
+            <!-- Audit Timeline / Tablo Görünümü -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left font-body-sm text-body-sm">
+                    <thead>
+                        <tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                            <th class="py-space-sm px-space-md rounded-l-lg">Zaman Damgası</th>
+                            <th class="py-space-sm px-space-md">Kargo Durumu</th>
+                            <th class="py-space-sm px-space-md">İşlem Noktası / Şube</th>
+                            <th class="py-space-sm px-space-md">İşlem Yapan Personel</th>
+                            <th class="py-space-sm px-space-md">Detay / Hareket Notu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-on-surface">
+                        <!-- Row 1: Dağıtıma Çıktı -->
+                        @foreach (var item in Model.Cargo.CargoMovements)
+                        {
+                            <tr class="hover:bg-surface-container-low/50 transition-colors">
+                                <td class="py-space-md px-space-md font-code-dense text-code-dense font-medium text-on-surface">
+                                    @item.MovementDate.ToString("dd.MM.yyyy HH:mm")
+                                </td>
+                                <td class="py-space-md px-space-md">
+                                    <span class="inline-flex items-center gap-1 bg-surface-container-highest text-on-surface px-space-sm py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+                                        <span class="material-symbols-outlined text-[13px] text-primary">local_shipping</span>
+                                        @item.NewStatus.GetDisplayName()
+                                    </span>
+                                </td>
+                                <td class="py-space-md px-space-md font-label-lg text-label-lg font-medium">
+                                    @item.BranchName
+                                </td>
+                                <td class="py-space-md px-space-md">
+                                    <div class="flex items-center gap-space-xs">
+                                        <span class="w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">AY</span>
+                                        <span>@item.EmployeeName</span>
+                                    </div>
+                                </td>
+                                <td class="py-space-md px-space-md text-on-surface-variant">
+                                    @item.Description
+                                </td>
+                            </tr>
+                        }
+
+                   
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- Sistem Entegrasyon Özet Çubuğu -->
+            <div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+                <div class="flex items-center gap-space-sm">
+                    <span class="inline-flex items-center gap-1 text-primary font-bold">
+                        <span class="material-symbols-outlined text-[16px]">sync</span>
+                        PostgreSQL Realtime Sync Aktif
+                    </span>
+                    <span>•</span>
+                    <span>Son Senkronizasyon: 12.05.2026 09:30:15 (Şube Yerel Saati)</span>
+                </div>
+                <div class="font-code-dense text-code-dense">
+                    Denetim Blok Hash: #8f92a47e2b1
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>

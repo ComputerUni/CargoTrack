@@ -38,6 +38,20 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .ToListAsync();
         }
 
+        public async Task<Cargo> GetByIdWithDetailsAsync(Guid id)
+        {
+            return await _context.Cargos
+                .Include(x => x.CargoMovements)
+                .ThenInclude(x => x.Branch)
+                .Include(x => x.CargoMovements)
+                .ThenInclude(x => x.Employee)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
         public async Task<Cargo> GetByTrackCodeAsync(string trackCode)
         {
             return await _context.Cargos.FirstOrDefaultAsync(x => x.TrackCode == trackCode);

@@ -17,5 +17,6 @@ namespace CargoTrack.Business.Services.Cargos
         Task<ResultCargoDto> GetByTrackCodeAsync(string trackCode);
         Task UpdateStatusAsync(CargoStatusUpdateDto dto);
         Task<List<ResultCargoDto>> GetByBranchIdAsync(Guid branchId);
+        Task<ResultCargoDto> GetByIdWithDetailsAsync(Guid id);
     }
 }

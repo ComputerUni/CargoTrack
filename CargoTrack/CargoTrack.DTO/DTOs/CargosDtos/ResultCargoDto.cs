@@ -1,4 +1,5 @@
-﻿using CargoTrack.Entity.Entities.Enums;
+﻿using CargoTrack.DTO.DTOs.CargoMovementDtos;
+using CargoTrack.Entity.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,6 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public string ReceiverName { get; set; }
         public string OriginBranchName { get; set; }
         public string DestinationBranchName { get; set; }
+        public List<ResultCargoMovementDto> CargoMovements { get; set; } = new();
     }
 }

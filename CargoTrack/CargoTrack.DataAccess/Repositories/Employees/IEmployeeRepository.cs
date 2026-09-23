@@ -10,5 +10,6 @@ namespace CargoTrack.DataAccess.Repositories.Employees
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {
+        Task<List<Employee>> GetByBranchIdAsync(Guid branchId);
     }
 }

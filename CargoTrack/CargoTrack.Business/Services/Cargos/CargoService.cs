@@ -1,4 +1,5 @@
-﻿using CargoTrack.Business.Services.CargoPricings;
+﻿using CargoTrack.Business.Services.CargoMovements;
+using CargoTrack.Business.Services.CargoPricings;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DTO.DTOs.CargosDtos;
@@ -9,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CargoTrack.Business.Services.Cargos
 {
-    public class CargoService(ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository) : ICargoService
+    public class CargoService(ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService) : ICargoService
     {
         public async Task CreateAsync(CreateCargoDto createCargoDto)
         {
@@ -29,9 +30,9 @@ namespace CargoTrack.Business.Services.Cargos
                 ShipmentDate = DateTime.Now,
                 EstimatedArrivalDate = estimatedDate,
                 Weight = createCargoDto.Weight,
-                Length = createCargoDto.Length,   
-                Width = createCargoDto.Width,     
-                Height = createCargoDto.Height,   
+                Length = createCargoDto.Length,
+                Width = createCargoDto.Width,
+                Height = createCargoDto.Height,
                 Desi = desi,
                 Price = price,
                 CargoType = createCargoDto.CargoType,
@@ -64,7 +65,7 @@ namespace CargoTrack.Business.Services.Cargos
         public async Task<UpdateCargoDto> GetByIdAsync(Guid id)
         {
             var cargo = await _repository.GetByIdAsync(id);
-            if(cargo is null)
+            if (cargo is null)
             {
                 throw new Exception("Cargo Not Found");
             }
@@ -105,9 +106,24 @@ namespace CargoTrack.Business.Services.Cargos
         }
 
 
-        public Task UpdateStatusAsync(CargoStatusUpdateDto dto)
+        public async Task UpdateStatusAsync(CargoStatusUpdateDto dto)
         {
-            throw new NotImplementedException();
+            var cargo = await _repository.GetByIdAsync(dto.Id);
+
+            if (cargo is null)
+            {
+                throw new ValidationException("Böyle bir kargo bulumamadı");
+            }
+
+            await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
+            cargo.CargoStatus = dto.NewStatus;
+            await _repository.UpdateAsync(cargo);
+        }
+
+        public async Task<ResultCargoDto> GetByIdWithDetailsAsync(Guid id)
+        {
+            var cargo = await _repository.GetByIdWithDetailsAsync(id);
+            return cargo.Adapt<ResultCargoDto>();
         }
     }
 }

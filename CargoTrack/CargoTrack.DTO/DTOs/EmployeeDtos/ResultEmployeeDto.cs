@@ -12,7 +12,7 @@ namespace CargoTrack.DTO.DTOs.EmployeeDtos
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Phone { get; set; }
-        //public Guid BranchId { get; set; }
+        public Guid BranchId { get; set; }
         public string BranchName { get; set; }
     }
 }

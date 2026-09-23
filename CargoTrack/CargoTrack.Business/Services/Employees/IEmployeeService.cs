@@ -10,6 +10,7 @@ namespace CargoTrack.Business.Services.Employees
     public interface IEmployeeService
     {
         Task<List<ResultEmployeeDto>> GetAllAsync();
+        Task<List<ResultEmployeeDto>> GetByBranchIdAsync(Guid branchId);
         Task<UpdateEmployeeDto> GetByIdAsync(Guid id);
         Task CreateAsync(CreateEmployeeDto createEmployeeDto);
         Task UpdateAsync(UpdateEmployeeDto updateEmployeeDto);

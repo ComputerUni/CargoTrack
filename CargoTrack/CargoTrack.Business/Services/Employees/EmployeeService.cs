@@ -22,7 +22,7 @@ namespace CargoTrack.Business.Services.Employees
         public async Task DeleteAsync(Guid id)
         {
             var employee = await _repository.GetByIdAsync(id);
-            if(employee is null)
+            if (employee is null)
             {
                 throw new ValidationException("Employee Not Found");
             }
@@ -35,10 +35,24 @@ namespace CargoTrack.Business.Services.Employees
             return employees.Adapt<List<ResultEmployeeDto>>();
         }
 
+        public async Task<List<ResultEmployeeDto>> GetByBranchIdAsync(Guid branchId)
+        {
+            var employees = await _repository.GetByBranchIdAsync(branchId);
+            return employees.Select(x => new ResultEmployeeDto
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Phone = x.Phone,
+                BranchId = x.BranchId,
+                BranchName = x.Branch.Name
+            }).ToList();
+        }
+
         public async Task<UpdateEmployeeDto> GetByIdAsync(Guid id)
         {
             var employee = await _repository.GetByIdAsync(id);
-            if(employee is null)
+            if (employee is null)
             {
                 throw new ValidationException("Employee Not Found");
             }
