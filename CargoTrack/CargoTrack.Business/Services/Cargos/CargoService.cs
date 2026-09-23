@@ -115,9 +115,18 @@ namespace CargoTrack.Business.Services.Cargos
                 throw new ValidationException("Böyle bir kargo bulumamadı");
             }
 
+            if(dto.NewStatus == CargoStatus.DeliveryFailed)
+            {
+                cargo.FailedAttemptCount++;
+                if(cargo.FailedAttemptCount >= 3)
+                {
+                    dto.NewStatus = CargoStatus.ReturnInProcess;
+                }
+
+                await _repository.UpdateAsync(cargo);
+            }
+
             await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
-            cargo.CargoStatus = dto.NewStatus;
-            await _repository.UpdateAsync(cargo);
         }
 
         public async Task<ResultCargoDto> GetByIdWithDetailsAsync(Guid id)

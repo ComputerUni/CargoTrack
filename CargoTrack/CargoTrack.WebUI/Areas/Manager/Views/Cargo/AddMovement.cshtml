@@ -87,7 +87,8 @@
                     </div>
                 </div>
                 <form method="post" asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement">
-                    <input type="hidden" asp-for="@Model.Cargo.Id" />
+                    <input type="hidden" asp-for="@Model.StatusUpdate.Id" />
+                    <input type="hidden" asp-for="@Model.StatusUpdate.BranchId" />
                     <div class="p-space-lg flex flex-col gap-space-lg">
                         <!-- Hedef ve Mevcut Durum Barı -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">

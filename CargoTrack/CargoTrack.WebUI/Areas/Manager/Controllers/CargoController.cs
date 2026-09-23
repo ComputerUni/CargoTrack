@@ -55,11 +55,15 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         [HttpGet]
         public async Task<IActionResult> AddMovement(Guid id)
         {
+            var user = await _userManager.GetUserAsync(User);
             await GetViewBagDataAsync();
             var vm = new CargoMovementViewModel
             {
                 Cargo = await _cargoService.GetByIdWithDetailsAsync(id),
-                StatusUpdate = new CargoStatusUpdateDto { Id = id }
+                StatusUpdate = new CargoStatusUpdateDto { 
+                    Id = id,
+                    BranchId = user.BranchId.Value
+                }
             };
             return View(vm);
         }
@@ -67,9 +71,12 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMovement(CargoMovementViewModel vm)
         {
-            if(!ModelState.IsValid)
+            ModelState.Remove("Cargo");
+
+            if (!ModelState.IsValid)
             {
                 await GetViewBagDataAsync();
+                vm.Cargo = await _cargoService.GetByIdWithDetailsAsync(vm.StatusUpdate.Id);
                 return View(vm);
             }
 
