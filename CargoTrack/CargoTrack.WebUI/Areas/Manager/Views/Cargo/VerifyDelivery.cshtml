@@ -1,7 +1,7 @@
-﻿@model CargoMovementViewModel
+﻿@model VerifyDeliveryViewModel
 
 @{
-    ViewData["Title"] = "Kargolarımız";
+    ViewData["Title"] = "Kargo Doğrulama";
     Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
 }
 
@@ -36,7 +36,7 @@
                     <div class="absolute inset-y-0 left-0 pl-space-md flex items-center pointer-events-none text-on-surface-variant">
                         <span class="material-symbols-outlined text-[20px]">barcode_scanner</span>
                     </div>
-                    <input class="w-full h-11 pl-11 pr-space-md bg-surface-container-low text-on-surface font-code-dense text-body-lg rounded-xl focus:bg-surface-container-lowest focus:outline-none transition-all shadow-inner" id="trackingInput" placeholder="Kargo Takip No (MYC-2026-XXXXXX) veya Barkod Okutunuz..." type="text" value="@Model.Cargo.TrackCode" readonly />
+                    <input class="w-full h-11 pl-11 pr-space-md bg-surface-container-low text-on-surface font-code-dense text-body-lg rounded-xl focus:bg-surface-container-lowest focus:outline-none transition-all shadow-inner" id="trackingInput" placeholder="Kargo Takip No (MYC-2026-XXXXXX) veya Barkod Okutunuz..." type="text" value="@Model.Cargo.TrackCode" />
                     <div class="absolute inset-y-0 right-0 pr-space-sm flex items-center gap-space-xs">
                         <button class="px-space-sm py-1 bg-surface-container text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm rounded-lg transition-colors flex items-center gap-1" type="button">
                             <span class="material-symbols-outlined text-[14px]">sensors</span>
@@ -44,15 +44,29 @@
                         </button>
                     </div>
                 </div>
+                <div class="flex items-center gap-space-sm shrink-0">
+                    <button class="h-11 px-space-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-space-xs shadow-sm" type="button">
+                        <span class="material-symbols-outlined text-[18px]">search</span>
+                        <span>Sorgula &amp; Yükle</span>
+                    </button>
+                    <button class="h-11 w-11 bg-surface-container text-on-surface-variant hover:text-on-surface rounded-xl flex items-center justify-center transition-colors" title="Kamera ile Tara" type="button">
+                        <span class="material-symbols-outlined text-[20px]">photo_camera</span>
+                    </button>
+                </div>
             </div>
             <!-- Hizli Bilgi Seridi -->
             <div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
                 <div class="flex flex-wrap items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
-                    <span class="font-code-dense text-primary hover:underline font-bold">@Model.Cargo.TrackCode</span>
+                    <span class="font-label-sm text-label-sm bg-surface-container px-space-sm py-0.5 rounded text-on-surface font-semibold">Örnek Aktif Kargo</span>
+                    <button class="font-code-dense text-primary hover:underline font-bold" onclick="document.getElementById('trackingInput').value='MYC-2026-849251'" type="button">MYC-2026-849251</button>
                     <span>•</span>
-                    <span class="text-on-surface font-medium">@Model.Cargo.ReceiverName</span>
+                    <span class="text-on-surface font-medium">Zeynep Kaya</span>
                     <span>•</span>
-                    <span>@Model.Cargo.DestinationBranchName</span>
+                    <span>Moda Cad. No:42 Kadıköy</span>
+                </div>
+                <div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+                    <span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+                    <span>Kargo Dağıtım Zimmetinde (Canlı Takip Aktif)</span>
                 </div>
             </div>
         </div>
@@ -62,19 +76,14 @@
             <div class="lg:col-span-12 flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
                 <!-- Card Banner -->
                 <div class="bg-surface-container-high text-on-surface p-space-md flex items-center justify-between">
-                    <div class="flex items-center gap-space-sm">
-                        <div class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface">
-                            <span class="material-symbols-outlined text-[20px]">alt_route</span>
-                        </div>
-                        <div>
-                            <h2 class="font-headline-sm text-headline-sm font-bold leading-tight">Yeni Kargo Hareketi Girişi</h2>
-                            <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Kural 2: Kontrollü Durum Akışı &amp; CargoMovement Kaydı</span>
-                        </div>
+                    <div class="flex flex-col gap-space-xs">
+                        <span class="font-code-dense text-code-dense text-primary font-bold uppercase">Terminal Operasyonu</span>
+                        <h1 class="font-headline-xl text-headline-xl text-on-surface font-bold">Teslimat Kodu Doğrulama</h1>
+                        <p class="font-body-md text-body-md text-on-surface-variant">6 haneli SMS kodu doğrulayarak kargoyu teslim edildi olarak kaydet</p>
                     </div>
                 </div>
-                <form method="post" asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement">
-                    <input type="hidden" asp-for="@Model.StatusUpdate.Id" />
-                    <input type="hidden" asp-for="@Model.StatusUpdate.BranchId" />
+                <form method="post" asp-area="Manager" asp-controller="Cargo" asp-action="VerifyDelivery">
+                    <input type="hidden" asp-for="@Model.DeliveryInput.CargoId" />
                     <div class="p-space-lg flex flex-col gap-space-lg">
                         <!-- Hedef ve Mevcut Durum Barı -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
@@ -93,82 +102,39 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Yeni Durum Secimi (Business Logic) -->
                         <div class="flex flex-col gap-space-xs">
-                            <div class="flex items-center justify-between">
-                                <label class="font-label-lg text-label-lg font-bold text-on-surface">Geçiş Yapılacak Yeni Durum</label>
-                                <span class="font-label-sm text-label-sm text-error font-semibold flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[14px]">lock</span>
-                                    Teslim Edildi Kilitlidir
-                                </span>
-                            </div>
-                            <div class="relative">
-                                <select id="statusSelectInput" asp-for="@Model.StatusUpdate.NewStatus" asp-items="@ViewBag.CargoStatus" class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer">
-                                    <option value="" disabled selected>Lütfen Yeni Durum Seçiniz</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-space-md flex items-center pointer-events-none text-on-surface-variant">
-                                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
-                                </div>
-                            </div>
-                            <span class="font-body-sm text-body-sm text-on-surface-variant">
-                                Yalnızca iş kurallarına uygun geçerli ara durum ve istisna (exception) geçişlerine izin verilir.
-                            </span>
+                            <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">6 Haneli SMS Kodu</label>
+                            <input asp-for="@Model.DeliveryInput.DeliveryCode"
+                                   class="h-12 px-space-md bg-surface-container-low text-on-surface rounded-xl font-code-dense text-headline-sm tracking-widest text-center focus:outline-none"
+                                   value="@Model.Cargo.DeliveryCode" />
                         </div>
                         <!-- Lokasyon & Personel -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
                             <div class="flex flex-col gap-space-xs">
-                                <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">İşlemin Yapıldığı Lokasyon</label>
-                                <div class="h-10 px-space-md bg-surface-container-low rounded-xl flex items-center justify-between">
-                                    <span class="font-label-lg text-label-lg font-medium text-on-surface">@Model.Cargo.OriginBranchName</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant">location_on</span>
-                                </div>
+                                <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Teslim Alan Ad Soyad</label>
+                                <input asp-for="@Model.DeliveryInput.RecipientName"
+                                       class="h-10 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg focus:outline-none"
+                                       placeholder="Ad Soyad" />
                             </div>
                             <div class="flex flex-col gap-space-xs">
                                 <label class="font-label-sm text-label-sm font-semibold text-on-surface-variant">Sorumlu Yetkili Personel</label>
                                 <div class="h-10 px-space-md bg-surface-container-low rounded-xl flex items-center justify-between">
-                                    <select asp-for="@Model.StatusUpdate.EmployeeId" asp-items="@ViewBag.Employees" class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer">
+                                    <select asp-for="@Model.DeliveryInput.EmployeeId" asp-items="@ViewBag.Employees" class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer">
                                         <option value="" disabled selected>Lütfen İşlem Yapacak Elemanı Seçiniz</option>
                                     </select>
                                     <span class="material-symbols-outlined text-[16px] text-on-surface-variant">badge</span>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Başarısız Teslimat / İstisna Nedeni Alanı (Başlangıçta Gizli) -->
-                        <div id="exceptionReasonContainer" class="hidden flex flex-col gap-space-xs transition-all duration-200">
-                            <div class="flex items-center justify-between">
-                                <label asp-for="@Model.StatusUpdate.ExceptionReason" class="font-label-lg text-label-lg font-bold text-error flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-[18px]">error</span>
-                                    Teslimat Başarısızlık / İstisna Nedeni
-                                </label>
-                                <span class="font-label-sm text-label-sm text-error font-medium">* Zorunlu Alan</span>
-                            </div>
-
-                            <!-- Eğer ExceptionReason bir Enum ise ViewBag üzerinden, serbest metin ise textarea/input kullanabilirsiniz -->
-                            <div class="relative">
-                                <select asp-for="@Model.StatusUpdate.ExceptionReason"
-                                        asp-items="@ViewBag.ExceptionReason"
-                                        class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer border border-error/30 focus:border-error">
-                                    <option value="" disabled selected>Lütfen Başarısızlık Sebebini Belirtiniz</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 pr-space-md flex items-center pointer-events-none text-on-surface-variant">
-                                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
-                                </div>
-                            </div>
-                            <span class="font-body-sm text-body-sm text-on-surface-variant">
-                                Adreste bulunamadı, adres hatalı, alıcı kabul etmedi vb. resmi tutanak nedeni seçilmelidir.
-                            </span>
-                        </div>
-
                         <!-- Aciklama / Operasyon Notu -->
                         <div class="flex flex-col gap-space-xs">
                             <label class="font-label-lg text-label-lg font-bold text-on-surface">Açıklama &amp; Operasyon Notu</label>
-                            <textarea asp-for="@Model.StatusUpdate.Description" class="w-full p-space-md bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none shadow-sm" placeholder="Zorunlu durum açıklaması giriniz (örn: Kapı zili çalındı, telefona ulaşılamadı. SMS bilgilendirmesi yapıldı...)" rows="3">Alıcı Zeynep Kaya ile 09:45'te telefon görüşmesi yapıldı. Saat 17:30 sonrası evde olacağını bildirdi; şubeden teslim veya 2. dağıtım planlanacak.</textarea>
+                            <textarea asp-for="@Model.DeliveryInput.Note" class="w-full p-space-md bg-surface-container-low text-on-surface rounded-xl font-body-md text-body-md focus:bg-surface-container-lowest focus:outline-none shadow-sm" placeholder="Zorunlu durum açıklaması giriniz (örn: Kapı zili çalındı, telefona ulaşılamadı. SMS bilgilendirmesi yapıldı...)" rows="3">Alıcı Zeynep Kaya ile 09:45'te telefon görüşmesi yapıldı. Saat 17:30 sonrası evde olacağını bildirdi; şubeden teslim veya 2. dağıtım planlanacak.</textarea>
                         </div>
                         <!-- Buton Kaydet -->
                         <button type="submit" class="w-full h-12 bg-on-surface hover:bg-inverse-surface text-surface-bright font-headline-sm text-headline-sm font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-space-sm" type="button">
                             <span class="material-symbols-outlined text-[20px]">sync_saved_locally</span>
-                            <span>Kargo Hareketini Kaydet &amp; Bildirim Gönder</span>
+                            <span>Kodu Doğrula &amp; Teslim Edildi Olarak Kaydet</span>
                         </button>
                     </div>
                 </form>
@@ -185,7 +151,7 @@
                     </div>
                     <div>
                         <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Kargonun Geçmiş Hareket Kayıtları (CargoMovement Audit Trail)</h2>
-                        <span class="font-body-sm text-body-sm text-on-surface-variant">Takip No: MYC-2026-849251 • Toplam 6 Kayıt Bulundu • Değiştirilemez Günlük Kaydı</span>
+                        <span class="font-body-sm text-body-sm text-on-surface-variant">Takip No: @Model.Cargo.TrackCode • Toplam @Model.Cargo.CargoMovements.Count kayıt bulundu • Değiştirilemez Günlük Kaydı</span>
                     </div>
                 </div>
                 <div class="flex items-center gap-space-xs">
@@ -230,7 +196,7 @@
                                 </td>
                                 <td class="py-space-md px-space-md">
                                     <div class="flex items-center gap-space-xs">
-                                        <span class="w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">@item.EmployeeName.Substring(0, 1)</span>
+                                        <span class="w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center justify-center font-bold">AY</span>
                                         <span>@item.EmployeeName</span>
                                     </div>
                                 </td>
@@ -246,7 +212,7 @@
                 </table>
             </div>
             <!-- Sistem Entegrasyon Özet Çubuğu -->
-            <div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+          @*   <div class="bg-surface-container-low p-space-sm rounded-xl flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
                 <div class="flex items-center gap-space-sm">
                     <span class="inline-flex items-center gap-1 text-primary font-bold">
                         <span class="material-symbols-outlined text-[16px]">sync</span>
@@ -258,51 +224,7 @@
                 <div class="font-code-dense text-code-dense">
                     Denetim Blok Hash: #8f92a47e2b1
                 </div>
-            </div>
+            </div> *@
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Açıkça verdiğimiz ID ile yakalıyoruz
-            const statusSelect = document.getElementById('statusSelectInput');
-            const reasonContainer = document.getElementById('exceptionReasonContainer');
-
-            if (!statusSelect || !reasonContainer) {
-                console.warn("Elementler bulunamadı:", { statusSelect, reasonContainer });
-                return;
-            }
-
-            function toggleExceptionField() {
-                const selectedIndex = statusSelect.selectedIndex;
-                if (selectedIndex === -1) return;
-
-                const selectedValue = (statusSelect.value || "").trim();
-                // Türkçe karakterleri küçültürken bozulmaması için toLocaleLowerCase('tr-TR') kullanıyoruz
-                const selectedText = (statusSelect.options[selectedIndex]?.text || "").toLocaleLowerCase('tr-TR');
-
-                // Konsoldan ne geldiğini anlık görmek için:
-                console.log("Seçilen Değer:", selectedValue, "| Görünen Metin:", selectedText);
-
-                // Kontrol: "teslim edilemedi", "başarısız", "failed" veya Enum ismi
-                const isFailed = selectedText.includes("teslim edilemedi") ||
-                    selectedText.includes("başarısız") ||
-                    selectedText.includes("failed") ||
-                    selectedValue === "DeliveryFailed";
-
-                if (isFailed) {
-                    reasonContainer.classList.remove('hidden');
-                } else {
-                    reasonContainer.classList.add('hidden');
-                    const reasonSelect = reasonContainer.querySelector('select');
-                    if (reasonSelect) reasonSelect.value = "";
-                }
-            }
-
-            statusSelect.addEventListener('change', toggleExceptionField);
-            toggleExceptionField();
-        });
-    </script>
-}

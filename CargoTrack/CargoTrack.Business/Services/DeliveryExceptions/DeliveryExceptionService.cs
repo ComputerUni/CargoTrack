@@ -32,25 +32,25 @@ namespace CargoTrack.Business.Services.DeliveryExceptions
 
             await _deliveryExceptionRepository.CreateAsync(deliveryException);
 
-            cargo.FailedAttemptCount++;
+            //cargo.FailedAttemptCount++;
 
-            if(cargo.FailedAttemptCount >= 3)
-            {
-                var movement = new CargoMovement
-                {
-                    CargoId = cargoId,
-                    EmployeeId = employeeId,
-                    PreviousStatus = CargoStatus.OutForDelivery,
-                    NewStatus = CargoStatus.ReturnInProcess,
-                    MovementDate = DateTime.Now,
-                    Description = description,
-                    BranchId = cargo.DestinationBranchId,
-                    TransferCenterId = null,
-                };
+            //if(cargo.FailedAttemptCount >= 3)
+            //{
+            //    var movement = new CargoMovement
+            //    {
+            //        CargoId = cargoId,
+            //        EmployeeId = employeeId,
+            //        PreviousStatus = CargoStatus.OutForDelivery,
+            //        NewStatus = CargoStatus.ReturnInProcess,
+            //        MovementDate = DateTime.Now,
+            //        Description = description,
+            //        BranchId = cargo.DestinationBranchId,
+            //        TransferCenterId = null,
+            //    };
 
-                await _movementRepository.CreateAsync(movement);
-                cargo.CargoStatus = CargoStatus.ReturnInProcess;
-            }
+            //    await _movementRepository.CreateAsync(movement);
+            //    cargo.CargoStatus = CargoStatus.ReturnInProcess;
+            //}
 
             await _cargoRepository.UpdateAsync(cargo);
             

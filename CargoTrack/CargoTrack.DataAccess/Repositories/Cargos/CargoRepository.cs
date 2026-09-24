@@ -38,6 +38,7 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .ToListAsync();
         }
 
+        //Kargo hareketleri için
         public async Task<Cargo> GetByIdWithDetailsAsync(Guid id)
         {
             return await _context.Cargos

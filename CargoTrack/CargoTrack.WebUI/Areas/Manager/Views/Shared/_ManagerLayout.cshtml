@@ -20,6 +20,8 @@
 
         @await Component.InvokeAsync("_ManagerLayoutFooter")
 
+        @await RenderSectionAsync("Scripts", required: false)
+
     </div>
 </body>
 </html>

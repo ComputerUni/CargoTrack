@@ -1,5 +1,7 @@
 ﻿using CargoTrack.Business.Services.CargoMovements;
 using CargoTrack.Business.Services.CargoPricings;
+using CargoTrack.Business.Services.Deliveries;
+using CargoTrack.Business.Services.DeliveryExceptions;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DTO.DTOs.CargosDtos;
@@ -10,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CargoTrack.Business.Services.Cargos
 {
-    public class CargoService(ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService) : ICargoService
+    public class CargoService(IDeliveryExceptionService _deliveryExceptionService, ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService, IDeliveryService _deliveryService) : ICargoService
     {
         public async Task CreateAsync(CreateCargoDto createCargoDto)
         {
@@ -115,18 +117,28 @@ namespace CargoTrack.Business.Services.Cargos
                 throw new ValidationException("Böyle bir kargo bulumamadı");
             }
 
-            if(dto.NewStatus == CargoStatus.DeliveryFailed)
+            if (dto.NewStatus == CargoStatus.DeliveryFailed)
             {
                 cargo.FailedAttemptCount++;
-                if(cargo.FailedAttemptCount >= 3)
+                await _deliveryExceptionService.RecordDeliveryExceptionAsync(dto.Id, dto.EmployeeId.Value, dto.ExceptionReason.Value, cargo.FailedAttemptCount, dto.Description);
+                await _repository.UpdateAsync(cargo);
+                await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
+
+                if (cargo.FailedAttemptCount >= 3)
                 {
-                    dto.NewStatus = CargoStatus.ReturnInProcess;
+                    await _cargoMovementService.CreateMovementAsync(dto.Id, CargoStatus.ReturnInProcess, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
                 }
 
-                await _repository.UpdateAsync(cargo);
+                return;
             }
 
             await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
+
+
+            if (dto.NewStatus == CargoStatus.OutForDelivery)
+            {
+                await _deliveryService.GenerateDeliveryCodeAsync(dto.Id);
+            }
         }
 
         public async Task<ResultCargoDto> GetByIdWithDetailsAsync(Guid id)

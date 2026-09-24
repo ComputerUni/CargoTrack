@@ -12,6 +12,7 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
     {
         public Guid Id { get; set; }
         public string TrackCode { get; set; }
+        public string DeliveryCode { get; set; }
         public DateTime ShipmentDate { get; set; }
         public DateTime EstimatedArrivalDate { get; set; }
         public double Weight { get; set; }

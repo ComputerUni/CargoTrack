@@ -16,10 +16,6 @@ namespace CargoTrack.Business.Services.Deliveries
         public async Task<string> GenerateDeliveryCodeAsync(Guid cargoId)
         {
             var cargo = await _cargoRepository.GetByIdAsync(cargoId);
-            if(cargo.CargoStatus != CargoStatus.OutForDelivery)
-            {
-                throw new Exception("Kargo Dağıtıma Çıkmamıştır.");
-            }
             var random = new Random().Next(100000, 999999);
             var code = random.ToString();
             cargo.DeliveryCode = code;

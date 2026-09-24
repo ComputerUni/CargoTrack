@@ -25,7 +25,7 @@ namespace CargoTrack.Business.Services.CargoMovements
                 { CargoStatus.InTransferCenter, new List<CargoStatus> { CargoStatus.ArrivedAtDeliveryBranch} },
                 { CargoStatus.ArrivedAtDeliveryBranch, new List<CargoStatus> { CargoStatus.OutForDelivery} },
                 { CargoStatus.OutForDelivery, new List<CargoStatus> { CargoStatus.Delivered, CargoStatus.DeliveryFailed} },
-                { CargoStatus.DeliveryFailed, new List<CargoStatus> { CargoStatus.OutForDelivery, CargoStatus.ReturnInProcess} },
+                { CargoStatus.DeliveryFailed, new List<CargoStatus> { CargoStatus.OutForDelivery, CargoStatus.ReturnInProcess, CargoStatus.DeliveryFailed} },
                 { CargoStatus.ReturnInProcess, new List<CargoStatus> { CargoStatus.ReturnedToSender} },
             };
 

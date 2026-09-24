@@ -18,7 +18,8 @@ namespace CargoTrack.Business.Mappings.CargoMappings
                 .Map(dest => dest.SenderName, src => src.Sender.FirstName + " " + src.Sender.LastName)
                 .Map(dest => dest.ReceiverName, src => src.Receiver.FirstName + " " + src.Receiver.LastName)
                 .Map(dest => dest.OriginBranchName, src => src.OriginBranch.Name)
-                .Map(dest => dest.DestinationBranchName, src => src.DestinationBranch.Name);
+                .Map(dest => dest.DestinationBranchName, src => src.DestinationBranch.Name)
+                .Map(dest => dest.DeliveryCode, src => src.DeliveryCode);
 
             TypeAdapterConfig<CargoMovement, ResultCargoMovementDto>.NewConfig()
                 .Map(dest => dest.BranchName, src => src.Branch.Name)
