@@ -29,6 +29,21 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public string ReceiverName { get; set; }
         public string OriginBranchName { get; set; }
         public string DestinationBranchName { get; set; }
+
+        public Guid? DeliveryAddressId { get; set; }
+        public string DeliveryAddressDetail { get; set; }
+        public string ReceiverPhone { get; set; }
+
+        public Guid? AssignedEmployeeId { get; set; }
+        public string AssignedCourierName { get; set; }
+        public string AssignedCourierPhone { get; set; }
+
+        public ExceptionReason? LastExceptionReason { get; set; }
+        public string LastExceptionDescription { get; set; }
+        public DateTime? LastExceptionDate { get; set; }
+
+
+
         public List<ResultCargoMovementDto> CargoMovements { get; set; } = new();
     }
 }

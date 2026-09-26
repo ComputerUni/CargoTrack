@@ -19,5 +19,8 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public Guid ReceiverId { get; set; }
         public Guid OriginBranchId { get; set; }
         public Guid DestinationBranchId { get; set; }
+
+        public Guid? DeliveryAddressId { get; set; }
+        public Guid? AssignedEmployeeId { get; set; }
     }
 }

@@ -27,6 +27,8 @@ namespace CargoTrack.Entity.Entities
         public Guid ReceiverId { get; set; }
         public Guid OriginBranchId { get; set; }
         public Guid DestinationBranchId { get; set; }
+        public Guid? DeliveryAddressId { get; set; }
+        public Guid? AssignedEmployeeId { get; set; }
 
 
         //Navigation Properties
@@ -35,6 +37,8 @@ namespace CargoTrack.Entity.Entities
         public virtual Branch OriginBranch { get; set; }
         public virtual Branch DestinationBranch { get; set; }
         public virtual Delivery Delivery { get; set; }
+        public virtual Address DeliveryAddress { get; set; }
+        public virtual Employee AssignedEmployee { get; set; }
         public virtual IList<CargoMovement> CargoMovements { get; set; }
         public virtual IList<DeliveryException> DeliveryExceptions { get; set; }
     }

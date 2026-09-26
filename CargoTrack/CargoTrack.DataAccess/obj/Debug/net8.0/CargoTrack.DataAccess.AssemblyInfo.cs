@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CargoTrack.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3a3d0b653ecf2e02367f1f39473e9010fc5ddb7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20e25d15b8721d4ffbe5eaaea85a63068f375615")]
 [assembly: System.Reflection.AssemblyProductAttribute("CargoTrack.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CargoTrack.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

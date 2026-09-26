@@ -26,24 +26,33 @@ namespace CargoTrack.Business.Services.Cargos
             var estimatedDate = await _cargoPricingService.CalculateEstimatedDeliveryDateAsync(createCargoDto.OriginBranchId, createCargoDto.DestinationBranchId, createCargoDto.CargoType);
             var trackCode = await _cargoPricingService.GenerateTrackCode();
 
-            var cargo = new Cargo
-            {
-                TrackCode = trackCode,
-                ShipmentDate = DateTime.Now,
-                EstimatedArrivalDate = estimatedDate,
-                Weight = createCargoDto.Weight,
-                Length = createCargoDto.Length,
-                Width = createCargoDto.Width,
-                Height = createCargoDto.Height,
-                Desi = desi,
-                Price = price,
-                CargoType = createCargoDto.CargoType,
-                CargoStatus = CargoStatus.Created,
-                SenderId = createCargoDto.SenderId,
-                ReceiverId = createCargoDto.ReceiverId,
-                OriginBranchId = createCargoDto.OriginBranchId,
-                DestinationBranchId = createCargoDto.DestinationBranchId
-            };
+            var cargo = createCargoDto.Adapt<Cargo>();
+
+            cargo.TrackCode = trackCode;
+            cargo.ShipmentDate = DateTime.Now;
+            cargo.EstimatedArrivalDate = estimatedDate;
+            cargo.Desi = desi;
+            cargo.Price = price;
+            cargo.CargoStatus = CargoStatus.Created;
+
+            //var cargo = new Cargo
+            //{
+            //    TrackCode = trackCode,
+            //    ShipmentDate = DateTime.Now,
+            //    EstimatedArrivalDate = estimatedDate,
+            //    Weight = createCargoDto.Weight,
+            //    Length = createCargoDto.Length,
+            //    Width = createCargoDto.Width,
+            //    Height = createCargoDto.Height,
+            //    Desi = desi,
+            //    Price = price,
+            //    CargoType = createCargoDto.CargoType,
+            //    CargoStatus = CargoStatus.Created,
+            //    SenderId = createCargoDto.SenderId,
+            //    ReceiverId = createCargoDto.ReceiverId,
+            //    OriginBranchId = createCargoDto.OriginBranchId,
+            //    DestinationBranchId = createCargoDto.DestinationBranchId
+            //};
 
             await _repository.CreateAsync(cargo);
         }
@@ -145,6 +154,18 @@ namespace CargoTrack.Business.Services.Cargos
         {
             var cargo = await _repository.GetByIdWithDetailsAsync(id);
             return cargo.Adapt<ResultCargoDto>();
+        }
+
+        public async Task<List<ResultCargoDto>> GetOutDeliveryByBranchIdAsync(Guid branchId)
+        {
+            var cargo = await _repository.GetOutDeliveryByBranchIdAsync(branchId);
+            return cargo.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<List<ResultCargoDto>> GetDeliveryFailedOrReturnInProcessByBranchIdAsync(Guid branchId)
+        {
+            var cargo = await _repository.GetDeliveryFailedOrReturnInProcessByBranchIdAsync(branchId);
+            return cargo.Adapt<List<ResultCargoDto>>();
         }
     }
 }

@@ -142,5 +142,19 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             await _deliveryService.VerifyAndCompleteDeliveryAsync(vm.DeliveryInput.CargoId, vm.DeliveryInput.DeliveryCode, vm.DeliveryInput.RecipientName, vm.DeliveryInput.EmployeeId, vm.DeliveryInput.Note);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> DeliveryList()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var cargos = await _cargoService.GetOutDeliveryByBranchIdAsync(user.BranchId.Value);
+            return View(cargos);
+        }
+
+        public async Task<IActionResult> DeliveryFailedAndReturnInProcessList()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var cargos = await _cargoService.GetDeliveryFailedOrReturnInProcessByBranchIdAsync(user.BranchId.Value);
+            return View(cargos);
+        }
     }
 }
