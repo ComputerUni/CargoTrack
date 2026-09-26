@@ -17,10 +17,6 @@ namespace CargoTrack.Business.Services.DeliveryExceptions
         public async Task RecordDeliveryExceptionAsync(Guid cargoId, Guid employeeId, ExceptionReason exceptionReason, int attemptNumber, string description)
         {
             var cargo = await _cargoRepository.GetByIdAsync(cargoId);
-            if (cargo.CargoStatus != CargoStatus.OutForDelivery)
-            {
-                throw new Exception("Kargo Dağıtıma Çıkmamış Durumunda Değildir.");
-            }
             var deliveryException = new DeliveryException
             {
                 CargoId = cargoId,

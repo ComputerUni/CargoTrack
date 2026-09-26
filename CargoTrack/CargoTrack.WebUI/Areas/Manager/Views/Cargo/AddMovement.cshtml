@@ -160,6 +160,27 @@
                             </span>
                         </div>
 
+                        <div id="transferCenterContainer" class="hidden flex flex-col gap-space-xs transition-all duration-200">
+                            <div class="flex items-center justify-between">
+                                <label asp-for="@Model.StatusUpdate.TransferCenterId" class="font-label-lg text-label-lg font-bold text-error flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[18px]">error</span>
+                                    Transfer Merkezi
+                                </label>
+                                <span class="font-label-sm text-label-sm text-error font-medium">* Zorunlu Alan</span>
+                            </div>
+
+                            <div class="relative">
+                                <select asp-for="@Model.StatusUpdate.TransferCenterId"
+                                        asp-items="@ViewBag.TransferCenter"
+                                        class="w-full h-11 px-space-md bg-surface-container-low text-on-surface rounded-xl font-label-lg text-label-lg appearance-none focus:outline-none cursor-pointer border border-error/30 focus:border-error">
+                                    <option value="" disabled selected>Lütfen Transfer Merkezini Seçiniz</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-space-md flex items-center pointer-events-none text-on-surface-variant">
+                                    <span class="material-symbols-outlined text-[18px]">expand_more</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Aciklama / Operasyon Notu -->
                         <div class="flex flex-col gap-space-xs">
                             <label class="font-label-lg text-label-lg font-bold text-on-surface">Açıklama &amp; Operasyon Notu</label>
@@ -263,46 +284,50 @@
     </div>
 </div>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div id="errorModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+        <div class="bg-surface-container-lowest rounded-xl shadow-xl p-space-lg max-w-md w-full mx-space-md">
+            <div class="flex items-center gap-space-sm mb-space-md">
+                <span class="material-symbols-outlined text-error text-[24px]">error</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">İşlem Hatası</h3>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">@TempData["ErrorMessage"]</p>
+            <button onclick="document.getElementById('errorModal').remove()"
+                    class="w-full h-10 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-semibold">
+                Tamam
+            </button>
+        </div>
+    </div>
+}
+
 @section Scripts {
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Açıkça verdiğimiz ID ile yakalıyoruz
+        document.addEventListener('DOMContentLoaded', function () {
             const statusSelect = document.getElementById('statusSelectInput');
             const reasonContainer = document.getElementById('exceptionReasonContainer');
+            const transferCenterContainer = document.getElementById('transferCenterContainer');
 
-            if (!statusSelect || !reasonContainer) {
-                console.warn("Elementler bulunamadı:", { statusSelect, reasonContainer });
-                return;
-            }
-
-            function toggleExceptionField() {
-                const selectedIndex = statusSelect.selectedIndex;
-                if (selectedIndex === -1) return;
-
+            function toggleFields() {
                 const selectedValue = (statusSelect.value || "").trim();
-                // Türkçe karakterleri küçültürken bozulmaması için toLocaleLowerCase('tr-TR') kullanıyoruz
-                const selectedText = (statusSelect.options[selectedIndex]?.text || "").toLocaleLowerCase('tr-TR');
 
-                // Konsoldan ne geldiğini anlık görmek için:
-                console.log("Seçilen Değer:", selectedValue, "| Görünen Metin:", selectedText);
+                const isFailed = selectedValue === "7";
+                reasonContainer.classList.toggle('hidden', !isFailed);
+                if (!isFailed) {
+                    const s = reasonContainer.querySelector('select');
+                    if (s) s.value = "";
+                }
 
-                // Kontrol: "teslim edilemedi", "başarısız", "failed" veya Enum ismi
-                const isFailed = selectedText.includes("teslim edilemedi") ||
-                    selectedText.includes("başarısız") ||
-                    selectedText.includes("failed") ||
-                    selectedValue === "DeliveryFailed";
-
-                if (isFailed) {
-                    reasonContainer.classList.remove('hidden');
-                } else {
-                    reasonContainer.classList.add('hidden');
-                    const reasonSelect = reasonContainer.querySelector('select');
-                    if (reasonSelect) reasonSelect.value = "";
+                const isTransfer = selectedValue === "3";
+                transferCenterContainer.classList.toggle('hidden', !isTransfer);
+                if (!isTransfer) {
+                    const s = transferCenterContainer.querySelector('select');
+                    if (s) s.value = "";
                 }
             }
 
-            statusSelect.addEventListener('change', toggleExceptionField);
-            toggleExceptionField();
+            statusSelect.addEventListener('change', toggleFields);
+            toggleFields();
         });
     </script>
 }

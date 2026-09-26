@@ -90,8 +90,20 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
                 return View(vm);
             }
 
-            await _cargoService.UpdateStatusAsync(vm.StatusUpdate);
-            return RedirectToAction("Index");
+            try
+            {
+                await _cargoService.UpdateStatusAsync(vm.StatusUpdate);
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                TempData["ErrorMessage"] = ex.Message;
+                await GetViewBagDataAsync();
+                vm.Cargo = await _cargoService.GetByIdWithDetailsAsync(vm.StatusUpdate.Id);
+                return View(vm);
+            }
+
+           
         }
 
         [HttpGet]
