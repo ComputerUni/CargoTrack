@@ -39,7 +39,9 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.DeliveryAddress)
                 .Include(x => x.AssignedEmployee)
                 .Include(x => x.CargoMovements)
-                .Where(x => x.OriginBranchId == branchId || x.DestinationBranchId == branchId)
+                .Where(x => x.CargoMovements
+                .OrderByDescending(m => m.MovementDate)
+                .FirstOrDefault().BranchId == branchId)
                 .ToListAsync();
         }
 

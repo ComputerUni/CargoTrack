@@ -13,6 +13,7 @@ using CargoTrack.Business.Services.Employees;
 using CargoTrack.Business.Services.TransferCenters;
 using CargoTrack.DataAccess.Context;
 using CargoTrack.DataAccess.Repositories.Abouts;
+using CargoTrack.DataAccess.Repositories.Addresses;
 using CargoTrack.DataAccess.Repositories.AuditLogs;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.CargoMovements;
@@ -40,6 +41,7 @@ builder.Services.AddFluentValidationAutoValidation()
     //.AddValidatorsFromAssembly(typeof(BusinessAssembly).Assembly);
 
 builder.Services.AddScoped<IAboutRepository, AboutRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 builder.Services.AddScoped<IBranchRepository, BranchRepository>();
 builder.Services.AddScoped<IAuditLogRepository, AuditLogRepository>();

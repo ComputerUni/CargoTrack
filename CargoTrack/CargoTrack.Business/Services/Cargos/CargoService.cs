@@ -2,17 +2,19 @@
 using CargoTrack.Business.Services.CargoPricings;
 using CargoTrack.Business.Services.Deliveries;
 using CargoTrack.Business.Services.DeliveryExceptions;
+using CargoTrack.DataAccess.Repositories.Addresses;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using Mapster;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace CargoTrack.Business.Services.Cargos
 {
-    public class CargoService(IDeliveryExceptionService _deliveryExceptionService, ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService, IDeliveryService _deliveryService) : ICargoService
+    public class CargoService(IAddressRepository _addressRepository, IDeliveryExceptionService _deliveryExceptionService, ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService, IDeliveryService _deliveryService, UserManager<AppUser> _userManager) : ICargoService
     {
         public async Task CreateAsync(CreateCargoDto createCargoDto)
         {
@@ -28,31 +30,34 @@ namespace CargoTrack.Business.Services.Cargos
 
             var cargo = createCargoDto.Adapt<Cargo>();
 
+            var address = new Address
+            {
+                Title = "Teslimat Adresi",
+                FullAddress = createCargoDto.FullAddress,
+                District = createCargoDto.District,
+                City = createCargoDto.City,
+                UserId = createCargoDto.ReceiverId
+            };
+
+            await _addressRepository.CreateAsync(address);
+
+            if(!string.IsNullOrWhiteSpace(createCargoDto.ReceiverPhone))
+            {
+                var receiverUser = await _userManager.FindByIdAsync(createCargoDto.ReceiverId.ToString());
+                if(receiverUser != null)
+                {
+                    receiverUser.PhoneNumber = createCargoDto.ReceiverPhone;
+                    await _userManager.UpdateAsync(receiverUser);
+                }
+            }
+
             cargo.TrackCode = trackCode;
             cargo.ShipmentDate = DateTime.Now;
             cargo.EstimatedArrivalDate = estimatedDate;
             cargo.Desi = desi;
             cargo.Price = price;
             cargo.CargoStatus = CargoStatus.Created;
-
-            //var cargo = new Cargo
-            //{
-            //    TrackCode = trackCode,
-            //    ShipmentDate = DateTime.Now,
-            //    EstimatedArrivalDate = estimatedDate,
-            //    Weight = createCargoDto.Weight,
-            //    Length = createCargoDto.Length,
-            //    Width = createCargoDto.Width,
-            //    Height = createCargoDto.Height,
-            //    Desi = desi,
-            //    Price = price,
-            //    CargoType = createCargoDto.CargoType,
-            //    CargoStatus = CargoStatus.Created,
-            //    SenderId = createCargoDto.SenderId,
-            //    ReceiverId = createCargoDto.ReceiverId,
-            //    OriginBranchId = createCargoDto.OriginBranchId,
-            //    DestinationBranchId = createCargoDto.DestinationBranchId
-            //};
+            cargo.DeliveryAddressId = address.Id;
 
             await _repository.CreateAsync(cargo);
         }
@@ -75,12 +80,20 @@ namespace CargoTrack.Business.Services.Cargos
 
         public async Task<UpdateCargoDto> GetByIdAsync(Guid id)
         {
-            var cargo = await _repository.GetByIdAsync(id);
+            var cargo = await _repository.GetByIdWithDetailsAsync(id);
             if (cargo is null)
             {
                 throw new Exception("Cargo Not Found");
             }
-            return cargo.Adapt<UpdateCargoDto>();
+
+            var dto = cargo.Adapt<UpdateCargoDto>();
+
+            if(cargo.Receiver != null)
+            {
+                dto.ReceiverPhone = cargo.Receiver.PhoneNumber;
+            }
+
+            return dto;
         }
 
         public async Task<ResultCargoDto> GetByTrackCodeAsync(string trackCode)
@@ -91,8 +104,63 @@ namespace CargoTrack.Business.Services.Cargos
 
         public async Task UpdateAsync(UpdateCargoDto updateCargoDto)
         {
-            var cargo = updateCargoDto.Adapt<Cargo>();
+            var cargo = await _repository.GetByIdWithDetailsAsync(updateCargoDto.Id);
+            if (cargo == null)
+            {
+                throw new Exception("Kargo bulunamadı");
+            }
+
+            cargo.Weight = updateCargoDto.Weight;
+            cargo.Length = updateCargoDto.Length;
+            cargo.Width = updateCargoDto.Width;
+            cargo.Height = updateCargoDto.Height;
+            cargo.CargoType = updateCargoDto.CargoType;
+            cargo.SenderId = updateCargoDto.SenderId;
+            cargo.ReceiverId = updateCargoDto.ReceiverId;
+            cargo.OriginBranchId = updateCargoDto.OriginBranchId;
+            cargo.DestinationBranchId = updateCargoDto.DestinationBranchId;
+
+            var desi = (updateCargoDto.Length * updateCargoDto.Width * updateCargoDto.Height) / 3000;
+
+            cargo.Desi = desi;
+
+
+            var originBranch = await _branchRepository.GetByIdAsync(updateCargoDto.OriginBranchId);
+            var destinationBranch = await _branchRepository.GetByIdAsync(updateCargoDto.DestinationBranchId);
+            var isIntercity = originBranch.CityId != destinationBranch.CityId;
+
+            cargo.Price = await _cargoPricingService.CalculatePriceAsync(updateCargoDto.Weight, desi, updateCargoDto.CargoType, isIntercity);
+
+            if(cargo.DeliveryAddress != null)
+            {
+                cargo.DeliveryAddress.FullAddress = updateCargoDto.FullAddress;
+                cargo.DeliveryAddress.City = updateCargoDto.City;
+                cargo.DeliveryAddress.District = updateCargoDto.District;
+                cargo.DeliveryAddress.UserId = updateCargoDto.ReceiverId;
+                await _addressRepository.UpdateAsync(cargo.DeliveryAddress);
+            }
+            else
+            {
+                var newAddress = new Address
+                {
+                    Title = "Teslimat Adresi",
+                    FullAddress = updateCargoDto.FullAddress,
+                    City = updateCargoDto.City,
+                    District = updateCargoDto.District,
+                    UserId = updateCargoDto.ReceiverId
+                };
+                await _addressRepository.CreateAsync(newAddress);
+                cargo.DeliveryAddressId = newAddress.Id;
+            }
+
+            if(cargo.Receiver != null && !string.IsNullOrWhiteSpace(updateCargoDto.ReceiverPhone))
+            {
+                cargo.Receiver.PhoneNumber = updateCargoDto.ReceiverPhone;
+                await _userManager.UpdateAsync(cargo.Receiver);
+            }
+
             await _repository.UpdateAsync(cargo);
+
         }
 
         public async Task<List<ResultCargoDto>> GetByBranchIdAsync(Guid branchId)

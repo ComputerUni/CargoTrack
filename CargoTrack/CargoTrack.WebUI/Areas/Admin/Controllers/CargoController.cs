@@ -25,7 +25,7 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
                    Value = ((int)x).ToString()
                }).ToList();
 
-            var users = await _userManager.Users.ToListAsync();
+            var users = await _userManager.GetUsersInRoleAsync("User");
             ViewBag.Users = users.Select(x => new SelectListItem
             {
                 Value = x.Id.ToString(),

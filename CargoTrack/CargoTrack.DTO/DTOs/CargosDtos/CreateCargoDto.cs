@@ -14,6 +14,10 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public double Width { get; set; }
         public double Height { get; set; }
         public CargoType CargoType { get; set; }
+        public string FullAddress { get; set; }
+        public string District { get; set; }
+        public string City { get; set; }
+        public string ReceiverPhone { get; set; }
         public Guid SenderId { get; set; }
         public Guid ReceiverId { get; set; }
         public Guid OriginBranchId { get; set; }

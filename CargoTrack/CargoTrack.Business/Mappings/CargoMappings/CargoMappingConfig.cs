@@ -25,6 +25,15 @@ namespace CargoTrack.Business.Mappings.CargoMappings
             TypeAdapterConfig<CargoMovement, ResultCargoMovementDto>.NewConfig()
                 .Map(dest => dest.BranchName, src => src.Branch.Name)
                 .Map(dest => dest.EmployeeName, src => src.Employee.FirstName + " " + src.Employee.LastName);
+
+            TypeAdapterConfig<CreateCargoDto, Cargo>.NewConfig()
+                .Ignore(dest => dest.DeliveryAddressId);
+
+            TypeAdapterConfig<Cargo, UpdateCargoDto>.NewConfig()
+                .Map(dest => dest.FullAddress, src => src.DeliveryAddress != null ? src.DeliveryAddress.FullAddress : string.Empty)
+                .Map(dest => dest.City, src => src.DeliveryAddress != null ? src.DeliveryAddress.City : string.Empty)
+                .Map(dest => dest.District, src => src.DeliveryAddress != null ? src.DeliveryAddress.District : string.Empty)
+                .Map(dest => dest.ReceiverPhone, src => src.AssignedEmployee != null ? src.Receiver.PhoneNumber : string.Empty);
         }
     }
 }
