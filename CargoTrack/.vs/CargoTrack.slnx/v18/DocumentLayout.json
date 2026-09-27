@@ -118,8 +118,7 @@
               "RelativeToolTip": "CargoTrack.Business\\Services\\CargoMovements\\CargoMovementService.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAgwCgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T12:04:24.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T12:04:24.695Z"
             },
             {
               "$type": "Document",
@@ -131,8 +130,7 @@
               "RelativeToolTip": "CargoTrack.Business\\Services\\Cargos\\ICargoService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T12:01:13.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T12:01:13.947Z"
             },
             {
               "$type": "Document",
@@ -142,7 +140,7 @@
               "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\Cargos\\ICargoRepository.cs",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\Cargos\\ICargoRepository.cs",
               "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\Cargos\\ICargoRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-27T12:01:00.768Z",
               "EditorCaption": ""
@@ -157,8 +155,7 @@
               "RelativeToolTip": "CargoTrack.Entity\\Entities\\AppUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T12:00:49.692Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T12:00:49.692Z"
             },
             {
               "$type": "Document",
@@ -170,8 +167,7 @@
               "RelativeToolTip": "CargoTrack.Entity\\Entities\\CargoMovement.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T12:00:40.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T12:00:40.671Z"
             },
             {
               "$type": "Document",
@@ -183,8 +179,7 @@
               "RelativeToolTip": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T12:00:29.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T12:00:29.011Z"
             },
             {
               "$type": "Document",
@@ -196,8 +191,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
               "ViewState": "AgIAAHQAAAAAAAAAAAAiwIgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:55:02.858Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:55:02.858Z"
             },
             {
               "$type": "Document",
@@ -209,8 +203,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\UILayoutController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:53:30.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:53:30.366Z"
             },
             {
               "$type": "Document",
@@ -222,8 +215,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\RegisterController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:53:27.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:53:27.79Z"
             },
             {
               "$type": "Document",
@@ -235,8 +227,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:53:23.384Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:53:23.384Z"
             },
             {
               "$type": "Document",
@@ -248,8 +239,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\DefaultController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:53:22.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:53:22.829Z"
             },
             {
               "$type": "Document",
@@ -261,8 +251,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\LoginController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAgwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:53:06.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:53:06.728Z"
             },
             {
               "$type": "Document",
@@ -274,8 +263,7 @@
               "RelativeToolTip": "CargoTrack.DTO\\DTOs\\CargosDtos\\CargoStatusUpdateDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:51:46.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:51:46.235Z"
             },
             {
               "$type": "Document",
@@ -287,8 +275,7 @@
               "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\Cargos\\CargoRepository.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAqwBgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T11:48:58.093Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T11:48:58.093Z"
             },
             {
               "$type": "Document",
@@ -336,8 +323,7 @@
               "RelativeToolTip": "CargoTrack.Business\\Services\\Cargos\\CargoService.cs",
               "ViewState": "AgIAALgAAAAAAAAAAAAQwLsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-27T10:20:55.653Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T10:20:55.653Z"
             },
             {
               "$type": "Document",
@@ -361,8 +347,7 @@
               "RelativeToolTip": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-09-27T09:57:10.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-09-27T09:57:10.305Z"
             }
           ]
         },
