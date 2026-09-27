@@ -27,7 +27,7 @@ namespace CargoTrack.Business.Services.Deliveries
         public async Task VerifyAndCompleteDeliveryAsync(Guid cargoId, string deliveryCode, string receiverName, Guid employeeId, string note)
         {
             var cargo = await _cargoRepository.GetByIdAsync(cargoId);
-            if(cargo.CargoStatus != CargoStatus.OutForDelivery)
+            if(cargo.CargoStatus != CargoStatus.OutForDelivery && cargo.CargoStatus != CargoStatus.DeliveryFailed)
             {
                 throw new Exception("Kargo Dağıtıma Çıkmamıştır.");
             }

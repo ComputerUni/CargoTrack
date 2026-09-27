@@ -166,32 +166,35 @@ namespace CargoTrack.Business.Services.Cargos
         public async Task<List<ResultCargoDto>> GetByBranchIdAsync(Guid branchId)
         {
             var cargos = await _repository.GetByBranchIdAsync(branchId);
-            return cargos.Select(x => new ResultCargoDto
-            {
-                Id = x.Id,
-                TrackCode = x.TrackCode,
-                ShipmentDate = x.ShipmentDate,
-                EstimatedArrivalDate = x.EstimatedArrivalDate,
-                Weight = x.Weight,
-                Desi = x.Desi,
-                Price = x.Price,
-                CargoStatus = x.CargoStatus,
-                CargoType = x.CargoType,
-                SenderName = x.Sender.FirstName + " " + x.Sender.LastName,
-                ReceiverName = x.Receiver.FirstName + " " + x.Receiver.LastName,
-                OriginBranchName = x.OriginBranch.Name,
-                DestinationBranchName = x.DestinationBranch.Name
-            }).ToList();
+            return cargos.Adapt<List<ResultCargoDto>>();
         }
 
 
         public async Task UpdateStatusAsync(CargoStatusUpdateDto dto)
         {
-            var cargo = await _repository.GetByIdAsync(dto.Id);
+            var cargo = await _repository.GetByIdWithMovementAsync(dto.Id);
 
             if (cargo is null)
             {
                 throw new ValidationException("Böyle bir kargo bulumamadı");
+            }
+
+            if(dto.BranchId.HasValue)
+            {
+                var lastMovement = cargo.CargoMovements.OrderByDescending(m => m.MovementDate).FirstOrDefault();
+
+                bool isAtMyBranch = cargo.CargoMovements.Any() ? lastMovement?.BranchId == dto.BranchId : cargo.OriginBranchId == dto.BranchId;
+                bool isReturnComing = (cargo.FailedAttemptCount >= 3 || cargo.CargoStatus == CargoStatus.ReturnInProcess || cargo.CargoStatus == CargoStatus.InTransferCenter) && cargo.OriginBranchId == dto.BranchId;
+                bool isComing = !isAtMyBranch && (cargo.DestinationBranchId == dto.BranchId || isReturnComing);
+
+                if(!isAtMyBranch && !isComing)
+                {
+                    throw new UnauthorizedAccessException("Bu kargo şu anda şubenizde değil");
+                }
+                if(isComing && dto.NewStatus != CargoStatus.ArrivedAtDeliveryBranch && dto.NewStatus != CargoStatus.AtOriginBranch && dto.NewStatus != CargoStatus.ReturnedToSender)
+                {
+                    throw new UnauthorizedAccessException("Bu kargo henüz şubenize ulaşmadı, sadece teslim alabilirsiniz.");
+                }
             }
 
             if (dto.NewStatus == CargoStatus.DeliveryFailed)
@@ -234,6 +237,18 @@ namespace CargoTrack.Business.Services.Cargos
         {
             var cargo = await _repository.GetDeliveryFailedOrReturnInProcessByBranchIdAsync(branchId);
             return cargo.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<List<ResultCargoDto>> GetIncomingCargosAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetIncomingCargoAsync(branchId);
+            return cargos.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<List<ResultCargoDto>> GetOutgoingCargosAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetOutgoingCargoAsync(branchId);
+            return cargos.Adapt<List<ResultCargoDto>>();
         }
     }
 }

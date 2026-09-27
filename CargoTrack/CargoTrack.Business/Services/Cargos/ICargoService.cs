@@ -20,5 +20,7 @@ namespace CargoTrack.Business.Services.Cargos
         Task<ResultCargoDto> GetByIdWithDetailsAsync(Guid id);
         Task<List<ResultCargoDto>> GetOutDeliveryByBranchIdAsync(Guid branchId);
         Task<List<ResultCargoDto>> GetDeliveryFailedOrReturnInProcessByBranchIdAsync(Guid branchId);
+        Task<List<ResultCargoDto>> GetIncomingCargosAsync(Guid branchId);
+        Task<List<ResultCargoDto>> GetOutgoingCargosAsync(Guid branchId);
     }
 }

@@ -278,19 +278,19 @@
                             <div class="flex items-center gap-space-xs flex-wrap">
                                 @if (cargo.FailedAttemptCount < 3)
                                 {
-                                    <button class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 shadow-sm transition-all"
-                                            onclick="scheduleNextDelivery('@cargo.TrackCode', '@cargo.ReceiverName')">
+                                    <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
+                                       class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 shadow-sm transition-all">
                                         <span class="material-symbols-outlined text-[16px]">event_repeat</span>
                                         <span>Tekrar Dağıtıma Çıkar</span>
-                                    </button>
+                                    </a>
                                 }
                                 else
                                 {
-                                    <button class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-rose-700 text-white font-label-md text-label-md hover:opacity-90 shadow-sm transition-all"
-                                            onclick="processReturnToSender('@cargo.TrackCode', '@cargo.SenderName')">
-                                        <span class="material-symbols-outlined text-[16px]">keyboard_return</span>
-                                        <span>İade Sürecini Başlat</span>
-                                    </button>
+                                  <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
+                                       class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-rose-700 text-white font-label-md text-label-md hover:opacity-90 shadow-sm transition-all">
+                                        <span class="material-symbols-outlined text-[16px]">local_shipping</span>
+                                        <span>İade Sevkiyatını Başlat</span>
+                                    </a>
                                 }
 
                                 <button class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors"

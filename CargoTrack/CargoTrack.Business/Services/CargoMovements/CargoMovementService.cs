@@ -24,10 +24,10 @@ namespace CargoTrack.Business.Services.CargoMovements
                 { CargoStatus.Created, new List<CargoStatus> { CargoStatus.AtOriginBranch} },
                 { CargoStatus.AtOriginBranch, new List<CargoStatus> { CargoStatus.InTransferCenter, CargoStatus.ArrivedAtDeliveryBranch } },
                 { CargoStatus.InTransferCenter, new List<CargoStatus> { CargoStatus.InTransferCenter, CargoStatus.ArrivedAtDeliveryBranch} },
-                { CargoStatus.ArrivedAtDeliveryBranch, new List<CargoStatus> { CargoStatus.OutForDelivery} },
+                { CargoStatus.ArrivedAtDeliveryBranch, new List<CargoStatus> { CargoStatus.OutForDelivery, CargoStatus.ReturnedToSender } },
                 { CargoStatus.OutForDelivery, new List<CargoStatus> { CargoStatus.DeliveryFailed} },
                 { CargoStatus.DeliveryFailed, new List<CargoStatus> { CargoStatus.OutForDelivery, CargoStatus.ReturnInProcess, CargoStatus.DeliveryFailed} },
-                { CargoStatus.ReturnInProcess, new List<CargoStatus> { CargoStatus.ReturnedToSender} },
+                { CargoStatus.ReturnInProcess, new List<CargoStatus> { CargoStatus.InTransferCenter, CargoStatus.ReturnedToSender} },
             };
 
             if (!allowedTransitions[cargo.CargoStatus].Contains(newStatus))

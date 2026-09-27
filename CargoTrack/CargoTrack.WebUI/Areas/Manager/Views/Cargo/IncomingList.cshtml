@@ -317,35 +317,12 @@
                                        title="Detay">
                                         <span class="material-symbols-outlined text-[18px]">info</span>
                                     </a>
-                                    @if (cargo.CargoStatus != CargoStatus.Delivered && cargo.CargoStatus != CargoStatus.ReturnedToSender)
-                                    {
-                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
-                                           class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
-                                           title="Hareket Ekle">
-                                            <span class="material-symbols-outlined text-[18px]">add_location_alt</span>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <span class="material-symbols-outlined text-outline/40 cursor-not-allowed" title="Süreç Tamamlandı">lock</span>
-                                    }
 
-                                    @if (cargo.CargoStatus == CargoStatus.OutForDelivery || cargo.CargoStatus == CargoStatus.DeliveryFailed)
-                                    {
-                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="VerifyDelivery" asp-route-id="@cargo.Id"
-                                           class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
-                                           title="Teslimat Kodu Doğrula">
-                                            <span class="material-symbols-outlined text-[18px]">key</span>
-                                        </a>
-                                    }
-                                    @if (cargo.CargoStatus == CargoStatus.DeliveryFailed)
-                                    {
-                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="InitiateReturn" asp-route-id="@cargo.Id"
-                                           class="w-8 h-8 rounded-lg flex items-center justify-center text-error hover:bg-error-container transition-colors"
-                                           title="İade Başlat">
-                                            <span class="material-symbols-outlined text-[18px]">assignment_return</span>
-                                        </a>
-                                    }
+                                    <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
+                                       class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
+                                       title="Teslim Al">
+                                        <span class="material-symbols-outlined text-[18px]">move_to_inbox</span>
+                                    </a>
                                 </div>
                             </td>
 

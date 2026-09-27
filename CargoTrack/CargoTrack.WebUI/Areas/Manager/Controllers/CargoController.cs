@@ -54,11 +54,24 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.TransferCenter = new SelectList(transferCenter, "Id", "Name");
         }
 
-
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
             var cargos = await _cargoService.GetByBranchIdAsync(user.BranchId.Value);
+            return View(cargos);
+        }
+
+        public async Task<IActionResult> IncomingList()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var cargos = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value);
+            return View(cargos);
+        }
+
+        public async Task<IActionResult> OutgoingList()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var cargos = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value);
             return View(cargos);
         }
 
@@ -67,10 +80,30 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             await GetViewBagDataAsync();
+
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.CurrentBranchName = branch.Name;
+
+            var cargo = await _cargoService.GetByIdWithDetailsAsync(id);
+            var lastMovement = cargo.CargoMovements?.OrderByDescending(m => m.MovementDate).FirstOrDefault();
+            bool isComing = cargo.CargoMovements != null && cargo.CargoMovements.Any() ? lastMovement?.BranchId != user.BranchId : cargo.OriginBranchId != user.BranchId;
+            if(isComing)
+            {
+                ViewBag.CargoStatus = new List<SelectListItem>
+                {
+                    new SelectListItem
+                    {
+                        Text = "Varış Şubesine Ulaştı",
+                        Value = ((int)CargoStatus.ArrivedAtDeliveryBranch).ToString()
+                    }
+                };
+            }
+
             var vm = new CargoMovementViewModel
             {
                 Cargo = await _cargoService.GetByIdWithDetailsAsync(id),
-                StatusUpdate = new CargoStatusUpdateDto { 
+                StatusUpdate = new CargoStatusUpdateDto 
+                { 
                     Id = id,
                     BranchId = user.BranchId.Value
                 }
@@ -82,6 +115,9 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         public async Task<IActionResult> AddMovement(CargoMovementViewModel vm)
         {
             ModelState.Remove("Cargo");
+
+            var user = await _userManager.GetUserAsync(User);
+            vm.StatusUpdate.BranchId = user.BranchId.Value;
 
             if (!ModelState.IsValid)
             {

@@ -39,9 +39,19 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.DeliveryAddress)
                 .Include(x => x.AssignedEmployee)
                 .Include(x => x.CargoMovements)
-                .Where(x => x.CargoMovements
-                .OrderByDescending(m => m.MovementDate)
-                .FirstOrDefault().BranchId == branchId)
+                .Where(x =>
+                    x.CargoStatus != CargoStatus.InTransferCenter &&
+                    //x.CargoStatus != CargoStatus.ReturnedToSender &&
+                    (
+                        (!x.CargoMovements.Any() && x.OriginBranchId == branchId)
+                        ||
+                        (x.CargoMovements.Any() && x.CargoMovements
+                        .OrderByDescending(m => m.MovementDate)
+                        .Select(m => m.BranchId)
+                        .FirstOrDefault() == branchId)
+                    )
+                )
+                .OrderByDescending(x => x.ShipmentDate)
                 .ToListAsync();
         }
 
@@ -61,6 +71,13 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.Receiver)
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Cargo> GetByIdWithMovementAsync(Guid id)
+        {
+            return await _context.Cargos
+                .Include(x => x.CargoMovements)
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
@@ -92,6 +109,32 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
               .ToListAsync();
         }
 
+        public async Task<List<Cargo>> GetIncomingCargoAsync(Guid branchId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .Include(x => x.DeliveryAddress)
+                .Include(x => x.CargoMovements)
+                .Where(x =>
+                    x.DestinationBranchId == branchId &&
+                    x.CargoStatus != CargoStatus.ArrivedAtDeliveryBranch &&
+                    x.CargoStatus != CargoStatus.OutForDelivery &&
+                    x.CargoStatus != CargoStatus.Delivered &&
+                    x.CargoStatus != CargoStatus.ReturnInProcess &&
+                    x.CargoStatus != CargoStatus.ReturnedToSender &&
+                    (
+                        (!x.CargoMovements.Any() && x.DestinationBranchId == branchId && x.OriginBranchId != branchId) ||
+                        (x.CargoMovements.Any() && x.CargoMovements
+                            .OrderByDescending(m => m.MovementDate)
+                            .FirstOrDefault().BranchId != branchId)
+
+                    )
+                ).ToListAsync();
+        }
+
         public async Task<List<Cargo>> GetOutDeliveryByBranchIdAsync(Guid branchId)
         {
             return await _context.Cargos
@@ -108,6 +151,34 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
               .Where(x => x.DestinationBranchId == branchId && x.CargoStatus == CargoStatus.OutForDelivery)
               .OrderByDescending(x => x.ShipmentDate)
               .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetOutgoingCargoAsync(Guid branchId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .Include(x => x.DeliveryAddress)
+                .Include(x => x.CargoMovements)
+                .Where(x =>
+                    x.OriginBranchId == branchId &&
+                    x.CargoStatus != CargoStatus.Delivered &&
+                    x.CargoStatus != CargoStatus.ReturnedToSender &&
+                    x.CargoMovements.Any() &&
+                    (
+                        x.CargoStatus == CargoStatus.InTransferCenter
+                        ||
+                        x.CargoMovements
+                              .OrderByDescending(m => m.MovementDate)
+                              .Select(m => m.BranchId)
+                              .FirstOrDefault() != branchId
+
+                    )
+                 ).ToListAsync();
+
+                  
         }
     }
 }

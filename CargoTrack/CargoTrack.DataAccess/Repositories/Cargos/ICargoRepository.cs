@@ -17,7 +17,9 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
         Task<List<Cargo>> GetOutDeliveryByBranchIdAsync(Guid branchId);
         Task<List<Cargo>> GetDeliveryFailedOrReturnInProcessByBranchIdAsync(Guid branchId);
         Task<List<Cargo>> GetIncomingCargoAsync(Guid branchId);
+        Task<List<Cargo>> GetOutgoingCargoAsync(Guid branchId);
         Task<Cargo> GetByIdWithMovementAsync(Guid id);
+
              
     }
 }
