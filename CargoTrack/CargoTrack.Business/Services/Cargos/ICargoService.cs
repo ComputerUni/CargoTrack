@@ -1,4 +1,5 @@
 ﻿using CargoTrack.DTO.DTOs.CargosDtos;
+using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,8 @@ namespace CargoTrack.Business.Services.Cargos
         Task<List<ResultCargoDto>> GetDeliveryFailedOrReturnInProcessByBranchIdAsync(Guid branchId);
         Task<List<ResultCargoDto>> GetIncomingCargosAsync(Guid branchId);
         Task<List<ResultCargoDto>> GetOutgoingCargosAsync(Guid branchId);
+        Task<ManagerCargoIndexDto> GetBranchCargoSummaryAsync(Guid branchId);
+        Task<IncomingCargoSummaryDto> GetIncomingCargoSummaryAsync(Guid branchId);
+        Task<OutgoingCargoSummaryDto> GetOutgoingCargoSummaryAsync(Guid branchId);
     }
 }

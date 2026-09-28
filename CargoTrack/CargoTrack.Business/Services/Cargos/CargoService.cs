@@ -6,6 +6,7 @@ using CargoTrack.DataAccess.Repositories.Addresses;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
 using CargoTrack.DTO.DTOs.CargosDtos;
+using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using Mapster;
@@ -249,6 +250,45 @@ namespace CargoTrack.Business.Services.Cargos
         {
             var cargos = await _repository.GetOutgoingCargoAsync(branchId);
             return cargos.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<ManagerCargoIndexDto> GetBranchCargoSummaryAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetByBranchIdAsync(branchId);
+            return new ManagerCargoIndexDto
+            {
+                TotalCargos = cargos.Count,
+                OutOfDelivery = cargos.Count(x => x.CargoStatus == CargoStatus.OutForDelivery),
+                ArrivedAtBranch = cargos.Count(x => x.CargoStatus == CargoStatus.ArrivedAtDeliveryBranch),
+                AtOriginBranch = cargos.Count(x => x.CargoStatus == CargoStatus.AtOriginBranch),
+                DeliveryFailed = cargos.Count(x => x.CargoStatus == CargoStatus.DeliveryFailed),
+                Delivered = cargos.Count(x => x.CargoStatus == CargoStatus.Delivered)
+            };
+        }
+
+        public async Task<IncomingCargoSummaryDto> GetIncomingCargoSummaryAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetIncomingCargoAsync(branchId);
+
+            return new IncomingCargoSummaryDto
+            {
+                TotalIncoming = cargos.Count,
+                WaitingAtBranch = cargos.Count(x => x.CargoStatus == CargoStatus.ArrivedAtDeliveryBranch),
+                DeliveredToday = cargos.Count(x => x.CargoStatus == CargoStatus.Delivered && x.Delivery != null && x.Delivery.DeliveryDate.Date == DateTime.Today),
+                Delayed = cargos.Count(x => x.EstimatedArrivalDate < DateTime.Now && x.CargoStatus != CargoStatus.Delivered)
+            };
+        }
+
+        public async Task<OutgoingCargoSummaryDto> GetOutgoingCargoSummaryAsync(Guid branchId)
+        {
+            var cargos = await _repository.GetOutgoingCargoAsync(branchId);
+            return new OutgoingCargoSummaryDto
+            {
+                TotalOutgoing = cargos.Count,
+                InTransferCenter = cargos.Count(x => x.CargoStatus == CargoStatus.InTransferCenter),
+                ReturnedToSender = cargos.Count(x => x.CargoStatus == CargoStatus.ReturnedToSender),
+                OutOfDelivery = cargos.Count(x => x.CargoStatus == CargoStatus.OutForDelivery)
+            };
         }
     }
 }

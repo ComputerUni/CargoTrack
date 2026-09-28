@@ -119,6 +119,7 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.CargoMovements)
                 .Where(x =>
                     x.DestinationBranchId == branchId &&
+                    x.CargoStatus != CargoStatus.Created &&
                     x.CargoStatus != CargoStatus.ArrivedAtDeliveryBranch &&
                     x.CargoStatus != CargoStatus.OutForDelivery &&
                     x.CargoStatus != CargoStatus.Delivered &&
@@ -128,10 +129,8 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                         (!x.CargoMovements.Any() && x.DestinationBranchId == branchId && x.OriginBranchId != branchId) ||
                         (x.CargoMovements.Any() && x.CargoMovements
                             .OrderByDescending(m => m.MovementDate)
-                            .FirstOrDefault().BranchId != branchId)
-
-                    )
-                ).ToListAsync();
+                            .FirstOrDefault().BranchId != branchId))
+                    ).ToListAsync();
         }
 
         public async Task<List<Cargo>> GetOutDeliveryByBranchIdAsync(Guid branchId)
@@ -147,7 +146,8 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
               .Include(x => x.Receiver)
               .Include(x => x.OriginBranch)
               .Include(x => x.DestinationBranch)
-              .Where(x => x.DestinationBranchId == branchId && x.CargoStatus == CargoStatus.OutForDelivery)
+              .Where(x => x.CargoStatus == CargoStatus.OutForDelivery && 
+                            (x.DestinationBranchId == branchId || (x.OriginBranchId == branchId && x.FailedAttemptCount >= 3)))
               .OrderByDescending(x => x.ShipmentDate)
               .ToListAsync();
         }

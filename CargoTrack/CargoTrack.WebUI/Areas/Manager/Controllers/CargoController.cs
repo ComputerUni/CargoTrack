@@ -6,6 +6,7 @@ using CargoTrack.Business.Services.Employees;
 using CargoTrack.Business.Services.TransferCenters;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.DTO.DTOs.DeliveryDtos;
+using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using CargoTrack.WebUI.Areas.Manager.Models;
@@ -60,8 +61,14 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
-            var cargos = await _cargoService.GetByBranchIdAsync(user.BranchId.Value);
-            return View(cargos);
+
+            var vm = new CargoIndexViewModel
+            {
+                Cargos = await _cargoService.GetByBranchIdAsync(user.BranchId.Value),
+                Summary = await _cargoService.GetBranchCargoSummaryAsync(user.BranchId.Value)
+            };
+
+            return View(vm);
         }
 
         public async Task<IActionResult> IncomingList()
@@ -71,8 +78,14 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.IncomingName = branch.Name;
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
-            var cargos = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value);
-            return View(cargos);
+
+            var vm = new CargoIndexViewModel
+            {
+                Cargos = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value),
+                Incoming = await _cargoService.GetIncomingCargoSummaryAsync(user.BranchId.Value)
+            };
+
+            return View(vm);
         }
 
         public async Task<IActionResult> OutgoingList()
@@ -82,8 +95,14 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.OutgoingName = branch.Name;
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
-            var cargos = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value);
-            return View(cargos);
+
+            var vm = new CargoIndexViewModel
+            {
+                Cargos = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value),
+                Outgoing = await _cargoService.GetOutgoingCargoSummaryAsync(user.BranchId.Value)
+            };
+
+            return View(vm);
         }
 
         [HttpGet]

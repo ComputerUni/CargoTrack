@@ -1,5 +1,5 @@
 ﻿@using CargoTrack.Entity.Entities.Enums
-@model List<ResultCargoDto>
+@model CargoIndexViewModel
 
 @{
     ViewData["Title"] = "Kargolarımız";
@@ -47,12 +47,10 @@
         <!-- Metric 1: Total Cargo -->
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
             <div class="flex flex-col">
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Toplam Şube Kargosu</span>
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Toplam Giden Kargo</span>
                 <div class="flex items-baseline gap-space-xs mt-1">
-                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">184</span>
-                    <span class="font-label-sm text-label-sm text-primary font-semibold">+18 yeni</span>
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">@Model.Outgoing.TotalOutgoing</span>
                 </div>
-                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Bugün kabul &amp; varış</span>
             </div>
             <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary">
                 <span class="material-symbols-outlined text-[24px]">inventory_2</span>
@@ -61,12 +59,10 @@
         <!-- Metric 2: Out for Delivery -->
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
             <div class="flex flex-col">
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Dağıtımdaki Kargolar</span>
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Transfer Merkezinde</span>
                 <div class="flex items-baseline gap-space-xs mt-1">
-                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">68</span>
-                    <span class="font-label-sm text-label-sm text-secondary font-semibold">4 Kurye Sahada</span>
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">@Model.Outgoing.InTransferCenter</span>
                 </div>
-                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">%37 rota doluluk</span>
             </div>
             <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
                 <span class="material-symbols-outlined text-[24px]">two_wheeler</span>
@@ -75,12 +71,10 @@
         <!-- Metric 3: Waiting on Shelf -->
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
             <div class="flex flex-col">
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Şubede Bekleyen (Rafta)</span>
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Göndericiye İade Edilen</span>
                 <div class="flex items-baseline gap-space-xs mt-1">
-                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">44</span>
-                    <span class="font-label-sm text-label-sm text-error font-semibold">12 Atama Bekliyor</span>
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">@Model.Outgoing.ReturnedToSender</span>
                 </div>
-                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Depo Raf A-12 / C-04</span>
             </div>
             <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant">
                 <span class="material-symbols-outlined text-[24px]">shelves</span>
@@ -89,12 +83,10 @@
         <!-- Metric 4: Outbound Transfers -->
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
             <div class="flex flex-col">
-                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Giden / Çıkış Bekleyen</span>
+                <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Dağıtıma Çıkan</span>
                 <div class="flex items-baseline gap-space-xs mt-1">
-                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">72</span>
-                    <span class="font-label-sm text-label-sm text-primary font-semibold">18:30 Hat Aracı</span>
+                    <span class="font-headline-xl text-headline-xl text-on-surface font-bold">@Model.Outgoing.OutOfDelivery</span>
                 </div>
-                <span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Ana Transfer Merkezine</span>
             </div>
             <div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
                 <span class="material-symbols-outlined text-[24px] text-on-primary-container">local_shipping</span>
@@ -225,7 +217,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-surface-container font-body-md text-body-md text-on-surface">
-                    @foreach (var cargo in Model)
+                    @foreach (var cargo in Model.Cargos)
                     {
                         count++;
 
