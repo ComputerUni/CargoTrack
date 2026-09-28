@@ -300,7 +300,7 @@
                                     </a>
                                     @if (cargo.CargoStatus != CargoStatus.Delivered && cargo.CargoStatus != CargoStatus.ReturnedToSender)
                                     {
-                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="AddMovement" asp-route-id="@cargo.Id"
+                                        <a asp-area="Manager" asp-controller="CargoMovement" asp-action="AddMovement" asp-route-id="@cargo.Id"
                                            class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
                                            title="Hareket Ekle">
                                             <span class="material-symbols-outlined text-[18px]">add_location_alt</span>
@@ -311,9 +311,9 @@
                                         <span class="material-symbols-outlined text-outline/40 cursor-not-allowed" title="Süreç Tamamlandı">lock</span>
                                     }
 
-                                    @if (cargo.CargoStatus == CargoStatus.OutForDelivery || cargo.CargoStatus == CargoStatus.DeliveryFailed)
+                                    @if (cargo.CargoStatus == CargoStatus.OutForDelivery)
                                     {
-                                        <a asp-area="Manager" asp-controller="Cargo" asp-action="VerifyDelivery" asp-route-id="@cargo.Id"
+                                        <a asp-area="Manager" asp-controller="Delivery" asp-action="VerifyDelivery" asp-route-id="@cargo.Id"
                                            class="w-8 h-8 rounded-lg flex items-center justify-center text-primary hover:bg-surface-container transition-colors"
                                            title="Teslimat Kodu Doğrula">
                                             <span class="material-symbols-outlined text-[18px]">key</span>

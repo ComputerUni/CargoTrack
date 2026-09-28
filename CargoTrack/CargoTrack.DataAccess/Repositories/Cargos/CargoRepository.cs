@@ -103,7 +103,8 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
               .Include(x => x.Receiver)
               .Include(x => x.OriginBranch)
               .Include(x => x.DestinationBranch)
-              .Where(x => x.DestinationBranchId == branchId && x.CargoStatus == CargoStatus.DeliveryFailed || x.CargoStatus == CargoStatus.ReturnInProcess)
+              .Where(x => (x.DestinationBranchId == branchId || (x.OriginBranchId == branchId && x.FailedAttemptCount >= 3))
+                        && (x.CargoStatus == CargoStatus.DeliveryFailed || x.CargoStatus == CargoStatus.ReturnInProcess))
               .OrderByDescending(x => x.ShipmentDate)
               .ToListAsync();
         }
@@ -167,8 +168,9 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                     x.CargoStatus != CargoStatus.ReturnedToSender &&
                     x.CargoMovements.Any() &&
                     (
-                        x.CargoStatus == CargoStatus.InTransferCenter
-                        ||
+                        x.CargoStatus == CargoStatus.Created ||
+                        x.CargoStatus == CargoStatus.AtOriginBranch ||
+                        x.CargoStatus == CargoStatus.InTransferCenter ||
                         x.CargoMovements
                               .OrderByDescending(m => m.MovementDate)
                               .Select(m => m.BranchId)

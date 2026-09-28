@@ -74,3 +74,8 @@ wwwroot\manager_cargo_theme\outfordelivery.html
 wwwroot\manager_cargo_theme\yenikargo.html
 wwwroot\ui-template\cargo details.html
 wwwroot\ui-template\index.html
+wwwroot\user_cargo_theme\gecmisteslimatlar.html
+wwwroot\user_cargo_theme\kargolarim.html
+wwwroot\user_cargo_theme\kargotakipdetay.html
+wwwroot\user_cargo_theme\kisiselkargotakip.html
+wwwroot\user_cargo_theme\musteridashboard.html
