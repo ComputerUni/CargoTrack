@@ -14,9 +14,9 @@
         <div class="bg-surface-container px-space-md py-space-sm rounded-xl flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
             <div class="flex items-center gap-space-sm overflow-hidden">
                 <span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse shrink-0"></span><div class="truncate">
-                <div class="font-label-lg text-label-lg text-on-surface truncate">Kadıköy Şubesi</div><div class="font-code-dense text-code-dense text-on-surface-variant">BR-3401</div>
+                <div class="font-label-lg text-label-lg text-on-surface truncate">@ViewBag.OriginalName</div>
             </div>
-        </div><span class="material-symbols-outlined text-[16px] text-on-surface-variant shrink-0">unfold_more</span>
+        </div>
     </div>
 </div>
 <nav class="px-space-md flex flex-col gap-space-xs overflow-y-auto max-h-[calc(100vh-250px)]" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
@@ -45,12 +45,12 @@
 <div class="p-space-md bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
     <div class="bg-surface-container-lowest p-space-sm rounded-xl flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
         <div class="flex items-center gap-space-sm">
-            <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">MÖ</div>
+            <div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">@ViewBag.Manager.Substring(0,1)</div>
             <div class="overflow-hidden">
-                <div class="font-label-lg text-label-lg text-on-surface font-semibold truncate">Murat Özdemir</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">Kadıköy Şube Müdürü</div>
+                <div class="font-label-md text-label-md text-on-surface font-bold truncate">@ViewBag.Manager</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">@ViewBag.OriginalName</div>
             </div>
         </div>
-        <button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış veya Şube Değiştir" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button>
+        <button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış Yap" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button>
     </div>
 </div>
 </aside>

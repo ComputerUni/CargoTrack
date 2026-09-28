@@ -57,6 +57,9 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
             var cargos = await _cargoService.GetByBranchIdAsync(user.BranchId.Value);
             return View(cargos);
         }
@@ -64,6 +67,10 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         public async Task<IActionResult> IncomingList()
         {
             var user = await _userManager.GetUserAsync(User);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.IncomingName = branch.Name;
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
             var cargos = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value);
             return View(cargos);
         }
@@ -71,6 +78,10 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         public async Task<IActionResult> OutgoingList()
         {
             var user = await _userManager.GetUserAsync(User);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.OutgoingName = branch.Name;
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
             var cargos = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value);
             return View(cargos);
         }
@@ -83,6 +94,8 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
 
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
             ViewBag.CurrentBranchName = branch.Name;
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
 
             var cargo = await _cargoService.GetByIdWithDetailsAsync(id);
             var lastMovement = cargo.CargoMovements?.OrderByDescending(m => m.MovementDate).FirstOrDefault();
@@ -146,10 +159,12 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         public async Task<IActionResult> VerifyDelivery(Guid id)
         {
             await GetViewBagDataAsync();
-
+            var user = await _userManager.GetUserAsync(User);
             var cargo = await _cargoService.GetByIdWithDetailsAsync(id);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.VerifyDelivery = branch.Name;
 
-            if(string.IsNullOrEmpty(cargo.DeliveryCode))
+            if (string.IsNullOrEmpty(cargo.DeliveryCode))
             {
                 await _deliveryService.GenerateDeliveryCodeAsync(id);
                 cargo = await _cargoService.GetByIdWithDetailsAsync(id);
@@ -183,6 +198,10 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var cargos = await _cargoService.GetOutDeliveryByBranchIdAsync(user.BranchId.Value);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
+            ViewBag.Delivery = branch.Name;
             return View(cargos);
         }
 
@@ -190,6 +209,10 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var cargos = await _cargoService.GetDeliveryFailedOrReturnInProcessByBranchIdAsync(user.BranchId.Value);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
+            ViewBag.DeliveryFailed = branch.Name;
             return View(cargos);
         }
     }

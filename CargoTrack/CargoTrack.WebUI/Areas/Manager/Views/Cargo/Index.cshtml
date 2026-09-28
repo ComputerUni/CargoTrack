@@ -20,10 +20,10 @@
             </div>
             <div class="flex items-baseline gap-space-sm mt-space-xs">
                 <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Şube Kargoları &amp; Dağıtım Listesi</h1>
-                <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">@Model.</span>
+                <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">@ViewBag.OriginalName</span>
             </div>
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                Kadıköy Şubesi'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
+                @ViewBag.OriginalName'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
             </p>
         </div>
         <!-- Quick Action Toolset -->
@@ -189,12 +189,11 @@
             <div class="flex items-center gap-space-md">
                 <div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface">
                     <span class="material-symbols-outlined text-[18px] text-primary">view_list</span>
-                    <span>Aktif Liste: <strong>Kadıköy Şube Dağıtım &amp; Kabul Çizelgesi</strong></span>
+                    <span>Aktif Liste: <strong>@ViewBag.OriginalName Dağıtım &amp; Kabul Çizelgesi</strong></span>
                 </div>
-                <span class="bg-surface-container-high text-on-surface-variant font-code-dense text-code-dense px-space-xs py-0.5 rounded">Tablo Yoğunluğu: Standart</span>
             </div>
             <!-- Bulk action trigger pill -->
-            <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
+@*             <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
                 <span class="font-label-sm text-label-sm text-on-surface-variant">Toplu Seçim:</span>
                 <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
                     <span class="material-symbols-outlined text-[15px]">person_add</span>
@@ -204,7 +203,7 @@
                     <span class="material-symbols-outlined text-[15px]">receipt_long</span>
                     <span>Toplu Dağıtım Fişi Bas</span>
                 </button>
-            </div>
+            </div> *@
         </div>
         <!-- Table Container -->
         <div class="w-full overflow-x-auto">
@@ -388,7 +387,7 @@
         </div>
     </div>
     <!-- Real-Time Operational Activity Sub-Strip -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+    <div class="grid grid-cols-1 lg:grid-cols-1 gap-gutter">
         <!-- Courier Live Distribution Status -->
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
             <div class="flex items-center justify-between mb-space-sm">
@@ -426,58 +425,6 @@
                         <div class="bg-secondary h-1.5 rounded-full" style="width: 63%"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Quick Barcode Verification Widget -->
-        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-            <div>
-                <div class="flex items-center gap-space-xs mb-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-primary">pin</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Hızlı Kod Doğrulama</h3>
-                </div>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-                    Alıcı tarafından iletilen 6 haneli SMS onay kodunu girerek teslimatı tamamlayın.
-                </p>
-                <div class="flex items-center gap-space-xs">
-                    <input class="flex-1 px-3 py-2 bg-surface-container-low font-code-dense text-code-dense text-center tracking-widest text-on-surface uppercase rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" maxlength="6" placeholder="KOD: 849102" type="text" />
-                    <button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-lg text-label-lg font-semibold shadow-sm transition-colors" type="button">
-                        Onayla
-                    </button>
-                </div>
-            </div>
-            <div class="mt-space-sm pt-space-xs flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
-                <span>Kalan doğrulama kotası: Sınırsız</span>
-                <span class="text-primary font-semibold flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> SMS API Aktif</span>
-            </div>
-        </div>
-        <!-- Terminal System Overview -->
-        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between mb-space-xs">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="material-symbols-outlined text-[18px] text-primary">lan</span>
-                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Şube Ağ Durumu</h3>
-                    </div>
-                    <span class="bg-primary-container text-on-primary-container font-code-dense text-code-dense px-2 py-0.5 rounded-full font-bold">BR-3401</span>
-                </div>
-                <div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>El Terminali Eşleşmesi:</span>
-                        <span class="font-semibold text-on-surface">6 Cihaz Çevrimiçi</span>
-                    </div>
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>Zebra Barkod Yazıcı:</span>
-                        <span class="font-semibold text-primary">Hazır (IP: 192.168.1.140)</span>
-                    </div>
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>Sonraki Hat Aracı:</span>
-                        <span class="font-semibold text-on-surface">18:30 (Gebze Aktarma)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
-                <span>Gecikme: 24ms</span>
-                <span class="hover:text-primary cursor-pointer transition-colors">Tanı &amp; Cihaz Yönetimi →</span>
             </div>
         </div>
     </div>

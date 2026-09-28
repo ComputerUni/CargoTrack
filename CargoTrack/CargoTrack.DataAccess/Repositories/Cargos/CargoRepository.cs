@@ -41,7 +41,6 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.CargoMovements)
                 .Where(x =>
                     x.CargoStatus != CargoStatus.InTransferCenter &&
-                    //x.CargoStatus != CargoStatus.ReturnedToSender &&
                     (
                         (!x.CargoMovements.Any() && x.OriginBranchId == branchId)
                         ||

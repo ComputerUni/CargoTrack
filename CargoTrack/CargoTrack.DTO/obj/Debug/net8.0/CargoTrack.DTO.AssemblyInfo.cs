@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CargoTrack.DTO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6f0cf7a15b1190626b766afdb40c4ba72dde6ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7295a20d5264f40564ac9ac91d791ae635bea2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CargoTrack.DTO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CargoTrack.DTO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -2,10 +2,9 @@
     <div class="flex items-center gap-space-md">
         <div class="flex items-center gap-space-xs bg-surface-container px-space-md py-space-xs rounded-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
             <span class="material-symbols-outlined text-[16px] text-primary">storefront</span>
-            <span class="font-label-lg text-label-lg text-on-surface">Kadıköy Depo Şube</span>
-            <span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+            <span class="font-label-lg text-label-lg text-on-surface">@ViewBag.OriginalName</span>
         </div>
-        <div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px]">today</span><span>12 Mayıs 2026, Salı</span></div>
+        <div class="hidden md:flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm"><span class="material-symbols-outlined text-[16px]">today</span><span>@DateTime.Now.ToString("dd MMM yyyy HH:mm")</span></div>
     </div>
     <div class="flex items-center gap-space-md">
         <button class="relative w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shadow-[0_1px_8px_rgba(0,0,0,0.04)]" type="button">

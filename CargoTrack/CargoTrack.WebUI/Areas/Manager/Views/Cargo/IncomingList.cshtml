@@ -19,11 +19,11 @@
                 <span class="ml-space-sm inline-flex items-center gap-1 bg-surface-container-high px-space-xs py-0.5 rounded-full font-code-dense text-code-dense text-on-surface"></span>
             </div>
             <div class="flex items-baseline gap-space-sm mt-space-xs">
-                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Şube Kargoları &amp; Dağıtım Listesi</h1>
-                <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">@Model.</span>
+                <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Şubeye Gelen Kargolar</h1>
+                <span class="font-code-dense text-code-dense px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant">@ViewBag.IncomingName</span>
             </div>
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
-                Kadıköy Şubesi'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
+                @ViewBag.IncomingName'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
             </p>
         </div>
         <!-- Quick Action Toolset -->
@@ -189,12 +189,11 @@
             <div class="flex items-center gap-space-md">
                 <div class="flex items-center gap-space-xs font-label-lg text-label-lg text-on-surface">
                     <span class="material-symbols-outlined text-[18px] text-primary">view_list</span>
-                    <span>Aktif Liste: <strong>Kadıköy Şube Dağıtım &amp; Kabul Çizelgesi</strong></span>
+                    <span>Aktif Liste: <strong>@ViewBag.IncomingName Dağıtım &amp; Kabul Çizelgesi</strong></span>
                 </div>
-                <span class="bg-surface-container-high text-on-surface-variant font-code-dense text-code-dense px-space-xs py-0.5 rounded">Tablo Yoğunluğu: Standart</span>
             </div>
             <!-- Bulk action trigger pill -->
-            <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
+          @*   <div class="flex items-center gap-space-xs opacity-90" id="bulk-action-bar">
                 <span class="font-label-sm text-label-sm text-on-surface-variant">Toplu Seçim:</span>
                 <button class="inline-flex items-center gap-1 bg-surface-container hover:bg-surface-container-high text-on-surface px-space-sm py-1 rounded text-label-sm font-semibold transition-colors" type="button">
                     <span class="material-symbols-outlined text-[15px]">person_add</span>
@@ -204,7 +203,7 @@
                     <span class="material-symbols-outlined text-[15px]">receipt_long</span>
                     <span>Toplu Dağıtım Fişi Bas</span>
                 </button>
-            </div>
+            </div> *@
         </div>
         <!-- Table Container -->
         <div class="w-full overflow-x-auto">
