@@ -42,6 +42,42 @@ namespace CargoTrack.Business.Services.CargoMovements
                     throw new Exception("Şehir içi kargolarda transfer merkezi kullanılamaz.");
                 }
             }
+            
+            if(branchId == cargo.OriginBranchId && branchId != cargo.DestinationBranchId)
+            {
+                var originalAllowed = new List<CargoStatus>
+                {
+                    CargoStatus.AtOriginBranch,
+                    CargoStatus.InTransferCenter,
+                    CargoStatus.ReturnedToSender
+                };
+
+                if(!originalAllowed.Contains(newStatus))
+                {
+                    throw new Exception("Gönderici şube bu duruma geçiş yapamaz.");
+                }
+            }
+
+            if(branchId == cargo.DestinationBranchId && branchId != cargo.OriginBranchId)
+            {
+                var destAllowed = new List<CargoStatus>
+                {
+                    CargoStatus.ArrivedAtDeliveryBranch,
+                    CargoStatus.OutForDelivery,
+                    CargoStatus.DeliveryFailed,
+                    CargoStatus.ReturnInProcess
+                };
+
+                if (!destAllowed.Contains(newStatus))
+                {
+                    throw new Exception("Varış şube bu duruma geçiş yapamaz.");
+                }
+            }
+
+            if (newStatus == CargoStatus.ArrivedAtDeliveryBranch)
+            {
+                branchId = cargo.DestinationBranchId;
+            }
 
             var movement = new CargoMovement
             {
