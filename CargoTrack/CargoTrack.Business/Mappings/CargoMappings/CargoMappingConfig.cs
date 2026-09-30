@@ -20,7 +20,8 @@ namespace CargoTrack.Business.Mappings.CargoMappings
                 .Map(dest => dest.ReceiverPhone, src => src.Receiver != null ? src.Receiver.PhoneNumber : string.Empty)
                 .Map(dest => dest.AssignedCourierName, src => src.AssignedEmployee != null
                 ? $"{src.AssignedEmployee.FirstName} {src.AssignedEmployee.LastName}" : "Atama Bekliyor")
-                .Map(dest => dest.AssignedCourierPhone, src => src.AssignedEmployee != null ? src.AssignedEmployee.Phone : string.Empty);
+                .Map(dest => dest.AssignedCourierPhone, src => src.AssignedEmployee != null ? src.AssignedEmployee.Phone : string.Empty)
+                .Map(dest => dest.LastExceptionDescription, src => src.DeliveryExceptions != null && src.DeliveryExceptions.Any() ? src.DeliveryExceptions.OrderByDescending(e => e.CreatedDate).FirstOrDefault().Description : null);
 
             TypeAdapterConfig<CargoMovement, ResultCargoMovementDto>.NewConfig()
                 .Map(dest => dest.BranchName, src => src.Branch.Name)

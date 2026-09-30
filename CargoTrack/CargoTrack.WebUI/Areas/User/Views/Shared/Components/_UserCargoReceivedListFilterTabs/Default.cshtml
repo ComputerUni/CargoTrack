@@ -1,0 +1,39 @@
+﻿<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+    <div class="lg:col-span-7 flex p-1.5 bg-surface-container-low rounded-2xl shadow-inner gap-1">
+        <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-all" onclick="switchFilter('all')" type="button">
+            <span>Tümü</span>
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">3</span>
+        </button>
+        <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all bg-surface-container-lowest text-primary shadow-sm" id="tab-incoming" onclick="switchFilter('incoming')" type="button">
+            <span class="material-symbols-outlined text-[18px] text-primary">move_to_inbox</span>
+            <span>Bana Gelenler</span>
+            <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-label-sm font-semibold">2</span>
+        </button>
+        <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-outgoing" onclick="switchFilter('outgoing')" type="button">
+            <span class="material-symbols-outlined text-[18px]">outbox</span>
+            <span>Gönderdiklerim</span>
+            <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">1</span>
+        </button>
+    </div>
+    <!-- Quick Metrics Ribbon -->
+    <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+                <span class="material-symbols-outlined text-[20px]">electric_bolt</span>
+            </div>
+            <div class="min-w-0">
+                <div class="font-label-sm text-label-sm text-secondary">Bugün Gelecek</div>
+                <div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Paket</div>
+            </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
+            <div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+                <span class="material-symbols-outlined text-[20px]">near_me</span>
+            </div>
+            <div class="min-w-0">
+                <div class="font-label-sm text-label-sm text-secondary">Şehirlerarası Taşıma</div>
+                <div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Gönderi</div>
+            </div>
+        </div>
+    </div>
+</div>
