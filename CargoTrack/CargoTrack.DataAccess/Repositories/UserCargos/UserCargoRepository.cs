@@ -1,4 +1,9 @@
-﻿using System;
+﻿using CargoTrack.DataAccess.Context;
+using CargoTrack.DataAccess.Repositories.GenericRepositories;
+using CargoTrack.Entity.Entities;
+using CargoTrack.Entity.Entities.Enums;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +11,69 @@ using System.Threading.Tasks;
 
 namespace CargoTrack.DataAccess.Repositories.UserCargos
 {
-    internal class UserCargoRepository
+    public class UserCargoRepository : GenericRepository<Cargo>, IUserCargoRepository
     {
+        public UserCargoRepository(AppDbContext context) : base(context)
+        {
+        }
+
+        public async Task<Cargo> GetByIdAsync(Guid userId, Guid cargoId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.CargoMovements)
+                    .ThenInclude(x => x.Branch)
+                .Include(x => x.CargoMovements)
+                    .ThenInclude(x => x.TransferCenter)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .Include(x => x.DeliveryAddress)
+                .FirstOrDefaultAsync(x => x.Id == cargoId && (x.SenderId == userId || x.ReceiverId == userId));
+        }
+
+        public async Task<List<Cargo>> GetByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Where(x =>
+                    (x.SenderId == userId || x.ReceiverId == userId) &&
+                    x.CargoStatus != CargoStatus.Delivered &&
+                    x.CargoStatus != CargoStatus.ReturnedToSender)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetDeliveredByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Where(x => (x.ReceiverId == userId || x.SenderId == userId) &&
+                            (x.CargoStatus == CargoStatus.Delivered || x.CargoStatus == CargoStatus.ReturnedToSender))
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetReceivedByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Where(x => x.ReceiverId == userId)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetSentByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Where(x => x.SenderId == userId)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
     }
 }

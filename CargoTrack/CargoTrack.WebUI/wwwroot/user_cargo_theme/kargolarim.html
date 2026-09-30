@@ -1,412 +1,447 @@
 <!DOCTYPE html>
 
-<html lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","primary-fixed":"#e2dfff","on-surface-variant":"#464555","inverse-primary":"#c3c0ff","surface":"#faf8ff","on-primary-fixed-variant":"#3323cc","on-background":"#131b2e","surface-container-low":"#f2f3ff","on-secondary":"#ffffff","on-surface":"#131b2e","primary-container":"#4f46e5","tertiary":"#571ac0","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed-dim":"#d0bcff","on-secondary-fixed":"#0b1c30","inverse-surface":"#283044","surface-container-lowest":"#ffffff","outline-variant":"#c7c4d8","surface-container":"#eaedff","on-primary":"#ffffff","secondary-container":"#d0e1fb","on-secondary-fixed-variant":"#38485d","background":"#faf8ff","on-primary-fixed":"#0f0069","on-error":"#ffffff","surface-container-highest":"#dae2fd","surface-variant":"#dae2fd","error-container":"#ffdad6","surface-dim":"#d2d9f4","on-tertiary-container":"#e3d5ff","primary":"#3525cd","secondary":"#505f76","on-primary-container":"#dad7ff","secondary-fixed-dim":"#b7c8e1","surface-bright":"#faf8ff","surface-container-high":"#e2e7ff","on-error-container":"#93000a","outline":"#777587","surface-tint":"#4d44e3","tertiary-container":"#6f3dd9","inverse-on-surface":"#eef0ff","on-tertiary":"#ffffff","primary-fixed-dim":"#c3c0ff","error":"#ba1a1a","tertiary-fixed":"#e9ddff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter":"1.5rem","margin":"2rem","space-xs":"0.25rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-sm":"1rem","space-md":"1rem","space-sm":"0.5rem","gutter-sm":"1rem"},fontFamily:{"body-md":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"label-lg":["Inter"],"headline-lg-mobile":["Inter"],"code-tracking":["Inter"],"headline-sm":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"700"}],"code-tracking":["14px",{lineHeight:"20px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest"><img alt="CargoTrack Müşteri Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcHG-TLlsVZUxHKyK6Sla90cLdd2UnelRNCCt4Wg3cqVUNtyf-IMlcqttdpmnxqzMYoV0Y0mTZ9foKkkpLaDVkEvd5N_xt3JfdODcQYFzcTBaa9LMjslCmvYq3rblm9_H17H2KYVsw6dFm5Y6h6hkWTxineEgkme0k3u3nValPpWh5LOUhBu_MiaZf-gHU-IcwP-XqGx3Bxw0lINIpam7HLzs0qzBWHRWVBbomPQl4Il4Tvudb_9zFNpuW"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span><span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span></div></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm"><div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div><a aria-current="page" class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors bg-primary-container text-on-primary font-label-lg shadow-sm" data-path="aktif-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span>Aktif Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">move_to_inbox</span><span>Bana Gelen Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">outbox</span><span>Gönderdiğim Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span>Geçmiş Teslimatlar</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#"><span class="material-symbols-outlined text-[20px]">add_box</span><span>Yeni Kargo Talebi</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#"><span class="material-symbols-outlined text-[20px]">pin_drop</span><span>Kargo Detay & Canlı Takip</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#"><span class="material-symbols-outlined text-[20px]">home_pin</span><span>Teslimat Adreslerim</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span></a></nav></div><div class="p-space-md m-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span class="font-label-md text-label-md text-on-surface">Güvenli Müşteri Alanı</span></div><p class="font-body-sm text-body-sm text-secondary">256-bit SSL ve KVKK standartlarında tam veri güvencesi.</p></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md relative"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all" placeholder="Kargo Takip No veya Gönderi Kodu girin..." type="text"/></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-2 h-11 px-space-md bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-sm hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Yeni Kargo Gönder</span></a><div class="relative flex items-center"><button aria-label="Bildirimler" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest" title="2 yeni güncelleme"></span></div><button aria-label="Yardım ve Destek" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">help</span></button><div class="h-8 w-px bg-surface-container"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><div class="font-label-lg text-label-lg text-on-surface">Arda Yılmaz</div><div class="font-body-sm text-body-sm text-secondary">Bireysel Müşteri</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFKk2U4l3Gui-fkyGwDbFCogRuW_-dH9byJiy7pKMISYN07vB4Xqc_lnL4Grv20xuMzHp99YNmO_XmhTBVwm8KxeAysnTVMd1BAn5_me4GXfsyB8iv5WnF_2xt2BNg-G2ngajHKKLZRcfQn_eU5CyCkheqqq9V2jqCZuI1nXEWTn61L8gIaXMuYtUHEY8Lpq-MLY7iwVKwAi87sumWrSsEFK44Auvxw7E5ytETfsw4PY2rynP3iYsTFg"/></div></div></header><main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg"><div class="flex flex-col w-full">
-<div class="flex flex-col gap-8 pb-12">
-<!-- Header Context & Quick Actions -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-<div class="space-y-1">
-<div class="flex items-center gap-2">
-<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-primary-fixed text-primary font-bold text-label-sm">
-<span class="material-symbols-outlined text-[18px]">inventory_2</span>
-</span>
-<span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Gönderi Takip Merkezi</span>
-</div>
-<h1 class="font-headline-lg text-headline-lg text-on-surface">Kargolarım</h1>
-<p class="font-body-md text-body-md text-secondary max-w-xl">
-          Tarafınıza gelecek ve kendi gönderdiğiniz tüm kargoların anlık lokasyon, tahmini teslimat ve transfer takibi.
-        </p>
-</div>
-<div class="flex items-center gap-3">
-<button class="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high transition-all font-label-lg text-label-lg" type="button">
-<span class="material-symbols-outlined text-[18px]">refresh</span>
-<span>Yenile</span>
-</button>
-<button class="inline-flex items-center gap-2.5 h-11 px-6 rounded-xl bg-primary-container text-on-primary shadow-md hover:bg-primary shadow-primary/20 transition-all font-label-lg text-label-lg" type="button">
-<span class="material-symbols-outlined text-[20px]">add_box</span>
-<span>+ Yeni Kargo Gönderimi Oluştur</span>
-</button>
-</div>
-</div>
-<!-- Direction Tabs & Fast Summary Metric Strip -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-<div class="lg:col-span-7 flex p-1.5 bg-surface-container-low rounded-2xl shadow-inner gap-1">
-<button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-all" onclick="switchFilter('all')" type="button">
-<span>Tümü</span>
-<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">3</span>
-</button>
-<button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all bg-surface-container-lowest text-primary shadow-sm" id="tab-incoming" onclick="switchFilter('incoming')" type="button">
-<span class="material-symbols-outlined text-[18px] text-primary">move_to_inbox</span>
-<span>Bana Gelenler</span>
-<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-label-sm font-semibold">2</span>
-</button>
-<button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-outgoing" onclick="switchFilter('outgoing')" type="button">
-<span class="material-symbols-outlined text-[18px]">outbox</span>
-<span>Gönderdiklerim</span>
-<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">1</span>
-</button>
-</div>
-<!-- Quick Metrics Ribbon -->
-<div class="lg:col-span-5 grid grid-cols-2 gap-3">
-<div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
-<div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
-<span class="material-symbols-outlined text-[20px]">electric_bolt</span>
-</div>
-<div class="min-w-0">
-<div class="font-label-sm text-label-sm text-secondary">Bugün Gelecek</div>
-<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Paket</div>
-</div>
-</div>
-<div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
-<div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
-<span class="material-symbols-outlined text-[20px]">near_me</span>
-</div>
-<div class="min-w-0">
-<div class="font-label-sm text-label-sm text-secondary">Şehirlerarası Taşıma</div>
-<div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Gönderi</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Search & Precision Filters Bar -->
-<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-<div class="flex-1 relative">
-<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
-<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all" id="kargoSearch" placeholder="Takip numarası, mağaza adı veya gönderici ara..." type="text"/>
-</div>
-<div class="flex flex-wrap items-center gap-3">
-<!-- Status Filter Dropdown -->
-<div class="relative">
-<select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
-<option value="all">Durum: Tümü</option>
-<option value="out_for_delivery">Dağıtımda</option>
-<option value="in_transit">Transfer Merkezinde</option>
-<option value="delivered">Teslim Edildi</option>
-</select>
-<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">keyboard_arrow_down</span>
-</div>
-<!-- Date Range Filter -->
-<div class="relative">
-<select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
-<option value="30d">Son 30 Gün</option>
-<option value="90d">Son 3 Ay</option>
-<option value="this_year">Bu Yıl (2026)</option>
-</select>
-<span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">calendar_today</span>
-</div>
-<!-- Pending Only Toggle Switch -->
-<label class="flex items-center gap-2.5 px-3 h-11 rounded-xl bg-surface-container-low cursor-pointer select-none">
-<input checked="" class="sr-only peer" id="pendingToggle" type="checkbox"/>
-<div class="w-8 h-4.5 bg-outline-variant peer-checked:bg-primary-container rounded-full relative transition-colors duration-200">
-<div class="w-3.5 h-3.5 bg-surface-container-lowest rounded-full absolute top-0.5 left-0.5 peer-checked:translate-x-3.5 transition-transform duration-200 shadow-sm"></div>
-</div>
-<span class="font-label-md text-label-md text-on-surface">Yalnızca Teslimat Bekleyenler</span>
-</label>
-</div>
-</div>
-<!-- Shipment Cards List -->
-<div class="flex flex-col gap-4" id="shipment-card-container">
-<!-- Record 1: Gelen Kargo (Out for Delivery Today) -->
-<article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="incoming">
-<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
-<!-- Package Profile & Badge -->
-<div class="flex items-start gap-4 min-w-[280px]">
-<div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 shadow-sm">
-<span class="material-symbols-outlined text-[24px]">move_to_inbox</span>
-</div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 mb-1">
-<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[14px]">arrow_downward</span> Gelen Kargo
-                </span>
-<span class="font-code-tracking text-code-tracking text-primary font-bold">CT-2026-981240</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">TechStore E-Ticaret</h2>
-<div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
-<span class="material-symbols-outlined text-[16px] text-outline">storefront</span>
-<span>Gaziantep Şube / Çıkış Deposu</span>
-<span class="text-outline-variant">•</span>
-<span class="font-semibold text-on-surface-variant">0.8 Desi</span>
-</div>
-</div>
-</div>
-<!-- Destination & Route Spec -->
-<div class="flex flex-col min-w-[240px] px-0 xl:px-4">
-<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Teslimat Adresi</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px] text-primary">home</span>
-<span class="font-label-lg text-label-lg text-on-surface">Ev Adresim</span>
-</div>
-<div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
-              Moda, Kadıköy / İstanbul
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <style>
+        @layer base {
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                overscroll-behavior: none;
+            }
+
+            main > :first-child {
+                margin-top: 0 !important;
+            }
+
+            main > :last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","primary-fixed":"#e2dfff","on-surface-variant":"#464555","inverse-primary":"#c3c0ff","surface":"#faf8ff","on-primary-fixed-variant":"#3323cc","on-background":"#131b2e","surface-container-low":"#f2f3ff","on-secondary":"#ffffff","on-surface":"#131b2e","primary-container":"#4f46e5","tertiary":"#571ac0","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed-dim":"#d0bcff","on-secondary-fixed":"#0b1c30","inverse-surface":"#283044","surface-container-lowest":"#ffffff","outline-variant":"#c7c4d8","surface-container":"#eaedff","on-primary":"#ffffff","secondary-container":"#d0e1fb","on-secondary-fixed-variant":"#38485d","background":"#faf8ff","on-primary-fixed":"#0f0069","on-error":"#ffffff","surface-container-highest":"#dae2fd","surface-variant":"#dae2fd","error-container":"#ffdad6","surface-dim":"#d2d9f4","on-tertiary-container":"#e3d5ff","primary":"#3525cd","secondary":"#505f76","on-primary-container":"#dad7ff","secondary-fixed-dim":"#b7c8e1","surface-bright":"#faf8ff","surface-container-high":"#e2e7ff","on-error-container":"#93000a","outline":"#777587","surface-tint":"#4d44e3","tertiary-container":"#6f3dd9","inverse-on-surface":"#eef0ff","on-tertiary":"#ffffff","primary-fixed-dim":"#c3c0ff","error":"#ba1a1a","tertiary-fixed":"#e9ddff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter":"1.5rem","margin":"2rem","space-xs":"0.25rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-sm":"1rem","space-md":"1rem","space-sm":"0.5rem","gutter-sm":"1rem"},fontFamily:{"body-md":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"label-lg":["Inter"],"headline-lg-mobile":["Inter"],"code-tracking":["Inter"],"headline-sm":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"700"}],"code-tracking":["14px",{lineHeight:"20px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"400"}]}}}}</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+    <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest"><img alt="CargoTrack Müşteri Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcHG-TLlsVZUxHKyK6Sla90cLdd2UnelRNCCt4Wg3cqVUNtyf-IMlcqttdpmnxqzMYoV0Y0mTZ9foKkkpLaDVkEvd5N_xt3JfdODcQYFzcTBaa9LMjslCmvYq3rblm9_H17H2KYVsw6dFm5Y6h6hkWTxineEgkme0k3u3nValPpWh5LOUhBu_MiaZf-gHU-IcwP-XqGx3Bxw0lINIpam7HLzs0qzBWHRWVBbomPQl4Il4Tvudb_9zFNpuW" /><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span><span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span></div></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm"><div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div><a aria-current="page" class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors bg-primary-container text-on-primary font-label-lg shadow-sm" data-path="aktif-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span>Aktif Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">move_to_inbox</span><span>Bana Gelen Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">outbox</span><span>Gönderdiğim Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span>Geçmiş Teslimatlar</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#"><span class="material-symbols-outlined text-[20px]">add_box</span><span>Yeni Kargo Talebi</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#"><span class="material-symbols-outlined text-[20px]">pin_drop</span><span>Kargo Detay & Canlı Takip</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#"><span class="material-symbols-outlined text-[20px]">home_pin</span><span>Teslimat Adreslerim</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span></a></nav></div><div class="p-space-md m-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span class="font-label-md text-label-md text-on-surface">Güvenli Müşteri Alanı</span></div><p class="font-body-sm text-body-sm text-secondary">256-bit SSL ve KVKK standartlarında tam veri güvencesi.</p></div></aside><div class="pl-72 min-h-screen flex flex-col">
+        <header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md relative"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all" placeholder="Kargo Takip No veya Gönderi Kodu girin..." type="text" /></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-2 h-11 px-space-md bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-sm hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Yeni Kargo Gönder</span></a><div class="relative flex items-center"><button aria-label="Bildirimler" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest" title="2 yeni güncelleme"></span></div><button aria-label="Yardım ve Destek" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">help</span></button><div class="h-8 w-px bg-surface-container"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><div class="font-label-lg text-label-lg text-on-surface">Arda Yılmaz</div><div class="font-body-sm text-body-sm text-secondary">Bireysel Müşteri</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFKk2U4l3Gui-fkyGwDbFCogRuW_-dH9byJiy7pKMISYN07vB4Xqc_lnL4Grv20xuMzHp99YNmO_XmhTBVwm8KxeAysnTVMd1BAn5_me4GXfsyB8iv5WnF_2xt2BNg-G2ngajHKKLZRcfQn_eU5CyCkheqqq9V2jqCZuI1nXEWTn61L8gIaXMuYtUHEY8Lpq-MLY7iwVKwAi87sumWrSsEFK44Auvxw7E5ytETfsw4PY2rynP3iYsTFg" /></div></div></header><main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg">
+            <div class="flex flex-col w-full">
+                <div class="flex flex-col gap-8 pb-12">
+                    <!-- Header Context & Quick Actions -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-primary-fixed text-primary font-bold text-label-sm">
+                                    <span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                                </span>
+                                <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Gönderi Takip Merkezi</span>
+                            </div>
+                            <h1 class="font-headline-lg text-headline-lg text-on-surface">Kargolarım</h1>
+                            <p class="font-body-md text-body-md text-secondary max-w-xl">
+                                Tarafınıza gelecek ve kendi gönderdiğiniz tüm kargoların anlık lokasyon, tahmini teslimat ve transfer takibi.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button class="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high transition-all font-label-lg text-label-lg" type="button">
+                                <span class="material-symbols-outlined text-[18px]">refresh</span>
+                                <span>Yenile</span>
+                            </button>
+                            <button class="inline-flex items-center gap-2.5 h-11 px-6 rounded-xl bg-primary-container text-on-primary shadow-md hover:bg-primary shadow-primary/20 transition-all font-label-lg text-label-lg" type="button">
+                                <span class="material-symbols-outlined text-[20px]">add_box</span>
+                                <span>+ Yeni Kargo Gönderimi Oluştur</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Direction Tabs & Fast Summary Metric Strip -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+                        <div class="lg:col-span-7 flex p-1.5 bg-surface-container-low rounded-2xl shadow-inner gap-1">
+                            <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-all" onclick="switchFilter('all')" type="button">
+                                <span>Tümü</span>
+                                <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">3</span>
+                            </button>
+                            <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all bg-surface-container-lowest text-primary shadow-sm" id="tab-incoming" onclick="switchFilter('incoming')" type="button">
+                                <span class="material-symbols-outlined text-[18px] text-primary">move_to_inbox</span>
+                                <span>Bana Gelenler</span>
+                                <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-primary text-label-sm font-semibold">2</span>
+                            </button>
+                            <button class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface" id="tab-outgoing" onclick="switchFilter('outgoing')" type="button">
+                                <span class="material-symbols-outlined text-[18px]">outbox</span>
+                                <span>Gönderdiklerim</span>
+                                <span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary text-label-sm font-semibold">1</span>
+                            </button>
+                        </div>
+                        <!-- Quick Metrics Ribbon -->
+                        <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
+                                <div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+                                    <span class="material-symbols-outlined text-[20px]">electric_bolt</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-label-sm text-label-sm text-secondary">Bugün Gelecek</div>
+                                    <div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Paket</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-2xl bg-surface-container-lowest shadow-sm">
+                                <div class="w-10 h-10 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+                                    <span class="material-symbols-outlined text-[20px]">near_me</span>
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-label-sm text-label-sm text-secondary">Şehirlerarası Taşıma</div>
+                                    <div class="font-headline-sm text-headline-sm text-on-surface leading-tight">1 Gönderi</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search & Precision Filters Bar -->
+                    <div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+                        <div class="flex-1 relative">
+                            <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+                            <input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all" id="kargoSearch" placeholder="Takip numarası, mağaza adı veya gönderici ara..." type="text" />
+                        </div>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <!-- Status Filter Dropdown -->
+                            <div class="relative">
+                                <select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
+                                    <option value="all">Durum: Tümü</option>
+                                    <option value="out_for_delivery">Dağıtımda</option>
+                                    <option value="in_transit">Transfer Merkezinde</option>
+                                    <option value="delivered">Teslim Edildi</option>
+                                </select>
+                                <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">keyboard_arrow_down</span>
+                            </div>
+                            <!-- Date Range Filter -->
+                            <div class="relative">
+                                <select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
+                                    <option value="30d">Son 30 Gün</option>
+                                    <option value="90d">Son 3 Ay</option>
+                                    <option value="this_year">Bu Yıl (2026)</option>
+                                </select>
+                                <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">calendar_today</span>
+                            </div>
+                            <!-- Pending Only Toggle Switch -->
+                            <label class="flex items-center gap-2.5 px-3 h-11 rounded-xl bg-surface-container-low cursor-pointer select-none">
+                                <input checked="" class="sr-only peer" id="pendingToggle" type="checkbox" />
+                                <div class="w-8 h-4.5 bg-outline-variant peer-checked:bg-primary-container rounded-full relative transition-colors duration-200">
+                                    <div class="w-3.5 h-3.5 bg-surface-container-lowest rounded-full absolute top-0.5 left-0.5 peer-checked:translate-x-3.5 transition-transform duration-200 shadow-sm"></div>
+                                </div>
+                                <span class="font-label-md text-label-md text-on-surface">Yalnızca Teslimat Bekleyenler</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Shipment Cards List -->
+                    <div class="flex flex-col gap-4" id="shipment-card-container">
+                        <!-- Record 1: Gelen Kargo (Out for Delivery Today) -->
+                        <article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="incoming">
+                            <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
+                                <!-- Package Profile & Badge -->
+                                <div class="flex items-start gap-4 min-w-[280px]">
+                                    <div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 shadow-sm">
+                                        <span class="material-symbols-outlined text-[24px]">move_to_inbox</span>
+                                    </div>
+                                    <div class="flex flex-col min-w-0">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+                                                <span class="material-symbols-outlined text-[14px]">arrow_downward</span> Gelen Kargo
+                                            </span>
+                                            <span class="font-code-tracking text-code-tracking text-primary font-bold">CT-2026-981240</span>
+                                        </div>
+                                        <h2 class="font-headline-sm text-headline-sm text-on-surface truncate">TechStore E-Ticaret</h2>
+                                        <div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
+                                            <span class="material-symbols-outlined text-[16px] text-outline">storefront</span>
+                                            <span>Gaziantep Şube / Çıkış Deposu</span>
+                                            <span class="text-outline-variant">•</span>
+                                            <span class="font-semibold text-on-surface-variant">0.8 Desi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Destination & Route Spec -->
+                                <div class="flex flex-col min-w-[240px] px-0 xl:px-4">
+                                    <div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Teslimat Adresi</div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">home</span>
+                                        <span class="font-label-lg text-label-lg text-on-surface">Ev Adresim</span>
+                                    </div>
+                                    <div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
+                                        Moda, Kadıköy / İstanbul
+                                    </div>
+                                </div>
+                                <!-- Live Dynamic Delivery Status -->
+                                <div class="flex flex-col min-w-[240px]">
+                                    <div class="flex items-center gap-2 mb-1.5">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 font-label-md text-label-md">
+                                            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                                            Dağıtıma Çıktı
+                                        </span>
+                                        <span class="font-label-sm text-label-sm text-secondary">Kurye Yolda</span>
+                                    </div>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="font-headline-sm text-headline-sm text-primary font-bold">Bugün, 15:15</span>
+                                        <span class="font-body-sm text-body-sm text-outline">Tahmini Varış</span>
+                                    </div>
+                                    <!-- Micro Progress Meter -->
+                                    <div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
+                                        <div class="bg-primary-container h-1.5 rounded-full" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Direct User Actions -->
+                                <div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
+                                    <a class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-primary-container text-on-primary hover:bg-primary font-label-lg text-label-lg transition-colors shadow-sm" href="#">
+                                        <span class="material-symbols-outlined text-[18px]">pin_drop</span>
+                                        <span>Canlı Takip Et</span>
+                                    </a>
+                                    <div class="relative group/menu">
+                                        <button aria-label="Teslimatı Yönet" class="h-11 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg inline-flex items-center gap-1.5 transition-colors" type="button">
+                                            <span>Teslimatı Yönet</span>
+                                            <span class="material-symbols-outlined text-[18px]">more_vert</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Ambient Courier Hint Footer -->
+                            <div class="mt-4 pt-3.5 bg-surface-container-low/60 rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-body-sm font-body-sm text-secondary">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[18px] text-primary">local_shipping</span>
+                                    <span>Kurye Aracı mahallenizde. Sonraki 4. durak sizin teslimatınız.</span>
+                                </div>
+                                <button class="text-primary font-label-md text-label-md hover:underline inline-flex items-center gap-1" type="button">
+                                    <span>Komşuma Bırak veya Saat Seç</span>
+                                    <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+                                </button>
+                            </div>
+                        </article>
+                        <!-- Record 2: Gelen Kargo (In Transit) -->
+                        <article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="incoming">
+                            <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
+                                <!-- Package Profile & Badge -->
+                                <div class="flex items-start gap-4 min-w-[280px]">
+                                    <div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 shadow-sm">
+                                        <span class="material-symbols-outlined text-[24px]">move_to_inbox</span>
+                                    </div>
+                                    <div class="flex flex-col min-w-0">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+                                                <span class="material-symbols-outlined text-[14px]">arrow_downward</span> Gelen Kargo
+                                            </span>
+                                            <span class="font-code-tracking text-code-tracking text-primary font-bold">CT-2026-773190</span>
+                                        </div>
+                                        <h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Kitap Yurdu</h2>
+                                        <div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
+                                            <span class="material-symbols-outlined text-[16px] text-outline">local_mall</span>
+                                            <span>İzmir Şube & Dağıtım Merkezi</span>
+                                            <span class="text-outline-variant">•</span>
+                                            <span class="font-semibold text-on-surface-variant">1.5 Desi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Destination & Route Spec -->
+                                <div class="flex flex-col min-w-[240px] px-0 xl:px-4">
+                                    <div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Teslimat Adresi</div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">domain</span>
+                                        <span class="font-label-lg text-label-lg text-on-surface">Ofis (Plaza 4)</span>
+                                    </div>
+                                    <div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
+                                        Levent, Beşiktaş / İstanbul
+                                    </div>
+                                </div>
+                                <!-- Live Dynamic Delivery Status -->
+                                <div class="flex flex-col min-w-[240px]">
+                                    <div class="flex items-center gap-2 mb-1.5">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+                                            <span class="material-symbols-outlined text-[16px] text-primary">sync</span>
+                                            Transfer Merkezinde
+                                        </span>
+                                        <span class="font-label-sm text-label-sm text-secondary">Tuzla HUB</span>
+                                    </div>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Yarın, 11:00</span>
+                                        <span class="font-body-sm text-body-sm text-outline">Planlanan</span>
+                                    </div>
+                                    <!-- Micro Progress Meter -->
+                                    <div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
+                                        <div class="bg-primary-container h-1.5 rounded-full" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Direct User Actions -->
+                                <div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
+                                    <a class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors" href="#">
+                                        <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                                        <span>Kargo Detayı</span>
+                                    </a>
+                                    <button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-lowest text-primary hover:bg-surface-container-low font-label-lg text-label-lg shadow-sm transition-colors" type="button">
+                                        <span class="material-symbols-outlined text-[18px]">edit_location</span>
+                                        <span>Adres Değiştir</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- Record 3: Gönderdiğim Kargo (Outgoing In-Transit) -->
+                        <article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="outgoing">
+                            <div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
+                                <!-- Package Profile & Badge -->
+                                <div class="flex items-start gap-4 min-w-[280px]">
+                                    <div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed flex-shrink-0 shadow-sm">
+                                        <span class="material-symbols-outlined text-[24px]">outbox</span>
+                                    </div>
+                                    <div class="flex flex-col min-w-0">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">
+                                                <span class="material-symbols-outlined text-[14px]">arrow_upward</span> Gönderdiğim Kargo
+                                            </span>
+                                            <span class="font-code-tracking text-code-tracking text-tertiary font-bold">CT-2026-554109</span>
+                                        </div>
+                                        <h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Mehmet Demir</h2>
+                                        <div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
+                                            <span class="material-symbols-outlined text-[16px] text-outline">fmd_good</span>
+                                            <span>Kadıköy Şube Çıkışlı (27 Eylül)</span>
+                                            <span class="text-outline-variant">•</span>
+                                            <span class="font-semibold text-on-surface-variant">2.0 Desi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Destination & Route Spec -->
+                                <div class="flex flex-col min-w-[240px] px-0 xl:px-4">
+                                    <div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Alıcı Varış Noktası</div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[18px] text-tertiary">person_pin_circle</span>
+                                        <span class="font-label-lg text-label-lg text-on-surface">Alıcı Adresi</span>
+                                    </div>
+                                    <div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
+                                        Çankaya / Ankara
+                                    </div>
+                                </div>
+                                <!-- Live Dynamic Delivery Status -->
+                                <div class="flex flex-col min-w-[240px]">
+                                    <div class="flex items-center gap-2 mb-1.5">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">
+                                            <span class="material-symbols-outlined text-[16px]">local_shipping</span>
+                                            Yolda (Şehirlerarası)
+                                        </span>
+                                        <span class="font-label-sm text-label-sm text-secondary">Ankara Hat</span>
+                                    </div>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="font-headline-sm text-headline-sm text-on-surface font-semibold">29 Eylül</span>
+                                        <span class="font-body-sm text-body-sm text-outline">Teslim Beklentisi</span>
+                                    </div>
+                                    <!-- Micro Progress Meter -->
+                                    <div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
+                                        <div class="bg-tertiary-container h-1.5 rounded-full" style="width: 40%;"></div>
+                                    </div>
+                                </div>
+                                <!-- Direct User Actions -->
+                                <div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
+                                    <button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors" type="button">
+                                        <span class="material-symbols-outlined text-[18px]">sms</span>
+                                        <span>Alıcıyı Bilgilendir</span>
+                                    </button>
+                                    <button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-lowest text-tertiary hover:bg-surface-container-low font-label-lg text-label-lg shadow-sm transition-colors" type="button">
+                                        <span class="material-symbols-outlined text-[18px]">share</span>
+                                        <span>Takip Linki Paylaş</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <!-- Interactive Delivery Map & Visual Route Peek (Visual Richness Element) -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+                        <!-- Graphic Route Visualizer -->
+                        <div class="lg:col-span-2 p-6 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="space-y-0.5">
+                                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Canlı Rota ve Sevkiyat Yoğunluğu</h3>
+                                    <p class="font-body-sm text-body-sm text-secondary">Kuryelerinizin ve şehirlerarası transfer araçlarının anlık hat durumu</p>
+                                </div>
+                                <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-label-sm inline-flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                                    Canlı Ağ Aktif
+                                </span>
+                            </div>
+                            <div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center p-4">
+                                <!-- Ambient Map Route Graph Graphic -->
+                                <svg class="w-full h-full text-primary" fill="none" viewbox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="opacity-30" d="M40 100 C 150 20, 260 120, 380 40 C 450 -10, 520 80, 560 60" stroke="currentColor" stroke-dasharray="6 6" stroke-width="3"></path>
+                                    <path d="M40 100 C 150 20, 260 120, 380 40" stroke="currentColor" stroke-linecap="round" stroke-width="3.5"></path>
+                                    <!-- Node Gaziantep / İzmir -->
+                                    <circle class="fill-primary" cx="40" cy="100" r="7"></circle>
+                                    <circle cx="40" cy="100" fill="#ffffff" r="3"></circle>
+                                    <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="40" y="125">Çıkış Noktası</text>
+                                    <!-- Mid Hub -->
+                                    <circle class="fill-primary" cx="230" cy="75" r="5"></circle>
+                                    <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="230" y="98">Tuzla HUB</text>
+                                    <!-- Current Delivery Node Active Ping -->
+                                    <circle class="fill-primary-fixed opacity-40 animate-ping" cx="380" cy="40" r="10"></circle>
+                                    <circle class="fill-primary" cx="380" cy="40" r="7"></circle>
+                                    <circle cx="380" cy="40" fill="#ffffff" r="3"></circle>
+                                    <text class="fill-current font-bold text-[12px] font-label-md" text-anchor="middle" x="380" y="24">Kadıköy (Şu An)</text>
+                                    <!-- Destination -->
+                                    <circle class="fill-outline" cx="560" cy="60" r="5"></circle>
+                                    <text class="fill-outline text-[11px] font-label-sm" text-anchor="middle" x="560" y="85">Nihai Adres</text>
+                                </svg>
+                            </div>
+                            <div class="flex items-center justify-between text-body-sm font-body-sm text-secondary pt-3">
+                                <span>Ortalama teslimat süresi: <strong>1.2 gün</strong></span>
+                                <span class="text-primary font-label-md text-label-md hover:underline cursor-pointer">Detaylı Canlı Haritayı Aç →</span>
+                            </div>
+                        </div>
+                        <!-- Quick Delivery Helper Box -->
+                        <div class="p-6 rounded-2xl bg-primary-fixed text-on-primary-fixed-variant shadow-sm flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[22px]">support_agent</span>
+                                </div>
+                                <h3 class="font-headline-sm text-headline-sm text-on-primary-fixed leading-snug">Teslimat Saatini Özelleştirin</h3>
+                                <p class="font-body-sm text-body-sm text-on-primary-fixed-variant">
+                                    Evde değil misiniz? Kuryemiz kapıya gelmeden önce teslimatınızı güvenli komşunuza veya en yakın esnaf noktasına yönlendirebilirsiniz.
+                                </p>
+                            </div>
+                            <div class="pt-6">
+                                <button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all" type="button">
+                                    Teslimat Tercihini Değiştir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer Summary Strip & Pagination Control -->
+                    <div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+                            <span class="font-body-md text-body-md text-secondary">
+                                Toplam <strong>2 Gelen Kargo</strong> bekliyor, <strong>1 Gönderdiğiniz Kargo</strong> taşınıyor.
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a class="font-label-md text-label-md text-primary hover:underline inline-flex items-center gap-1" href="#">
+                                <span class="material-symbols-outlined text-[16px]">inventory</span>
+                                <span>Geçmiş arşivlenmiş kargoları görüntüle</span>
+                            </a>
+                            <div class="h-4 w-px bg-surface-container"></div>
+                            <div class="flex items-center gap-1">
+                                <button aria-label="Önceki Sayfa" class="w-9 h-9 rounded-lg flex items-center justify-center text-outline cursor-not-allowed" disabled="" type="button">
+                                    <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                                </button>
+                                <span class="px-2.5 py-1 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">1</span>
+                                <button aria-label="Sonraki Sayfa" class="w-9 h-9 rounded-lg flex items-center justify-center text-outline cursor-not-allowed" disabled="" type="button">
+                                    <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-</div>
-<!-- Live Dynamic Delivery Status -->
-<div class="flex flex-col min-w-[240px]">
-<div class="flex items-center gap-2 mb-1.5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 font-label-md text-label-md">
-<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                Dağıtıma Çıktı
-              </span>
-<span class="font-label-sm text-label-sm text-secondary">Kurye Yolda</span>
-</div>
-<div class="flex items-baseline gap-2">
-<span class="font-headline-sm text-headline-sm text-primary font-bold">Bugün, 15:15</span>
-<span class="font-body-sm text-body-sm text-outline">Tahmini Varış</span>
-</div>
-<!-- Micro Progress Meter -->
-<div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
-<div class="bg-primary-container h-1.5 rounded-full" style="width: 85%;"></div>
-</div>
-</div>
-<!-- Direct User Actions -->
-<div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
-<a class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-primary-container text-on-primary hover:bg-primary font-label-lg text-label-lg transition-colors shadow-sm" href="#">
-<span class="material-symbols-outlined text-[18px]">pin_drop</span>
-<span>Canlı Takip Et</span>
-</a>
-<div class="relative group/menu">
-<button aria-label="Teslimatı Yönet" class="h-11 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg inline-flex items-center gap-1.5 transition-colors" type="button">
-<span>Teslimatı Yönet</span>
-<span class="material-symbols-outlined text-[18px]">more_vert</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Ambient Courier Hint Footer -->
-<div class="mt-4 pt-3.5 bg-surface-container-low/60 rounded-xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-body-sm font-body-sm text-secondary">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px] text-primary">local_shipping</span>
-<span>Kurye Aracı mahallenizde. Sonraki 4. durak sizin teslimatınız.</span>
-</div>
-<button class="text-primary font-label-md text-label-md hover:underline inline-flex items-center gap-1" type="button">
-<span>Komşuma Bırak veya Saat Seç</span>
-<span class="material-symbols-outlined text-[14px]">chevron_right</span>
-</button>
-</div>
-</article>
-<!-- Record 2: Gelen Kargo (In Transit) -->
-<article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="incoming">
-<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
-<!-- Package Profile & Badge -->
-<div class="flex items-start gap-4 min-w-[280px]">
-<div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0 shadow-sm">
-<span class="material-symbols-outlined text-[24px]">move_to_inbox</span>
-</div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 mb-1">
-<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[14px]">arrow_downward</span> Gelen Kargo
-                </span>
-<span class="font-code-tracking text-code-tracking text-primary font-bold">CT-2026-773190</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Kitap Yurdu</h2>
-<div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
-<span class="material-symbols-outlined text-[16px] text-outline">local_mall</span>
-<span>İzmir Şube & Dağıtım Merkezi</span>
-<span class="text-outline-variant">•</span>
-<span class="font-semibold text-on-surface-variant">1.5 Desi</span>
-</div>
-</div>
-</div>
-<!-- Destination & Route Spec -->
-<div class="flex flex-col min-w-[240px] px-0 xl:px-4">
-<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Teslimat Adresi</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px] text-primary">domain</span>
-<span class="font-label-lg text-label-lg text-on-surface">Ofis (Plaza 4)</span>
-</div>
-<div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
-              Levent, Beşiktaş / İstanbul
-            </div>
-</div>
-<!-- Live Dynamic Delivery Status -->
-<div class="flex flex-col min-w-[240px]">
-<div class="flex items-center gap-2 mb-1.5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
-<span class="material-symbols-outlined text-[16px] text-primary">sync</span>
-                Transfer Merkezinde
-              </span>
-<span class="font-label-sm text-label-sm text-secondary">Tuzla HUB</span>
-</div>
-<div class="flex items-baseline gap-2">
-<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Yarın, 11:00</span>
-<span class="font-body-sm text-body-sm text-outline">Planlanan</span>
-</div>
-<!-- Micro Progress Meter -->
-<div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
-<div class="bg-primary-container h-1.5 rounded-full" style="width: 50%;"></div>
-</div>
-</div>
-<!-- Direct User Actions -->
-<div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
-<a class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors" href="#">
-<span class="material-symbols-outlined text-[18px]">receipt_long</span>
-<span>Kargo Detayı</span>
-</a>
-<button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-lowest text-primary hover:bg-surface-container-low font-label-lg text-label-lg shadow-sm transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">edit_location</span>
-<span>Adres Değiştir</span>
-</button>
-</div>
-</div>
-</article>
-<!-- Record 3: Gönderdiğim Kargo (Outgoing In-Transit) -->
-<article class="shipment-row group relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-all" data-status="pending" data-type="outgoing">
-<div class="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-5">
-<!-- Package Profile & Badge -->
-<div class="flex items-start gap-4 min-w-[280px]">
-<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed flex-shrink-0 shadow-sm">
-<span class="material-symbols-outlined text-[24px]">outbox</span>
-</div>
-<div class="flex flex-col min-w-0">
-<div class="flex items-center gap-2 mb-1">
-<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">
-<span class="material-symbols-outlined text-[14px]">arrow_upward</span> Gönderdiğim Kargo
-                </span>
-<span class="font-code-tracking text-code-tracking text-tertiary font-bold">CT-2026-554109</span>
-</div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Mehmet Demir</h2>
-<div class="flex items-center gap-2 text-secondary font-body-sm text-body-sm mt-0.5">
-<span class="material-symbols-outlined text-[16px] text-outline">fmd_good</span>
-<span>Kadıköy Şube Çıkışlı (27 Eylül)</span>
-<span class="text-outline-variant">•</span>
-<span class="font-semibold text-on-surface-variant">2.0 Desi</span>
-</div>
-</div>
-</div>
-<!-- Destination & Route Spec -->
-<div class="flex flex-col min-w-[240px] px-0 xl:px-4">
-<div class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Alıcı Varış Noktası</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-[18px] text-tertiary">person_pin_circle</span>
-<span class="font-label-lg text-label-lg text-on-surface">Alıcı Adresi</span>
-</div>
-<div class="font-body-sm text-body-sm text-secondary truncate mt-0.5">
-              Çankaya / Ankara
-            </div>
-</div>
-<!-- Live Dynamic Delivery Status -->
-<div class="flex flex-col min-w-[240px]">
-<div class="flex items-center gap-2 mb-1.5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-label-md">
-<span class="material-symbols-outlined text-[16px]">local_shipping</span>
-                Yolda (Şehirlerarası)
-              </span>
-<span class="font-label-sm text-label-sm text-secondary">Ankara Hat</span>
-</div>
-<div class="flex items-baseline gap-2">
-<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">29 Eylül</span>
-<span class="font-body-sm text-body-sm text-outline">Teslim Beklentisi</span>
-</div>
-<!-- Micro Progress Meter -->
-<div class="w-full bg-surface-container rounded-full h-1.5 mt-2.5 overflow-hidden">
-<div class="bg-tertiary-container h-1.5 rounded-full" style="width: 40%;"></div>
-</div>
-</div>
-<!-- Direct User Actions -->
-<div class="flex items-center gap-2 pt-3 xl:pt-0 justify-end">
-<button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-lg text-label-lg transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">sms</span>
-<span>Alıcıyı Bilgilendir</span>
-</button>
-<button class="inline-flex items-center gap-2 h-11 px-4 rounded-xl bg-surface-container-lowest text-tertiary hover:bg-surface-container-low font-label-lg text-label-lg shadow-sm transition-colors" type="button">
-<span class="material-symbols-outlined text-[18px]">share</span>
-<span>Takip Linki Paylaş</span>
-</button>
-</div>
-</div>
-</article>
-</div>
-<!-- Interactive Delivery Map & Visual Route Peek (Visual Richness Element) -->
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
-<!-- Graphic Route Visualizer -->
-<div class="lg:col-span-2 p-6 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-<div class="flex items-center justify-between mb-4">
-<div class="space-y-0.5">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Canlı Rota ve Sevkiyat Yoğunluğu</h3>
-<p class="font-body-sm text-body-sm text-secondary">Kuryelerinizin ve şehirlerarası transfer araçlarının anlık hat durumu</p>
-</div>
-<span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-label-sm inline-flex items-center gap-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-            Canlı Ağ Aktif
-          </span>
-</div>
-<div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center p-4">
-<!-- Ambient Map Route Graph Graphic -->
-<svg class="w-full h-full text-primary" fill="none" viewbox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
-<path class="opacity-30" d="M40 100 C 150 20, 260 120, 380 40 C 450 -10, 520 80, 560 60" stroke="currentColor" stroke-dasharray="6 6" stroke-width="3"></path>
-<path d="M40 100 C 150 20, 260 120, 380 40" stroke="currentColor" stroke-linecap="round" stroke-width="3.5"></path>
-<!-- Node Gaziantep / İzmir -->
-<circle class="fill-primary" cx="40" cy="100" r="7"></circle>
-<circle cx="40" cy="100" fill="#ffffff" r="3"></circle>
-<text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="40" y="125">Çıkış Noktası</text>
-<!-- Mid Hub -->
-<circle class="fill-primary" cx="230" cy="75" r="5"></circle>
-<text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="230" y="98">Tuzla HUB</text>
-<!-- Current Delivery Node Active Ping -->
-<circle class="fill-primary-fixed opacity-40 animate-ping" cx="380" cy="40" r="10"></circle>
-<circle class="fill-primary" cx="380" cy="40" r="7"></circle>
-<circle cx="380" cy="40" fill="#ffffff" r="3"></circle>
-<text class="fill-current font-bold text-[12px] font-label-md" text-anchor="middle" x="380" y="24">Kadıköy (Şu An)</text>
-<!-- Destination -->
-<circle class="fill-outline" cx="560" cy="60" r="5"></circle>
-<text class="fill-outline text-[11px] font-label-sm" text-anchor="middle" x="560" y="85">Nihai Adres</text>
-</svg>
-</div>
-<div class="flex items-center justify-between text-body-sm font-body-sm text-secondary pt-3">
-<span>Ortalama teslimat süresi: <strong>1.2 gün</strong></span>
-<span class="text-primary font-label-md text-label-md hover:underline cursor-pointer">Detaylı Canlı Haritayı Aç →</span>
-</div>
-</div>
-<!-- Quick Delivery Helper Box -->
-<div class="p-6 rounded-2xl bg-primary-fixed text-on-primary-fixed-variant shadow-sm flex flex-col justify-between">
-<div class="space-y-3">
-<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
-<span class="material-symbols-outlined text-[22px]">support_agent</span>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-on-primary-fixed leading-snug">Teslimat Saatini Özelleştirin</h3>
-<p class="font-body-sm text-body-sm text-on-primary-fixed-variant">
-            Evde değil misiniz? Kuryemiz kapıya gelmeden önce teslimatınızı güvenli komşunuza veya en yakın esnaf noktasına yönlendirebilirsiniz.
-          </p>
-</div>
-<div class="pt-6">
-<button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all" type="button">
-            Teslimat Tercihini Değiştir
-          </button>
-</div>
-</div>
-</div>
-<!-- Footer Summary Strip & Pagination Control -->
-<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
-<div class="flex items-center gap-3">
-<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
-<span class="font-body-md text-body-md text-secondary">
-          Toplam <strong>2 Gelen Kargo</strong> bekliyor, <strong>1 Gönderdiğiniz Kargo</strong> taşınıyor.
-        </span>
-</div>
-<div class="flex items-center gap-4">
-<a class="font-label-md text-label-md text-primary hover:underline inline-flex items-center gap-1" href="#">
-<span class="material-symbols-outlined text-[16px]">inventory</span>
-<span>Geçmiş arşivlenmiş kargoları görüntüle</span>
-</a>
-<div class="h-4 w-px bg-surface-container"></div>
-<div class="flex items-center gap-1">
-<button aria-label="Önceki Sayfa" class="w-9 h-9 rounded-lg flex items-center justify-center text-outline cursor-not-allowed" disabled="" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_left</span>
-</button>
-<span class="px-2.5 py-1 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">1</span>
-<button aria-label="Sonraki Sayfa" class="w-9 h-9 rounded-lg flex items-center justify-center text-outline cursor-not-allowed" disabled="" type="button">
-<span class="material-symbols-outlined text-[18px]">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script>
-  function switchFilter(type) {
+            <script>function switchFilter(type) {
     const rows = document.querySelectorAll('.shipment-row');
     const tabAll = document.getElementById('tab-all');
     const tabInc = document.getElementById('tab-incoming');
@@ -444,5 +479,8 @@
       const text = row.innerText.toLowerCase();
       row.style.display = text.includes(val) ? 'block' : 'none';
     });
-  });
-</script></main></div></body></html>
+  });</script>
+        </main>
+    </div>
+</body>
+</html>

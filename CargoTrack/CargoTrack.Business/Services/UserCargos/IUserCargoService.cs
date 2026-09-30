@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CargoTrack.DTO.DTOs.CargosDtos;
+using CargoTrack.Entity.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,10 @@ namespace CargoTrack.Business.Services.UserCargos
 {
     public interface IUserCargoService
     {
-
+        Task<List<ResultCargoDto>> GetByUserIdAsync(Guid userId);
+        Task<List<ResultCargoDto>> GetDeliveredByUserIdAsync(Guid userId);
+        Task<List<ResultCargoDto>> GetReceivedByUserIdAsync(Guid userId);
+        Task<List<ResultCargoDto>> GetSentByUserIdAsync(Guid userId);
+        Task<ResultCargoDto> GetByIdAsync(Guid userId, Guid cargoId);
     }
 }

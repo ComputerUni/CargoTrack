@@ -14,5 +14,6 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
         Task<List<Cargo>> GetSentByUserIdAsync(Guid userId);
         Task<List<Cargo>> GetReceivedByUserIdAsync(Guid userId);
         Task<List<Cargo>> GetDeliveredByUserIdAsync(Guid userId);
+        Task<Cargo> GetByIdAsync(Guid userId, Guid cargoId);
     }
 }

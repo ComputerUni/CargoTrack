@@ -1,0 +1,40 @@
+﻿<script>
+function switchFilter(type) {
+    const rows = document.querySelectorAll('.shipment-row');
+    const tabAll = document.getElementById('tab-all');
+    const tabInc = document.getElementById('tab-incoming');
+    const tabOut = document.getElementById('tab-outgoing');
+
+    const defaultClass = "flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all text-on-surface-variant hover:text-on-surface";
+    const activeClass = "flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-label-lg text-label-lg transition-all bg-surface-container-lowest text-primary shadow-sm";
+
+    // Reset tabs
+    tabAll.className = defaultClass;
+    tabInc.className = defaultClass;
+    tabOut.className = defaultClass;
+
+    if (type === 'all') {
+        tabAll.className = activeClass;
+        rows.forEach(r => r.style.display = 'block');
+    } else if (type === 'incoming') {
+        tabInc.className = activeClass;
+        rows.forEach(r => {
+            r.style.display = r.getAttribute('data-type') === 'incoming' ? 'block' : 'none';
+        });
+    } else if (type === 'outgoing') {
+        tabOut.className = activeClass;
+        rows.forEach(r => {
+            r.style.display = r.getAttribute('data-type') === 'outgoing' ? 'block' : 'none';
+        });
+    }
+}
+
+// Live Real-Time Search Filter
+document.getElementById('kargoSearch')?.addEventListener('input', function(e) {
+    const val = e.target.value.toLowerCase().trim();
+    const rows = document.querySelectorAll('.shipment-row');
+    rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(val) ? 'block' : 'none';
+    });
+});</script>

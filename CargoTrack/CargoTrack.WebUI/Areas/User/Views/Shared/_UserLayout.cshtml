@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr">
+
+@await Component.InvokeAsync("_UserLayoutHead")
+
+<body class="bg-surface font-body-md text-on-surface">
+
+    @await Component.InvokeAsync("_UserLayoutSidebar")
+
+    <div class="pl-72 min-h-screen flex flex-col">
+
+        @await Component.InvokeAsync("_UserLayoutTopbar")
+
+        <main>
+
+            @RenderBody()
+            
+        </main>
+
+        @await Component.InvokeAsync("_UserLayoutScript")
+        @RenderSection("Scripts", required: false)
+
+    </div>
+</body>
+</html>

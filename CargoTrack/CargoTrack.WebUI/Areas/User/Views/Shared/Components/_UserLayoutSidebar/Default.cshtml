@@ -1,0 +1,53 @@
+﻿<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest">
+        <img alt="CargoTrack Müşteri Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcHG-TLlsVZUxHKyK6Sla90cLdd2UnelRNCCt4Wg3cqVUNtyf-IMlcqttdpmnxqzMYoV0Y0mTZ9foKkkpLaDVkEvd5N_xt3JfdODcQYFzcTBaa9LMjslCmvYq3rblm9_H17H2KYVsw6dFm5Y6h6hkWTxineEgkme0k3u3nValPpWh5LOUhBu_MiaZf-gHU-IcwP-XqGx3Bxw0lINIpam7HLzs0qzBWHRWVBbomPQl4Il4Tvudb_9zFNpuW" /><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span><span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span></div>
+    </div>
+    <div class="flex-1 overflow-y-auto px-space-md py-space-sm">
+        <nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm">
+            <div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="#">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span>
+            </a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div>
+            <a aria-current="page" class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors bg-primary-container text-on-primary font-label-lg shadow-sm" data-path="aktif-kargolar" href="/User/Cargo/ActiveList">
+                <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+                <span>Aktif Kargolar</span>
+            </a>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="#">
+                <span class="material-symbols-outlined text-[20px]">move_to_inbox</span>
+                <span>Bana Gelen Kargolar</span>
+            </a>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="#">
+                <span class="material-symbols-outlined text-[20px]">outbox</span>
+                <span>Gönderdiğim Kargolar</span>
+            </a>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="#">
+                <span class="material-symbols-outlined text-[20px]">history</span>
+                <span>Geçmiş Teslimatlar</span>
+            </a>
+            <div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#">
+                <span class="material-symbols-outlined text-[20px]">add_box</span>
+                <span>Yeni Kargo Talebi</span>
+            </a>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#">
+                <span class="material-symbols-outlined text-[20px]">pin_drop</span>
+                <span>Kargo Detay & Canlı Takip</span>
+            </a>
+            <div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#">
+                <span class="material-symbols-outlined text-[20px]">home_pin</span>
+                <span>Teslimat Adreslerim</span>
+            </a>
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#">
+                <span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span>
+            </a>
+        </nav>
+    </div>
+    <div class="p-space-md m-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div class="flex items-center gap-2 mb-1.5">
+            <span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+            <span class="font-label-md text-label-md text-on-surface">Güvenli Müşteri Alanı</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-secondary">256-bit SSL ve KVKK standartlarında tam veri güvencesi.</p>
+    </div>
+</aside>
