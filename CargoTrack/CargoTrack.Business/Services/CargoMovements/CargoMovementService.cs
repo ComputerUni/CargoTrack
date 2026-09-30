@@ -93,6 +93,11 @@ namespace CargoTrack.Business.Services.CargoMovements
 
             cargo.CargoStatus = newStatus;
 
+            if(newStatus == CargoStatus.OutForDelivery && employeeId.HasValue)
+            {
+                cargo.AssignedEmployeeId = employeeId;
+            }
+
             await _cargoRepository.UpdateAsync(cargo);
             await _repository.CreateAsync(movement); 
         }

@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CargoTrack.DTO.DTOs.CargosDtos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserCargoActiveListViewComponents
 {
     public class _UserCargoActiveListRouteMapViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(ResultCargoDto cargo)
         {
-            return View();
+            return View(cargo);
         }
     }
 }

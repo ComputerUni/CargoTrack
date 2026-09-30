@@ -1,0 +1,24 @@
+﻿@model List<ResultCargoDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
+}
+
+<main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg">
+    <div class="flex flex-col w-full">
+        <div class="flex flex-col gap-8 pb-12">
+
+            @await Component.InvokeAsync("_UserCargoReceivedListHeader")
+
+            @await Component.InvokeAsync("_UserCargoReceivedListFilterTabs")
+
+            @await Component.InvokeAsync("_UserCargoReceivedListSearchFilter")
+
+            @await Component.InvokeAsync("_UserCargoReceivedListTable", new { cargos = Model })
+
+            @await Component.InvokeAsync("_UserCargoActiveListRouteMap", new { cargo = Model?.FirstOrDefault() })
+
+        </div>
+    </div>
+</main>

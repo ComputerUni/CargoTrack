@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Giriş Yap";
-    Layout = null; // Bağımsız tam ekran authentication düzeni
+    Layout = null; 
 }
 
 <!DOCTYPE html>
@@ -12,7 +12,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giriş Yap - CargoTrack Lojistik Ağı</title>
-    <!-- Tailwind CSS CDN (veya projedeki CSS dosyan) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -24,14 +23,9 @@
 <body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
 
     <div class="w-full max-w-5xl bg-slate-800/80 backdrop-blur-xl border border-slate-700/60 rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 min-h-[640px]">
-
-        <!-- Sol Panel: Lojistik Görsel & İstatistik Bloğu -->
         <div class="lg:col-span-5 bg-gradient-to-br from-emerald-600 via-teal-700 to-slate-900 p-8 lg:p-12 flex flex-col justify-between relative overflow-hidden">
-            <!-- Arka Plan Dekoratif Halka -->
             <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none"></div>
-
             <div>
-                <!-- Logo -->
                 <div class="flex items-center gap-3">
                     <div class="w-11 h-11 bg-white text-slate-900 rounded-2xl flex items-center justify-center shadow-lg shadow-black/20 font-bold text-xl">
                         <span class="material-symbols-outlined text-[26px] text-emerald-600">local_shipping</span>
@@ -54,8 +48,6 @@
                     </p>
                 </div>
             </div>
-
-            <!-- Bilgilendirme Rozeti -->
             <div class="bg-black/20 border border-white/10 p-4 rounded-2xl backdrop-blur-md mt-8">
                 <div class="flex items-center gap-3">
                     <span class="material-symbols-outlined text-emerald-400">verified_user</span>
@@ -66,8 +58,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Sağ Panel: Giriş Formu -->
         <div class="lg:col-span-7 p-8 lg:p-14 flex flex-col justify-center bg-slate-800">
             <div class="max-w-md w-full mx-auto">
 

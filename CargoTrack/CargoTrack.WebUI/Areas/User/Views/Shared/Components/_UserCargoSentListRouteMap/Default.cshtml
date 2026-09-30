@@ -1,0 +1,58 @@
+﻿<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
+    <!-- Graphic Route Visualizer -->
+    <div class="lg:col-span-2 p-6 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+        <div class="flex items-center justify-between mb-4">
+            <div class="space-y-0.5">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface">Canlı Rota ve Sevkiyat Yoğunluğu</h3>
+                <p class="font-body-sm text-body-sm text-secondary">Kuryelerinizin ve şehirlerarası transfer araçlarının anlık hat durumu</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-label-sm inline-flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                Canlı Ağ Aktif
+            </span>
+        </div>
+        <div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center p-4">
+            <!-- Ambient Map Route Graph Graphic -->
+            <svg class="w-full h-full text-primary" fill="none" viewbox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
+                <path class="opacity-30" d="M40 100 C 150 20, 260 120, 380 40 C 450 -10, 520 80, 560 60" stroke="currentColor" stroke-dasharray="6 6" stroke-width="3"></path>
+                <path d="M40 100 C 150 20, 260 120, 380 40" stroke="currentColor" stroke-linecap="round" stroke-width="3.5"></path>
+                <!-- Node Gaziantep / İzmir -->
+                <circle class="fill-primary" cx="40" cy="100" r="7"></circle>
+                <circle cx="40" cy="100" fill="#ffffff" r="3"></circle>
+                <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="40" y="125">Çıkış Noktası</text>
+                <!-- Mid Hub -->
+                <circle class="fill-primary" cx="230" cy="75" r="5"></circle>
+                <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="230" y="98">Tuzla HUB</text>
+                <!-- Current Delivery Node Active Ping -->
+                <circle class="fill-primary-fixed opacity-40 animate-ping" cx="380" cy="40" r="10"></circle>
+                <circle class="fill-primary" cx="380" cy="40" r="7"></circle>
+                <circle cx="380" cy="40" fill="#ffffff" r="3"></circle>
+                <text class="fill-current font-bold text-[12px] font-label-md" text-anchor="middle" x="380" y="24">Kadıköy (Şu An)</text>
+                <!-- Destination -->
+                <circle class="fill-outline" cx="560" cy="60" r="5"></circle>
+                <text class="fill-outline text-[11px] font-label-sm" text-anchor="middle" x="560" y="85">Nihai Adres</text>
+            </svg>
+        </div>
+        <div class="flex items-center justify-between text-body-sm font-body-sm text-secondary pt-3">
+            <span>Ortalama teslimat süresi: <strong>1.2 gün</strong></span>
+            <span class="text-primary font-label-md text-label-md hover:underline cursor-pointer">Detaylı Canlı Haritayı Aç →</span>
+        </div>
+    </div>
+    <!-- Quick Delivery Helper Box -->
+    <div class="p-6 rounded-2xl bg-primary-fixed text-on-primary-fixed-variant shadow-sm flex flex-col justify-between">
+        <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-[22px]">support_agent</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-on-primary-fixed leading-snug">Teslimat Saatini Özelleştirin</h3>
+            <p class="font-body-sm text-body-sm text-on-primary-fixed-variant">
+                Evde değil misiniz? Kuryemiz kapıya gelmeden önce teslimatınızı güvenli komşunuza veya en yakın esnaf noktasına yönlendirebilirsiniz.
+            </p>
+        </div>
+        <div class="pt-6">
+            <button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all" type="button">
+                Teslimat Tercihini Değiştir
+            </button>
+        </div>
+    </div>
+</div>

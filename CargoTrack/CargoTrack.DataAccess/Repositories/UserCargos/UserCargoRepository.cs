@@ -22,6 +22,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
             return await _context.Cargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
                 .Include(x => x.CargoMovements)
                     .ThenInclude(x => x.Branch)
                 .Include(x => x.CargoMovements)
@@ -37,6 +38,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
             return await _context.Cargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
                 .Where(x =>
                     (x.SenderId == userId || x.ReceiverId == userId) &&
                     x.CargoStatus != CargoStatus.Delivered &&
@@ -50,6 +52,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
             return await _context.Cargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
                 .Where(x => (x.ReceiverId == userId || x.SenderId == userId) &&
                             (x.CargoStatus == CargoStatus.Delivered || x.CargoStatus == CargoStatus.ReturnedToSender))
                 .OrderByDescending(x => x.CreatedDate)
@@ -61,6 +64,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
             return await _context.Cargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
                 .Where(x => x.ReceiverId == userId)
                 .OrderByDescending(x => x.CreatedDate)
                 .ToListAsync();
@@ -71,6 +75,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
             return await _context.Cargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
                 .Where(x => x.SenderId == userId)
                 .OrderByDescending(x => x.CreatedDate)
                 .ToListAsync();

@@ -1,58 +1,152 @@
-﻿<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
-    <!-- Graphic Route Visualizer -->
-    <div class="lg:col-span-2 p-6 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-        <div class="flex items-center justify-between mb-4">
-            <div class="space-y-0.5">
-                <h3 class="font-headline-sm text-headline-sm text-on-surface">Canlı Rota ve Sevkiyat Yoğunluğu</h3>
-                <p class="font-body-sm text-body-sm text-secondary">Kuryelerinizin ve şehirlerarası transfer araçlarının anlık hat durumu</p>
+﻿@model ResultCargoDto
+@using CargoTrack.Entity.Entities.Enums
+
+@{
+    string origin = !string.IsNullOrWhiteSpace(Model.OriginBranchName) ? Model.OriginBranchName : "Çıkış Şubesi";
+    string hub = Model.CargoMovements?.LastOrDefault(m => m.TransferCenterId.HasValue)?.TransferCenterName ?? "Lojistik HUB";
+    string dest = !string.IsNullOrWhiteSpace(Model.DestinationBranchName) ? Model.DestinationBranchName : "Varış Şubesi";
+    string finalAddress = !string.IsNullOrWhiteSpace(Model.DeliveryAddressDetail) ? Model.DeliveryAddressDetail : "Nihai Teslimat Adresi";
+
+    int step = Model.CargoStatus switch
+    {
+        CargoStatus.Created => 1,
+        CargoStatus.AtOriginBranch => 1,
+        CargoStatus.InTransferCenter => 2,
+        CargoStatus.ArrivedAtDeliveryBranch => 3,
+        CargoStatus.OutForDelivery => 3,
+        CargoStatus.Delivered => 4,
+        _ => 1
+    };
+
+    string activePath = step switch
+    {
+        1 => "M50 110",
+        2 => "M50 110 C 130 50, 180 80, 240 70",
+        3 => "M50 110 C 130 50, 180 80, 240 70 C 310 60, 350 100, 420 50",
+        4 => "M50 110 C 130 50, 180 80, 240 70 C 310 60, 350 100, 420 50 C 470 20, 520 60, 570 40",
+        _ => "M50 110"
+    };
+
+    (int cx, int cy) currentCoord = step switch
+    {
+        1 => (50, 110),
+        2 => (240, 70),
+        3 => (420, 50),
+        4 => (570, 40),
+        _ => (50, 110)
+    };
+}
+
+<div class="grid grid-cols-1 gap-6 pt-2">
+    <div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm flex flex-col justify-between relative overflow-hidden">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Canlı Telemetri &amp; Rota İzleme</h3>
+                    <span class="font-code text-xs px-2.5 py-0.5 rounded-md bg-surface-container-high text-primary font-bold">
+                        @Model.TrackCode
+                    </span>
+                </div>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Aktif lojistik koridoru: <strong class="text-on-surface">@origin</strong> → <strong class="text-on-surface">@dest</strong>
+                </p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-sm text-label-sm inline-flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                Canlı Ağ Aktif
-            </span>
+
+            <div class="flex items-center gap-3">
+                <span class="px-3 py-1.5 rounded-xl bg-primary/10 border border-primary/30 text-primary text-xs font-bold inline-flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px]">sensors</span>
+                    <span>Canlı Takip Aktif</span>
+                </span>
+            </div>
         </div>
-        <div class="relative w-full h-44 rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center p-4">
-            <!-- Ambient Map Route Graph Graphic -->
-            <svg class="w-full h-full text-primary" fill="none" viewbox="0 0 600 140" xmlns="http://www.w3.org/2000/svg">
-                <path class="opacity-30" d="M40 100 C 150 20, 260 120, 380 40 C 450 -10, 520 80, 560 60" stroke="currentColor" stroke-dasharray="6 6" stroke-width="3"></path>
-                <path d="M40 100 C 150 20, 260 120, 380 40" stroke="currentColor" stroke-linecap="round" stroke-width="3.5"></path>
-                <!-- Node Gaziantep / İzmir -->
-                <circle class="fill-primary" cx="40" cy="100" r="7"></circle>
-                <circle cx="40" cy="100" fill="#ffffff" r="3"></circle>
-                <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="40" y="125">Çıkış Noktası</text>
-                <!-- Mid Hub -->
-                <circle class="fill-primary" cx="230" cy="75" r="5"></circle>
-                <text class="fill-current text-[11px] font-label-sm" text-anchor="middle" x="230" y="98">Tuzla HUB</text>
-                <!-- Current Delivery Node Active Ping -->
-                <circle class="fill-primary-fixed opacity-40 animate-ping" cx="380" cy="40" r="10"></circle>
-                <circle class="fill-primary" cx="380" cy="40" r="7"></circle>
-                <circle cx="380" cy="40" fill="#ffffff" r="3"></circle>
-                <text class="fill-current font-bold text-[12px] font-label-md" text-anchor="middle" x="380" y="24">Kadıköy (Şu An)</text>
-                <!-- Destination -->
-                <circle class="fill-outline" cx="560" cy="60" r="5"></circle>
-                <text class="fill-outline text-[11px] font-label-sm" text-anchor="middle" x="560" y="85">Nihai Adres</text>
+        <div class="relative w-full h-56 rounded-2xl overflow-hidden bg-slate-950/90 border border-slate-800 flex items-center justify-center p-2 shadow-inner">
+
+            <svg class="w-full h-full" viewBox="0 0 640 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1" />
+                        <circle cx="40" cy="40" r="1" fill="rgba(255, 255, 255, 0.1)" />
+                    </pattern>
+                    <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#10b981" />
+                        <stop offset="50%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#3b82f6" />
+                    </linearGradient>
+                    <linearGradient id="pulseGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+                        <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+                    </linearGradient>
+                </defs>
+
+                <rect width="100%" height="100%" fill="url(#grid)" />
+                <path d="M 0 35 L 640 35 M 0 145 L 640 145" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1" stroke-dasharray="2 4" />
+                <path d="M 160 0 L 160 180 M 480 0 L 480 180" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1" stroke-dasharray="2 4" />
+
+                <path d="M50 110 C 130 50, 180 80, 240 70 C 310 60, 350 100, 420 50 C 470 20, 520 60, 570 40"
+                      stroke="rgba(255, 255, 255, 0.12)" stroke-width="4" stroke-dasharray="6 6" stroke-linecap="round" />
+
+                <path d="@activePath" stroke="url(#routeGradient)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="filter drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]" />
+
+                <g class="transition-all">
+                    <circle cx="50" cy="110" r="14" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1" />
+                    <circle cx="50" cy="110" r="6" fill="@(step >= 1 ? "#10b981" : "#64748b")" />
+                    <circle cx="50" cy="110" r="2.5" fill="#ffffff" />
+                    <text x="50" y="140" text-anchor="middle" fill="#f8fafc" font-size="11" font-weight="700">@origin</text>
+                    <text x="50" y="153" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">ÇIKIŞ ŞUBESİ</text>
+                </g>
+
+                <g class="transition-all">
+                    <circle cx="240" cy="70" r="12" fill="rgba(6, 182, 212, 0.1)" stroke="rgba(6, 182, 212, 0.3)" stroke-width="1" />
+                    <circle cx="240" cy="70" r="5" fill="@(step >= 2 ? "#06b6d4" : "#64748b")" />
+                    <circle cx="240" cy="70" r="2" fill="#ffffff" />
+                    <text x="240" y="98" text-anchor="middle" fill="@(step >= 2 ? "#f8fafc" : "#94a3b8")" font-size="11" font-weight="600">@hub</text>
+                    <text x="240" y="111" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">LOJİSTİK HUB</text>
+                </g>
+
+                <g class="transition-all">
+                    <circle cx="420" cy="50" r="12" fill="rgba(59, 130, 246, 0.1)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="1" />
+                    <circle cx="420" cy="50" r="5" fill="@(step >= 3 ? "#3b82f6" : "#64748b")" />
+                    <circle cx="420" cy="50" r="2" fill="#ffffff" />
+                    <text x="420" y="78" text-anchor="middle" fill="@(step >= 3 ? "#f8fafc" : "#94a3b8")" font-size="11" font-weight="700">@dest</text>
+                    <text x="420" y="91" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">VARIŞ ŞUBESİ</text>
+                </g>
+
+                <g class="transition-all">
+                    <circle cx="570" cy="40" r="14" fill="rgba(244, 63, 94, 0.1)" stroke="rgba(244, 63, 94, 0.3)" stroke-width="1" />
+                    <circle cx="570" cy="40" r="6" fill="@(step >= 4 ? "#10b981" : "#64748b")" />
+                    <circle cx="570" cy="40" r="2.5" fill="#ffffff" />
+                    <text x="570" y="68" text-anchor="middle" fill="@(step >= 4 ? "#34d399" : "#cbd5e1")" font-size="11" font-weight="700">Nihai Adres</text>
+                    <text x="570" y="81" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="monospace">ALICI TESLİMAT</text>
+                </g>
+
+                <g transform="translate(@currentCoord.cx, @currentCoord.cy)">
+                    <circle cx="0" cy="0" r="22" fill="url(#pulseGlow)" class="animate-ping" />
+                    <circle cx="0" cy="0" r="10" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3 3" class="animate-spin" />
+                    <circle cx="0" cy="0" r="4" fill="#38bdf8" />
+                </g>
             </svg>
-        </div>
-        <div class="flex items-center justify-between text-body-sm font-body-sm text-secondary pt-3">
-            <span>Ortalama teslimat süresi: <strong>1.2 gün</strong></span>
-            <span class="text-primary font-label-md text-label-md hover:underline cursor-pointer">Detaylı Canlı Haritayı Aç →</span>
-        </div>
-    </div>
-    <!-- Quick Delivery Helper Box -->
-    <div class="p-6 rounded-2xl bg-primary-fixed text-on-primary-fixed-variant shadow-sm flex flex-col justify-between">
-        <div class="space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
-                <span class="material-symbols-outlined text-[22px]">support_agent</span>
+
+            <div class="absolute bottom-3 right-4 px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-700/80 backdrop-blur-md flex items-center gap-2 text-[11px] font-code text-slate-300">
+                <span class="w-2.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Adres: <strong class="text-white truncate max-w-[200px] inline-block align-bottom" title="@finalAddress">@finalAddress</strong></span>
             </div>
-            <h3 class="font-headline-sm text-headline-sm text-on-primary-fixed leading-snug">Teslimat Saatini Özelleştirin</h3>
-            <p class="font-body-sm text-body-sm text-on-primary-fixed-variant">
-                Evde değil misiniz? Kuryemiz kapıya gelmeden önce teslimatınızı güvenli komşunuza veya en yakın esnaf noktasına yönlendirebilirsiniz.
-            </p>
         </div>
-        <div class="pt-6">
-            <button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all" type="button">
-                Teslimat Tercihini Değiştir
-            </button>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 text-body-sm text-secondary pt-4 border-t border-outline-variant/20 mt-3">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px] text-primary">pin_drop</span>
+                <span class="text-xs text-on-surface-variant truncate max-w-lg">
+                    Teslimat Konumu: <strong class="text-on-surface">@finalAddress</strong>
+                </span>
+            </div>
+
+            <a asp-area="User" asp-controller="Cargo" asp-action="CargoDetail" asp-route-id="@Model.Id"
+               class="text-primary font-label-md text-xs font-bold hover:underline flex items-center justify-end gap-1 group">
+                <span>Tam Kargo Denetim İzi (Audit Trail)</span>
+                <span class="material-symbols-outlined text-[15px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
         </div>
+
     </div>
 </div>
