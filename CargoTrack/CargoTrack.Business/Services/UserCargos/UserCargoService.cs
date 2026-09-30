@@ -2,6 +2,7 @@
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.Entity.Entities;
 using Mapster;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CargoTrack.Business.Services.UserCargos
 {
-    public class UserCargoService(IUserCargoRepository _userCargoRepository) : IUserCargoService
+    public class UserCargoService(IUserCargoRepository _userCargoRepository, UserManager<AppUser> _userManager) : IUserCargoService
     {
         public async Task<ResultCargoDto> GetByIdAsync(Guid userId, Guid cargoId)
         {

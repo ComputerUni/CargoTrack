@@ -1,0 +1,70 @@
+﻿@using CargoTrack.Entity.Entities.Enums
+@using CargoTrack.Business.Extensions
+@model CargoTrack.DTO.DTOs.CargosDtos.ResultCargoDto
+
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col gap-4">
+    <div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-[18px]">route</span>
+            </div>
+            <span class="text-xs font-bold text-on-surface uppercase tracking-wider">Lojistik & Rota Özeti</span>
+        </div>
+        <span class="font-code text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-md">
+            @Model.Price.ToString("C2")
+        </span>
+    </div>
+
+    <div class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/20 flex flex-col gap-2.5">
+        <div class="flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-[18px] text-secondary mt-0.5">trip_origin</span>
+            <div class="flex flex-col min-w-0">
+                <span class="text-[10px] uppercase font-bold text-outline tracking-wider">Çıkış Şubesi</span>
+                <span class="text-xs font-semibold text-on-surface truncate">@Model.OriginBranchName</span>
+                <span class="text-[10px] text-secondary font-code">Sevk: @Model.ShipmentDate.ToString("dd.MM.yyyy HH:mm")</span>
+            </div>
+        </div>
+
+        <div class="ml-2 pl-3 border-l-2 border-dashed border-outline-variant/40 py-0.5"></div>
+
+        <div class="flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-[18px] text-primary mt-0.5">location_on</span>
+            <div class="flex flex-col min-w-0">
+                <span class="text-[10px] uppercase font-bold text-primary tracking-wider">Varış / Teslim Şubesi</span>
+                <span class="text-xs font-bold text-on-surface truncate">@Model.DestinationBranchName</span>
+                <span class="text-[10px] text-secondary font-code">Tahmini: @Model.EstimatedArrivalDate.ToString("dd.MM.yyyy HH:mm")</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="space-y-2.5 text-xs">
+        <div class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[16px] text-outline mt-0.5 shrink-0">home_pin</span>
+            <div class="flex flex-col">
+                <span class="text-[10px] text-outline uppercase font-semibold">Nihai Teslim Adresi</span>
+                <span class="text-on-surface font-medium leading-snug line-clamp-2" title="@Model.DeliveryAddressDetail">
+                    @(!string.IsNullOrWhiteSpace(Model.DeliveryAddressDetail) ? Model.DeliveryAddressDetail : $"{Model.DestinationBranchName} Şubeden Teslim Alınacak")
+                </span>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.ReceiverPhone))
+        {
+            <div class="flex items-center justify-between pt-2 border-t border-outline-variant/15 text-secondary">
+                <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[15px] text-outline">call</span>
+                    Alıcı İletişim:
+                </span>
+                <span class="font-code font-semibold text-on-surface">@Model.ReceiverPhone</span>
+            </div>
+        }
+
+        <div class="flex items-center justify-between pt-1 text-secondary">
+            <span class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px] text-outline">category</span>
+                Gönderi Türü:
+            </span>
+            <span class="font-semibold text-on-surface">@Model.CargoType.ToString()</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+﻿@using CargoTrack.Entity.Entities.Enums
+@model ResultCargoDto
+
+@{
+    var isOutForDelivery = Model.CargoStatus == CargoStatus.OutForDelivery;
+    var isDelivered = Model.CargoStatus == CargoStatus.Delivered;
+    var courierName = !string.IsNullOrWhiteSpace(Model.AssignedCourierName) && Model.AssignedCourierName != "Atama Bekliyor"
+                      ? Model.AssignedCourierName
+                      : "Kurye";
+}
+
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] overflow-hidden">
+    <!-- Live Courier Info Bar -->
+    <div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface-container-low/70">
+        <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                @(Model.AssignedCourierName?.Substring(0, 1) ?? "K")
+            </div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">@Model.AssignedCourierName</h3>
+                </div>
+                <div class="font-body-sm text-body-sm text-secondary flex items-center gap-2 mt-0.5">
+                    <span>Dağıtım Sorumlusu</span>
+                </div>
+            </div>
+        </div>
+        @if(!string.IsNullOrWhiteSpace(Model.AssignedCourierPhone))
+        {
+            <div class="flex items-center gap-2 self-end sm:self-auto">
+                <a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors" href="tel:02164440024">
+                    <span class="material-symbols-outlined text-[18px] text-primary">phone</span>
+                    <span>Kuryeyi Ara</span>
+                </a>
+            </div>
+        }
+
+    </div>
+    <div class="relative w-full h-80 sm:h-96 overflow-hidden rounded-2xl bg-surface-container-highest shadow-inner">
+        <!-- Aydınlık / Açık Renk Telemetri & Rota Deseni -->
+        <div class="absolute inset-0 bg-gradient-to-br from-surface-container-low via-surface to-surface-container">
+            <!-- İnce Açık Mavi Noktalı Izgara Deseni -->
+            <div class="w-full h-full opacity-60 bg-[radial-gradient(#4f46e5_1.2px,transparent_1.2px)] [background-size:24px_24px]"></div>
+            <!-- Yumuşak Aydınlık Geçiş Gradyanı -->
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-surface-container-low/50 pointer-events-none"></div>
+        </div>
+
+        <!-- Ambient Overlay Gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/40 pointer-events-none"></div>
+
+        <!-- Top Left: Tahmini Varış Kartı -->
+        <div class="absolute top-4 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-outline-variant/20 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-[20px]">timer</span>
+            </div>
+            <div>
+                <span class="text-secondary font-label-sm text-[10px] block uppercase tracking-wider font-semibold">Tahmini Varış</span>
+                <span class="font-headline-sm text-sm sm:text-base text-primary font-bold">@Model.EstimatedArrivalDate.ToString("dd MMM • HH:mm")</span>
+            </div>
+        </div>
+
+        <!-- Map Route Simulation Graphic Overlay (SVG) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 360" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4F46E5"></stop>
+                    <stop offset="100%" stop-color="#818CF8"></stop>
+                </linearGradient>
+                <filter id="glowEffect">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <!-- Route Path Line -->
+            <path class="@(isOutForDelivery ? "animate-pulse" : "")"
+                  d="M 140 250 Q 300 200 450 220 T 670 110"
+                  fill="none"
+                  stroke="url(#routeGradient)"
+                  stroke-dasharray="8 8"
+                  stroke-linecap="round"
+                  stroke-width="4"
+                  filter="url(#glowEffect)"></path>
+        </svg>
+
+        <!-- Marker 1: Başlangıç / Kurye Aracı (Duruma Göre Şube veya Kurye) -->
+        <div class="absolute left-[15%] bottom-[22%] -translate-x-1/2 translate-y-1/2 z-10 flex flex-col items-center">
+            @if (isOutForDelivery)
+            {
+                <div class="bg-primary text-on-primary p-2.5 rounded-full shadow-xl ring-4 ring-primary/20 animate-bounce">
+                    <span class="material-symbols-outlined text-[22px] block">electric_moped</span>
+                </div>
+                <span class="mt-1 bg-on-surface/90 backdrop-blur-sm text-surface px-2.5 py-0.5 rounded font-label-sm text-xs shadow font-semibold">
+                    @courierName (Kurye)
+                </span>
+            }
+            else
+            {
+                <div class="bg-surface-container-lowest text-primary p-2.5 rounded-full shadow-xl ring-4 ring-primary/20 border border-primary/20">
+                    <span class="material-symbols-outlined text-[22px] block">store</span>
+                </div>
+                <span class="mt-1 bg-on-surface/90 backdrop-blur-sm text-surface px-2.5 py-0.5 rounded font-label-sm text-xs shadow">
+                    @Model.OriginBranchName
+                </span>
+            }
+        </div>
+
+        <!-- Marker 2: Delivery Target Address (Nihai Hedef) -->
+        <div class="absolute right-[14%] top-[25%] translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
+            <div class="relative">
+                <div class="@(isDelivered ? "bg-emerald-600 text-white ring-emerald-500/30" : "bg-tertiary-container text-on-tertiary ring-tertiary-container/30") p-2.5 rounded-full shadow-xl ring-4">
+                    <span class="material-symbols-outlined text-[22px] block">
+                        @(isDelivered ? "check_circle" : "pin_drop")
+                    </span>
+                </div>
+                @if (!isDelivered)
+                {
+                    <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+                    </span>
+                }
+            </div>
+            <div class="mt-1.5 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1.5 rounded-xl shadow-md text-center max-w-[190px] border border-outline-variant/20">
+                <span class="font-label-sm text-xs text-on-surface block font-semibold truncate" title="@Model.DeliveryAddressDetail">
+                    @(!string.IsNullOrWhiteSpace(Model.DeliveryAddressDetail) ? Model.DeliveryAddressDetail : $"{Model.DestinationBranchName} Şubesi")
+                </span>
+                <span class="font-body-sm text-[10px] text-secondary block">
+                    @(isDelivered ? "Teslim Edildi" : "Hedef Adres")
+                </span>
+            </div>
+        </div>
+
+        <!-- Bottom Right: Live GPS Status Badge -->
+        <div class="absolute bottom-4 right-4 z-10 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-xl shadow border border-outline-variant/20 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full @(isOutForDelivery ? "bg-emerald-500 animate-ping" : "bg-primary")"></span>
+            <span class="font-label-sm text-xs text-on-surface font-medium">
+                @(isOutForDelivery ? "Canlı GPS Verisi Aktif" : "Hat Güzergah Takibi")
+            </span>
+        </div>
+    </div>
+    <!-- Delivery SMS Authentication Highlight Banner -->
+    @if(Model.CargoStatus == CargoStatus.OutForDelivery)
+    {
+        <div class="p-space-lg bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4" id="smsCodeBox">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm shrink-0">
+                    <span class="material-symbols-outlined text-[26px]">key</span>
+                </div>
+                <div>
+                    <div class="font-label-lg text-label-lg text-on-surface font-semibold">Temassız Güvenli Teslimat Kodu</div>
+                    <p class="font-body-sm text-body-sm text-secondary">Kuryemiz paketi teslim ederken bu kodu sözlü olarak iletiniz.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="bg-surface-container-lowest px-5 py-2.5 rounded-xl shadow-sm text-center">
+                    <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-0.5">SMS Doğrulama Kodu</div>
+                    <div class="font-headline-md text-headline-md font-bold tracking-widest text-primary">@Model.DeliveryCode</div>
+                </div>
+                <button class="w-11 h-11 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors shadow-sm" onclick="navigator.clipboard.writeText('849182'); showToast();" title="Kodu Kopyala">
+                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                </button>
+            </div>
+        </div>
+    }
+</div>

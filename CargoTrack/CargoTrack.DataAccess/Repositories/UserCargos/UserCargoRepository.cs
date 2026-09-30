@@ -53,6 +53,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
                 .Include(x => x.AssignedEmployee)
+                .Include(x => x.DeliveryExceptions)
                 .Where(x => (x.ReceiverId == userId || x.SenderId == userId) &&
                             (x.CargoStatus == CargoStatus.Delivered || x.CargoStatus == CargoStatus.ReturnedToSender))
                 .OrderByDescending(x => x.CreatedDate)

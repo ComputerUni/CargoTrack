@@ -40,7 +40,7 @@ namespace CargoTrack.WebUI.Areas.User.Controllers
         public async Task<IActionResult> CargoDetail(Guid id)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargo = await _userCargoService.GetByIdAsync(id, user.Id);
+            var cargo = await _userCargoService.GetByIdAsync(user.Id, id);
             if(cargo == null)
             {
                 return RedirectToAction("ActiveList");

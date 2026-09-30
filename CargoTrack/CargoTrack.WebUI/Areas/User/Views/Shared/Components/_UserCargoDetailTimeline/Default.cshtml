@@ -1,0 +1,34 @@
+﻿@using CargoTrack.Business.Extensions
+@model ResultCargoDto
+
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+    <div class="flex items-center justify-between mb-space-lg">
+        <div>
+            <h2 class="font-headline-sm text-headline-sm text-on-surface">Detaylı Gönderi Geçmişi</h2>
+            <p class="font-body-sm text-body-sm text-secondary">Tüm transfer, tasnif ve dağıtım aşamaları anlık olarak kaydedilir.</p>
+        </div>
+        <span class="font-label-md text-label-md text-primary bg-primary-fixed px-3 py-1 rounded-xl">Toplam @ViewBag.MovementCount İşlem</span>
+    </div>
+    <div class="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-highest">
+        @foreach(var item in Model.CargoMovements.OrderByDescending(x => x.MovementDate))
+        {
+            <div class="relative group">
+                <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-[0_0_0_5px_rgba(79,70,229,0.2)]">
+                    <span class="material-symbols-outlined text-[14px]">done</span>
+                </div>
+                <div class="bg-surface-container-low p-4 rounded-xl transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                        <span class="font-label-lg text-label-lg text-primary font-bold">@item.NewStatus.GetDisplayName() - @item.BranchName</span>
+                        <span class="font-code-tracking text-code-tracking text-secondary font-medium">@item.MovementDate.ToString("dd MMM yyyy • HH:mm")</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface">Kurye @item.EmployeeName tarafından zimmetlendi ve dağıtım rotasına alındı.</p>
+                    <div class="mt-2.5 flex items-center gap-2 text-label-sm font-label-sm text-secondary">
+                        <span class="material-symbols-outlined text-[15px] text-primary">my_location</span>
+                        <span>@item.Description</span>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+</div>

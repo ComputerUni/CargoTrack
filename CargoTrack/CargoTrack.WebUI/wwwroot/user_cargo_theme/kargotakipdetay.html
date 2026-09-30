@@ -1,423 +1,463 @@
 <!DOCTYPE html>
 
-<html lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","primary-fixed":"#e2dfff","on-surface-variant":"#464555","inverse-primary":"#c3c0ff","surface":"#faf8ff","on-primary-fixed-variant":"#3323cc","on-background":"#131b2e","surface-container-low":"#f2f3ff","on-secondary":"#ffffff","on-surface":"#131b2e","primary-container":"#4f46e5","tertiary":"#571ac0","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed-dim":"#d0bcff","on-secondary-fixed":"#0b1c30","inverse-surface":"#283044","surface-container-lowest":"#ffffff","outline-variant":"#c7c4d8","surface-container":"#eaedff","on-primary":"#ffffff","secondary-container":"#d0e1fb","on-secondary-fixed-variant":"#38485d","background":"#faf8ff","on-primary-fixed":"#0f0069","on-error":"#ffffff","surface-container-highest":"#dae2fd","surface-variant":"#dae2fd","error-container":"#ffdad6","surface-dim":"#d2d9f4","on-tertiary-container":"#e3d5ff","primary":"#3525cd","secondary":"#505f76","on-primary-container":"#dad7ff","secondary-fixed-dim":"#b7c8e1","surface-bright":"#faf8ff","surface-container-high":"#e2e7ff","on-error-container":"#93000a","outline":"#777587","surface-tint":"#4d44e3","tertiary-container":"#6f3dd9","inverse-on-surface":"#eef0ff","on-tertiary":"#ffffff","primary-fixed-dim":"#c3c0ff","error":"#ba1a1a","tertiary-fixed":"#e9ddff"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"gutter":"1.5rem","margin":"2rem","space-xs":"0.25rem","space-lg":"1.5rem","space-xl":"2.5rem","margin-sm":"1rem","space-md":"1rem","space-sm":"0.5rem","gutter-sm":"1rem"},fontFamily:{"body-md":["Inter"],"display-lg":["Inter"],"label-sm":["Inter"],"headline-lg":["Inter"],"label-lg":["Inter"],"headline-lg-mobile":["Inter"],"code-tracking":["Inter"],"headline-sm":["Inter"],"label-md":["Inter"],"body-sm":["Inter"],"headline-md":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",letterSpacing:"0em",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.025em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-lg-mobile":["26px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"700"}],"code-tracking":["14px",{lineHeight:"20px",letterSpacing:"0.05em",fontWeight:"600"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",letterSpacing:"0em",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest"><img alt="CargoTrack Müşteri Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcHG-TLlsVZUxHKyK6Sla90cLdd2UnelRNCCt4Wg3cqVUNtyf-IMlcqttdpmnxqzMYoV0Y0mTZ9foKkkpLaDVkEvd5N_xt3JfdODcQYFzcTBaa9LMjslCmvYq3rblm9_H17H2KYVsw6dFm5Y6h6hkWTxineEgkme0k3u3nValPpWh5LOUhBu_MiaZf-gHU-IcwP-XqGx3Bxw0lINIpam7HLzs0qzBWHRWVBbomPQl4Il4Tvudb_9zFNpuW"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span><span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span></div></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm"><div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="aktif-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span>Aktif Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">move_to_inbox</span><span>Bana Gelen Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">outbox</span><span>Gönderdiğim Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span>Geçmiş Teslimatlar</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#"><span class="material-symbols-outlined text-[20px]">add_box</span><span>Yeni Kargo Talebi</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#"><span class="material-symbols-outlined text-[20px]">pin_drop</span><span>Kargo Detay & Canlı Takip</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#"><span class="material-symbols-outlined text-[20px]">home_pin</span><span>Teslimat Adreslerim</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span></a></nav></div><div class="p-space-md m-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span class="font-label-md text-label-md text-on-surface">Güvenli Müşteri Alanı</span></div><p class="font-body-sm text-body-sm text-secondary">256-bit SSL ve KVKK standartlarında tam veri güvencesi.</p></div></aside><div class="pl-72 min-h-screen flex flex-col"><header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md relative"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all" placeholder="Kargo Takip No veya Gönderi Kodu girin..." type="text"/></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-2 h-11 px-space-md bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-sm hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Yeni Kargo Gönder</span></a><div class="relative flex items-center"><button aria-label="Bildirimler" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest" title="2 yeni güncelleme"></span></div><button aria-label="Yardım ve Destek" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">help</span></button><div class="h-8 w-px bg-surface-container"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><div class="font-label-lg text-label-lg text-on-surface">Arda Yılmaz</div><div class="font-body-sm text-body-sm text-secondary">Bireysel Müşteri</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFKk2U4l3Gui-fkyGwDbFCogRuW_-dH9byJiy7pKMISYN07vB4Xqc_lnL4Grv20xuMzHp99YNmO_XmhTBVwm8KxeAysnTVMd1BAn5_me4GXfsyB8iv5WnF_2xt2BNg-G2ngajHKKLZRcfQn_eU5CyCkheqqq9V2jqCZuI1nXEWTn61L8gIaXMuYtUHEY8Lpq-MLY7iwVKwAi87sumWrSsEFK44Auvxw7E5ytETfsw4PY2rynP3iYsTFg"/></div></div></header><main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg"><div class="flex flex-col w-full">
-<!-- Sub-header / Contextual Nav -->
-<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-space-lg">
-<div class="flex flex-col gap-2">
-<a class="inline-flex items-center gap-1.5 text-secondary hover:text-primary transition-colors font-label-md text-label-md w-fit" href="#">
-<span class="material-symbols-outlined text-[18px]">arrow_back</span>
-<span>Kargolarıma Dön</span>
-</a>
-<div class="flex flex-wrap items-center gap-3">
-<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Kargo Detayı:</h1>
-<div class="inline-flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-xl font-code-tracking text-code-tracking text-on-surface">
-<span id="trackingCodeText">CT-2026-981240</span>
-<button class="text-secondary hover:text-primary transition-colors p-0.5 rounded flex items-center justify-center" id="copyBtn" onclick="navigator.clipboard.writeText('CT-2026-981240'); showToast();" title="Takip Kodunu Kopyala">
-<span class="material-symbols-outlined text-[18px]">content_copy</span>
-</button>
-<button class="text-secondary hover:text-primary transition-colors p-0.5 rounded flex items-center justify-center" title="QR Kod Göster">
-<span class="material-symbols-outlined text-[18px]">qr_code_2</span>
-</button>
-</div>
-<!-- Pulse Status Badge -->
-<div class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-fixed px-3 py-1.5 rounded-xl font-label-md text-label-md shadow-sm">
-<span class="relative flex h-2.5 w-2.5">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
-<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-container"></span>
-</span>
-<span class="text-primary font-bold">Kurye Dağıtımda</span>
-<span class="text-on-secondary-container">•</span>
-<span class="font-medium text-secondary">4 Durak Kaldı</span>
-</div>
-</div>
-</div>
-<!-- Quick Actions Header -->
-<div class="flex items-center gap-3 self-start md:self-auto">
-<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm">
-<span class="material-symbols-outlined text-[18px] text-primary">download</span>
-<span>Fatura & Sevk İrsaliyesi (PDF)</span>
-</button>
-<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md shadow-sm" onclick="document.getElementById('smsCodeBox').scrollIntoView({behavior: 'smooth'})">
-<span class="material-symbols-outlined text-[18px]">pin</span>
-<span>Teslimat Kodunu Gör</span>
-</button>
-</div>
-</div>
-<!-- Toast Notification element -->
-<div class="fixed bottom-6 right-6 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-xl z-50 flex items-center gap-2 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 font-label-md text-label-md" id="toastNotification">
-<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span>
-<span>Takip numarası panoya kopyalandı!</span>
-</div>
-<!-- Main Grid Layout (65% / 35%) -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-<!-- LEFT COLUMN (8 cols ~ 66%) -->
-<div class="lg:col-span-8 flex flex-col gap-space-lg">
-<!-- Live Map & Courier Status Master Card -->
-<div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] overflow-hidden">
-<!-- Live Courier Info Bar -->
-<div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface-container-low/70">
-<div class="flex items-center gap-3.5">
-<div class="relative">
-<img class="w-12 h-12 rounded-xl object-cover shadow-sm" data-alt="Professional friendly male delivery courier in modern blue uniform smiling against soft ambient warehouse lighting, modern corporate portrait style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCXsgm09fgsCgy35hCfSZapizRe-KMgzoGJ0gKstBlwa5FeKLTeb0fOM_RrN-ByVHEsFShoP6bxHmql0Bdiu81F2qtBWHAaMonA8y0Qf1ooOkCBG6Uldea78meSKj99JEob-FnUJCjhX6ivn5qsnUUzR8Z0dErtR7DZTSodkVbl6XNrGuBnoKQBRHljk-ZvKqJ5oRx7DYfLoVLavuH3YWUkTwLgYoBubX3Ku2zl0Xmt771NAtI9gCckw"/>
-<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary rounded-full p-0.5 shadow-sm">
-<span class="material-symbols-outlined text-[12px] block">electric_moped</span>
-</div>
-</div>
-<div>
-<div class="flex items-center gap-2">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Ahmet Yılmaz</h3>
-<span class="inline-flex items-center gap-0.5 text-label-sm font-label-sm bg-surface-container-lowest px-2 py-0.5 rounded-full text-primary font-bold">
-<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.96
-                </span>
-</div>
-<div class="font-body-sm text-body-sm text-secondary flex items-center gap-2 mt-0.5">
-<span>Elektrikli Kargo Aracı</span>
-<span>•</span>
-<span class="font-code-tracking text-code-tracking text-on-surface">34 CT 1042</span>
-</div>
-</div>
-</div>
-<div class="flex items-center gap-2 self-end sm:self-auto">
-<a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors" href="tel:02164440024">
-<span class="material-symbols-outlined text-[18px] text-primary">phone</span>
-<span>Kuryeyi Ara</span>
-</a>
-<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors">
-<span class="material-symbols-outlined text-[18px] text-primary">chat</span>
-<span>Mesaj Gönder</span>
-</button>
-</div>
-</div>
-<!-- Simulated Map Display with Vector Overlay -->
-<div class="relative w-full h-80 sm:h-96 overflow-hidden bg-surface-container-highest">
-<div class="w-full h-full bg-cover bg-center filter saturate-150 contrast-95" data-location="Kadikoy Moda, Istanbul, Turkey" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABnEl7wgPLXFiQh9ubfbfe05YgHHyJjLckgZiJLvtXNwYP0iYolIKwqUuNrvXzOBz3BAKJMS0xbI526Shbr_9nLRRJN0yg82N29Qw2brc4k7_V4w0SjFuvPi2kitEYUK9EQz93b1XtAEPqom4UzaHEl7JNYDSX673u-ShcBvRO36jtnLYKU29T0KQpF5gu3FhU-PVCDYlWvaJx6F1YfEa8VI9e9nt_7tzzKsV1c6da9dzvq8I2Bp9L6A')"></div>
-<!-- Ambient Overlay Gradient -->
-<div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 via-transparent to-transparent pointer-events-none"></div>
-<!-- Interactive Map Overlay UI -->
-<div class="absolute top-4 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md px-4 py-3 rounded-xl shadow-md flex items-center gap-3">
-<div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[20px]">timer</span>
-</div>
-<div>
-<span class="text-secondary font-label-sm text-label-sm block uppercase tracking-wider">Tahmini Varış Aralığı</span>
-<span class="font-headline-sm text-headline-sm text-primary">15:15 - 15:45</span>
-</div>
-</div>
-<!-- Map Route Simulation Graphic Overlay (SVG) -->
-<svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="routeGradient" x1="0%" x2="100%" y1="0%" y2="100%">
-<stop offset="0%" stop-color="#4F46E5"></stop>
-<stop offset="100%" stop-color="#818CF8"></stop>
-</lineargradient>
-</defs>
-<!-- Courier Route Polyline -->
-<path class="animate-pulse" d="M 120 230 Q 220 180 320 210 T 540 140 T 720 190" fill="none" stroke="url(#routeGradient)" stroke-dasharray="8 8" stroke-linecap="round" stroke-width="4"></path>
-</svg>
-<!-- Marker 1: Courier Live Vehicle -->
-<div class="absolute left-28 bottom-20 z-10 flex flex-col items-center">
-<div class="bg-primary text-on-primary p-2.5 rounded-full shadow-xl ring-4 ring-primary/20 animate-bounce">
-<span class="material-symbols-outlined text-[22px] block">electric_moped</span>
-</div>
-<span class="mt-1 bg-on-surface/90 backdrop-blur-sm text-surface px-2 py-0.5 rounded font-label-sm text-label-sm shadow">Ahmet (Kurye)</span>
-</div>
-<!-- Marker 2: Delivery Target Address -->
-<div class="absolute right-24 top-24 z-10 flex flex-col items-center">
-<div class="bg-tertiary-container text-on-tertiary p-2.5 rounded-full shadow-xl ring-4 ring-tertiary-container/30">
-<span class="material-symbols-outlined text-[22px] block">pin_drop</span>
-</div>
-<div class="mt-1 bg-surface-container-lowest/95 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-md text-center max-w-[170px]">
-<span class="font-label-sm text-label-sm text-on-surface block font-semibold truncate">Moda Mah. Caferağa</span>
-<span class="font-body-sm text-body-sm text-secondary block">No:14 Kadıköy</span>
-</div>
-</div>
-<!-- Live Route Badge Float -->
-<div class="absolute bottom-4 right-4 z-10 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-lg shadow flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
-<span class="font-label-sm text-label-sm text-on-surface">Canlı GPS Verisi Aktif</span>
-</div>
-</div>
-<!-- Delivery SMS Authentication Highlight Banner -->
-<div class="p-space-lg bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4" id="smsCodeBox">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm shrink-0">
-<span class="material-symbols-outlined text-[26px]">key</span>
-</div>
-<div>
-<div class="font-label-lg text-label-lg text-on-surface font-semibold">Temassız Güvenli Teslimat Kodu</div>
-<p class="font-body-sm text-body-sm text-secondary">Kuryemiz paketi teslim ederken bu kodu sözlü olarak iletiniz.</p>
-</div>
-</div>
-<div class="flex items-center gap-3">
-<div class="bg-surface-container-lowest px-5 py-2.5 rounded-xl shadow-sm text-center">
-<div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-0.5">SMS Doğrulama Kodu</div>
-<div class="font-headline-md text-headline-md font-bold tracking-widest text-primary">849 182</div>
-</div>
-<button class="w-11 h-11 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors shadow-sm" onclick="navigator.clipboard.writeText('849182'); showToast();" title="Kodu Kopyala">
-<span class="material-symbols-outlined text-[20px]">content_copy</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Detailed Movement Timeline Section -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
-<div class="flex items-center justify-between mb-space-lg">
-<div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Detaylı Gönderi Geçmişi</h2>
-<p class="font-body-sm text-body-sm text-secondary">Tüm transfer, tasnif ve dağıtım aşamaları anlık olarak kaydedilir.</p>
-</div>
-<span class="font-label-md text-label-md text-primary bg-primary-fixed px-3 py-1 rounded-xl">Toplam 5 İşlem</span>
-</div>
-<!-- Vertical Timeline Stepper -->
-<div class="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-highest">
-<!-- Event 1: Current / Live -->
-<div class="relative group">
-<!-- Pulsing Active Node -->
-<div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-[0_0_0_5px_rgba(79,70,229,0.2)]">
-<span class="material-symbols-outlined text-[14px]">local_shipping</span>
-</div>
-<div class="bg-surface-container-low p-4 rounded-xl transition-all">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-<span class="font-label-lg text-label-lg text-primary font-bold">Dağıtıma Çıkarıldı - Kadıköy Şube</span>
-<span class="font-code-tracking text-code-tracking text-secondary font-medium">28 Eylül • 11:20</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface">Kurye Ahmet Yılmaz tarafından zimmetlendi ve dağıtım rotasına alındı.</p>
-<div class="mt-2.5 flex items-center gap-2 text-label-sm font-label-sm text-secondary">
-<span class="material-symbols-outlined text-[15px] text-primary">my_location</span>
-<span>Moda Dağıtım Bölgesi / İstanbul</span>
-</div>
-</div>
-</div>
-<!-- Event 2: Branch Arrival -->
-<div class="relative group">
-<div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[14px]">check</span>
-</div>
-<div class="p-1">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Şubesine Ulaştı</span>
-<span class="font-code-tracking text-code-tracking text-secondary">28 Eylül • 08:15</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary">Araç boşaltımı tamamlandı, kargo otomatik tasnif bantlarından başarıyla geçti.</p>
-</div>
-</div>
-<!-- Event 3: Main Hub Dispatch -->
-<div class="relative group">
-<div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[14px]">forklift</span>
-</div>
-<div class="p-1">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">İstanbul Ana Transfer Merkezinden Çıkış Yapıldı</span>
-<span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 22:40</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary">Hat transfer aracı Kadıköy Varış Şubesine doğru hareket etti.</p>
-</div>
-</div>
-<!-- Event 4: Accepted by Branch -->
-<div class="relative group">
-<div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[14px]">inventory_2</span>
-</div>
-<div class="p-1">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">Kargo Kabul Edildi</span>
-<span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 16:30</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary">Gönderici TechStore E-Ticaret A.Ş. tarafından Gaziantep Şehitkamil Şubesi'ne elden teslim edildi.</p>
-</div>
-</div>
-<!-- Event 5: Origin Created -->
-<div class="relative group">
-<div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[14px]">receipt_long</span>
-</div>
-<div class="p-1">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-<span class="font-label-lg text-label-lg text-on-surface font-semibold">Kargo Barkodu ve Ön Taşıma Belgesi Oluşturuldu</span>
-<span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 14:00</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary">E-ticaret entegrasyonu üzerinden sistem kaydı açıldı ve sevkiyat planlandı.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- RIGHT COLUMN (4 cols ~ 34%) -->
-<div class="lg:col-span-4 flex flex-col gap-space-lg">
-<!-- Shipment Details Summary Card -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
-<div class="flex items-center justify-between pb-space-sm mb-space-md bg-surface-container-high/40 -mx-space-lg px-space-lg py-2 rounded-t-xl">
-<span class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px] text-primary">inventory_2</span>
-<span>Gönderi Özeti</span>
-</span>
-<span class="text-label-sm font-label-sm text-primary font-bold">Standart Kargo</span>
-</div>
-<div class="space-y-3.5">
-<div class="flex items-start justify-between gap-2">
-<span class="font-body-sm text-body-sm text-secondary">Gönderici</span>
-<span class="font-label-md text-label-md text-on-surface text-right font-semibold">TechStore A.Ş. (Gaziantep)</span>
-</div>
-<div class="flex items-start justify-between gap-2">
-<span class="font-body-sm text-body-sm text-secondary">Alıcı</span>
-<span class="font-label-md text-label-md text-on-surface text-right font-semibold">Arda Yılmaz (Siz)</span>
-</div>
-<div class="flex items-start justify-between gap-2">
-<span class="font-body-sm text-body-sm text-secondary">Ağırlık / Desi</span>
-<span class="font-label-md text-label-md text-on-surface text-right">0.80 Desi <span class="text-secondary">(450 gr)</span></span>
-</div>
-<div class="flex items-start justify-between gap-2">
-<span class="font-body-sm text-body-sm text-secondary">Ödeme Durumu</span>
-<span class="inline-flex items-center gap-1 font-label-md text-label-md text-on-surface bg-surface-container-high px-2 py-0.5 rounded-lg">
-<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
-              Gönderici Ödemeli
-            </span>
-</div>
-<div class="flex items-start justify-between gap-2">
-<span class="font-body-sm text-body-sm text-secondary">İçerik Türü</span>
-<span class="font-label-md text-label-md text-on-surface text-right">Elektronik / Hassas Paket</span>
-</div>
-</div>
-<div class="mt-space-md pt-space-md bg-surface-container-low p-3 rounded-xl flex items-center gap-3">
-<img class="w-12 h-12 rounded-lg object-cover shadow-sm" data-alt="Small neat packaged brown cardboard e-commerce parcel box with fragile glass symbol and high priority logistics label, clean studio product shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxOcLTR9sl0USoHR34zbxynuReBUVgvg3_m0anh2MT5-xcyV2i9MOo9pvbaQPD6gy_DOtGhRw0a7TYSPGoWk8881J5J9jY96HmxHORw0TAw9TmDVzvLJPhqgxEfJqF0gnhoQGrEu6liig-AYliFKxCqxDBPuaD1gfo-heAQuKIvztvsGKKZuIezxhV6Xy6MCN-_UHp-3TGzV66KwrAlCjZJ95ZS-f1xzqHBT4A_89oFmKAp11ocLc89Q"/>
-<div class="min-w-0 flex-1">
-<span class="font-label-sm text-label-sm text-secondary block">Sipariş No: #TK-883491</span>
-<span class="font-label-md text-label-md text-on-surface truncate block font-medium">Kablosuz Bluetooth Kulaklık Pro</span>
-</div>
-</div>
-</div>
-<!-- Flexible Delivery Options ("Teslimatı Yönet & Esnet") -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
-<div class="flex items-center justify-between mb-2">
-<h3 class="font-headline-sm text-headline-sm text-on-surface">Teslimatı Yönet</h3>
-<span class="material-symbols-outlined text-primary text-[22px]">tune</span>
-</div>
-<p class="font-body-sm text-body-sm text-secondary mb-space-md">Evde değil misiniz? Kuryeniz kapıya varmadan teslimatınızı esnetin.</p>
-<!-- Interactive Action Cards Stack -->
-<div class="flex flex-col gap-3">
-<!-- Option 1: Neighbor / Security -->
-<div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
-<span class="material-symbols-outlined text-[20px]">person_pin_circle</span>
-</div>
-<div>
-<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Komşuma / Güvenliğe Bırak</h4>
-<span class="font-body-sm text-body-sm text-secondary">Apartman görevlisi veya komşu seçimi</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
-</div>
-<!-- Collapsible Mini Form -->
-<div class="hidden pt-3 mt-3 space-y-2.5">
-<input class="w-full h-10 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none shadow-sm" placeholder="Teslim alacak kişi adı ve daire no" type="text"/>
-<button class="w-full py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors">Onayla & Kuryeye Bildir</button>
-</div>
-</div>
-<!-- Option 2: Reschedule -->
-<div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
-<span class="material-symbols-outlined text-[20px]">event_repeat</span>
-</div>
-<div>
-<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Farklı Güne Ertele</h4>
-<span class="font-body-sm text-body-sm text-secondary">Yarın veya Cumartesi teslimat planla</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
-</div>
-<!-- Collapsible Date Pick -->
-<div class="hidden pt-3 mt-3 flex gap-2">
-<button class="flex-1 py-2 bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary rounded-lg font-label-sm text-label-sm shadow-sm transition-colors text-center">Yarın (29 Eylül)</button>
-<button class="flex-1 py-2 bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary rounded-lg font-label-sm text-label-sm shadow-sm transition-colors text-center">Cumartesi (30 Eylül)</button>
-</div>
-</div>
-<!-- Option 3: Parcel Locker / Pickup point -->
-<div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
-<div class="flex items-center justify-between">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
-<span class="material-symbols-outlined text-[20px]">smart_toy</span>
-</div>
-<div>
-<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Kargo Otomatına Bırak</h4>
-<span class="font-body-sm text-body-sm text-secondary">7/24 Moda Otomatından kendin teslim al</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
-</div>
-<div class="hidden pt-3 mt-3">
-<div class="p-2.5 bg-surface-container-lowest rounded-lg mb-2 text-on-surface text-body-sm font-body-sm">
-<strong>Moda Otomat Noktası:</strong> Moda Cad. No:28 (Migros Yanı) - 150m mesafede.
-              </div>
-<button class="w-full py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors">Otomatı Seç & Kodu Al</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Branch Support Info Card -->
-<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
-<div class="flex items-center gap-3 mb-space-sm">
-<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-fixed flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined text-[20px]">store</span>
-</div>
-<div>
-<h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Dağıtım Şubesi</h4>
-<span class="font-body-sm text-body-sm text-secondary">Sorumlu Birim</span>
-</div>
-</div>
-<div class="space-y-2 mt-space-md">
-<div class="flex items-center gap-2.5 text-on-surface font-body-md text-body-md">
-<span class="material-symbols-outlined text-[18px] text-primary">call</span>
-<a class="hover:underline font-code-tracking text-code-tracking font-semibold" href="tel:02164440024">0216 444 00 24</a>
-</div>
-<div class="flex items-center gap-2.5 text-secondary font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-[18px] text-outline">schedule</span>
-<span>Hafta içi & Cmt: 08:30 - 18:30</span>
-</div>
-<div class="flex items-start gap-2.5 text-secondary font-body-sm text-body-sm">
-<span class="material-symbols-outlined text-[18px] text-outline mt-0.5">location_on</span>
-<span>Caferağa Mah. Şevki Bey Sokak No: 8/B Kadıköy / İstanbul</span>
-</div>
-</div>
-<div class="mt-space-md pt-space-sm">
-<button class="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-2 shadow-sm">
-<span class="material-symbols-outlined text-[18px]">support_agent</span>
-<span>Müşteri Hizmetlerine Bağlan</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script>
-  function showToast() {
-    const toast = document.getElementById('toastNotification');
-    if (!toast) return;
-    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
-    toast.classList.add('translate-y-0', 'opacity-100');
-    setTimeout(() => {
-      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-      toast.classList.remove('translate-y-0', 'opacity-100');
-    }, 2500);
-  }
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <style>
+        @layer base {
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
 
-  function toggleFlexOption(el) {
-    const hiddenPanel = el.querySelector('div:last-child');
-    if (!hiddenPanel) return;
-    const isHidden = hiddenPanel.classList.contains('hidden');
-    // Close other panels inside parent
-    el.parentElement.querySelectorAll('.p-3\\.5 > div:last-child').forEach(panel => {
-      panel.classList.add('hidden');
-    });
-    if (isHidden) {
-      hiddenPanel.classList.remove('hidden');
-    }
-  }
-</script></main></div></body></html>
+            body {
+                overscroll-behavior: none;
+            }
+
+            main > :first-child {
+                margin-top: 0 !important;
+            }
+
+            main > :last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-fixed": "#d3e4fe", "on-secondary-container": "#54647a", "primary-fixed": "#e2dfff", "on-surface-variant": "#464555", "inverse-primary": "#c3c0ff", "surface": "#faf8ff", "on-primary-fixed-variant": "#3323cc", "on-background": "#131b2e", "surface-container-low": "#f2f3ff", "on-secondary": "#ffffff", "on-surface": "#131b2e", "primary-container": "#4f46e5", "tertiary": "#571ac0", "on-tertiary-fixed-variant": "#5516be", "on-tertiary-fixed": "#23005c", "tertiary-fixed-dim": "#d0bcff", "on-secondary-fixed": "#0b1c30", "inverse-surface": "#283044", "surface-container-lowest": "#ffffff", "outline-variant": "#c7c4d8", "surface-container": "#eaedff", "on-primary": "#ffffff", "secondary-container": "#d0e1fb", "on-secondary-fixed-variant": "#38485d", "background": "#faf8ff", "on-primary-fixed": "#0f0069", "on-error": "#ffffff", "surface-container-highest": "#dae2fd", "surface-variant": "#dae2fd", "error-container": "#ffdad6", "surface-dim": "#d2d9f4", "on-tertiary-container": "#e3d5ff", "primary": "#3525cd", "secondary": "#505f76", "on-primary-container": "#dad7ff", "secondary-fixed-dim": "#b7c8e1", "surface-bright": "#faf8ff", "surface-container-high": "#e2e7ff", "on-error-container": "#93000a", "outline": "#777587", "surface-tint": "#4d44e3", "tertiary-container": "#6f3dd9", "inverse-on-surface": "#eef0ff", "on-tertiary": "#ffffff", "primary-fixed-dim": "#c3c0ff", "error": "#ba1a1a", "tertiary-fixed": "#e9ddff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter": "1.5rem", "margin": "2rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-xl": "2.5rem", "margin-sm": "1rem", "space-md": "1rem", "space-sm": "0.5rem", "gutter-sm": "1rem" }, fontFamily: { "body-md": ["Inter"], "display-lg": ["Inter"], "label-sm": ["Inter"], "headline-lg": ["Inter"], "label-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "code-tracking": ["Inter"], "headline-sm": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "headline-md": ["Inter"], "body-lg": ["Inter"] }, fontSize: { "body-md": ["14px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.025em", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.03em", fontWeight: "600" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }], "headline-lg-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "700" }], "code-tracking": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }], "body-sm": ["12px", { lineHeight: "16px", letterSpacing: "0em", fontWeight: "400" }], "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", letterSpacing: "-0.005em", fontWeight: "400" }] } } } }</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+    <aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest"><img alt="CargoTrack Müşteri Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VcHG-TLlsVZUxHKyK6Sla90cLdd2UnelRNCCt4Wg3cqVUNtyf-IMlcqttdpmnxqzMYoV0Y0mTZ9foKkkpLaDVkEvd5N_xt3JfdODcQYFzcTBaa9LMjslCmvYq3rblm9_H17H2KYVsw6dFm5Y6h6hkWTxineEgkme0k3u3nValPpWh5LOUhBu_MiaZf-gHU-IcwP-XqGx3Bxw0lINIpam7HLzs0qzBWHRWVBbomPQl4Il4Tvudb_9zFNpuW" /><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span><span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span></div></div><div class="flex-1 overflow-y-auto px-space-md py-space-sm"><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm"><div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="aktif-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span>Aktif Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">move_to_inbox</span><span>Bana Gelen Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="#"><span class="material-symbols-outlined text-[20px]">outbox</span><span>Gönderdiğim Kargolar</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="#"><span class="material-symbols-outlined text-[20px]">history</span><span>Geçmiş Teslimatlar</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#"><span class="material-symbols-outlined text-[20px]">add_box</span><span>Yeni Kargo Talebi</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#"><span class="material-symbols-outlined text-[20px]">pin_drop</span><span>Kargo Detay & Canlı Takip</span></a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#"><span class="material-symbols-outlined text-[20px]">home_pin</span><span>Teslimat Adreslerim</span></a><a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#"><span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span></a></nav></div><div class="p-space-md m-space-md rounded-xl bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-primary text-[18px]">verified_user</span><span class="font-label-md text-label-md text-on-surface">Güvenli Müşteri Alanı</span></div><p class="font-body-sm text-body-sm text-secondary">256-bit SSL ve KVKK standartlarında tam veri güvencesi.</p></div></aside><div class="pl-72 min-h-screen flex flex-col">
+        <header class="fixed top-0 left-72 right-0 h-20 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md relative"><span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all" placeholder="Kargo Takip No veya Gönderi Kodu girin..." type="text" /></div><div class="flex items-center gap-space-lg"><a class="inline-flex items-center gap-2 h-11 px-space-md bg-primary-container text-on-primary rounded-xl font-label-lg text-label-lg shadow-sm hover:bg-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">add</span><span>Yeni Kargo Gönder</span></a><div class="relative flex items-center"><button aria-label="Bildirimler" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span></button><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest" title="2 yeni güncelleme"></span></div><button aria-label="Yardım ve Destek" class="w-10 h-10 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">help</span></button><div class="h-8 w-px bg-surface-container"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><div class="font-label-lg text-label-lg text-on-surface">Arda Yılmaz</div><div class="font-body-sm text-body-sm text-secondary">Bireysel Müşteri</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFKk2U4l3Gui-fkyGwDbFCogRuW_-dH9byJiy7pKMISYN07vB4Xqc_lnL4Grv20xuMzHp99YNmO_XmhTBVwm8KxeAysnTVMd1BAn5_me4GXfsyB8iv5WnF_2xt2BNg-G2ngajHKKLZRcfQn_eU5CyCkheqqq9V2jqCZuI1nXEWTn61L8gIaXMuYtUHEY8Lpq-MLY7iwVKwAi87sumWrSsEFK44Auvxw7E5ytETfsw4PY2rynP3iYsTFg" /></div></div></header><main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg">
+            <div class="flex flex-col w-full">
+                <!-- Sub-header / Contextual Nav -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-space-lg">
+                    <div class="flex flex-col gap-2">
+                        <a class="inline-flex items-center gap-1.5 text-secondary hover:text-primary transition-colors font-label-md text-label-md w-fit" href="#">
+                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                            <span>Kargolarıma Dön</span>
+                        </a>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Kargo Detayı:</h1>
+                            <div class="inline-flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-xl font-code-tracking text-code-tracking text-on-surface">
+                                <span id="trackingCodeText">CT-2026-981240</span>
+                                <button class="text-secondary hover:text-primary transition-colors p-0.5 rounded flex items-center justify-center" id="copyBtn" onclick="navigator.clipboard.writeText('CT-2026-981240'); showToast();" title="Takip Kodunu Kopyala">
+                                    <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                                </button>
+                                <button class="text-secondary hover:text-primary transition-colors p-0.5 rounded flex items-center justify-center" title="QR Kod Göster">
+                                    <span class="material-symbols-outlined text-[18px]">qr_code_2</span>
+                                </button>
+                            </div>
+                            <!-- Pulse Status Badge -->
+                            <div class="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-fixed px-3 py-1.5 rounded-xl font-label-md text-label-md shadow-sm">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-container"></span>
+                                </span>
+                                <span class="text-primary font-bold">Kurye Dağıtımda</span>
+                                <span class="text-on-secondary-container">•</span>
+                                <span class="font-medium text-secondary">4 Durak Kaldı</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quick Actions Header -->
+                    <div class="flex items-center gap-3 self-start md:self-auto">
+                        <button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm">
+                            <span class="material-symbols-outlined text-[18px] text-primary">download</span>
+                            <span>Fatura & Sevk İrsaliyesi (PDF)</span>
+                        </button>
+                        <button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md shadow-sm" onclick="document.getElementById('smsCodeBox').scrollIntoView({behavior: 'smooth'})">
+                            <span class="material-symbols-outlined text-[18px]">pin</span>
+                            <span>Teslimat Kodunu Gör</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Toast Notification element -->
+                <div class="fixed bottom-6 right-6 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-xl z-50 flex items-center gap-2 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 font-label-md text-label-md" id="toastNotification">
+                    <span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">check_circle</span>
+                    <span>Takip numarası panoya kopyalandı!</span>
+                </div>
+                <!-- Main Grid Layout (65% / 35%) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+                    <!-- LEFT COLUMN (8 cols ~ 66%) -->
+                    <div class="lg:col-span-8 flex flex-col gap-space-lg">
+                        <!-- Live Map & Courier Status Master Card -->
+                        <div class="bg-surface-container-lowest rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)] overflow-hidden">
+                            <!-- Live Courier Info Bar -->
+                            <div class="p-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-surface-container-low/70">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="relative">
+                                        <img class="w-12 h-12 rounded-xl object-cover shadow-sm" data-alt="Professional friendly male delivery courier in modern blue uniform smiling against soft ambient warehouse lighting, modern corporate portrait style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCXsgm09fgsCgy35hCfSZapizRe-KMgzoGJ0gKstBlwa5FeKLTeb0fOM_RrN-ByVHEsFShoP6bxHmql0Bdiu81F2qtBWHAaMonA8y0Qf1ooOkCBG6Uldea78meSKj99JEob-FnUJCjhX6ivn5qsnUUzR8Z0dErtR7DZTSodkVbl6XNrGuBnoKQBRHljk-ZvKqJ5oRx7DYfLoVLavuH3YWUkTwLgYoBubX3Ku2zl0Xmt771NAtI9gCckw" />
+                                        <div class="absolute -bottom-1 -right-1 bg-primary text-on-primary rounded-full p-0.5 shadow-sm">
+                                            <span class="material-symbols-outlined text-[12px] block">electric_moped</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <h3 class="font-headline-sm text-headline-sm text-on-surface">Ahmet Yılmaz</h3>
+                                            <span class="inline-flex items-center gap-0.5 text-label-sm font-label-sm bg-surface-container-lowest px-2 py-0.5 rounded-full text-primary font-bold">
+                                                <span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.96
+                                            </span>
+                                        </div>
+                                        <div class="font-body-sm text-body-sm text-secondary flex items-center gap-2 mt-0.5">
+                                            <span>Elektrikli Kargo Aracı</span>
+                                            <span>•</span>
+                                            <span class="font-code-tracking text-code-tracking text-on-surface">34 CT 1042</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 self-end sm:self-auto">
+                                    <a class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors" href="tel:02164440024">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">phone</span>
+                                        <span>Kuryeyi Ara</span>
+                                    </a>
+                                    <button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md shadow-sm transition-colors">
+                                        <span class="material-symbols-outlined text-[18px] text-primary">chat</span>
+                                        <span>Mesaj Gönder</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Simulated Map Display with Vector Overlay -->
+                            <div class="relative w-full h-80 sm:h-96 overflow-hidden bg-surface-container-highest">
+                                <div class="w-full h-full bg-cover bg-center filter saturate-150 contrast-95" data-location="Kadikoy Moda, Istanbul, Turkey" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABnEl7wgPLXFiQh9ubfbfe05YgHHyJjLckgZiJLvtXNwYP0iYolIKwqUuNrvXzOBz3BAKJMS0xbI526Shbr_9nLRRJN0yg82N29Qw2brc4k7_V4w0SjFuvPi2kitEYUK9EQz93b1XtAEPqom4UzaHEl7JNYDSX673u-ShcBvRO36jtnLYKU29T0KQpF5gu3FhU-PVCDYlWvaJx6F1YfEa8VI9e9nt_7tzzKsV1c6da9dzvq8I2Bp9L6A')"></div>
+                                <!-- Ambient Overlay Gradient -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 via-transparent to-transparent pointer-events-none"></div>
+                                <!-- Interactive Map Overlay UI -->
+                                <div class="absolute top-4 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md px-4 py-3 rounded-xl shadow-md flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-[20px]">timer</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-secondary font-label-sm text-label-sm block uppercase tracking-wider">Tahmini Varış Aralığı</span>
+                                        <span class="font-headline-sm text-headline-sm text-primary">15:15 - 15:45</span>
+                                    </div>
+                                </div>
+                                <!-- Map Route Simulation Graphic Overlay (SVG) -->
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <lineargradient id="routeGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+                                            <stop offset="0%" stop-color="#4F46E5"></stop>
+                                            <stop offset="100%" stop-color="#818CF8"></stop>
+                                        </lineargradient>
+                                    </defs>
+                                    <!-- Courier Route Polyline -->
+                                    <path class="animate-pulse" d="M 120 230 Q 220 180 320 210 T 540 140 T 720 190" fill="none" stroke="url(#routeGradient)" stroke-dasharray="8 8" stroke-linecap="round" stroke-width="4"></path>
+                                </svg>
+                                <!-- Marker 1: Courier Live Vehicle -->
+                                <div class="absolute left-28 bottom-20 z-10 flex flex-col items-center">
+                                    <div class="bg-primary text-on-primary p-2.5 rounded-full shadow-xl ring-4 ring-primary/20 animate-bounce">
+                                        <span class="material-symbols-outlined text-[22px] block">electric_moped</span>
+                                    </div>
+                                    <span class="mt-1 bg-on-surface/90 backdrop-blur-sm text-surface px-2 py-0.5 rounded font-label-sm text-label-sm shadow">Ahmet (Kurye)</span>
+                                </div>
+                                <!-- Marker 2: Delivery Target Address -->
+                                <div class="absolute right-24 top-24 z-10 flex flex-col items-center">
+                                    <div class="bg-tertiary-container text-on-tertiary p-2.5 rounded-full shadow-xl ring-4 ring-tertiary-container/30">
+                                        <span class="material-symbols-outlined text-[22px] block">pin_drop</span>
+                                    </div>
+                                    <div class="mt-1 bg-surface-container-lowest/95 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-md text-center max-w-[170px]">
+                                        <span class="font-label-sm text-label-sm text-on-surface block font-semibold truncate">Moda Mah. Caferağa</span>
+                                        <span class="font-body-sm text-body-sm text-secondary block">No:14 Kadıköy</span>
+                                    </div>
+                                </div>
+                                <!-- Live Route Badge Float -->
+                                <div class="absolute bottom-4 right-4 z-10 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-lg shadow flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+                                    <span class="font-label-sm text-label-sm text-on-surface">Canlı GPS Verisi Aktif</span>
+                                </div>
+                            </div>
+                            <!-- Delivery SMS Authentication Highlight Banner -->
+                            <div class="p-space-lg bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4" id="smsCodeBox">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm shrink-0">
+                                        <span class="material-symbols-outlined text-[26px]">key</span>
+                                    </div>
+                                    <div>
+                                        <div class="font-label-lg text-label-lg text-on-surface font-semibold">Temassız Güvenli Teslimat Kodu</div>
+                                        <p class="font-body-sm text-body-sm text-secondary">Kuryemiz paketi teslim ederken bu kodu sözlü olarak iletiniz.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-surface-container-lowest px-5 py-2.5 rounded-xl shadow-sm text-center">
+                                        <div class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-0.5">SMS Doğrulama Kodu</div>
+                                        <div class="font-headline-md text-headline-md font-bold tracking-widest text-primary">849 182</div>
+                                    </div>
+                                    <button class="w-11 h-11 rounded-xl bg-surface-container-lowest hover:bg-surface-container-high text-on-surface-variant flex items-center justify-center transition-colors shadow-sm" onclick="navigator.clipboard.writeText('849182'); showToast();" title="Kodu Kopyala">
+                                        <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Detailed Movement Timeline Section -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+                            <div class="flex items-center justify-between mb-space-lg">
+                                <div>
+                                    <h2 class="font-headline-sm text-headline-sm text-on-surface">Detaylı Gönderi Geçmişi</h2>
+                                    <p class="font-body-sm text-body-sm text-secondary">Tüm transfer, tasnif ve dağıtım aşamaları anlık olarak kaydedilir.</p>
+                                </div>
+                                <span class="font-label-md text-label-md text-primary bg-primary-fixed px-3 py-1 rounded-xl">Toplam 5 İşlem</span>
+                            </div>
+                            <!-- Vertical Timeline Stepper -->
+                            <div class="relative pl-6 sm:pl-8 space-y-8 before:absolute before:left-3 sm:before:left-4 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-highest">
+                                <!-- Event 1: Current / Live -->
+                                <div class="relative group">
+                                    <!-- Pulsing Active Node -->
+                                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-[0_0_0_5px_rgba(79,70,229,0.2)]">
+                                        <span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                                    </div>
+                                    <div class="bg-surface-container-low p-4 rounded-xl transition-all">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                            <span class="font-label-lg text-label-lg text-primary font-bold">Dağıtıma Çıkarıldı - Kadıköy Şube</span>
+                                            <span class="font-code-tracking text-code-tracking text-secondary font-medium">28 Eylül • 11:20</span>
+                                        </div>
+                                        <p class="font-body-md text-body-md text-on-surface">Kurye Ahmet Yılmaz tarafından zimmetlendi ve dağıtım rotasına alındı.</p>
+                                        <div class="mt-2.5 flex items-center gap-2 text-label-sm font-label-sm text-secondary">
+                                            <span class="material-symbols-outlined text-[15px] text-primary">my_location</span>
+                                            <span>Moda Dağıtım Bölgesi / İstanbul</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Event 2: Branch Arrival -->
+                                <div class="relative group">
+                                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+                                        <span class="material-symbols-outlined text-[14px]">check</span>
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Şubesine Ulaştı</span>
+                                            <span class="font-code-tracking text-code-tracking text-secondary">28 Eylül • 08:15</span>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-secondary">Araç boşaltımı tamamlandı, kargo otomatik tasnif bantlarından başarıyla geçti.</p>
+                                    </div>
+                                </div>
+                                <!-- Event 3: Main Hub Dispatch -->
+                                <div class="relative group">
+                                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+                                        <span class="material-symbols-outlined text-[14px]">forklift</span>
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-semibold">İstanbul Ana Transfer Merkezinden Çıkış Yapıldı</span>
+                                            <span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 22:40</span>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-secondary">Hat transfer aracı Kadıköy Varış Şubesine doğru hareket etti.</p>
+                                    </div>
+                                </div>
+                                <!-- Event 4: Accepted by Branch -->
+                                <div class="relative group">
+                                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+                                        <span class="material-symbols-outlined text-[14px]">inventory_2</span>
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-semibold">Kargo Kabul Edildi</span>
+                                            <span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 16:30</span>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-secondary">Gönderici TechStore E-Ticaret A.Ş. tarafından Gaziantep Şehitkamil Şubesi'ne elden teslim edildi.</p>
+                                    </div>
+                                </div>
+                                <!-- Event 5: Origin Created -->
+                                <div class="relative group">
+                                    <div class="absolute -left-[27px] sm:-left-[35px] top-1.5 w-6 h-6 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center shadow-sm">
+                                        <span class="material-symbols-outlined text-[14px]">receipt_long</span>
+                                    </div>
+                                    <div class="p-1">
+                                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                                            <span class="font-label-lg text-label-lg text-on-surface font-semibold">Kargo Barkodu ve Ön Taşıma Belgesi Oluşturuldu</span>
+                                            <span class="font-code-tracking text-code-tracking text-secondary">27 Eylül • 14:00</span>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-secondary">E-ticaret entegrasyonu üzerinden sistem kaydı açıldı ve sevkiyat planlandı.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT COLUMN (4 cols ~ 34%) -->
+                    <div class="lg:col-span-4 flex flex-col gap-space-lg">
+                        <!-- Shipment Details Summary Card -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+                            <div class="flex items-center justify-between pb-space-sm mb-space-md bg-surface-container-high/40 -mx-space-lg px-space-lg py-2 rounded-t-xl">
+                                <span class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[20px] text-primary">inventory_2</span>
+                                    <span>Gönderi Özeti</span>
+                                </span>
+                                <span class="text-label-sm font-label-sm text-primary font-bold">Standart Kargo</span>
+                            </div>
+                            <div class="space-y-3.5">
+                                <div class="flex items-start justify-between gap-2">
+                                    <span class="font-body-sm text-body-sm text-secondary">Gönderici</span>
+                                    <span class="font-label-md text-label-md text-on-surface text-right font-semibold">TechStore A.Ş. (Gaziantep)</span>
+                                </div>
+                                <div class="flex items-start justify-between gap-2">
+                                    <span class="font-body-sm text-body-sm text-secondary">Alıcı</span>
+                                    <span class="font-label-md text-label-md text-on-surface text-right font-semibold">Arda Yılmaz (Siz)</span>
+                                </div>
+                                <div class="flex items-start justify-between gap-2">
+                                    <span class="font-body-sm text-body-sm text-secondary">Ağırlık / Desi</span>
+                                    <span class="font-label-md text-label-md text-on-surface text-right">0.80 Desi <span class="text-secondary">(450 gr)</span></span>
+                                </div>
+                                <div class="flex items-start justify-between gap-2">
+                                    <span class="font-body-sm text-body-sm text-secondary">Ödeme Durumu</span>
+                                    <span class="inline-flex items-center gap-1 font-label-md text-label-md text-on-surface bg-surface-container-high px-2 py-0.5 rounded-lg">
+                                        <span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+                                        Gönderici Ödemeli
+                                    </span>
+                                </div>
+                                <div class="flex items-start justify-between gap-2">
+                                    <span class="font-body-sm text-body-sm text-secondary">İçerik Türü</span>
+                                    <span class="font-label-md text-label-md text-on-surface text-right">Elektronik / Hassas Paket</span>
+                                </div>
+                            </div>
+                            <div class="mt-space-md pt-space-md bg-surface-container-low p-3 rounded-xl flex items-center gap-3">
+                                <img class="w-12 h-12 rounded-lg object-cover shadow-sm" data-alt="Small neat packaged brown cardboard e-commerce parcel box with fragile glass symbol and high priority logistics label, clean studio product shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxOcLTR9sl0USoHR34zbxynuReBUVgvg3_m0anh2MT5-xcyV2i9MOo9pvbaQPD6gy_DOtGhRw0a7TYSPGoWk8881J5J9jY96HmxHORw0TAw9TmDVzvLJPhqgxEfJqF0gnhoQGrEu6liig-AYliFKxCqxDBPuaD1gfo-heAQuKIvztvsGKKZuIezxhV6Xy6MCN-_UHp-3TGzV66KwrAlCjZJ95ZS-f1xzqHBT4A_89oFmKAp11ocLc89Q" />
+                                <div class="min-w-0 flex-1">
+                                    <span class="font-label-sm text-label-sm text-secondary block">Sipariş No: #TK-883491</span>
+                                    <span class="font-label-md text-label-md text-on-surface truncate block font-medium">Kablosuz Bluetooth Kulaklık Pro</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Flexible Delivery Options ("Teslimatı Yönet & Esnet") -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Teslimatı Yönet</h3>
+                                <span class="material-symbols-outlined text-primary text-[22px]">tune</span>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-secondary mb-space-md">Evde değil misiniz? Kuryeniz kapıya varmadan teslimatınızı esnetin.</p>
+                            <!-- Interactive Action Cards Stack -->
+                            <div class="flex flex-col gap-3">
+                                <!-- Option 1: Neighbor / Security -->
+                                <div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
+                                                <span class="material-symbols-outlined text-[20px]">person_pin_circle</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Komşuma / Güvenliğe Bırak</h4>
+                                                <span class="font-body-sm text-body-sm text-secondary">Apartman görevlisi veya komşu seçimi</span>
+                                            </div>
+                                        </div>
+                                        <span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
+                                    </div>
+                                    <!-- Collapsible Mini Form -->
+                                    <div class="hidden pt-3 mt-3 space-y-2.5">
+                                        <input class="w-full h-10 px-3 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none shadow-sm" placeholder="Teslim alacak kişi adı ve daire no" type="text" />
+                                        <button class="w-full py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors">Onayla & Kuryeye Bildir</button>
+                                    </div>
+                                </div>
+                                <!-- Option 2: Reschedule -->
+                                <div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
+                                                <span class="material-symbols-outlined text-[20px]">event_repeat</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Farklı Güne Ertele</h4>
+                                                <span class="font-body-sm text-body-sm text-secondary">Yarın veya Cumartesi teslimat planla</span>
+                                            </div>
+                                        </div>
+                                        <span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
+                                    </div>
+                                    <!-- Collapsible Date Pick -->
+                                    <div class="hidden pt-3 mt-3 flex gap-2">
+                                        <button class="flex-1 py-2 bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary rounded-lg font-label-sm text-label-sm shadow-sm transition-colors text-center">Yarın (29 Eylül)</button>
+                                        <button class="flex-1 py-2 bg-surface-container-lowest text-on-surface hover:bg-primary hover:text-on-primary rounded-lg font-label-sm text-label-sm shadow-sm transition-colors text-center">Cumartesi (30 Eylül)</button>
+                                    </div>
+                                </div>
+                                <!-- Option 3: Parcel Locker / Pickup point -->
+                                <div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-all cursor-pointer group" onclick="toggleFlexOption(this)">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary group-hover:scale-105 transition-transform shadow-sm">
+                                                <span class="material-symbols-outlined text-[20px]">smart_toy</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Kargo Otomatına Bırak</h4>
+                                                <span class="font-body-sm text-body-sm text-secondary">7/24 Moda Otomatından kendin teslim al</span>
+                                            </div>
+                                        </div>
+                                        <span class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors text-[20px]">chevron_right</span>
+                                    </div>
+                                    <div class="hidden pt-3 mt-3">
+                                        <div class="p-2.5 bg-surface-container-lowest rounded-lg mb-2 text-on-surface text-body-sm font-body-sm">
+                                            <strong>Moda Otomat Noktası:</strong> Moda Cad. No:28 (Migros Yanı) - 150m mesafede.
+                                        </div>
+                                        <button class="w-full py-2 bg-primary-container text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary transition-colors">Otomatı Seç & Kodu Al</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Branch Support Info Card -->
+                        <div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_1px_3px_0_rgba(15,23,42,0.04)]">
+                            <div class="flex items-center gap-3 mb-space-sm">
+                                <div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-fixed flex items-center justify-center shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">store</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-label-lg text-label-lg text-on-surface font-semibold">Kadıköy Dağıtım Şubesi</h4>
+                                    <span class="font-body-sm text-body-sm text-secondary">Sorumlu Birim</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2 mt-space-md">
+                                <div class="flex items-center gap-2.5 text-on-surface font-body-md text-body-md">
+                                    <span class="material-symbols-outlined text-[18px] text-primary">call</span>
+                                    <a class="hover:underline font-code-tracking text-code-tracking font-semibold" href="tel:02164440024">0216 444 00 24</a>
+                                </div>
+                                <div class="flex items-center gap-2.5 text-secondary font-body-sm text-body-sm">
+                                    <span class="material-symbols-outlined text-[18px] text-outline">schedule</span>
+                                    <span>Hafta içi & Cmt: 08:30 - 18:30</span>
+                                </div>
+                                <div class="flex items-start gap-2.5 text-secondary font-body-sm text-body-sm">
+                                    <span class="material-symbols-outlined text-[18px] text-outline mt-0.5">location_on</span>
+                                    <span>Caferağa Mah. Şevki Bey Sokak No: 8/B Kadıköy / İstanbul</span>
+                                </div>
+                            </div>
+                            <div class="mt-space-md pt-space-sm">
+                                <button class="w-full py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-2 shadow-sm">
+                                    <span class="material-symbols-outlined text-[18px]">support_agent</span>
+                                    <span>Müşteri Hizmetlerine Bağlan</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function showToast() {
+                    const toast = document.getElementById('toastNotification');
+                    if (!toast) return;
+                    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+                    toast.classList.add('translate-y-0', 'opacity-100');
+                    setTimeout(() => {
+                        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                        toast.classList.remove('translate-y-0', 'opacity-100');
+                    }, 2500);
+                }
+
+                function toggleFlexOption(el) {
+                    const hiddenPanel = el.querySelector('div:last-child');
+                    if (!hiddenPanel) return;
+                    const isHidden = hiddenPanel.classList.contains('hidden');
+                    // Close other panels inside parent
+                    el.parentElement.querySelectorAll('.p-3\\.5 > div:last-child').forEach(panel => {
+                        panel.classList.add('hidden');
+                    });
+                    if (isHidden) {
+                        hiddenPanel.classList.remove('hidden');
+                    }
+                }
+            </script>
+        </main>
+    </div>
+</body>
+</html>

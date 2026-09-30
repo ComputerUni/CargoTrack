@@ -1,0 +1,134 @@
+﻿@model List<ResultCargoDto>
+@using CargoTrack.Business.Extensions
+@using CargoTrack.Entity.Entities.Enums
+
+<div class="flex flex-col gap-4" id="received-shipment-container">
+    @if (Model == null || !Model.Any())
+    {
+        <div class="bg-surface-container-lowest rounded-2xl p-10 text-center flex flex-col items-center justify-center border border-outline-variant/30">
+            <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-outline mb-3">
+                <span class="material-symbols-outlined text-[32px]">inbox</span>
+            </div>
+            <h3 class="font-headline-sm text-on-surface font-bold">Geçmiş Zamanda Kargonuz Bulunmuyor</h3>
+            <p class="font-body-sm text-on-surface-variant mt-1 max-w-sm">Adınıza kayıtlı herhangi bir geçmiş teslimat kaydı bulunmamaktadır.</p>
+        </div>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            var isDelivered = item.CargoStatus == CargoStatus.Delivered;
+
+            var (badgeBg, badgeText, statusText, badgeIcon) = isDelivered
+                                        ? ("bg-emerald-500/10 border-emerald-500/30", "text-emerald-500", "Teslim Edildi", "check_circle")
+                                        : ("bg-rose-500/10 border-rose-500/30", "text-rose-400", "Göndericiye İade Edildi", "assignment_return");
+
+            <article class="group relative bg-surface-container-lowest rounded-2xl p-5 border @(isDelivered ? "border-emerald-500/20" : "border-rose-500/20") hover:border-primary/40 shadow-sm hover:shadow-md transition-all">
+                <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-5">
+
+                    <div class="flex items-start gap-4 min-w-[280px]">
+                        <div class="w-12 h-12 rounded-2xl @(isDelivered ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" : "bg-rose-500/10 text-rose-400 border border-rose-500/20") flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-[24px]">@badgeIcon</span>
+                        </div>
+                        <div class="flex flex-col min-w-0">
+                            <div class="flex items-center gap-2">
+                                <span class="font-code text-body-lg text-primary font-bold tracking-tight">@item.TrackCode</span>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500 text-white animate-pulse">
+                                    @(isDelivered ? "Teslim Edildi" : "İade Edildi")
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-1.5 text-on-surface-variant font-body-sm mt-1">
+                                <span class="material-symbols-outlined text-[15px] text-outline">flight_takeoff</span>
+                                <span>Gönderen: <strong class="text-on-surface">@item.SenderName</strong></span>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs text-outline mt-0.5">
+                                <span>@item.OriginBranchName</span>
+                                <span>→</span>
+                                <span>@item.DestinationBranchName</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col min-w-[220px]">
+                        <span class="text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Teslimat Adresim</span>
+                        <div class="flex items-start gap-1.5 text-on-surface font-medium text-xs leading-relaxed max-w-[240px]">
+                            <span class="material-symbols-outlined text-[16px] text-primary flex-shrink-0 mt-0.5">pin_drop</span>
+                            <span class="line-clamp-2" title="@item.DeliveryAddressDetail">
+                                @(!string.IsNullOrWhiteSpace(item.DeliveryAddressDetail) ? item.DeliveryAddressDetail : $"{item.DestinationBranchName} Şubeden Teslim")
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-outline mt-1 font-code">
+                            @item.Desi.ToString("N1") Desi / @item.Weight.ToString("N1") kg
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col min-w-[200px]">
+                        <span class="text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Dağıtım Sorumlusu</span>
+                        @if (!string.IsNullOrWhiteSpace(item.AssignedCourierName) && item.AssignedCourierName != "Atama Bekliyor")
+                        {
+                            <div class="flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-xs font-bold text-primary">
+                                    @item.AssignedCourierName.Substring(0, 1)
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-semibold text-on-surface leading-tight">@item.AssignedCourierName</span>
+                                    @if (!string.IsNullOrWhiteSpace(item.AssignedCourierPhone))
+                                    {
+                                        <a href="tel:@item.AssignedCourierPhone" class="text-xs text-primary hover:underline flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[12px]">call</span>
+                                            @item.AssignedCourierPhone
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <span class="text-xs text-on-surface-variant flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px] text-outline">schedule</span>
+                                Şubeden Teslim Alındı.
+                            </span>
+                        }
+                    </div>
+
+                    <div class="flex flex-col min-w-[170px]">
+                        <span class="inline-flex items-center gap-1.5 w-fit px-3 py-1 rounded-full text-xs font-bold border @badgeBg @badgeText mb-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+                            @statusText
+                        </span>
+                        <div class="text-xs text-outline">
+                            Tarih: <strong class="text-on-surface">@item.CreatedDate.ToString("dd MMM yyyy")</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="flex items-center justify-end">
+                        <a asp-area="User" asp-controller="Cargo" asp-action="CargoDetail" asp-route-id="@item.Id"
+                           class="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-xl bg-primary text-on-primary hover:bg-primary/90 text-sm font-semibold shadow-sm transition-all">
+                            <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+                            <span>Detay</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                @if (item.FailedAttemptCount > 0)
+                {
+                    <div class="mt-3 pt-3 border-t border-outline-variant/20 flex items-center justify-between text-xs text-rose-400 bg-rose-500/5 px-3 py-2 rounded-xl border border-rose-500/20">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[16px]">info</span>
+                            <span>
+                                @(isDelivered ? $"{item.FailedAttemptCount}. denemeden sonra başarıyla teslim edildi" : $"3 başarısız deneme sonucu iade edildi")
+                                : <strong>@(item.LastExceptionDescription ?? "Adreste bulunamadı")</strong>
+                            </span>
+                        </div>
+                        @if (item.LastExceptionDate.HasValue)
+                        {
+                            <span class="font-code text-on-surface-variant">@item.LastExceptionDate.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                        }
+                    </div>
+                }
+            </article>
+        }
+    }
+</div>
