@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Kişisel Dashboard";
+    Layout = "~/Areas/User/Views/Shared/_UserLayout.cshtml";
+}
+
+<main class="w-full pt-20 bg-surface flex-1 px-space-xl py-space-lg">
+    <div class="flex flex-col w-full gap-space-lg">
+
+        @await Component.InvokeAsync("_UserDashboardHeader")
+
+        @await Component.InvokeAsync("_UserDashboardKpiCards")
+
+        @await Component.InvokeAsync("_UserDashboardFeaturedShipment")
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+
+            @await Component.InvokeAsync("_UserDashboardRecentMovements")
+
+            @await Component.InvokeAsync("_UserDashboardSecurityAndAddress")
+
+        </div>
+    </div>
+</main>

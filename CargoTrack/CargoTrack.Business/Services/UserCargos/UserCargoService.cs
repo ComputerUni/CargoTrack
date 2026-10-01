@@ -3,11 +3,6 @@ using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.Entity.Entities;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTrack.Business.Services.UserCargos
 {
@@ -23,6 +18,12 @@ namespace CargoTrack.Business.Services.UserCargos
         {
             var cargos = await _userCargoRepository.GetByUserIdAsync(userId);
             return cargos.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<ResultCargoDto> GetCargoDetailByCode(Guid userId, string trackCode)
+        {
+            var cargo = await _userCargoRepository.GetCargoDetailByCode(userId, trackCode);
+            return cargo.Adapt<ResultCargoDto>();
         }
 
         public async Task<List<ResultCargoDto>> GetDeliveredByUserIdAsync(Guid userId)

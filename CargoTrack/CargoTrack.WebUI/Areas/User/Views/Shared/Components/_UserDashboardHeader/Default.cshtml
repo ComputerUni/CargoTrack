@@ -1,0 +1,50 @@
+﻿<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+    <div class="flex flex-col gap-1 min-w-0">
+        <div class="flex items-center gap-2">
+            <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Hoş geldiniz, @ViewBag.FullName 👋</h1>
+        </div>
+        <p class="font-body-md text-body-md text-secondary">
+            @if (ViewBag.HasIncomingCargo == true)
+            {
+                <span>
+                    Beklediğiniz aktif kargonuz için tahmini teslimat tarihi:
+                    <span class="font-label-md text-on-surface font-semibold">@ViewBag.EstimatedDate</span>.
+                </span>
+            }
+            else if (ViewBag.ActiveCargoCount > 0)
+            {
+                <span>
+                    Şu anda adınıza kayıtlı veya gönderdiğiniz
+                    <span class="font-label-md text-primary font-semibold">@ViewBag.ActiveCargoCount aktif kargo</span>
+                    taşınma aşamasında.
+                </span>
+            }
+            else
+            {
+                <span>Şu an adınıza açık veya yolda olan bir kargo bulunmuyor.</span>
+            }
+
+    </p>
+</div>
+    <div class="flex items-center gap-3 shrink-0">
+        <form asp-area="User" asp-controller="Cargo" asp-action="CargoDetailByCode" method="get" class="relative flex items-center">
+            <span class="material-symbols-outlined absolute left-3 text-secondary text-[18px] pointer-events-none">search</span>
+            <input type="text"
+                   name="trackCode"
+                   placeholder="Takip No Gir (örn: CT-2026-...)"
+                   required
+                   class="h-11 pl-9 pr-24 rounded-xl bg-surface-container text-on-surface placeholder:text-secondary text-xs font-code-tracking border border-outline-variant/30 focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all w-60 sm:w-72" />
+            <button type="submit"
+                    class="absolute right-1.5 h-8 px-3 rounded-lg bg-primary hover:bg-primary-container text-white text-xs font-semibold transition-colors flex items-center gap-1 shadow-sm">
+                <span>Sorgula</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </button>
+        </form>
+
+        <a asp-area="User" asp-controller="Cargo" asp-action="ActiveList"
+           class="h-11 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface text-xs font-semibold transition-all flex items-center gap-2 shadow-sm whitespace-nowrap">
+            <span class="material-symbols-outlined text-[18px] text-primary">inventory_2</span>
+            <span>Aktif Kargolarım</span>
+        </a>
+    </div>
+</div>

@@ -41,11 +41,28 @@ namespace CargoTrack.WebUI.Areas.User.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var cargo = await _userCargoService.GetByIdAsync(user.Id, id);
-            if(cargo == null)
+            if (cargo == null)
             {
                 return RedirectToAction("ActiveList");
             }
             return View(cargo);
+        }
+
+        public async Task<IActionResult> CargoDetailByCode(string trackCode)
+        {
+            if (string.IsNullOrEmpty(trackCode))
+            {
+                return RedirectToAction("Dashboard", "Index");
+            }
+
+            var user = await _userManager.GetUserAsync(User);
+            var cargo = await _userCargoService.GetCargoDetailByCode(user.Id, trackCode);
+            if (cargo == null)
+            {
+                return RedirectToAction("Dashboard", "Index");
+            }
+
+            return RedirectToAction("CargoDetail", new { id = cargo.Id });
         }
     }
 }

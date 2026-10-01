@@ -47,6 +47,22 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .ToListAsync();
         }
 
+        public async Task<Cargo> GetCargoDetailByCode(Guid userId, string trackCode)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
+                .Include(x => x.CargoMovements)
+                    .ThenInclude(x => x.Branch)
+                .Include(x => x.CargoMovements)
+                    .ThenInclude(x => x.TransferCenter)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
+                .Include(x => x.DeliveryAddress)
+                .FirstOrDefaultAsync(x => x.TrackCode == trackCode && (x.SenderId == userId || x.ReceiverId == userId));
+        }
+
         public async Task<List<Cargo>> GetDeliveredByUserIdAsync(Guid userId)
         {
             return await _context.Cargos
