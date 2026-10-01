@@ -1,6 +1,7 @@
 ﻿using CargoTrack.DTO.DTOs.UserDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.WebUI.Consts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,10 +39,17 @@ namespace CargoTrack.WebUI.Controllers
 
             if(userRoles.Contains(Roles.User))
             {
-                return Redirect("/User/Cargo/ActiveList");
+                return Redirect("/User/Dashboard/Index");
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
         }
     }
 }

@@ -11,60 +11,28 @@
       "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardfeaturedshipmentviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardfeaturedshipmentviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardkpicards\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardkpicards\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardheaderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardheaderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|solutionrelative:cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardkpicardsviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardkpicardsviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardheader\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardheader\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.dataaccess\\repositories\\usercargos\\usercargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0AE097E-5C5C-1C32-5943-0DA6D63FF7B6}|CargoTrack.DataAccess\\CargoTrack.DataAccess.csproj|solutionrelative:cargotrack.dataaccess\\repositories\\usercargos\\usercargorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userlayoutsidebar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userlayoutsidebar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardsecurityandaddress\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardsecurityandaddress\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardsecurityandaddressviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardsecurityandaddressviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userlayouttopbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userlayouttopbar\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardrecentmovements\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\views\\shared\\components\\_userdashboardrecentmovements\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardrecentmovementsviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardrecentmovementsviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userlayoutviewcomponents\\_userlayouttopbarviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userlayoutviewcomponents\\_userlayouttopbarviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardheaderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\viewcomponents\\_userdashboardviewcomponents\\_userdashboardheaderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 592,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -91,43 +59,51 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
-            },
+            }
+          ]
+        },
+        {
+          "DockedWidth": 592,
+          "SelectedChildIndex": 4,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_UserDashboardFeaturedShipmentViewComponent.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardFeaturedShipmentViewComponent.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardFeaturedShipmentViewComponent.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardFeaturedShipmentViewComponent.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardFeaturedShipmentViewComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAjAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "CargoTrack.WebUI\\Controllers\\LoginController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA1wDIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T13:01:53.882Z",
+              "WhenOpened": "2026-10-01T20:20:10.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "Default.cshtml",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutSidebar\\Default.cshtml",
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutSidebar\\Default.cshtml",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutSidebar\\Default.cshtml",
               "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutSidebar\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAD4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T11:56:48.666Z"
+              "WhenOpened": "2026-10-01T20:05:13.438Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserCargoRepository.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\UserCargos\\UserCargoRepository.cs",
-              "RelativeDocumentMoniker": "CargoTrack.DataAccess\\Repositories\\UserCargos\\UserCargoRepository.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.DataAccess\\Repositories\\UserCargos\\UserCargoRepository.cs",
-              "RelativeToolTip": "CargoTrack.DataAccess\\Repositories\\UserCargos\\UserCargoRepository.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDUAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T11:22:49.173Z"
+              "DocumentIndex": 4,
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutTopbar\\Default.cshtml",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutTopbar\\Default.cshtml",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutTopbar\\Default.cshtml",
+              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserLayoutTopbar\\Default.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-01T19:56:32.318Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -137,9 +113,9 @@
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Dashboard\\Index.cshtml",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Dashboard\\Index.cshtml",
               "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Dashboard\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T09:17:34.851Z",
+              "WhenOpened": "2026-10-01T19:52:42.764Z",
               "EditorCaption": ""
             },
             {
@@ -150,149 +126,54 @@
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
               "RelativeToolTip": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T09:08:37.483Z",
+              "WhenOpened": "2026-10-01T19:44:01.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_UserDashboardKpiCardsViewComponent.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardKpiCardsViewComponent.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardKpiCardsViewComponent.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardKpiCardsViewComponent.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardKpiCardsViewComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T13:01:41.827Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CargoController.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAAwwEEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T11:37:52.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardSecurityAndAddress\\Default.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardSecurityAndAddress\\Default.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardSecurityAndAddress\\Default.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardSecurityAndAddress\\Default.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwDkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T09:43:55.052Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T09:17:20.46Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_UserDashboardSecurityAndAddressViewComponent.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardSecurityAndAddressViewComponent.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardSecurityAndAddressViewComponent.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardSecurityAndAddressViewComponent.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardSecurityAndAddressViewComponent.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAQAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T09:43:17.623Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAIwEkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T09:41:58.519Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "_UserDashboardRecentMovementsViewComponent.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardRecentMovementsViewComponent.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardRecentMovementsViewComponent.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardRecentMovementsViewComponent.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardRecentMovementsViewComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T09:41:15.291Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 592,
-          "SelectedChildIndex": 3,
-          "Children": [
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardHeader\\Default.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardHeader\\Default.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardHeader\\Default.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardHeader\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAACAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T10:17:02.732Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "_UserDashboardHeaderViewComponent.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardHeaderViewComponent.cs",
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardHeaderViewComponent.cs",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardHeaderViewComponent.cs",
               "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserDashboardViewComponents\\_UserDashboardHeaderViewComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T10:13:50.48Z",
+              "WhenOpened": "2026-10-01T19:59:13.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "CargoStatus.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "RelativeDocumentMoniker": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "RelativeToolTip": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-01T13:03:51.938Z"
-            },
+              "Title": "Default.cshtml",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
+              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardRecentMovements\\Default.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAE8AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-01T19:28:05.51Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 592,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardKpiCards\\Default.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardKpiCards\\Default.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardKpiCards\\Default.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Views\\Shared\\Components\\_UserDashboardKpiCards\\Default.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADAAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-01T16:57:08.719Z",
+              "DocumentIndex": 6,
+              "Title": "_UserLayoutTopbarViewComponent.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserLayoutViewComponents\\_UserLayoutTopbarViewComponent.cs",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserLayoutViewComponents\\_UserLayoutTopbarViewComponent.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserLayoutViewComponents\\_UserLayoutTopbarViewComponent.cs",
+              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\ViewComponents\\_UserLayoutViewComponents\\_UserLayoutTopbarViewComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T19:58:57.53Z",
               "EditorCaption": ""
             }
           ]

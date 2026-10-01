@@ -1,49 +1,63 @@
-﻿<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+﻿@{
+    var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["Action"]?.ToString();
+
+    var activeClass = "bg-primary-container text-on-primary font-label-lg shadow-sm";
+    var inactiveClass = "text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface";
+}
+
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
     <div class="h-20 flex items-center gap-3 px-space-lg bg-surface-container-lowest">
         <div class="flex flex-col">
             <span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">CargoTrack</span>
             <span class="font-label-sm text-label-sm text-secondary">Müşteri Portalı</span>
         </div>
     </div>
+
     <div class="flex-1 overflow-y-auto px-space-md py-space-sm">
-        <nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-label-lg shadow-sm">
+        <nav class="flex flex-col gap-space-xs">
             <div class="pt-space-sm pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Genel</div>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="kisisel-dashboard" href="/User/Dashboard/Index">
-                <span class="material-symbols-outlined text-[20px]">dashboard</span><span>Kişisel Dashboard</span>
-            </a><div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div>
-            <a aria-current="page" class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors bg-primary-container text-on-primary font-label-lg shadow-sm" data-path="aktif-kargolar" href="/User/Cargo/ActiveList">
+
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors font-label-lg text-label-lg @(currentController == "Dashboard" ? activeClass : inactiveClass)"
+               href="/User/Dashboard/Index">
+                <span class="material-symbols-outlined text-[20px]">dashboard</span>
+                <span>Kişisel Dashboard</span>
+            </a>
+
+            <div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Kargolarım</div>
+
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors font-label-lg text-label-lg @(currentController == "Cargo" && currentAction == "ActiveList" ? activeClass : inactiveClass)"
+               href="/User/Cargo/ActiveList">
                 <span class="material-symbols-outlined text-[20px]">local_shipping</span>
                 <span>Aktif Kargolar</span>
             </a>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bana-gelen-kargolar" href="/User/Cargo/ReceivedList">
+
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors font-label-lg text-label-lg @(currentController == "Cargo" && currentAction == "ReceivedList" ? activeClass : inactiveClass)"
+               href="/User/Cargo/ReceivedList">
                 <span class="material-symbols-outlined text-[20px]">move_to_inbox</span>
                 <span>Bana Gelen Kargolar</span>
             </a>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gonderdigim-kargolar" href="/User/Cargo/SentList">
+
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors font-label-lg text-label-lg @(currentController == "Cargo" && currentAction == "SentList" ? activeClass : inactiveClass)"
+               href="/User/Cargo/SentList">
                 <span class="material-symbols-outlined text-[20px]">outbox</span>
                 <span>Gönderdiğim Kargolar</span>
             </a>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="gecmis-teslimatlar" href="/User/Cargo/DeliveredList">
+
+            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl transition-colors font-label-lg text-label-lg @(currentController == "Cargo" && currentAction == "DeliveredList" ? activeClass : inactiveClass)"
+               href="/User/Cargo/DeliveredList">
                 <span class="material-symbols-outlined text-[20px]">history</span>
                 <span>Geçmiş Teslimatlar</span>
             </a>
-            <div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">İşlemler</div>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="yeni-kargo-talebi" href="#">
-                <span class="material-symbols-outlined text-[20px]">add_box</span>
-                <span>Yeni Kargo Talebi</span>
-            </a>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="canli-kargo-takip" href="#">
-                <span class="material-symbols-outlined text-[20px]">pin_drop</span>
-                <span>Kargo Detay & Canlı Takip</span>
-            </a>
-            <div class="pt-space-md pb-space-xs px-space-sm font-label-sm text-label-sm text-outline uppercase tracking-wider">Hesap & Ayarlar</div>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="teslimat-adreslerim" href="#">
-                <span class="material-symbols-outlined text-[20px]">home_pin</span>
-                <span>Teslimat Adreslerim</span>
-            </a>
-            <a class="flex items-center gap-3 px-space-md py-2.5 rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-lg text-label-lg" data-path="bildirim-tercihleri" href="#">
-                <span class="material-symbols-outlined text-[20px]">notifications_active</span><span>Bildirim Tercihleri</span>
-            </a>
         </nav>
+    </div>
+
+    <div class="p-space-md border-t border-outline-variant/30 shrink-0">
+        <form asp-route-area="" asp-controller="Login" asp-action="Logout" method="post" class="w-full">
+            <button type="submit" class="w-full flex items-center gap-3 px-space-md py-2.5 rounded-xl text-error hover:bg-error-container/20 transition-colors font-label-lg text-label-lg text-left">
+                <span class="material-symbols-outlined text-[20px] text-error">logout</span>
+                <span>Çıkış Yap</span>
+            </button>
+        </form>
     </div>
 </aside>

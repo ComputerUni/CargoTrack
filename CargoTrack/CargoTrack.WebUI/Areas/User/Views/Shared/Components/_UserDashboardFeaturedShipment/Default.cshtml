@@ -1,147 +1,163 @@
-﻿<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg xl:p-space-xl flex flex-col gap-space-lg">
-    <!-- Üst Satır: Takip Detayları & Canlı Durum -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
-        <div class="flex flex-col gap-1">
-            <div class="flex items-center gap-3 flex-wrap">
-                <span class="font-code-tracking text-code-tracking px-2.5 py-1 bg-surface-container rounded-lg text-on-surface">CT-2026-981240</span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-md text-label-md bg-primary-fixed text-on-primary-fixed-variant">
-                    <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-                    <span>Canlı Dağıtımda</span>
-                </span>
-                <span class="font-body-sm text-body-sm text-secondary">0.8 Desi • Elektronik Aksesuar</span>
-            </div>
-            <div class="font-headline-md text-headline-md text-on-surface mt-1">Trendyol / TechStore Resmi Satıcısı</div>
+﻿@using CargoTrack.Business.Extensions
+@using CargoTrack.Entity.Entities.Enums
+@model CargoTrack.DTO.DTOs.CargosDtos.ResultCargoDto
+
+@if (Model == null)
+{
+    <!-- Aktif Kargo Bulunmadığında Gözükecek Sade Alan -->
+    <div class="bg-surface-container-lowest rounded-2xl p-8 border border-outline-variant/30 text-center flex flex-col items-center justify-center gap-3 shadow-sm">
+        <div class="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined text-[32px]">inventory_2</span>
         </div>
-        <div class="flex flex-col md:text-right bg-surface-container-low md:bg-transparent p-3 md:p-0 rounded-xl">
-            <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Tahmini Varış Vakti</span>
-            <div class="font-headline-sm text-headline-sm text-primary font-bold">Bugün, 28 Eylül • 15:15 civarı</div>
-            <span class="font-body-sm text-body-sm text-secondary">Kadıköy Dağıtım Merkezi çıkışlı</span>
+        <div class="flex flex-col">
+            <h3 class="text-base font-bold text-on-surface">Aktif Gönderiniz Bulunmuyor</h3>
+            <p class="text-xs text-secondary mt-1 max-w-sm">
+                Şu anda transfer veya dağıtım aşamasında bekleyen bir kargonuz yok. Geçmiş teslimatlarınızı kargo hareketlerinden inceleyebilirsiniz.
+            </p>
         </div>
     </div>
-    <!-- 4 Adımlı Yatay İlerleme Çubuğu (Stepper) -->
-    <div class="py-space-sm">
-        <div class="grid grid-cols-4 relative items-center gap-2">
-            <!-- İlerleme Çizgileri -->
-            <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-surface-container -z-0">
-                <div class="h-full bg-primary-container w-[72%] transition-all duration-500"></div>
-            </div>
-            <!-- Adım 1: Sipariş Alındı -->
-            <div class="flex flex-col items-center relative z-10 text-center gap-2">
-                <div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
-                    <span class="material-symbols-outlined text-[18px]">check</span>
+}
+else
+{
+    var statusInt = (int)Model.CargoStatus;
+    var progressPercent = statusInt switch
+    {
+        1 => "15%",
+        2 => "35%",
+        3 => "55%",
+        4 => "75%",
+        5 => "90%",
+        6 => "100%",
+        _ => "20%"
+    };
+
+    <div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/30 shadow-sm flex flex-col gap-6">
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-outline-variant/20">
+            <div class="flex flex-col gap-1.5">
+                <div class="flex items-center gap-2.5 flex-wrap">
+                    <span class="font-code text-xs font-bold px-2.5 py-1 bg-surface-container-low rounded-lg text-on-surface border border-outline-variant/30">
+                        @Model.TrackCode
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold @(Model.CargoStatus == CargoStatus.OutForDelivery ? "bg-amber-500/10 text-amber-600 border border-amber-500/20" : "bg-primary/10 text-primary border border-primary/20")">
+                        <span class="w-2 h-2 rounded-full @(Model.CargoStatus == CargoStatus.OutForDelivery ? "bg-amber-500 animate-ping" : "bg-primary")"></span>
+                        <span>@Model.CargoStatus.GetDisplayName()</span>
+                    </span>
+                    <span class="text-xs text-secondary">
+                        @Model.Desi.ToString("N1") Desi • @Model.Weight.ToString("N1") Kg • @Model.CargoType.ToString()
+                    </span>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-label-md text-label-md text-on-surface">Sipariş Alındı</span>
-                    <span class="font-body-sm text-body-sm text-secondary hidden sm:inline">27 Eylül 09:30</span>
-                </div>
-            </div>
-            <!-- Adım 2: Transfer Merkezinde -->
-            <div class="flex flex-col items-center relative z-10 text-center gap-2">
-                <div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
-                    <span class="material-symbols-outlined text-[18px]">check</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-label-md text-label-md text-on-surface">Transfer Merkezinde</span>
-                    <span class="font-body-sm text-body-sm text-secondary hidden sm:inline">27 Eylül 22:15</span>
-                </div>
-            </div>
-            <!-- Adım 3: Dağıtıma Çıktı (Aktif) -->
-            <div class="flex flex-col items-center relative z-10 text-center gap-2">
-                <div class="w-10 h-10 rounded-full bg-surface-container-lowest ring-4 ring-primary-fixed text-primary flex items-center justify-center shadow-md animate-pulse">
-                    <span class="material-symbols-outlined text-[20px]">two_wheeler</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-label-md text-label-md text-primary font-bold">Dağıtıma Çıktı</span>
-                    <span class="font-body-sm text-body-sm text-primary font-medium">Bugün 11:20</span>
+                <div class="text-base font-bold text-on-surface mt-0.5">
+                    @Model.OriginBranchName → @Model.DestinationBranchName
                 </div>
             </div>
-            <!-- Adım 4: Teslim Edildi -->
-            <div class="flex flex-col items-center relative z-10 text-center gap-2">
-                <div class="w-9 h-9 rounded-full bg-surface-container text-outline flex items-center justify-center">
-                    <span class="material-symbols-outlined text-[18px]">home</span>
+
+            <div class="flex flex-col md:text-right bg-surface-container-low md:bg-transparent p-3 md:p-0 rounded-xl">
+                <span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Tahmini Teslimat</span>
+                <div class="text-sm sm:text-base text-primary font-bold">
+                    @Model.EstimatedArrivalDate.ToString("dd MMMM yyyy • HH:mm")
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-label-md text-label-md text-outline">Teslim Edildi</span>
-                    <span class="font-body-sm text-body-sm text-outline hidden sm:inline">Bekleniyor</span>
+                <span class="text-xs text-secondary">Varış Şubesi: @Model.DestinationBranchName</span>
+            </div>
+        </div>
+
+        <div class="py-2 px-2 sm:px-6">
+            <div class="grid grid-cols-4 relative items-center gap-2">
+                <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-surface-container -z-0">
+                    <div class="h-full bg-primary transition-all duration-700" style="width: @progressPercent;"></div>
+                </div>
+
+                <div class="flex flex-col items-center relative z-5 text-center gap-6">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-sm transition-all @(statusInt >= 1 ? "bg-primary text-white" : "bg-surface-container text-outline")">
+                        <span class="material-symbols-outlined text-[16px]">check</span>
+                    </div>
+                    <span class="text-xs font-semibold @(statusInt >= 1 ? "text-on-surface" : "text-outline")">Alındı</span>
+                </div>
+
+                <div class="flex flex-col items-center relative z-10 text-center gap-6">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-sm transition-all @(statusInt >= 3 ? "bg-primary text-white" : "bg-surface-container text-outline")">
+                        <span class="material-symbols-outlined text-[16px]">hub</span>
+                    </div>
+                    <span class="text-xs font-semibold @(statusInt >= 3 ? "text-on-surface" : "text-outline")">Transferde</span>
+                </div>
+
+                <div class="flex flex-col items-center relative z-10 text-center gap-6">
+                    <div class="w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-all @(statusInt == 5 ? "bg-amber-500 text-white ring-4 ring-amber-500/20 animate-pulse" : (statusInt > 5 ? "bg-primary text-white" : "bg-surface-container text-outline"))">
+                        <span class="material-symbols-outlined text-[18px]">two_wheeler</span>
+                    </div>
+                    <span class="text-xs font-semibold @(statusInt >= 5 ? "text-primary" : "text-outline")">Dağıtımda</span>
+                </div>
+
+                <div class="flex flex-col items-center relative z-10 text-center gap-6">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs shadow-sm transition-all @(statusInt == 6 ? "bg-emerald-500 text-white" : "bg-surface-container text-outline")">
+                        <span class="material-symbols-outlined text-[16px]">home</span>
+                    </div>
+                    <span class="text-xs font-semibold @(statusInt == 6 ? "text-emerald-600" : "text-outline")">Teslim Edildi</span>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Kurye Bilgisi ve Canlı Durak Widget Paneli -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
-        <!-- Sol: Kurye Kartı & İletişim -->
-        <div class="lg:col-span-4 bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between gap-space-md">
-            <div class="flex items-center gap-3">
-                <img class="w-12 h-12 rounded-xl object-cover shadow-sm" data-alt="Professional logistics courier smiling wearing clean branded purple uniform outdoors with sunny urban street background high key portrait photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-PCPRNqC2DEaoVBKZxd6oGwTYjQPsB2dNmHgkND9ks0ULcA3B43Yr4XSheO1gQa7ARUAcla3ewIhwL-pElsuNf7YKpsVh0kxg-XqE2dIeu4EXSFm4YnW7oFs4TdYzqvUfVapZA6r-yqrZegcVs_FLsBht8T4o1PrckPuySZa2e2ugOLVQguJ2cjU0x5kUSffixsFIPohDBxjahaYAZtoW9ycBCwQm6JEj_QOC15t7bJezaxh8cDTB3g" />
-                <div class="flex flex-col min-w-0">
-                    <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Teslimat Kuryesi</span>
-                    <span class="font-headline-sm text-headline-sm text-on-surface truncate">Ahmet Yılmaz</span>
-                    <span class="font-code-tracking text-code-tracking text-secondary">34 CT 1042 • Elektrikli Moto-Kurye</span>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+            <div class="lg:col-span-6 bg-surface-container-low p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[24px]">badge</span>
+                    </div>
+                    <div class="flex flex-col min-w-0">
+                        <span class="text-[10px] uppercase font-bold text-outline tracking-wider">Görevli Kurye / Temsilci</span>
+                        <span class="text-sm font-bold text-on-surface truncate">
+                            @(!string.IsNullOrWhiteSpace(Model.AssignedCourierName) ? Model.AssignedCourierName : "Şube Transfer Ekibi")
+                        </span>
+                        <span class="text-xs text-secondary font-code">
+                            @(!string.IsNullOrWhiteSpace(Model.AssignedCourierPhone) ? Model.AssignedCourierPhone : "Varış Şubesi Kontrolünde")
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-2">
-                <button class="h-10 px-3 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-2 shadow-sm" type="button">
-                    <span class="material-symbols-outlined text-[18px] text-primary">call</span>
-                    <span>Kuryeyi Ara</span>
-                </button>
-                <button class="h-10 px-3 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center justify-center gap-2 shadow-sm" type="button">
-                    <span class="material-symbols-outlined text-[18px] text-primary">chat</span>
-                    <span>Mesaj At</span>
-                </button>
-            </div>
-        </div>
-        <!-- Sağ: Harita Önizleme & Durak Durumu -->
-        <div class="lg:col-span-8 bg-surface-container-low p-space-md rounded-xl flex flex-col sm:flex-row gap-space-md items-stretch">
-            <!-- Harita Alanı -->
-            <div class="w-full sm:w-1/2 h-36 sm:h-auto min-h-[140px] rounded-lg shadow-inner relative overflow-hidden flex items-end p-3" data-location="Kadikoy, Istanbul" style="">
-                <div class="relative z-10 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg shadow-sm flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
-                    <span class="font-label-sm text-label-sm text-on-surface font-semibold">Canlı Konum Takibi</span>
-                </div>
-            </div>
-            <!-- Durak Sayacı & Aksiyon Butonları -->
-            <div class="w-full sm:w-1/2 flex flex-col justify-between gap-3">
+
+            <div class="lg:col-span-6 bg-surface-container-low p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between">
                 <div class="flex flex-col">
-                    <div class="flex items-center gap-2 text-primary font-label-lg text-label-lg mb-1">
-                        <span class="material-symbols-outlined text-[20px]">near_me</span>
-                        <span>4 Durak Uzakta</span>
-                    </div>
-                    <p class="font-body-sm text-body-sm text-secondary">
-                        Kurye bölgenizde rotasını tamamlıyor. Yaklaşık <strong class="text-on-surface font-semibold">12 dakika</strong> içerisinde Caferağa Mah. adresinize ulaşması bekleniyor.
-                    </p>
+                    <span class="text-[10px] uppercase font-bold text-outline tracking-wider">Temassız Teslimat Doğrulama Kodu</span>
+                    @if (Model.CargoStatus == CargoStatus.OutForDelivery && !string.IsNullOrWhiteSpace(Model.DeliveryCode))
+                    {
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span class="font-code text-lg font-extrabold text-primary tracking-widest">
+                                @Model.DeliveryCode
+                            </span>
+                            <span class="text-[10px] text-emerald-600 bg-emerald-500/10 px-2 py-0.5 rounded font-semibold">Aktif Kod</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <span class="text-xs text-secondary italic mt-1">Paket dağıtıma çıktığında kod aktifleşecektir.</span>
+                    }
                 </div>
-                <!-- Teslimat Kodu Kutucuğu -->
-                <div class="bg-surface-container-lowest px-3 py-2 rounded-lg flex items-center justify-between shadow-sm">
-                    <div class="flex flex-col">
-                        <span class="font-label-sm text-label-sm text-outline">Temassız Teslimat Kodu</span>
-                        <span class="font-code-tracking text-code-tracking text-primary font-bold tracking-widest text-[16px]">849 182</span>
-                    </div>
-                    <button class="w-8 h-8 rounded-md hover:bg-surface-container flex items-center justify-center text-secondary transition-colors" title="Kodu Kopyala" type="button">
-                        <span class="material-symbols-outlined text-[18px]">content_copy</span>
+
+                @if (Model.CargoStatus == CargoStatus.OutForDelivery && !string.IsNullOrWhiteSpace(Model.DeliveryCode))
+                {
+                    <button onclick="navigator.clipboard.writeText('@Model.DeliveryCode'); alert('Teslimat kodu kopyalandı!');"
+                            class="h-9 px-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold flex items-center gap-1.5 transition-colors border border-outline-variant/30"
+                            title="Kodu Panoya Kopyala"
+                            type="button">
+                        <span class="material-symbols-outlined text-[16px] text-primary">content_copy</span>
+                        <span>Kopyala</span>
                     </button>
-                </div>
+                }
             </div>
+
         </div>
-    </div>
-    <!-- Alt Hızlı Teslimat Aksiyonları Çubuğu -->
-    <div class="flex flex-wrap items-center justify-between gap-3 pt-space-xs">
-        <div class="flex items-center gap-2 flex-wrap">
-            <button class="px-space-md py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-2" type="button">
-                <span class="material-symbols-outlined text-[18px] text-primary">diversity_1</span>
-                <span>Komşuma Bırak</span>
-            </button>
-            <button class="px-space-md py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-2" type="button">
-                <span class="material-symbols-outlined text-[18px] text-primary">storefront</span>
-                <span>Esnaf Noktasına Bırak</span>
-            </button>
-            <button class="px-space-md py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors flex items-center gap-2" type="button">
-                <span class="material-symbols-outlined text-[18px] text-primary">event_repeat</span>
-                <span>Teslimat Gününü Değiştir</span>
-            </button>
+
+        <div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+            <span class="text-xs text-secondary">
+                Teslim Adresi: <strong class="text-on-surface font-semibold">@(!string.IsNullOrWhiteSpace(Model.DeliveryAddressDetail) ? Model.DeliveryAddressDetail : "Şubeden Teslim")</strong>
+            </span>
+            <a asp-area="User" asp-controller="Cargo" asp-action="CargoDetail" asp-route-id="@Model.Id"
+               class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                <span>Tüm Hareket Geçmişini Gör</span>
+                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
         </div>
-        <a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1 font-semibold" data-path="canli-kargo-takip" href="#">
-            <span>Tüm Rotayı İncele</span>
-            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-        </a>
+
     </div>
-</div>
+}

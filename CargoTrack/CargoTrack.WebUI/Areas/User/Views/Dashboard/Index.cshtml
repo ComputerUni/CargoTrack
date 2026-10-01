@@ -12,12 +12,10 @@
 
         @await Component.InvokeAsync("_UserDashboardFeaturedShipment")
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
-
-            @await Component.InvokeAsync("_UserDashboardRecentMovements")
-
-            @await Component.InvokeAsync("_UserDashboardSecurityAndAddress")
-
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg w-full">
+            <div class="col-span-12 w-full flex flex-col gap-space-md">
+                @await Component.InvokeAsync("_UserDashboardRecentMovements")
+            </div>
         </div>
     </div>
 </main>

@@ -11,22 +11,9 @@ namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserDashboardViewComponent
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.GetUserAsync(UserClaimsPrincipal);
-
             var activeCargos = await _userCargoService.GetByUserIdAsync(user.Id);
-            ViewBag.ActiveCargoCount = activeCargos.Count;
-
-            ViewBag.OutOfDelivery = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.OutForDelivery);
-
-            ViewBag.InTransferCenter = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.InTransferCenter);
-
-            ViewBag.ReceivedCargos = activeCargos.Where(x => x.ReceiverId == user.Id);
-
-            ViewBag.SentCargos = activeCargos.Where(x => x.SenderId == user.Id);
-
-            var completedCargos = activeCargos.Where(x => x.SenderId == user.Id || x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.Delivered);
-            ViewBag.CompletedCargos = completedCargos.Count();
-
-            return View();
+            var lastCargo = activeCargos.OrderByDescending(x => x.CargoStatus == CargoStatus.OutForDelivery).ThenByDescending(x => x.CreatedDate).FirstOrDefault();
+            return View(lastCargo);
         }
     }
 }
