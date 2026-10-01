@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CargoTrack.WebUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faf426481e67d5163696bc26696cdc84667278e7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e31e20a26653d9af545e5e6adb01e881c250a818")]
 [assembly: System.Reflection.AssemblyProductAttribute("CargoTrack.WebUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CargoTrack.WebUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

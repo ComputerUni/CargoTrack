@@ -15,14 +15,16 @@ namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserDashboardViewComponent
             var activeCargos = await _userCargoService.GetByUserIdAsync(user.Id);
             ViewBag.ActiveCargoCount = activeCargos.Count;
 
-            var outOfDeliveryCargos = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.OutForDelivery);
-            ViewBag.OutOfDelivery = outOfDeliveryCargos.Count();
+            ViewBag.OutOfDelivery = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.OutForDelivery);
 
-            var inTransferCenterCargos = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.InTransferCenter);
-            ViewBag.InTransferCenter = inTransferCenterCargos.Count();
+            ViewBag.InTransferCenter = activeCargos.Where(x => x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.InTransferCenter);
 
-            var receivedCargos = activeCargos.Where(x => x.ReceiverId == user.Id);
+            ViewBag.ReceivedCargos = activeCargos.Where(x => x.ReceiverId == user.Id);
 
+            ViewBag.SentCargos = activeCargos.Where(x => x.SenderId == user.Id);
+
+            var completedCargos = activeCargos.Where(x => x.SenderId == user.Id || x.ReceiverId == user.Id && x.CargoStatus == CargoStatus.Delivered);
+            ViewBag.CompletedCargos = completedCargos.Count();
 
             return View();
         }
