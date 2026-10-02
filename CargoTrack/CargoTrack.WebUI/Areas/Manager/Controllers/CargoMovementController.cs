@@ -98,6 +98,8 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
             vm.StatusUpdate.BranchId = user.BranchId.Value;
 
+            vm.StatusUpdate.CurrentUserId = user.Id;
+
             if (!ModelState.IsValid)
             {
                 await GetViewBagDataAsync();

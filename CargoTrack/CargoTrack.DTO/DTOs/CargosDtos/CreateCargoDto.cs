@@ -9,6 +9,7 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
 {
     public class CreateCargoDto
     {
+        public Guid? CurrentUserId { get; set; }
         public double Weight { get; set; }
         public double Length { get; set; }
         public double Width { get; set; }

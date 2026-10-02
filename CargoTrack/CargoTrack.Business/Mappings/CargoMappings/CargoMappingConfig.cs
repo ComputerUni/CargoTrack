@@ -40,11 +40,9 @@ namespace CargoTrack.Business.Mappings.CargoMappings
                 .Map(dest => dest.ReceiverPhone, src => src.AssignedEmployee != null ? src.Receiver.PhoneNumber : string.Empty);
 
             TypeAdapterConfig<AuditLog, ResultAuditLogDto>.NewConfig()
-    .Map(dest => dest.UserFullName, src => src.User != null
-        ? $"{src.User.FirstName} {src.User.LastName}".Trim()
-        : "Sistem")
-    .Map(dest => dest.OldValue, src => src.OldValue ?? "-")
-    .Map(dest => dest.NewValue, src => src.NewValue ?? "-");
+                .Map(dest => dest.UserFullName, src => src.User != null ? $"{src.User.FirstName} {src.User.LastName}".Trim() : "Sistem")
+                .Map(dest => dest.OldValue, src => src.OldValue ?? "-")
+                .Map(dest => dest.NewValue, src => src.NewValue ?? "-");
         }
     }
 }

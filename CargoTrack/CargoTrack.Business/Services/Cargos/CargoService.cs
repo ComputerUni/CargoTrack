@@ -64,8 +64,10 @@ namespace CargoTrack.Business.Services.Cargos
 
             await _repository.CreateAsync(cargo);
 
+            var actionUserId = createCargoDto.CurrentUserId ?? createCargoDto.SenderId;
+
             await _auditLogService.CreateAuditLogAsync(
-                userId: createCargoDto.SenderId,
+                userId: actionUserId,
                 entityId: cargo.Id,
                 actionType: "Create",
                 entityName: "Cargo",
@@ -219,10 +221,12 @@ namespace CargoTrack.Business.Services.Cargos
                 await _repository.UpdateAsync(cargo);
                 await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
 
+                var actionUserId = dto.CurrentUserId ?? cargo.SenderId;
+
                 if (dto.EmployeeId.HasValue)
                 {
                     await _auditLogService.CreateAuditLogAsync(
-                        userId: dto.EmployeeId.Value,
+                        userId: actionUserId,
                         entityId: cargo.Id,
                         actionType: "Durum Değişikliği",
                         entityName: "Cargo",
@@ -242,10 +246,12 @@ namespace CargoTrack.Business.Services.Cargos
 
             await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
 
+            var updateActionUserId = dto.CurrentUserId ?? cargo.SenderId;
+
             if (dto.EmployeeId.HasValue)
             {
                 await _auditLogService.CreateAuditLogAsync(
-                    userId: dto.EmployeeId.Value,
+                    userId: updateActionUserId,
                     entityId: cargo.Id,
                     actionType: "StatusChange",
                     entityName: "Cargo",

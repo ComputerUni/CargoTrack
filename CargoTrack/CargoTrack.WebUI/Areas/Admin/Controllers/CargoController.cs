@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CargoTrack.WebUI.Areas.Admin.Controllers
 {
@@ -57,6 +58,12 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
             {
                 await GetViewBagDataAsync();
                 return View(createCargoDto);
+            }
+
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (Guid.TryParse(userIdString, out var currentUserId))
+            {
+                createCargoDto.CurrentUserId = currentUserId;
             }
 
             await _cargoService.CreateAsync(createCargoDto);
