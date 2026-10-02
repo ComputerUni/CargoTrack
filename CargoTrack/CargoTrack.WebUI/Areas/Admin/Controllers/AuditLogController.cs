@@ -10,7 +10,7 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var logs = await _auditLogService.GetAllAsync();
-            return View();
+            return View(logs);
         }
     }
 }

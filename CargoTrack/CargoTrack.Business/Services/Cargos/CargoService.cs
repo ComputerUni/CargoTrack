@@ -1,11 +1,12 @@
-﻿using CargoTrack.Business.Services.CargoMovements;
+﻿using CargoTrack.Business.Extensions;
+using CargoTrack.Business.Services.AuditLogs;
+using CargoTrack.Business.Services.CargoMovements;
 using CargoTrack.Business.Services.CargoPricings;
 using CargoTrack.Business.Services.Deliveries;
 using CargoTrack.Business.Services.DeliveryExceptions;
 using CargoTrack.DataAccess.Repositories.Addresses;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
-using CargoTrack.DTO.DTOs.AdminDashboardDtos;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using CargoTrack.Entity.Entities;
@@ -16,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CargoTrack.Business.Services.Cargos
 {
-    public class CargoService(IAddressRepository _addressRepository, IDeliveryExceptionService _deliveryExceptionService, ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService, IDeliveryService _deliveryService, UserManager<AppUser> _userManager) : ICargoService
+    public class CargoService(IAuditLogService _auditLogService, IAddressRepository _addressRepository, IDeliveryExceptionService _deliveryExceptionService, ICargoRepository _repository, ICargoPricingService _cargoPricingService, IBranchRepository _branchRepository, ICargoMovementService _cargoMovementService, IDeliveryService _deliveryService, UserManager<AppUser> _userManager) : ICargoService
     {
         public async Task CreateAsync(CreateCargoDto createCargoDto)
         {
@@ -62,6 +63,16 @@ namespace CargoTrack.Business.Services.Cargos
             cargo.DeliveryAddressId = address.Id;
 
             await _repository.CreateAsync(cargo);
+
+            await _auditLogService.CreateAuditLogAsync(
+                userId: createCargoDto.SenderId,
+                entityId: cargo.Id,
+                actionType: "Create",
+                entityName: "Cargo",
+                description: $"{cargo.TrackCode} takip numaralı kargo sisteme kaydedildi",
+                oldValue: null,
+                newValue: CargoStatus.Created.GetDisplayName()
+            );
         }
 
         public async Task DeleteAsync(Guid id)
@@ -181,6 +192,8 @@ namespace CargoTrack.Business.Services.Cargos
                 throw new ValidationException("Böyle bir kargo bulumamadı");
             }
 
+            var oldStatus = cargo.CargoStatus;
+
             if (dto.BranchId.HasValue)
             {
                 var lastMovement = cargo.CargoMovements.OrderByDescending(m => m.MovementDate).FirstOrDefault();
@@ -206,6 +219,19 @@ namespace CargoTrack.Business.Services.Cargos
                 await _repository.UpdateAsync(cargo);
                 await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
 
+                if (dto.EmployeeId.HasValue)
+                {
+                    await _auditLogService.CreateAuditLogAsync(
+                        userId: dto.EmployeeId.Value,
+                        entityId: cargo.Id,
+                        actionType: "Durum Değişikliği",
+                        entityName: "Cargo",
+                        description: $"{cargo.TrackCode} takip nolu kargonun teslimatı başarısız oldu. Neden: {dto.Description}",
+                        oldValue: oldStatus.ToString(),
+                        newValue: dto.NewStatus.ToString()
+                    );
+                }
+
                 if (cargo.FailedAttemptCount >= 3)
                 {
                     await _cargoMovementService.CreateMovementAsync(dto.Id, CargoStatus.ReturnInProcess, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
@@ -215,6 +241,19 @@ namespace CargoTrack.Business.Services.Cargos
             }
 
             await _cargoMovementService.CreateMovementAsync(dto.Id, dto.NewStatus, dto.BranchId, dto.TransferCenterId, dto.EmployeeId, dto.Description);
+
+            if (dto.EmployeeId.HasValue)
+            {
+                await _auditLogService.CreateAuditLogAsync(
+                    userId: dto.EmployeeId.Value,
+                    entityId: cargo.Id,
+                    actionType: "StatusChange",
+                    entityName: "Cargo",
+                    description: $"{cargo.TrackCode} takip nolu kargo durumu güncellendi: {dto.Description}",
+                    oldValue: oldStatus.ToString(),
+                    newValue: dto.NewStatus.ToString()
+                );
+            }
 
 
             if (dto.NewStatus == CargoStatus.OutForDelivery)

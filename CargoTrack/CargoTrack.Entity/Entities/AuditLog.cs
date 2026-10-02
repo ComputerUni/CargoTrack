@@ -14,8 +14,8 @@ namespace CargoTrack.Entity.Entities
         public string EntityName { get; set; }
         public Guid EntityId { get; set; }
         public string Description { get; set; }
-        public string OldValue { get; set; }
-        public string NewValue { get; set; }
+        public string? OldValue { get; set; }
+        public string? NewValue { get; set; }
 
         public virtual AppUser User { get; set; }
 

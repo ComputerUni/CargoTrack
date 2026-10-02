@@ -10,5 +10,6 @@ namespace CargoTrack.DataAccess.Repositories.AuditLogs
 {
     public interface IAuditLogRepository : IRepository<AuditLog>
     {
+        Task<List<AuditLog>> GetAllWithUserAsync();
     }
 }

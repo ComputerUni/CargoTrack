@@ -38,7 +38,7 @@ namespace CargoTrack.Business.Services.AuditLogs
 
         public async Task<List<ResultAuditLogDto>> GetAllAsync()
         {
-            var logs = await _auditLogRepository.GetAllAsync();
+            var logs = await _auditLogRepository.GetAllWithUserAsync();
             return logs.Adapt<List<ResultAuditLogDto>>();
         }
     }

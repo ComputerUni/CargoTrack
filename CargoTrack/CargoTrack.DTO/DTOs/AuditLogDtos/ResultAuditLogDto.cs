@@ -10,11 +10,13 @@ namespace CargoTrack.DTO.DTOs.AuditLogDtos
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
+        public string UserFullName { get; set; }
         public string ActionType { get; set; }
         public string EntityName { get; set; }
         public Guid EntityId { get; set; }
         public string Description { get; set; }
         public string OldValue { get; set; }
         public string NewValue { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
