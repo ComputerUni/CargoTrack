@@ -1,0 +1,166 @@
+﻿<div class="flex-1 flex flex-col min-w-0">
+    <header class="bg-white border-b border-outline-variant px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+        <div>
+            <h1 class="font-bold text-xl text-on-background">Performans ve Operasyon Raporları</h1>
+            <p style="color:#43474e;font-size:13px;">Şube SLA başarı oranları, personel teslimat istatistikleri ve gecikme analizleri</p>
+        </div>
+        @* <div class="flex items-center gap-3">
+      <select class="px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white font-medium">
+        <option>Bu Ay (Eylül 2026)</option>
+        <option>Son 30 Gün</option>
+        <option>Geçen Ay</option>
+        <option>2026 Q3</option>
+      </select>
+      <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold border border-outline-variant hover:bg-slate-50" style="color:#001e3c;">
+        <span class="material-symbols-outlined" style="font-size:18px;">download</span>PDF Raporu
+      </button>
+    </div> *@
+    </header>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+        <!-- Top KPI Grid -->
+        @await Component.InvokeAsync("_AdminReportKpiSummary")
+
+        <!-- Comparative Branch Performance Table -->
+        <div class="bg-white rounded-xl border border-outline-variant p-6 mb-8">
+            <h3 class="font-bold text-lg text-on-background mb-1">Şube Bazlı Teslimat ve Gecikme Karnesi</h3>
+            <p style="color:#43474e;font-size:13px;" class="mb-4">Hacim, başarı oranı ve operasyonel aksaklıkların karşılaştırması</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b" style="border-color:#e5eeff;">
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Şube Adı</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Toplam Çıkan</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Teslim Edilen</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Başarı (SLA)</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Geciken Kargo</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">İade Oranı</th>
+                            <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Durum Puanı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-outline-variant">
+                            <td class="py-3.5 px-3 font-semibold">İstanbul Anadolu</td>
+                            <td class="py-3.5 px-3 font-bold">2,341</td>
+                            <td class="py-3.5 px-3 text-green-700 font-semibold">2,250</td>
+                            <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%96.1</span></td>
+                            <td class="py-3.5 px-3 text-slate-700">32</td>
+                            <td class="py-3.5 px-3 font-mono">%1.8</td>
+                            <td class="py-3.5 px-3 font-bold text-green-700">A+</td>
+                        </tr>
+                        <tr class="border-b border-outline-variant">
+                            <td class="py-3.5 px-3 font-semibold">Ankara Merkez</td>
+                            <td class="py-3.5 px-3 font-bold">1,874</td>
+                            <td class="py-3.5 px-3 text-green-700 font-semibold">1,780</td>
+                            <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%95.0</span></td>
+                            <td class="py-3.5 px-3 text-slate-700">28</td>
+                            <td class="py-3.5 px-3 font-mono">%2.1</td>
+                            <td class="py-3.5 px-3 font-bold text-green-700">A</td>
+                        </tr>
+                        <tr class="border-b border-outline-variant">
+                            <td class="py-3.5 px-3 font-semibold">İzmir Bornova</td>
+                            <td class="py-3.5 px-3 font-bold">1,512</td>
+                            <td class="py-3.5 px-3 text-green-700 font-semibold">1,418</td>
+                            <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%93.8</span></td>
+                            <td class="py-3.5 px-3 text-amber-600">41</td>
+                            <td class="py-3.5 px-3 font-mono">%2.6</td>
+                            <td class="py-3.5 px-3 font-bold text-blue-700">B+</td>
+                        </tr>
+                        <tr class="border-b border-outline-variant">
+                            <td class="py-3.5 px-3 font-semibold">Bursa Nilüfer</td>
+                            <td class="py-3.5 px-3 font-bold">1,203</td>
+                            <td class="py-3.5 px-3 text-green-700 font-semibold">1,130</td>
+                            <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%93.9</span></td>
+                            <td class="py-3.5 px-3 text-slate-700">22</td>
+                            <td class="py-3.5 px-3 font-mono">%2.4</td>
+                            <td class="py-3.5 px-3 font-bold text-blue-700">B+</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3.5 px-3 font-semibold">Antalya Lara</td>
+                            <td class="py-3.5 px-3 font-bold">987</td>
+                            <td class="py-3.5 px-3 text-green-700 font-semibold">894</td>
+                            <td class="py-3.5 px-3"><span class="badge" style="background:#fff3e0;color:#e65100;">%90.5</span></td>
+                            <td class="py-3.5 px-3 text-rose-700 font-bold">48</td>
+                            <td class="py-3.5 px-3 font-mono text-rose-700">%4.2</td>
+                            <td class="py-3.5 px-3 font-bold text-amber-600">C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Exception Reason Analysis -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-outline-variant p-6">
+                <h3 class="font-bold text-lg text-on-background mb-3">Teslimat Başarısızlık (Exception) Nedenleri</h3>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>Alıcı adreste bulunamadı</span>
+                            <span>%48 (172 kargo)</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:48%;background:#fd8b00;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>Hatalı veya eksik teslimat adresi</span>
+                            <span>%26 (93 kargo)</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:26%;background:#001e3c;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>Alıcı paketi kabul etmedi / iptal</span>
+                            <span>%14 (50 kargo)</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:14%;background:#ba1a1a;"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>Hava muhalefeti / Ulaşım engeli</span>
+                            <span>%12 (44 kargo)</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full"><div class="h-full rounded-full" style="width:12%;background:#6f87aa;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-outline-variant p-6">
+                <h3 class="font-bold text-lg text-on-background mb-3">En Yüksek Performanslı Kuryeler</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-amber-100 text-amber-800">1</div>
+                            <div>
+                                <div class="font-semibold text-slate-800">Ali Koç (Kadıköy)</div>
+                                <div class="text-xs text-slate-500">340 teslimat • 6 dk ortalama teslim süresi</div>
+                            </div>
+                        </div>
+                        <span class="font-bold text-green-700 text-sm">%98.4 SLA</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-slate-200 text-slate-800">2</div>
+                            <div>
+                                <div class="font-semibold text-slate-800">Serdar Çetin (Çankaya)</div>
+                                <div class="text-xs text-slate-500">298 teslimat • 8 dk ortalama teslim süresi</div>
+                            </div>
+                        </div>
+                        <span class="font-bold text-green-700 text-sm">%97.2 SLA</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs bg-orange-100 text-orange-800">3</div>
+                            <div>
+                                <div class="font-semibold text-slate-800">Caner Güven (Nilüfer)</div>
+                                <div class="text-xs text-slate-500">265 teslimat • 7 dk ortalama teslim süresi</div>
+                            </div>
+                        </div>
+                        <span class="font-bold text-green-700 text-sm">%96.5 SLA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

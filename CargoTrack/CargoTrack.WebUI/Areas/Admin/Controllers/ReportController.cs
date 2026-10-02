@@ -1,0 +1,14 @@
+﻿using CargoTrack.WebUI.Consts;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CargoTrack.WebUI.Areas.Admin.Controllers
+{
+    [Area(Area.Admin)]
+    public class ReportController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}

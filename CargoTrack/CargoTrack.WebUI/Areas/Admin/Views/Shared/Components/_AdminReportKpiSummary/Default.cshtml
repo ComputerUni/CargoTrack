@@ -1,0 +1,25 @@
+﻿@using CargoTrack.DTO.DTOs.ReportDtos
+@model ReportKpiDto
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+    <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">ZAMANINDA TESLİMAT (SLA)</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">%@Model.OnTimeDeliveryRate</div>
+        <div class="text-xs text-green-700 mt-1 flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;">trending_up</span>+1.2% hedefin üzerinde</div>
+    </div>
+    <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">ORTALAMA TESLİM SÜRESİ</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">@Model.AverageDeliveryTimeInHours Saat</div>
+        <div class="text-xs text-green-700 mt-1 flex items-center gap-1"><span class="material-symbols-outlined" style="font-size:14px;">arrow_downward</span>2.1 saat hızlandı</div>
+    </div>
+    <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">İADE VE İPTAL ORANI</div>
+        <div class="text-2xl font-bold mt-1 text-on-background">%@Model.ReturnRate</div>
+        <div class="text-xs text-slate-500 mt-1">@Model.TotalReturnCount iade / @Model.TotalCargoCount toplam</div>
+    </div>
+    <div class="bg-white p-5 rounded-xl border border-outline-variant">
+        <div class="text-xs font-semibold" style="color:#43474e;">GECİKEN TESLİMAT ORANI</div>
+        <div class="text-2xl font-bold mt-1 text-amber-600">%@Model.DelayedDeliveryRate</div>
+        <div class="text-xs text-green-700 mt-1">Geçen aya göre -0.4% azalış</div>
+    </div>
+</div>
