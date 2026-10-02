@@ -1,5 +1,7 @@
-﻿@using CargoTrack.Entity.Entities
-@model Cargo
+﻿@using CargoTrack.Business.Extensions
+@using CargoTrack.DTO.DTOs.CargosDtos
+@model ResultCargoDto
+
 @{
     ViewData["Title"] = "CargoDetails";
     Layout = "~/Views/UILayout/Index.cshtml";
@@ -16,10 +18,10 @@
             <span class="material-symbols-outlined">print</span>
             Kargo Detayını Yazdır
         </button>
-        <button class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-secondary-container text-on-secondary px-6 py-2.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
+        <a href="/Default/Index" class="flex-1 md:flex-none flex items-center justify-center gap-2 bg-secondary-container text-on-secondary px-6 py-2.5 rounded-lg font-semibold hover:bg-opacity-90 transition-colors shadow-sm">
             <span class="material-symbols-outlined">search</span>
             Yeni Kargo Sorgula
-        </button>
+        </a>
     </div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -35,7 +37,7 @@
                 </div>
                 <div class="inline-flex items-center gap-1.5 bg-surface-container-high text-primary-container px-3 py-1 rounded-full font-status-label text-status-label mb-6">
                     <span class="material-symbols-outlined text-[16px]">local_shipping</span>
-                    @Model.CargoStatus
+                    @Model.CargoStatus.GetDisplayName()
                 </div>
                 <div class="flex gap-8">
                     <div>
@@ -55,8 +57,8 @@
                         <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center mb-2 text-primary-container">
                             <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
                         </div>
-                        <span class="font-semibold text-on-background">@Model.OriginBranch.City.Name</span>
-                        <span class="text-xs text-outline">@Model.OriginBranch.Name</span>
+                        <span class="font-semibold text-on-background">@Model.OriginBranchCity</span>
+                        <span class="text-xs text-outline">@Model.OriginBranchName</span>
                     </div>
                     <div class="flex-grow flex items-center px-2">
                         <div class="w-2 h-2 rounded-full bg-outline-variant"></div>
@@ -71,8 +73,8 @@
                         <div class="w-8 h-8 rounded-full bg-surface-container text-outline flex items-center justify-center mb-2">
                             <span class="material-symbols-outlined text-[18px]">flag</span>
                         </div>
-                        <span class="font-semibold text-on-background">@Model.DestinationBranch.City.Name</span>
-                        <span class="text-xs text-outline">@Model.DestinationBranch.Name</span>
+                        <span class="font-semibold text-on-background">@Model.DestinationBranchCity</span>
+                        <span class="text-xs text-outline">@Model.DestinationBranchName</span>
                     </div>
                 </div>
             </div>
@@ -85,8 +87,8 @@
                 </div>
                 <div>
                     <p class="font-label-caps text-label-caps text-outline mb-1 uppercase">Gönderici</p>
-                    <p class="font-semibold text-on-background">@Model.Sender.FirstName @Model.Sender.LastName</p>
-                    <p class="text-sm text-on-surface-variant">@Model.OriginBranch.City.Name / @Model.OriginBranch.Name</p>
+                    <p class="font-semibold text-on-background">@Model.SenderName</p>
+                    <p class="text-sm text-on-surface-variant">@Model.OriginBranchCity / @Model.OriginBranchName</p>
                 </div>
             </div>
             <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 p-5 flex items-center gap-4">
@@ -95,8 +97,8 @@
                 </div>
                 <div>
                     <p class="font-label-caps text-label-caps text-outline mb-1 uppercase">Alıcı</p>
-                    <p class="font-semibold text-on-background">@Model.Receiver.FirstName @Model.Receiver.LastName</p>
-                    <p class="text-sm text-on-surface-variant">@Model.DestinationBranch.City.Name / @Model.DestinationBranch.Name</p>
+                    <p class="font-semibold text-on-background">@Model.ReceiverName</p>
+                    <p class="text-sm text-on-surface-variant">@Model.DestinationBranchCity / @Model.DestinationBranchName</p>
                 </div>
             </div>
         </div>
@@ -114,11 +116,11 @@
                 </div>
                 <div class="bg-surface rounded-lg p-4">
                     <p class="text-sm text-outline mb-1">Çıkış Şubesi</p>
-                    <p class="font-semibold text-on-background">@Model.OriginBranch.Name</p>
+                    <p class="font-semibold text-on-background">@Model.OriginBranchName</p>
                 </div>
                 <div class="bg-surface rounded-lg p-4">
                     <p class="text-sm text-outline mb-1">Varış Şubesi</p>
-                    <p class="font-semibold text-on-background">@Model.DestinationBranch.Name</p>
+                    <p class="font-semibold text-on-background">@Model.DestinationBranchName</p>
                 </div>
             </div>
         </div>
@@ -126,7 +128,7 @@
         <div class="bg-primary-container rounded-xl shadow-sm p-6 text-on-primary">
             <div class="flex items-center gap-3 mb-2">
                 <span class="material-symbols-outlined text-[28px]">schedule</span>
-                <h3 class="font-headline-md text-2xl font-bold">Tahmini Teslimat: Bugün</h3>
+                <h3 class="font-headline-md text-2xl font-bold">Tahmini Teslimat: @Model.EstimatedArrivalDate.ToString("dd MMMM yyyy")</h3>
             </div>
             <p class="text-primary-fixed-dim mb-6 ml-10">Planlanan Saat Aralığı: 14:00 - 18:00</p>
             <div class="relative w-full h-3 progress-bar-bg rounded-full overflow-hidden mb-2">
@@ -147,67 +149,43 @@
             </div>
             <div class="relative">
                 <!-- Timeline Items -->
-                <div class="timeline-item relative pb-8 pl-10">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center z-10 ring-4 ring-white">
-                        <span class="material-symbols-outlined text-[14px] font-bold">check</span>
+                @foreach (var movement in Model.CargoMovements.OrderBy(x => x.MovementDate))
+                {
+                    <div class="timeline-item relative pb-8 pl-10">
+                        <div class="timeline-line"></div>
+                        <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center z-10 ring-4 ring-white">
+                            <span class="material-symbols-outlined text-[14px] font-bold">check</span>
+                        </div>
+                        <p class="font-semibold text-on-background mb-1">@movement.NewStatus.GetDisplayName()</p>
+                        <div class="flex items-center gap-1 text-sm text-outline">
+                            <span class="material-symbols-outlined text-[16px]">location_on</span>
+                            @(movement.BranchName ?? movement.TransferCenterName ?? "-") • @movement.MovementDate.ToString("dd MMM, HH:mm")
+                        </div>
+                        @if (!string.IsNullOrEmpty(movement.Description))
+                        {
+                            <p class="text-xs text-outline mt-1">@movement.Description</p>
+                        }
                     </div>
-                    <p class="font-semibold text-on-background mb-1">Gönderi Teslim Alındı</p>
-                    <div class="flex items-center gap-1 text-sm text-outline">
-                        <span class="material-symbols-outlined text-[16px]">location_on</span>
-                        Ataşehir • 18 Ağu, 09:42
-                    </div>
-                </div>
-                <div class="timeline-item relative pb-8 pl-10">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center z-10 ring-4 ring-white">
-                        <span class="material-symbols-outlined text-[14px] font-bold">check</span>
-                    </div>
-                    <p class="font-semibold text-on-background mb-1">Transfer Merkezine Gönderildi</p>
-                    <div class="flex items-center gap-1 text-sm text-outline">
-                        <span class="material-symbols-outlined text-[16px]">location_on</span>
-                        İstanbul Anadolu • 18 Ağu, 12:15
-                    </div>
-                </div>
-                <div class="timeline-item relative pb-8 pl-10">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center z-10 ring-4 ring-white">
-                        <span class="material-symbols-outlined text-[14px] font-bold">check</span>
-                    </div>
-                    <p class="font-semibold text-on-background mb-1">Transfer Merkezinden Çıktı</p>
-                    <div class="flex items-center gap-1 text-sm text-outline">
-                        <span class="material-symbols-outlined text-[16px]">location_on</span>
-                        Ankara • 19 Ağu, 05:30
-                    </div>
-                </div>
-                <div class="timeline-item relative pb-8 pl-10">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center z-10 ring-4 ring-white">
-                        <span class="material-symbols-outlined text-[14px] font-bold">check</span>
-                    </div>
-                    <p class="font-semibold text-on-background mb-1">Dağıtım Şubesine Ulaştı</p>
-                    <div class="flex items-center gap-1 text-sm text-outline">
-                        <span class="material-symbols-outlined text-[16px]">location_on</span>
-                        Çankaya • 19 Ağu, 08:45
-                    </div>
-                </div>
-                <div class="timeline-item relative pb-8 pl-10">
-                    <div class="timeline-line"></div>
-                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full bg-secondary-container text-white flex items-center justify-center z-10 ring-4 ring-white">
-                        <span class="material-symbols-outlined text-[14px]">local_shipping</span>
-                    </div>
-                    <p class="font-semibold text-secondary-container mb-1">Dağıtıma Çıktı</p>
-                    <div class="flex items-center gap-1 text-sm text-outline">
-                        <span class="material-symbols-outlined text-[16px]">location_on</span>
-                        Çankaya • 20 Ağu, 09:10
-                    </div>
-                </div>
-                <div class="timeline-item relative pl-10">
-                    <div class="absolute left-0 top-1 w-6 h-6 rounded-full border-2 border-outline-variant bg-white flex items-center justify-center z-10">
-                    </div>
-                    <p class="font-semibold text-outline mb-1">Teslim Edildi</p>
-                </div>
+                }
+
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    let recentSearches = JSON.parse(localStorage.getItem("recentCargos") || "[]");
+
+    recentSearches = recentSearches.filter(x => x.trackCode !== "@Model.TrackCode");
+
+    recentSearches.unshift({
+        trackCode: "@Model.TrackCode",
+        status: "@Model.CargoStatus.GetDisplayName()",
+        origin: "@Model.OriginBranchCity",
+        destination: "@Model.DestinationBranchCity",
+        estimatedDate: "@Model.EstimatedArrivalDate.ToString("dd MMMM yyyy")"
+    });
+
+    recentSearches = recentSearches.slice(0, 3);
+    localStorage.setItem("recentCargos", JSON.stringify(recentSearches));
+</script>

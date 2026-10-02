@@ -1,4 +1,5 @@
-﻿using CargoTrack.DTO.DTOs.CargosDtos;
+﻿using CargoTrack.DTO.DTOs.AdminDashboardDtos;
+using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using System;
 using System.Collections.Generic;

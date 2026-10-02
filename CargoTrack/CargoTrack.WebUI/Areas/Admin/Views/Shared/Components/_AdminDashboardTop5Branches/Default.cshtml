@@ -1,0 +1,23 @@
+﻿@using CargoTrack.DTO.DTOs.AdminDashboardDtos
+@using System.Globalization
+@model List<AdminDashboardTopBranchDto>
+
+<div class="bg-white rounded-xl border border-outline-variant p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h3 class="font-bold text-lg text-on-background">En Yoğun Şubeler</h3>
+        <a href="/Admin/Branch/Index" class="text-sm font-semibold" style="color:#001e3c;">Tümünü Gör →</a>
+    </div>
+    <div class="flex flex-col gap-3">
+        @foreach(var item in Model)
+        {
+            <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:#001e3c;">@item.Rank</span>
+                <div class="flex-1">
+                    <div class="flex justify-between text-sm font-semibold mb-1"><span>@item.BranchName</span><span>@item.CargoCount</span></div>
+                    <div style="height:5px;background:#e5eeff;border-radius:99px;"><div style="height:100%;width:@item.Percentage.ToString(CultureInfo.InvariantCulture)%;background:#001e3c;border-radius:99px;"></div></div>
+                </div>
+            </div>
+        }
+       
+    </div>
+</div>

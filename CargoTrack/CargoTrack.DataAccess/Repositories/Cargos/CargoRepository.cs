@@ -173,8 +173,6 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
 
                     )
                  ).ToListAsync();
-
-                  
         }
     }
 }

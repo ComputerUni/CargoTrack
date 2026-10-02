@@ -29,7 +29,7 @@ namespace CargoTrack.WebUI.Controllers
 
             if(userRoles.Contains(Roles.Admin))
             {
-                return Redirect("/Admin/Branch/Index");
+                return Redirect("/Admin/Dashboard/Index");
             }
 
             if(userRoles.Contains(Roles.Manager))

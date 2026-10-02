@@ -1,0 +1,27 @@
+﻿@using CargoTrack.DTO.DTOs.AdminDashboardDtos
+@model AdminDashboardSecondaryKpiDto
+
+<div class="grid grid-cols-2 gap-4">
+    <div class="bg-white rounded-xl border border-outline-variant p-5">
+        <span class="material-symbols-outlined filled-icon" style="color:#001e3c;font-size:28px;">store</span>
+        <div class="text-2xl font-bold text-on-background mt-2">@Model.TotalBranch</div>
+        <div style="color:#43474e;font-size:13px;font-weight:600;">Aktif Şube</div>
+    </div>
+    <div class="bg-white rounded-xl border border-outline-variant p-5">
+        <span class="material-symbols-outlined filled-icon" style="color:#fd8b00;font-size:28px;">hub</span>
+        <div class="text-2xl font-bold text-on-background mt-2">@Model.TransferCenter</div>
+        <div style="color:#43474e;font-size:13px;font-weight:600;">Transfer Merkezi</div>
+    </div>
+    <div class="bg-white rounded-xl border border-outline-variant p-5">
+        <span class="material-symbols-outlined filled-icon" style="color:#486081;font-size:28px;">badge</span>
+        <div class="text-2xl font-bold text-on-background mt-2">@Model.TotalEmployee</div>
+        <div style="color:#43474e;font-size:13px;font-weight:600;">Toplam Personel</div>
+
+    </div>
+    <div class="bg-white rounded-xl border border-outline-variant p-5">
+        <span class="material-symbols-outlined filled-icon" style="color:#ba1a1a;font-size:28px;">assignment_return</span>
+        <div class="text-2xl font-bold text-on-background mt-2">@Model.DeliveredRate%</div>
+        <div style="color:#43474e;font-size:13px;font-weight:600;">İade Oranı</div>
+
+    </div>
+</div>

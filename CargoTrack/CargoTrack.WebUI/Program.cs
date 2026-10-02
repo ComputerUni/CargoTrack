@@ -10,6 +10,7 @@ using CargoTrack.Business.Services.Cities;
 using CargoTrack.Business.Services.Deliveries;
 using CargoTrack.Business.Services.DeliveryExceptions;
 using CargoTrack.Business.Services.Employees;
+using CargoTrack.Business.Services.Statistics;
 using CargoTrack.Business.Services.TransferCenters;
 using CargoTrack.Business.Services.UserCargos;
 using CargoTrack.DataAccess.Context;
@@ -68,6 +69,7 @@ builder.Services.AddScoped<IDeliveryService, DeliveryService>();
 builder.Services.AddScoped<IDeliveryExceptionService, DeliveryExceptionService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<ITransferCenterService, TransferCenterService>();
+builder.Services.AddScoped<IStatisticsService, StatisticsService>();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>

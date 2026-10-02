@@ -24,6 +24,8 @@ namespace CargoTrack.DTO.DTOs.CargosDtos
         public Guid SenderId { get; set; }
         public Guid ReceiverId { get; set; }
         public Guid OriginBranchId { get; set; }
+        public string OriginBranchCity { get; set; }
+        public string DestinationBranchCity { get; set; }
         public Guid DestinationBranchId { get; set; }
         public string SenderName { get; set; }
         public string ReceiverName { get; set; }

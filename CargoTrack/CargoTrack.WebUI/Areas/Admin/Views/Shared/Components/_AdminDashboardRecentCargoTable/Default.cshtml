@@ -1,0 +1,59 @@
+﻿@using CargoTrack.Business.Extensions
+@using CargoTrack.DTO.DTOs.AdminDashboardDtos
+@using CargoTrack.Entity.Entities.Enums
+@model List<AdminDashboardRecentCargosDto>
+
+<div class="bg-white rounded-xl border border-outline-variant p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h3 class="font-bold text-lg text-on-background">Son Kargo Hareketleri</h3>
+        <a href="/Admin/Cargo/Index" class="text-sm font-semibold" style="color:#001e3c;">Tüm Kargolar →</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr style="border-bottom:2px solid #e5eeff;">
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Takip No</th>
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Gönderici</th>
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Alıcı</th>
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Güzergah</th>
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Durum</th>
+                    <th class="text-left py-3 px-2 font-semibold" style="color:#43474e;">Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+
+                    var (bgColor, textColor, icon) = item.CargoStatus switch
+                    {
+                        CargoStatus.Delivered => ("#e8f5e9", "#2e7d32", "check_circle"),                       
+                        CargoStatus.OutForDelivery => ("#e5eeff", "#001e3c", "local_shipping"),                 
+                        CargoStatus.InTransferCenter => ("#fff3e0", "#e65100", "hub"),                          
+                        CargoStatus.AtOriginBranch => ("#f3e5f5", "#6a1b9a", "store"),                          
+                        CargoStatus.ArrivedAtDeliveryBranch => ("#e0f7fa", "#006064", "warehouse"),             
+                        CargoStatus.DeliveryFailed => ("#ffebee", "#ba1a1a", "error"),                          
+                        CargoStatus.ReturnInProcess or CargoStatus.ReturnedToSender => ("#fbe9e7", "#d84315", "keyboard_return"), 
+                        _ => ("#f5f5f5", "#43474e", "schedule")                                                 
+                    };
+
+                    <tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+                        <td class="py-3 px-2 font-mono font-semibold text-on-background">@item.TrackingNumber</td>
+                        <td class="py-3 px-2">@item.SenderName</td>
+                        <td class="py-3 px-2">@item.ReceiverName</td>
+                        <td class="py-3 px-2 text-on-surface-variant">@item.Route</td>
+                        <td class="py-3 px-2">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
+                                  style="background-color: @bgColor; color: @textColor;">
+                                <span class="material-symbols-outlined" style="font-size:14px;">@icon</span>
+                                @item.CargoStatus.GetDisplayName()
+                            </span>
+                        </td>
+                        <td class="py-3 px-2 text-on-surface-variant">@item.CreatedDate.ToString("dd.MM.yyyy")</td>
+                    </tr>
+                }
+              
+            </tbody>
+        </table>
+    </div>
+</div>
+

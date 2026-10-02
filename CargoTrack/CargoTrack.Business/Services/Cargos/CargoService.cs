@@ -5,6 +5,7 @@ using CargoTrack.Business.Services.DeliveryExceptions;
 using CargoTrack.DataAccess.Repositories.Addresses;
 using CargoTrack.DataAccess.Repositories.Branches;
 using CargoTrack.DataAccess.Repositories.Cargos;
+using CargoTrack.DTO.DTOs.AdminDashboardDtos;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using CargoTrack.Entity.Entities;
@@ -42,10 +43,10 @@ namespace CargoTrack.Business.Services.Cargos
 
             await _addressRepository.CreateAsync(address);
 
-            if(!string.IsNullOrWhiteSpace(createCargoDto.ReceiverPhone))
+            if (!string.IsNullOrWhiteSpace(createCargoDto.ReceiverPhone))
             {
                 var receiverUser = await _userManager.FindByIdAsync(createCargoDto.ReceiverId.ToString());
-                if(receiverUser != null)
+                if (receiverUser != null)
                 {
                     receiverUser.PhoneNumber = createCargoDto.ReceiverPhone;
                     await _userManager.UpdateAsync(receiverUser);
@@ -89,7 +90,7 @@ namespace CargoTrack.Business.Services.Cargos
 
             var dto = cargo.Adapt<UpdateCargoDto>();
 
-            if(cargo.Receiver != null)
+            if (cargo.Receiver != null)
             {
                 dto.ReceiverPhone = cargo.Receiver.PhoneNumber;
             }
@@ -132,7 +133,7 @@ namespace CargoTrack.Business.Services.Cargos
 
             cargo.Price = await _cargoPricingService.CalculatePriceAsync(updateCargoDto.Weight, desi, updateCargoDto.CargoType, isIntercity);
 
-            if(cargo.DeliveryAddress != null)
+            if (cargo.DeliveryAddress != null)
             {
                 cargo.DeliveryAddress.FullAddress = updateCargoDto.FullAddress;
                 cargo.DeliveryAddress.City = updateCargoDto.City;
@@ -154,7 +155,7 @@ namespace CargoTrack.Business.Services.Cargos
                 cargo.DeliveryAddressId = newAddress.Id;
             }
 
-            if(cargo.Receiver != null && !string.IsNullOrWhiteSpace(updateCargoDto.ReceiverPhone))
+            if (cargo.Receiver != null && !string.IsNullOrWhiteSpace(updateCargoDto.ReceiverPhone))
             {
                 cargo.Receiver.PhoneNumber = updateCargoDto.ReceiverPhone;
                 await _userManager.UpdateAsync(cargo.Receiver);
@@ -180,7 +181,7 @@ namespace CargoTrack.Business.Services.Cargos
                 throw new ValidationException("Böyle bir kargo bulumamadı");
             }
 
-            if(dto.BranchId.HasValue)
+            if (dto.BranchId.HasValue)
             {
                 var lastMovement = cargo.CargoMovements.OrderByDescending(m => m.MovementDate).FirstOrDefault();
 
@@ -188,11 +189,11 @@ namespace CargoTrack.Business.Services.Cargos
                 bool isReturnComing = (cargo.FailedAttemptCount >= 3 || cargo.CargoStatus == CargoStatus.ReturnInProcess || cargo.CargoStatus == CargoStatus.InTransferCenter) && cargo.OriginBranchId == dto.BranchId;
                 bool isComing = !isAtMyBranch && (cargo.DestinationBranchId == dto.BranchId || isReturnComing);
 
-                if(!isAtMyBranch && !isComing)
+                if (!isAtMyBranch && !isComing)
                 {
                     throw new UnauthorizedAccessException("Bu kargo şu anda şubenizde değil");
                 }
-                if(isComing && dto.NewStatus != CargoStatus.ArrivedAtDeliveryBranch && dto.NewStatus != CargoStatus.AtOriginBranch && dto.NewStatus != CargoStatus.ReturnedToSender)
+                if (isComing && dto.NewStatus != CargoStatus.ArrivedAtDeliveryBranch && dto.NewStatus != CargoStatus.AtOriginBranch && dto.NewStatus != CargoStatus.ReturnedToSender)
                 {
                     throw new UnauthorizedAccessException("Bu kargo henüz şubenize ulaşmadı, sadece teslim alabilirsiniz.");
                 }
