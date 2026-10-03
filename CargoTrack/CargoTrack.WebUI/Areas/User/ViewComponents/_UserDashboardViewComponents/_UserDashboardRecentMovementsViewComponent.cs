@@ -13,7 +13,7 @@ namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserDashboardViewComponent
             var user = await _userManager.GetUserAsync(UserClaimsPrincipal);
             var activeCargos = await _userCargoService.GetByUserIdAsync(user.Id);
             var cargoMovements = activeCargos.Where(x => x.SenderId == user.Id)
-                                             .OrderByDescending(x => x.CargoMovements)
+                                             .OrderByDescending(x => x.CreatedDate)
                                              .Take(3)
                                              .ToList();   
             return View(cargoMovements);

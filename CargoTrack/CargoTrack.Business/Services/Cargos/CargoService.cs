@@ -84,7 +84,8 @@ namespace CargoTrack.Business.Services.Cargos
             {
                 throw new ValidationException("Cargo Not Found");
             }
-            await _repository.DeleteAsync(cargo);
+            cargo.IsDeleted = true;
+            await _repository.UpdateAsync(cargo);
         }
 
         public async Task<List<ResultCargoDto>> GetAllAsync()

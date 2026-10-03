@@ -7,32 +7,12 @@
       "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\views\\cargo\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\views\\cargo\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\views\\cargo\\cargodetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\views\\cargo\\cargodetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\views\\cargo\\incominglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\views\\cargo\\incominglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\views\\cargo\\outgoinglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\views\\cargo\\outgoinglist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{025B5909-8682-611B-400A-F5BA347CA8EB}|CargoTrack.Entity\\CargoTrack.Entity.csproj|solutionrelative:cargotrack.entity\\entities\\enums\\cargostatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\user\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\user\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\helpers\\cargopdfgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\helpers\\cargopdfgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -68,106 +48,35 @@
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
               "RelativeToolTip": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-03T14:12:30.756Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OutgoingList.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\OutgoingList.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\OutgoingList.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\OutgoingList.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\OutgoingList.cshtml",
-              "ViewState": "AgIAAB8BAAAAAAAAAAAAADQBAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-03T14:12:10.376Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IncomingList.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\IncomingList.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\IncomingList.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\IncomingList.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\IncomingList.cshtml",
-              "ViewState": "AgIAAA4BAAAAAAAAAAAAACABAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-03T14:09:15.38Z",
+              "WhenOpened": "2026-10-03T21:05:01.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\Index.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\Index.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\Index.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\Index.cshtml",
-              "ViewState": "AgIAABMBAAAAAAAAAAAAACcBAABpAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-03T14:08:43.073Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CargoDetail.cshtml",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\CargoDetail.cshtml",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\CargoDetail.cshtml",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\CargoDetail.cshtml",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Views\\Cargo\\CargoDetail.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-10-03T14:08:36.18Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CargoStatus.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "RelativeDocumentMoniker": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "RelativeToolTip": "CargoTrack.Entity\\Entities\\Enums\\CargoStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-03T14:14:56.243Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "CargoController.cs",
               "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
               "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
               "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
               "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAowGMAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAALsAAAAAAAAAAAA7wMsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-03T13:58:10.822Z",
+              "WhenOpened": "2026-10-03T21:03:08.029Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 592,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CargoController.cs",
-              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\User\\Controllers\\CargoController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwC4AAAANAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CargoPdfGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "RelativeToolTip": "CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-03T14:06:54.634Z",
+              "WhenOpened": "2026-10-03T19:22:45.236Z",
               "EditorCaption": ""
             }
           ]

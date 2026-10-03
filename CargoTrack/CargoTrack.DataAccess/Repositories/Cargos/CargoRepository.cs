@@ -21,6 +21,7 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .Include(x => x.Receiver)
                 .Include(x => x.DeliveryAddress)
                 .Include(x => x.AssignedEmployee)
+                .Where(x => !x.IsDeleted)
                 .ToListAsync();
         }
 

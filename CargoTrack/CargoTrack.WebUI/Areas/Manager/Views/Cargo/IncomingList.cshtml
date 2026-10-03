@@ -26,21 +26,6 @@
                 @ViewBag.IncomingName'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
             </p>
         </div>
-        <!-- Quick Action Toolset -->
-        <div class="flex items-center flex-wrap gap-space-sm">
-            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[18px] text-secondary">table_view</span>
-                <span>Excel Raporu Al</span>
-            </button>
-            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[18px] text-secondary">print</span>
-                <span>Toplu Barkod Yazdır</span>
-            </button>
-            <button class="inline-flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[19px]">add_box</span>
-                <span>+ Şube Kargo Kabulü</span>
-            </button>
-        </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-space-lg">
         <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center justify-between">
@@ -335,100 +320,6 @@
                     <span>Sonraki</span>
                     <span class="material-symbols-outlined text-[15px]">chevron_right</span>
                 </button>
-            </div>
-        </div>
-    </div>
-    <!-- Real-Time Operational Activity Sub-Strip -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-        <!-- Courier Live Distribution Status -->
-        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
-            <div class="flex items-center justify-between mb-space-sm">
-                <div class="flex items-center gap-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-primary">route</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Kurye Dağıtım Hızı</h3>
-                </div>
-                <span class="font-label-sm text-label-sm text-primary font-bold uppercase">4/4 Aktif</span>
-            </div>
-            <div class="space-y-space-sm">
-                <div>
-                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
-                        <span class="text-on-surface">Ahmet Yılmaz (Moda)</span>
-                        <span class="font-code-dense text-code-dense font-semibold text-primary">22 / 26 Teslim (%84)</span>
-                    </div>
-                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
-                        <div class="bg-primary h-1.5 rounded-full" style="width: 84%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
-                        <span class="text-on-surface">Berkay Demir (Kalamış)</span>
-                        <span class="font-code-dense text-code-dense font-semibold text-primary">18 / 24 Teslim (%75)</span>
-                    </div>
-                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
-                        <div class="bg-primary h-1.5 rounded-full" style="width: 75%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex items-center justify-between font-label-md text-label-md mb-1">
-                        <span class="text-on-surface">Canan Şahin (Göztepe)</span>
-                        <span class="font-code-dense text-code-dense font-semibold text-secondary">14 / 22 Teslim (%63)</span>
-                    </div>
-                    <div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
-                        <div class="bg-secondary h-1.5 rounded-full" style="width: 63%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Quick Barcode Verification Widget -->
-        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-            <div>
-                <div class="flex items-center gap-space-xs mb-space-xs">
-                    <span class="material-symbols-outlined text-[18px] text-primary">pin</span>
-                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Hızlı Kod Doğrulama</h3>
-                </div>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
-                    Alıcı tarafından iletilen 6 haneli SMS onay kodunu girerek teslimatı tamamlayın.
-                </p>
-                <div class="flex items-center gap-space-xs">
-                    <input class="flex-1 px-3 py-2 bg-surface-container-low font-code-dense text-code-dense text-center tracking-widest text-on-surface uppercase rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary" maxlength="6" placeholder="KOD: 849102" type="text" />
-                    <button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-lg font-label-lg text-label-lg font-semibold shadow-sm transition-colors" type="button">
-                        Onayla
-                    </button>
-                </div>
-            </div>
-            <div class="mt-space-sm pt-space-xs flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
-                <span>Kalan doğrulama kotası: Sınırsız</span>
-                <span class="text-primary font-semibold flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> SMS API Aktif</span>
-            </div>
-        </div>
-        <!-- Terminal System Overview -->
-        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
-            <div>
-                <div class="flex items-center justify-between mb-space-xs">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="material-symbols-outlined text-[18px] text-primary">lan</span>
-                        <h3 class="font-headline-sm text-headline-sm text-on-surface">Şube Ağ Durumu</h3>
-                    </div>
-                    <span class="bg-primary-container text-on-primary-container font-code-dense text-code-dense px-2 py-0.5 rounded-full font-bold">BR-3401</span>
-                </div>
-                <div class="space-y-space-xs font-body-sm text-body-sm text-on-surface-variant mt-space-sm">
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>El Terminali Eşleşmesi:</span>
-                        <span class="font-semibold text-on-surface">6 Cihaz Çevrimiçi</span>
-                    </div>
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>Zebra Barkod Yazıcı:</span>
-                        <span class="font-semibold text-primary">Hazır (IP: 192.168.1.140)</span>
-                    </div>
-                    <div class="flex items-center justify-between py-1 bg-surface-container-low px-2 rounded">
-                        <span>Sonraki Hat Aracı:</span>
-                        <span class="font-semibold text-on-surface">18:30 (Gebze Aktarma)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
-                <span>Gecikme: 24ms</span>
-                <span class="hover:text-primary cursor-pointer transition-colors">Tanı &amp; Cihaz Yönetimi →</span>
             </div>
         </div>
     </div>

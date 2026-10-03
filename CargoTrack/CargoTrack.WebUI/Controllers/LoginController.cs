@@ -34,7 +34,7 @@ namespace CargoTrack.WebUI.Controllers
 
             if(userRoles.Contains(Roles.Manager))
             {
-                return Redirect("/Manager/Cargo/Index");
+                return Redirect("/Manager/Dashboard/Index");
             }
 
             if(userRoles.Contains(Roles.User))

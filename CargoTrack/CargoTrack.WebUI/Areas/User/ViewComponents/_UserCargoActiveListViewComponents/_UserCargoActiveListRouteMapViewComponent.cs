@@ -7,6 +7,10 @@ namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserCargoActiveListViewCom
     {
         public async Task<IViewComponentResult> InvokeAsync(ResultCargoDto cargo)
         {
+            if(cargo is null)
+            {
+                return Content(string.Empty);
+            }
             return View(cargo);
         }
     }

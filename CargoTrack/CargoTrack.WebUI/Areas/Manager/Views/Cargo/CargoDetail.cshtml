@@ -1,5 +1,5 @@
 ﻿@using CargoTrack.Entity.Entities.Enums
-@using CargoTrack.Business.Extensions  @* <-- Kendi extension namespace yolunu buraya yaz *@
+@using CargoTrack.Business.Extensions 
 @model CargoTrack.DTO.DTOs.CargosDtos.ResultCargoDto
 
 @{
@@ -31,7 +31,6 @@
 <main class="relative pt-8 bg-slate-50/60 min-h-screen w-full px-6 lg:px-12 flex-1 pb-16">
     <div class="max-w-7xl mx-auto flex flex-col gap-6">
 
-        <!-- Üst Başlık & Aksiyon Barı -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
             <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow">
@@ -98,13 +97,10 @@
             </div>
         }
 
-        <!-- 2 Kolonlu Ana Grid Alanı -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-            <!-- Sol Sütun (8 Kolon) -->
             <div class="lg:col-span-8 flex flex-col gap-6">
 
-                <!-- Özet Bilgi Kartları -->
                 <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
                     <h2 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-4 flex items-center gap-2">
                         <span class="material-symbols-outlined text-slate-400 text-lg">inventory</span>
@@ -158,7 +154,6 @@
                     </div>
                 </div>
 
-                <!-- Gönderici / Alıcı Karşılaştırmalı Kartı -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden">
                         <div class="absolute top-0 right-0 p-4 opacity-5">
@@ -207,7 +202,6 @@
                     </div>
                 </div>
 
-                <!-- Detaylı Hareket Geçmişi (Movement Timeline) -->
                 <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
                     <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-6 flex items-center gap-2">
                         <span class="material-symbols-outlined text-slate-400 text-lg">history</span>
@@ -269,7 +263,6 @@
 
             </div>
 
-            <!-- Sağ Sütun (4 Kolon) -->
             <div class="lg:col-span-4 flex flex-col gap-6">
 
                 @if (Model.CargoStatus == CargoStatus.OutForDelivery && !string.IsNullOrEmpty(Model.DeliveryCode))

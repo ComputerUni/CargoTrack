@@ -239,6 +239,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xDYXJnb0RldGFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Cargo/CreateCargo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xDcmVhdGVDYXJnby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Cargo/IncomingList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xJbmNvbWluZ0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -249,6 +253,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Cargo/OutgoingList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xPdXRnb2luZ0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Cargo/UpdateCargo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlclxWaWV3c1xDYXJnb1xVcGRhdGVDYXJnby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/BURHAN/Desktop/CargoProject/CargoTrack/CargoTrack.WebUI/Areas/Manager/Views/Dashboard/Index.cshtml]

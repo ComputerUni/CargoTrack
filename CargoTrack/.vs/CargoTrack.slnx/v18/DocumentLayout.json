@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\areas\\manager\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\areas\\manager\\controllers\\cargocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\helpers\\cargopdfgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\helpers\\cargopdfgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|c:\\users\\burhan\\desktop\\cargoproject\\cargotrack\\cargotrack.webui\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5893B316-8D03-9C7D-F135-463F88CCC829}|CargoTrack.WebUI\\CargoTrack.WebUI.csproj|solutionrelative:cargotrack.webui\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 592,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +39,45 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
+              "RelativeToolTip": "CargoTrack.WebUI\\Views\\Login\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-03T21:05:01.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CargoController.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
+              "RelativeToolTip": "CargoTrack.WebUI\\Areas\\Manager\\Controllers\\CargoController.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAAA7wN0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-03T21:03:08.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CargoPdfGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "RelativeDocumentMoniker": "CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "ToolTip": "C:\\Users\\BURHAN\\Desktop\\CargoProject\\CargoTrack\\CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "RelativeToolTip": "CargoTrack.WebUI\\Helpers\\CargoPdfGenerator.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAqwFIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-03T19:22:45.236Z",
+              "EditorCaption": ""
             }
           ]
         },

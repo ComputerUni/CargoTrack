@@ -29,18 +29,4 @@
             </div>
         </div>
     </div>
-    <!-- Quick Actions Header -->
-    <div class="flex items-center gap-3 self-start md:self-auto">
-        <button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md shadow-sm">
-            <span class="material-symbols-outlined text-[18px] text-primary">download</span>
-            <span>Fatura & Sevk İrsaliyesi (PDF)</span>
-        </button>
-        @if(Model.CargoStatus == CargoStatus.OutForDelivery)
-        {
-            <button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary transition-colors font-label-md text-label-md shadow-sm" onclick="document.getElementById('smsCodeBox').scrollIntoView({behavior: 'smooth'})">
-                <span class="material-symbols-outlined text-[18px]">pin</span>
-                <span>Teslimat Kodunu Gör</span>
-            </button>
-        }
-    </div>
 </div>
