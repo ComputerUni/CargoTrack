@@ -103,5 +103,16 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
 
             return View(vm);
         }
+
+        public async Task<IActionResult> CargoDetail(Guid id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
+            ViewBag.OutgoingName = branch.Name;
+            ViewBag.OriginalName = branch.Name;
+            ViewBag.Manager = user.FirstName + " " + user.LastName;
+            var cargo = await _cargoService.GetByIdWithDetailsAsync(id);
+            return View(cargo);
+        }
     }
 }

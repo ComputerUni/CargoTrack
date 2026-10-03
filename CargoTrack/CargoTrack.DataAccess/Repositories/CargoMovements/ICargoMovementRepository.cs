@@ -11,5 +11,7 @@ namespace CargoTrack.DataAccess.Repositories.CargoMovements
     public interface ICargoMovementRepository : IRepository<CargoMovement>
     {
         Task<List<CargoMovement>> GetByCargoIdAsync(Guid cargoId);
+        Task<List<CargoMovement>> GetRecentByBranchIdAsync(Guid branchId);
+        Task<List<CargoMovement>> GetFailedByBranchIdAsync(Guid branchId);
     }
 }

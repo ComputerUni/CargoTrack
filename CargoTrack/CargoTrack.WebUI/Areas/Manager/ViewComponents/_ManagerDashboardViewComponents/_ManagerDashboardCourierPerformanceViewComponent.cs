@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CargoTrack.Business.Services.ManagerDashboard;
+using CargoTrack.Entity.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CargoTrack.WebUI.Areas.Manager.ViewComponents._ManagerDashboardViewComponents
 {
-    public class _ManagerDashboardCourierPerformanceViewComponent : ViewComponent
+    public class _ManagerDashboardCourierPerformanceViewComponent(IManagerDashboardService _managerDashboardService, UserManager<AppUser> _userManager) : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(UserClaimsPrincipal);
+            var courier = await _managerDashboardService.GetEmployeeDeliveryPerformance(user.BranchId.Value);
+            return View(courier);
         }
     }
 }

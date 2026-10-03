@@ -1,13 +1,12 @@
-﻿<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+﻿@using CargoTrack.DTO.DTOs.CargoMovementDtos
+@model List<ResultCargoMovementDto>
+
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
     <div class="flex items-center justify-between pb-space-xs">
         <div class="flex items-center gap-space-sm">
             <span class="material-symbols-outlined text-primary text-[20px]">history</span>
             <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Son Kargo Hareketleri (Canlı Şube Akışı)</h2>
         </div>
-        <a class="font-label-lg text-label-lg text-primary hover:underline flex items-center gap-1" href="#">
-            <span>Tümünü Gör</span>
-            <span class="material-symbols-outlined text-[16px]">chevron_right</span>
-        </a>
     </div>
     <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
@@ -22,62 +21,23 @@
                 </tr>
             </thead>
             <tbody class="divide-y-0">
-                <!-- Row 1 -->
-                <tr class="hover:bg-surface-container-low/70 transition-colors">
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense font-semibold text-primary">MYC-2026-849251</td>
-                    <td class="py-space-md px-space-md">
-                        <div class="font-label-lg text-label-lg text-on-surface font-semibold">Arzum Teknoloji</div>
-                        <div class="font-body-sm text-body-sm text-secondary">Zeynep Kaya</div>
-                    </td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Teslim Edildi (6 Haneli Kod)</td>
-                    <td class="py-space-md px-space-md">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-primary/10 text-primary">Teslim Edildi</span>
-                    </td>
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense text-secondary">14:32</td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Kurye: Ahmet Y.</td>
-                </tr>
-                <!-- Row 2 -->
-                <tr class="hover:bg-surface-container-low/70 transition-colors">
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense font-semibold text-primary">MYC-2026-910423</td>
-                    <td class="py-space-md px-space-md">
-                        <div class="font-label-lg text-label-lg text-on-surface font-semibold">Mert Çelik</div>
-                        <div class="font-body-sm text-body-sm text-secondary">Doruk Aydın</div>
-                    </td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Dağıtıma Çıktı</td>
-                    <td class="py-space-md px-space-md">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-secondary-container text-on-secondary-fixed">Dağıtımda</span>
-                    </td>
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense text-secondary">13:45</td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Kurye: Canan Ş.</td>
-                </tr>
-                <!-- Row 3 -->
-                <tr class="hover:bg-surface-container-low/70 transition-colors">
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense font-semibold text-primary">MYC-2026-728190</td>
-                    <td class="py-space-md px-space-md">
-                        <div class="font-label-lg text-label-lg text-on-surface font-semibold">Hepsiburada Lojistik</div>
-                        <div class="font-body-sm text-body-sm text-secondary">Selin Er</div>
-                    </td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Varış Şubesinde Ayrıştırıldı</td>
-                    <td class="py-space-md px-space-md">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container-highest text-on-surface">Depoda Hazır</span>
-                    </td>
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense text-secondary">12:10</td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Personel: Fatma A.</td>
-                </tr>
-                <!-- Row 4 -->
-                <tr class="hover:bg-surface-container-low/70 transition-colors">
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense font-semibold text-primary">MYC-2026-635182</td>
-                    <td class="py-space-md px-space-md">
-                        <div class="font-label-lg text-label-lg text-on-surface font-semibold">Koton Giyim</div>
-                        <div class="font-body-sm text-body-sm text-secondary">Burak Yıldız</div>
-                    </td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Alıcı Adreste Yok (1. Deneme)</td>
-                    <td class="py-space-md px-space-md">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-surface-container-high text-secondary">Sorunlu / İade</span>
-                    </td>
-                    <td class="py-space-md px-space-md font-code-dense text-code-dense text-secondary">11:25</td>
-                    <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Kurye: Emre K.</td>
-                </tr>
+                @foreach(var item in Model)
+                {
+                    <tr class="hover:bg-surface-container-low/70 transition-colors">
+                        <td class="py-space-md px-space-md font-code-dense text-code-dense font-semibold text-primary">@item.TrackCode</td>
+                        <td class="py-space-md px-space-md">
+                            <div class="font-label-lg text-label-lg text-on-surface font-semibold">@item.SenderName</div>
+                            <div class="font-body-sm text-body-sm text-secondary">@item.ReceiverName</div>
+                        </td>
+                        <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">@item.Description</td>
+                        <td class="py-space-md px-space-md">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-primary/10 text-primary">@item.NewStatus.GetDisplayName()</span>
+                        </td>
+                        <td class="py-space-md px-space-md font-code-dense text-code-dense text-secondary">@item.CreatedDate</td>
+                        <td class="py-space-md px-space-md font-body-sm text-body-sm text-on-surface">Kurye: @item.EmployeeName</td>
+                    </tr>
+                }
+                
             </tbody>
         </table>
     </div>

@@ -7,7 +7,7 @@
     int count = 0;
 }
 
-<div class="pl-64">
+<div class="pl-32">
     <header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-[18px] text-primary">store</span><span class="font-label-lg text-label-lg">@ViewBag.DeliveryFailed</span></div><div class="hidden md:flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span class="font-body-sm text-body-sm">@DateTime.Now.ToString("dd MMMM yyyy, dddd")</span></div></div><div class="flex items-center gap-space-md"><button aria-label="Bildirimler" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 bg-error text-on-error rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold leading-none">3</span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-lg text-label-lg text-on-surface">@ViewBag.Manager</span><span class="font-label-sm text-label-sm text-secondary">Şube Müdürü</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full px-margin pt-16 bg-surface min-h-[calc(100vh-32px)]">
     <div class="flex flex-col w-full pb-12">
         <!-- Top Operational Banner & Critical Notice -->
@@ -22,11 +22,11 @@
                         <span class="px-space-xs py-0.5 rounded-full font-label-sm text-label-sm bg-error-container text-on-error-container uppercase tracking-wider">İstisnalar Masası</span>
                     </div>
                     <p class="font-body-md text-body-md text-secondary mt-1">
-                        Teslim edilemeyen (DeliveryFailed), adreste bulunamayan ve iade sürecindeki şube kargoları
+                        Teslim edilemeyen, adreste bulunamayan ve iade sürecindeki şube kargoları
                     </p>
                 </div>
             </div>
-            <!-- Right Header Actions -->
+@*             <!-- Right Header Actions -->
             <div class="flex items-center gap-space-sm flex-wrap self-end lg:self-center">
                 <button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-container-highest transition-colors shadow-sm" onclick="downloadReportModal()">
                     <span class="material-symbols-outlined text-[18px]">download</span>
@@ -36,7 +36,7 @@
                     <span class="material-symbols-outlined text-[18px]">assignment_return</span>
                     <span>Toplu İade Başlat</span>
                 </button>
-            </div>
+            </div> *@
         </div>
         <!-- Status / KPI Summary Cards (Bento Metric Strip) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-6">

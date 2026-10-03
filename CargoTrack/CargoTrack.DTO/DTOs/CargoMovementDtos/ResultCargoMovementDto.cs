@@ -20,6 +20,9 @@ namespace CargoTrack.DTO.DTOs.CargoMovementDtos
         public string? TransferCenterName { get; set; }
         public Guid? EmployeeId { get; set; }
         public string? EmployeeName { get; set; }
+        public string TrackCode { get; set; }
+        public string SenderName { get; set; }
+        public string ReceiverName { get; set; }
         public DateTime? CreatedDate { get; set; }
     }
 }

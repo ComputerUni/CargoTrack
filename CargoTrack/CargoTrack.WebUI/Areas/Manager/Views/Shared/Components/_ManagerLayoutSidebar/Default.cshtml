@@ -50,8 +50,8 @@
                 <div class="font-label-md text-label-md text-on-surface font-bold truncate">@ViewBag.Manager</div><div class="font-label-sm text-label-sm text-on-surface-variant truncate">@ViewBag.OriginalName</div>
             </div>
         </div>
-        <form asp-area-route="" asp-action="Logout" asp-controller="Login">
-            <button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış Yap" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button>
+        <form asp-area="" asp-action="Logout" asp-controller="Login">
+            <button type="submit" class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış Yap" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button>
         </form>
     </div>
 </div>

@@ -188,11 +188,10 @@
                         <tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
                             <th class="py-3 px-space-md font-semibold">Takip No / Desi</th>
                             <th class="py-3 px-space-md font-semibold">Alıcı &amp; İletişim</th>
-                            <th class="py-3 px-space-md font-semibold">Zimmetli Kurye &amp; Araç</th>
                             <th class="py-3 px-space-md font-semibold">Çıkış &amp; Hedef</th>
                             <th class="py-3 px-space-md font-semibold">Teslimat Kodu</th>
                             <th class="py-3 px-space-md font-semibold">Durum</th>
-                            <th class="py-3 px-space-md font-semibold text-right">Hızlı Aksiyon</th>
+@*                             <th class="py-3 px-space-md font-semibold text-right">Hızlı Aksiyon</th> *@
                         </tr>
                     </thead>
                     <tbody class="font-body-md text-body-md text-on-surface" id="packageTableBody">
@@ -217,10 +216,6 @@
                                 </td>
 
                                 <td class="py-space-sm px-space-md">
-                                    <span class="font-label-sm text-label-sm text-on-surface-variant">—</span>
-                                </td>
-
-                                <td class="py-space-sm px-space-md">
                                     <div class="flex flex-col font-code-dense text-code-dense">
                                         <span class="text-secondary">@item.ShipmentDate.ToString("dd.MM.yyyy")</span>
                                         <span class="font-semibold text-tertiary">Hedef: @item.EstimatedArrivalDate.ToString("dd.MM.yyyy")</span>
@@ -241,7 +236,7 @@
                                     </span>
                                 </td>
 
-                                <td class="py-space-sm px-space-md text-right">
+                               @*  <td class="py-space-sm px-space-md text-right">
                                     <div class="flex items-center justify-end gap-1.5">
                                         <button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm"
                                                 onclick="openVerifyModal('@item.Id', '@item.TrackCode', '@item.ReceiverName')"
@@ -260,7 +255,7 @@
                                             <span class="material-symbols-outlined text-[18px]">alt_route</span>
                                         </a>
                                     </div>
-                                </td>
+                                </td> *@
                             </tr>
                         }
                     </tbody>

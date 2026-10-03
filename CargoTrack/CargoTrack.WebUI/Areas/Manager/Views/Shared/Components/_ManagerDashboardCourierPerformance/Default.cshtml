@@ -1,121 +1,56 @@
-﻿<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+﻿@using CargoTrack.DTO.DTOs.ManagerDashboardDtos
+@model List<EmployeeDeliveryPerformanceDto>
+
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
     <div class="flex items-center justify-between pb-space-xs">
         <div class="flex items-center gap-space-sm">
             <span class="material-symbols-outlined text-primary text-[20px]">two_wheeler</span>
             <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Aktif Dağıtım Kuryeleri &amp; Rota Performansı</h2>
         </div>
-        <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary bg-surface-container px-space-sm py-1 rounded-full font-semibold">4 Kurye Devrede</span>
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary bg-surface-container px-space-sm py-1 rounded-full font-semibold">
+            @Model.Count Kurye Devrede
+        </span>
     </div>
-    <!-- Couriers Grid/List -->
-    <div class="flex flex-col gap-space-sm">
-        <!-- Courier 1 -->
-        <div class="bg-surface-container-low hover:bg-surface-container transition-all rounded-xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md">
-                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center font-label-lg text-label-lg shrink-0">AY</div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="font-label-lg text-label-lg text-on-surface font-bold">Ahmet Yılmaz</span>
-                        <span class="font-code-dense text-code-dense text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded">34 MKT 82</span>
-                    </div>
-                    <span class="font-body-sm text-body-sm text-secondary">Rota: Moda &amp; Caferağa</span>
-                </div>
-            </div>
-            <!-- Stats & Progress -->
-            <div class="flex-1 max-w-xs flex flex-col gap-1.5">
-                <div class="flex items-center justify-between font-label-sm text-label-sm">
-                    <span class="text-on-surface font-semibold">32 Paket (24 Teslim, 8 Kalan)</span>
-                    <span class="text-primary font-bold">%75</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
-                    <div class="h-full bg-primary rounded-full" style="width: 75%"></div>
-                </div>
-            </div>
-            <!-- Courier Actions -->
-            <div class="flex items-center gap-space-xs shrink-0">
-                <button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all" type="button">İletişime Geç</button>
-                <button class="px-space-sm py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 font-label-sm text-label-sm font-semibold transition-all" type="button">Ek Paket Ata</button>
-            </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-space-lg text-on-surface-variant font-body-md text-body-md">
+            Bugün dağıtımda aktif kurye bulunmuyor.
         </div>
-        <!-- Courier 2 -->
-        <div class="bg-surface-container-low hover:bg-surface-container transition-all rounded-xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md">
-                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center font-label-lg text-label-lg shrink-0">BD</div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="font-label-lg text-label-lg text-on-surface font-bold">Berkay Demir</span>
-                        <span class="font-code-dense text-code-dense text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded">34 CRT 19</span>
+    }
+    else
+    {
+        <div class="flex flex-col gap-space-sm">
+            @foreach (var item in Model)
+            {
+                <div class="bg-surface-container-low hover:bg-surface-container transition-all rounded-xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+
+                    <div class="flex items-center gap-space-md">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center font-label-lg text-label-lg shrink-0">
+                            @item.Initials
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-label-lg text-label-lg text-on-surface font-bold">@item.FullName</span>
+                            <span class="font-body-sm text-body-sm text-secondary">
+                                @item.Delivered teslim • @item.Remaining kalan
+                            </span>
+                        </div>
                     </div>
-                    <span class="font-body-sm text-body-sm text-secondary">Rota: Fenerbahçe &amp; Kalamış</span>
-                </div>
-            </div>
-            <!-- Stats & Progress -->
-            <div class="flex-1 max-w-xs flex flex-col gap-1.5">
-                <div class="flex items-center justify-between font-label-sm text-label-sm">
-                    <span class="text-on-surface font-semibold">28 Paket (21 Teslim, 7 Kalan)</span>
-                    <span class="text-primary font-bold">%75</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
-                    <div class="h-full bg-primary rounded-full" style="width: 75%"></div>
-                </div>
-            </div>
-            <div class="flex items-center gap-space-xs shrink-0">
-                <button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all" type="button">İletişime Geç</button>
-                <button class="px-space-sm py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 font-label-sm text-label-sm font-semibold transition-all" type="button">Ek Paket Ata</button>
-            </div>
-        </div>
-        <!-- Courier 3 -->
-        <div class="bg-surface-container-low hover:bg-surface-container transition-all rounded-xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md">
-                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center font-label-lg text-label-lg shrink-0">CŞ</div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="font-label-lg text-label-lg text-on-surface font-bold">Canan Şahin</span>
-                        <span class="font-code-dense text-code-dense text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded">34 BGC 45</span>
+
+                    <div class="flex-1 max-w-xs flex flex-col gap-1.5">
+                        <div class="flex items-center justify-between font-label-sm text-label-sm">
+                            <span class="text-on-surface font-semibold">
+                                @item.TotalAssigned Paket (@item.Delivered Teslim, @item.Remaining Kalan)
+                            </span>
+                            <span class="text-primary font-bold">%@item.SuccessRate</span>
+                        </div>
+                        <div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+                            <div class="h-full bg-primary rounded-full" style="width: @item.SuccessRate%"></div>
+                        </div>
                     </div>
-                    <span class="font-body-sm text-body-sm text-secondary">Rota: Göztepe &amp; Caddebostan</span>
+
                 </div>
-            </div>
-            <!-- Stats & Progress -->
-            <div class="flex-1 max-w-xs flex flex-col gap-1.5">
-                <div class="flex items-center justify-between font-label-sm text-label-sm">
-                    <span class="text-on-surface font-semibold">36 Paket (26 Teslim, 10 Kalan)</span>
-                    <span class="text-primary font-bold">%72</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
-                    <div class="h-full bg-primary rounded-full" style="width: 72%"></div>
-                </div>
-            </div>
-            <div class="flex items-center gap-space-xs shrink-0">
-                <button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all" type="button">İletişime Geç</button>
-                <button class="px-space-sm py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 font-label-sm text-label-sm font-semibold transition-all" type="button">Ek Paket Ata</button>
-            </div>
+            }
         </div>
-        <!-- Courier 4 -->
-        <div class="bg-surface-container-low hover:bg-surface-container transition-all rounded-xl p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md">
-                <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center font-label-lg text-label-lg shrink-0">EK</div>
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-space-xs">
-                        <span class="font-label-lg text-label-lg text-on-surface font-bold">Emre Koç</span>
-                        <span class="font-code-dense text-code-dense text-on-surface-variant bg-surface-container-high px-1.5 py-0.5 rounded">34 KDY 09</span>
-                    </div>
-                    <span class="font-body-sm text-body-sm text-secondary">Rota: Koşuyolu &amp; Acıbadem</span>
-                </div>
-            </div>
-            <!-- Stats & Progress -->
-            <div class="flex-1 max-w-xs flex flex-col gap-1.5">
-                <div class="flex items-center justify-between font-label-sm text-label-sm">
-                    <span class="text-on-surface font-semibold">32 Paket (25 Teslim, 7 Kalan)</span>
-                    <span class="text-primary font-bold">%78</span>
-                </div>
-                <div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
-                    <div class="h-full bg-primary rounded-full" style="width: 78%"></div>
-                </div>
-            </div>
-            <div class="flex items-center gap-space-xs shrink-0">
-                <button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all" type="button">İletişime Geç</button>
-                <button class="px-space-sm py-1.5 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 font-label-sm text-label-sm font-semibold transition-all" type="button">Ek Paket Ata</button>
-            </div>
-        </div>
-    </div>
+    }
 </div>

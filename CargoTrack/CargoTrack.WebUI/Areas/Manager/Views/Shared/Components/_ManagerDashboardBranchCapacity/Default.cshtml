@@ -1,32 +1,28 @@
 ﻿<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center gap-space-sm">
-            <span class="material-symbols-outlined text-primary text-[20px]">warehouse</span>
-            <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Şube Günlük Kapasitesi</h2>
-        </div>
-        <span class="font-code-dense text-code-dense text-secondary font-semibold">184 / 225</span>
+    <div class="flex items-center gap-space-sm">
+        <span class="material-symbols-outlined text-primary text-[20px]">bolt</span>
+        <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Hızlı Erişim</h2>
     </div>
-    <div class="flex items-center justify-center py-space-sm">
-        <!-- Circular SVG Progress Ring -->
-        <div class="relative w-36 h-36 flex items-center justify-center">
-            <svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
-                <circle class="text-surface-container-high fill-transparent" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="10"></circle>
-                <circle class="text-primary fill-transparent" cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="45.2" stroke-linecap="round" stroke-width="10"></circle>
-            </svg>
-            <div class="absolute flex flex-col items-center justify-center">
-                <span class="font-headline-xl text-headline-xl font-bold text-on-surface">%82</span>
-                <span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-secondary">Doluluk</span>
-            </div>
-        </div>
-    </div>
-    <div class="grid grid-cols-2 gap-space-sm pt-space-xs text-center">
-        <div class="p-space-sm rounded-lg bg-surface-container-low">
-            <span class="font-label-sm text-label-sm text-secondary block font-bold uppercase">Kalan Alan</span>
-            <span class="font-label-lg text-label-lg font-bold text-on-surface">41 Paket</span>
-        </div>
-        <div class="p-space-sm rounded-lg bg-surface-container-low">
-            <span class="font-label-sm text-label-sm text-secondary block font-bold uppercase">Kritik Eşik</span>
-            <span class="font-label-lg text-label-lg font-bold text-primary">Normal</span>
-        </div>
+    <div class="grid grid-cols-2 gap-3">
+        <a asp-area="Manager" asp-controller="Cargo" asp-action="IncomingList"
+           class="rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors text-center" style="height:200px;">
+            <span class="material-symbols-outlined text-primary" style="font-size:36px;">move_to_inbox</span>
+            <span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Gelen Kargolar</span>
+        </a>
+        <a asp-area="Manager" asp-controller="Cargo" asp-action="OutgoingList"
+           class="rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors text-center" style="height:200px;">
+            <span class="material-symbols-outlined text-primary" style="font-size:36px;">outbox</span>
+            <span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Giden Kargolar</span>
+        </a>
+        <a asp-area="Manager" asp-controller="Cargo" asp-action="Index"
+           class="rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors text-center" style="height:200px;">
+            <span class="material-symbols-outlined text-primary" style="font-size:36px;">local_shipping</span>
+            <span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Şube Kargoları</span>
+        </a>
+        <a asp-area="Manager" asp-controller="Delivery" asp-action="DeliveryFailedAndReturnInProcessList"
+           class="rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-2 hover:bg-surface-container transition-colors text-center" style="height:200px;">
+            <span class="material-symbols-outlined text-error" style="font-size:36px;">report_problem</span>
+            <span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Sorunlu Kargolar</span>
+        </a>
     </div>
 </div>
