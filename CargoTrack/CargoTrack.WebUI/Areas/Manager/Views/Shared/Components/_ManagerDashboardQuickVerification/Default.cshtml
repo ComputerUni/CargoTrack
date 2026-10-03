@@ -1,0 +1,26 @@
+﻿<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+    <div class="flex items-center gap-space-sm pb-space-xs">
+        <span class="material-symbols-outlined text-primary text-[20px]">pin</span>
+        <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Hızlı İşlem &amp; Teslimat Kodu</h2>
+    </div>
+    <p class="font-body-sm text-body-sm text-on-surface-variant">Şubeden doğrudan alıcıya teslim edilecek paketlerde SMS ile iletilen 6 haneli kodu doğrulayın.</p>
+    <form class="flex flex-col gap-space-sm" onsubmit="event.preventDefault();">
+        <div class="flex flex-col gap-space-xs">
+            <label class="font-label-sm text-label-sm font-bold text-secondary uppercase" for="otp_code">6 Haneli Teslimat Kodu</label>
+            <div class="relative">
+                <input class="w-full h-11 px-space-md text-center tracking-[0.4em] font-code-dense text-headline-sm font-bold bg-surface-container-low text-on-surface rounded-xl focus:outline-none focus:bg-surface-container transition-all" id="otp_code" maxlength="6" placeholder="• • • • • •" type="text" />
+            </div>
+        </div>
+        <div class="flex flex-col gap-space-xs">
+            <label class="font-label-sm text-label-sm font-bold text-secondary uppercase" for="barcode_input">Barkod No / Takip No</label>
+            <div class="relative flex items-center">
+                <span class="material-symbols-outlined absolute left-3 text-[18px] text-secondary">barcode</span>
+                <input class="w-full h-10 pl-10 pr-space-md bg-surface-container-low text-on-surface font-code-dense text-code-dense rounded-xl focus:outline-none focus:bg-surface-container transition-all" id="barcode_input" placeholder="MYC-2026-XXXXXX" type="text" />
+            </div>
+        </div>
+        <button class="w-full py-space-sm rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold transition-all shadow-sm flex items-center justify-center gap-space-xs mt-space-xs" type="submit">
+            <span class="material-symbols-outlined text-[18px]">verified</span>
+            <span>Doğrula ve Teslim Et</span>
+        </button>
+    </form>
+</div>

@@ -24,6 +24,11 @@ namespace CargoTrack.DataAccess.Repositories.Cargos
                 .ToListAsync();
         }
 
+        public async Task<List<Cargo>> GetAllWithMovementsForDashboardAsync(Guid branchId)
+        {
+            return await _context.Cargos.Include(x => x.CargoMovements).Where(x => x.OriginBranchId == branchId || x.DestinationBranchId == branchId).ToListAsync();
+        }
+
         public async Task<List<Cargo>> GetByBranchIdAsync(Guid branchId)
         {
             return await _context.Cargos

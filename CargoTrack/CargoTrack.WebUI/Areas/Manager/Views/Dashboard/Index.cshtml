@@ -1,16 +1,46 @@
 ﻿@{
-    Layout = null;
+    ViewData["Title"] = "Kargolarımız";
+    Layout = "~/Areas/Manager/Views/Shared/_ManagerLayout.cshtml";
+    int count = 0;
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width;" />
-    <title>CargoTrack</title>
-</head>
-<body>
-    <h1>Hoş Geldiniz Manager</h1>
-</body>
 
-</html>
+<main class="relative pt-16 bg-surface w-full px-margin flex-1">
+    <div class="flex flex-col w-full gap-space-lg pb-space-xl">
+
+        @await Component.InvokeAsync("_ManagerDashboardHeader")
+
+        @await Component.InvokeAsync("_ManagerDashboardKpiCards")
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+            <div class="lg:col-span-8 flex flex-col gap-space-lg">
+
+                @await Component.InvokeAsync("_ManagerDashboardCourierPerformance")
+
+                @await Component.InvokeAsync("_ManagerDashboardRecentMovements")
+
+                <div class="relative overflow-hidden rounded-xl bg-surface-container-low p-space-lg shadow-sm">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md z-10 relative">
+                        <div class="flex flex-col gap-space-xs max-w-xl">
+                            <span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">Sistem Mimarisi &amp; Barkod Raporlama</span>
+                            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Merkezi Konsol Entegrasyonu</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Tüm şube ve transfer araçları gerçek zamanlı barkod ve SLA süreleriyle senkronize çalışır. Operasyonel raporları PDF/Excel olarak dışa aktarabilirsiniz.</p>
+                        </div>
+                        <img alt="Sistem Dashboard Görünümü" class="w-48 h-24 object-cover rounded-lg shadow-sm border-0 shrink-0 opacity-90 hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdrwz_qPanulxKAE88VmXbcWqdGWnpvtOrETzwNo6Xh6glZKQDVMkCbnyoCSO_8w6htELC6Ej4F0rqoIIYU2OgzkDCA_4CHZty7YLN6ReYtGHM-UtnOOOKqjt_H1hA6xAwYHJBelVQJNKxwSKGYTt7wgFVdo3BqgLSGfEi_gE0a2Zihs8gT9MzTzECOC2USW8S5g2z5y1asd4_-TZzB9CYdXKJPRJSIMOqnyNp1kBj7ePdmzqImnygdMhi0FokRl0fKDc" />
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 flex flex-col gap-space-lg">
+
+                @await Component.InvokeAsync("_ManagerDashboardQuickVerification")
+
+                @await Component.InvokeAsync("_ManagerDashboardSlaAlerts")
+
+                @await Component.InvokeAsync("_ManagerDashboardBranchCapacity")
+
+            </div>
+        </div>
+    </div>
+</main>
+
 
