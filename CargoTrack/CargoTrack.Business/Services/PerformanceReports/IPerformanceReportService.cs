@@ -10,5 +10,8 @@ namespace CargoTrack.Business.Services.PerformanceReports
     public interface IPerformanceReportService
     {
         Task<ReportKpiDto> GetKpiSummaryAsync();
+        Task<List<BranchPerformanceDto>> GetBranchPerformancesAsync();
+        Task<List<DeliveryExceptionStatusDto>> GetDeliveryExceptionStatusesAsync();
+        Task<List<CourierPerformanceDto>> GetCourierPerformancesAsync();
     }
 }

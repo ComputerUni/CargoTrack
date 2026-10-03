@@ -1,0 +1,38 @@
+﻿@using CargoTrack.DTO.DTOs.ReportDtos
+@model List<BranchPerformanceDto>
+
+<div class="bg-white rounded-xl border border-outline-variant p-6 mb-8">
+    <h3 class="font-bold text-lg text-on-background mb-1">Şube Bazlı Teslimat ve Gecikme Karnesi</h3>
+    <p style="color:#43474e;font-size:13px;" class="mb-4">Hacim, başarı oranı ve operasyonel aksaklıkların karşılaştırması</p>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="border-b" style="border-color:#e5eeff;">
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Şube Adı</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Toplam Çıkan</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Teslim Edilen</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Başarı (SLA)</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Geciken Kargo</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">İade Oranı</th>
+                    <th class="text-left py-3 px-3 font-semibold" style="color:#43474e;">Durum Puanı</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr class="border-b border-outline-variant">
+                        <td class="py-3.5 px-3 font-semibold">@item.BranchName</td>
+                        <td class="py-3.5 px-3 font-bold">@item.TotalOutgoing</td>
+                        <td class="py-3.5 px-3 text-green-700 font-semibold">@item.DeliveredCount</td>
+                        <td class="py-3.5 px-3"><span class="badge" style="background:#e8f5e9;color:#2e7d32;">%@item.SuccessRate</span></td>
+                        <td class="py-3.5 px-3 text-slate-700">@item.DelayedCount</td>
+                        <td class="py-3.5 px-3 font-mono">%@item.ReturnRate</td>
+                        <td class="py-3.5 px-3 font-bold text-green-700">@item.PerformanceScore</td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿@using CargoTrack.DTO.DTOs.ReportDtos
+@using System.Globalization
+@model List<DeliveryExceptionStatusDto>
+
+<div class="bg-white rounded-xl border border-outline-variant p-6">
+    <h3 class="font-bold text-lg text-on-background mb-3">Teslimat Başarısızlık (Exception) Nedenleri</h3>
+    <div class="space-y-3">
+        @foreach (var item in Model)
+        {
+            var widthValue = item.Percentage.ToString("0.0", CultureInfo.InvariantCulture);
+
+            <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                    <span>@item.ReasonText</span>
+                    <span>%@item.Percentage (@item.Count kargo)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                    <div class="h-full rounded-full" style="width: @(widthValue)%; background-color: #fd8b00;"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
