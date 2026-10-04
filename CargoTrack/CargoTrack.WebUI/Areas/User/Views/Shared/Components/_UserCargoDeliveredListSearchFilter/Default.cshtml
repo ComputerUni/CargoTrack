@@ -1,35 +1,47 @@
-﻿<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+﻿<form method="get" asp-area="User" asp-controller="Cargo" asp-action="DeliveredList" class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
     <div class="flex-1 relative">
-        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
-        <input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all" id="kargoSearch" placeholder="Takip numarası, mağaza adı veya gönderici ara..." type="text" />
+        <button type="submit" class="absolute left-3.5 top-1/2 -translate-y-1/2 cursor-pointer">
+            <span class="material-symbols-outlined text-outline text-[20px]">search</span>
+        </button>
+        <input name="search"
+               value="@ViewBag.Search"
+               onkeydown="if(event.key==='Enter') this.form.submit()"
+               class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all"
+               id="kargoSearch"
+               placeholder="Takip numarası, şube adı veya gönderici ara..."
+               type="text" />
     </div>
     <div class="flex flex-wrap items-center gap-3">
-        <!-- Status Filter Dropdown -->
         <div class="relative">
-            <select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
-                <option value="all">Durum: Tümü</option>
-                <option value="out_for_delivery">Dağıtımda</option>
-                <option value="in_transit">Transfer Merkezinde</option>
-                <option value="delivered">Teslim Edildi</option>
+            <select name="status"
+                    onchange="this.form.submit()"
+                    class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
+                <option value="" selected="@(string.IsNullOrEmpty(ViewBag.Status))">Durum: Tümü</option>
+                <option value="OutForDelivery" selected="@(ViewBag.Status == "OutForDelivery")">Dağıtımda</option>
+                <option value="InTransferCenter" selected="@(ViewBag.Status == "InTransferCenter")">Transfer Merkezinde</option>
+                <option value="AtOriginBranch" selected="@(ViewBag.Status == "AtOriginBranch")">Çıkış Şubesinde</option>
+                <option value="ArrivedAtDeliveryBranch" selected="@(ViewBag.Status == "ArrivedAtDeliveryBranch")">Varış Şubesinde</option>
             </select>
             <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">keyboard_arrow_down</span>
         </div>
-        <!-- Date Range Filter -->
+
         <div class="relative">
-            <select class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
-                <option value="30d">Son 30 Gün</option>
-                <option value="90d">Son 3 Ay</option>
-                <option value="this_year">Bu Yıl (2026)</option>
+            <select name="dateRange"
+                    onchange="this.form.submit()"
+                    class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
+                <option value="" selected="@(string.IsNullOrEmpty(ViewBag.DateRange))">Tüm Zamanlar</option>
+                <option value="3d" selected="@(ViewBag.DateRange == "3d")">Son 3 Gün</option>
+                <option value="7d" selected="@(ViewBag.DateRange == "7d")">Son 7 Gün</option>
+                <option value="14d" selected="@(ViewBag.DateRange == "14d")">Son 14 Gün</option>
             </select>
             <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">calendar_today</span>
         </div>
-        <!-- Pending Only Toggle Switch -->
-        <label class="flex items-center gap-2.5 px-3 h-11 rounded-xl bg-surface-container-low cursor-pointer select-none">
-            <input checked="" class="sr-only peer" id="pendingToggle" type="checkbox" />
-            <div class="w-8 h-4.5 bg-outline-variant peer-checked:bg-primary-container rounded-full relative transition-colors duration-200">
-                <div class="w-3.5 h-3.5 bg-surface-container-lowest rounded-full absolute top-0.5 left-0.5 peer-checked:translate-x-3.5 transition-transform duration-200 shadow-sm"></div>
-            </div>
-            <span class="font-label-md text-label-md text-on-surface">Yalnızca Teslimat Bekleyenler</span>
-        </label>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Search) || !string.IsNullOrEmpty(ViewBag.Status) || !string.IsNullOrEmpty(ViewBag.DateRange))
+        {
+            <a asp-action="DeliveredList" class="h-11 px-3 flex items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors text-xs font-semibold" title="Filtreleri Sıfırla">
+                <span class="material-symbols-outlined text-[18px]">close</span>
+            </a>
+        }
     </div>
-</div>
+</form>

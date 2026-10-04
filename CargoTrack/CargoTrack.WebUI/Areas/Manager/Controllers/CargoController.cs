@@ -5,8 +5,6 @@ using CargoTrack.Business.Services.Deliveries;
 using CargoTrack.Business.Services.Employees;
 using CargoTrack.Business.Services.TransferCenters;
 using CargoTrack.DTO.DTOs.CargosDtos;
-using CargoTrack.DTO.DTOs.DeliveryDtos;
-using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using CargoTrack.Entity.Entities;
 using CargoTrack.Entity.Entities.Enums;
 using CargoTrack.WebUI.Areas.Manager.Models;
@@ -15,8 +13,8 @@ using CargoTrack.WebUI.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using X.PagedList.Extensions;
 
 namespace CargoTrack.WebUI.Areas.Manager.Controllers
 {
@@ -65,7 +63,7 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
                         .Select(x => new SelectListItem
                         {
                             Value = x.Id.ToString(),
-                            Text = $"{x.Name} ({x.City?.Name})" 
+                            Text = $"{x.Name} ({x.City?.Name})"
                         })
                         .OrderBy(x => x.Text)
                         .ToList();
@@ -85,23 +83,32 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.Manager = user.FirstName + " " + user.LastName;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search, string? status, string? type, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
 
+            var cargosList = await _cargoService.GetByBranchIdAsync(user.BranchId.Value);
+
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.Type = type;
+
+            var filteredCargos = await _cargoService.GetFilteredBranchCargosAsync(user.BranchId.Value, search, status, type);
+
             var vm = new CargoIndexViewModel
             {
-                Cargos = await _cargoService.GetByBranchIdAsync(user.BranchId.Value),
+                Cargos = filteredCargos.ToPagedList(page, 8),
                 Summary = await _cargoService.GetBranchCargoSummaryAsync(user.BranchId.Value)
             };
+
 
             return View(vm);
         }
 
-        public async Task<IActionResult> IncomingList()
+        public async Task<IActionResult> IncomingList(int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
@@ -109,16 +116,18 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
 
+            var cargosList = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value);
+
             var vm = new CargoIndexViewModel
             {
-                Cargos = await _cargoService.GetIncomingCargosAsync(user.BranchId.Value),
+                Cargos = cargosList.ToPagedList(page, 8),
                 Incoming = await _cargoService.GetIncomingCargoSummaryAsync(user.BranchId.Value)
             };
 
             return View(vm);
         }
 
-        public async Task<IActionResult> OutgoingList()
+        public async Task<IActionResult> OutgoingList(int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             var branch = await _branchService.GetByIdAsync(user.BranchId.Value);
@@ -126,9 +135,11 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
 
+            var cargosList = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value);
+
             var vm = new CargoIndexViewModel
             {
-                Cargos = await _cargoService.GetOutgoingCargosAsync(user.BranchId.Value),
+                Cargos = cargosList.ToPagedList(page, 8),
                 Outgoing = await _cargoService.GetOutgoingCargoSummaryAsync(user.BranchId.Value)
             };
 

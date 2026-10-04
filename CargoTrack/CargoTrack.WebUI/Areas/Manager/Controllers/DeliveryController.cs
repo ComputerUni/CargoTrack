@@ -12,6 +12,7 @@ using CargoTrack.WebUI.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using X.PagedList.Extensions;
 
 namespace CargoTrack.WebUI.Areas.Manager.Controllers
 {
@@ -93,7 +94,7 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             return RedirectToAction("Index", "Cargo");
         }
 
-        public async Task<IActionResult> DeliveryList()
+        public async Task<IActionResult> DeliveryList(int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             var cargos = await _cargoService.GetOutDeliveryByBranchIdAsync(user.BranchId.Value);
@@ -101,10 +102,11 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
             ViewBag.Delivery = branch.Name;
-            return View(cargos);
+            var pagedList = cargos.ToPagedList(page, 8);
+            return View(pagedList);
         }
 
-        public async Task<IActionResult> DeliveryFailedAndReturnInProcessList()
+        public async Task<IActionResult> DeliveryFailedAndReturnInProcessList(int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
             var cargos = await _cargoService.GetDeliveryFailedOrReturnInProcessByBranchIdAsync(user.BranchId.Value);
@@ -112,7 +114,8 @@ namespace CargoTrack.WebUI.Areas.Manager.Controllers
             ViewBag.OriginalName = branch.Name;
             ViewBag.Manager = user.FirstName + " " + user.LastName;
             ViewBag.DeliveryFailed = branch.Name;
-            return View(cargos);
+            var pagedList = cargos.ToPagedList(page, 8);
+            return View(pagedList);
         }
     }
 }

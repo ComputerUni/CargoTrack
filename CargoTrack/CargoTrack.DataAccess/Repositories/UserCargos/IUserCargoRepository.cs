@@ -12,9 +12,13 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
     {
         Task<List<Cargo>> GetByUserIdAsync(Guid userId);
         Task<List<Cargo>> GetSentByUserIdAsync(Guid userId);
+        Task<List<Cargo>> GetFilteredSentByUserIdAsync(Guid userId);
         Task<List<Cargo>> GetReceivedByUserIdAsync(Guid userId);
+        Task<List<Cargo>> GetFilteredReceivedByUserIdAsync(Guid userId);
         Task<List<Cargo>> GetDeliveredByUserIdAsync(Guid userId);
+        Task<List<Cargo>> GetFilteredDeliveredByUserIdAsync(Guid userId);
         Task<Cargo> GetByIdAsync(Guid userId, Guid cargoId);
         Task<Cargo> GetCargoDetailByCode(Guid userId, string trackCode);
+        Task<List<Cargo>> GetAllByUserIdAsync(Guid userId);
     }
 }

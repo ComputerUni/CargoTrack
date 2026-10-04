@@ -15,5 +15,6 @@ namespace CargoTrack.Business.Services.Branches
         Task CreateAsync(CreateBranchDto createBranchDto);
         Task UpdateAsync(UpdateBranchDto updateBranchDto);
         Task DeleteAsync(Guid id);
+        Task<List<ResultBranchDto>> GetFilteredBranchesAsync(string? search, string? city);
     }
 }

@@ -16,6 +16,9 @@ namespace CargoTrack.Business.Services.UserCargos
         Task<List<ResultCargoDto>> GetSentByUserIdAsync(Guid userId);
         Task<ResultCargoDto> GetByIdAsync(Guid userId, Guid cargoId);
         Task<ResultCargoDto> GetCargoDetailByCode(Guid userId, string trackCode);
-        Task<List<ResultCargoDto>> GetFilteredUserCargosAsync(Guid userId, string search, string status, string dateRange, bool onlyActive = false, bool onlyDelivered = false, bool onlySent = false, bool onlyReceived = false);
+        Task<List<ResultCargoDto>> GetFilteredSentUserCargosAsync(Guid userId, string search, string status, string dateRange);
+        Task<List<ResultCargoDto>> GetFilteredReceivedUserCargosAsync(Guid userId, string search, string status, string dateRange);
+        Task<List<ResultCargoDto>> GetFilteredDeliveredUserCargosAsync(Guid userId, string search, string status, string dateRange);
+        Task<List<ResultCargoDto>> GetFilteredActiveUserCargosAsync(Guid userId, string search, string status, string dateRange);
     }
 }

@@ -185,7 +185,6 @@ namespace CargoTrack.Business.Services.Cargos
             return cargos.Adapt<List<ResultCargoDto>>();
         }
 
-
         public async Task UpdateStatusAsync(CargoStatusUpdateDto dto)
         {
             var cargo = await _repository.GetByIdWithMovementAsync(dto.Id);
@@ -336,6 +335,73 @@ namespace CargoTrack.Business.Services.Cargos
                 ReturnedToSender = cargos.Count(x => x.CargoStatus == CargoStatus.ReturnedToSender),
                 OutOfDelivery = cargos.Count(x => x.CargoStatus == CargoStatus.OutForDelivery)
             };
+        }
+
+        public async Task<List<ResultCargoDto>> GetFilteredCargosAsync(string? search, string? city, string? status)
+        {
+            var cargos = await _repository.GetAllAsync();
+            var branches = await _branchRepository.GetAllAsync();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                cargos = cargos.Where(x =>
+                                (!string.IsNullOrEmpty(x.TrackCode) && x.TrackCode.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                (x.Sender != null && (
+                                    (!string.IsNullOrEmpty(x.Sender.FirstName) && x.Sender.FirstName.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                    (!string.IsNullOrEmpty(x.Sender.LastName) && x.Sender.LastName.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                    ($"{x.Sender.FirstName} {x.Sender.LastName}".Contains(term, StringComparison.OrdinalIgnoreCase))
+                                 )) ||
+
+                                (x.Receiver != null && (
+                                    (!string.IsNullOrEmpty(x.Receiver.FirstName) && x.Receiver.FirstName.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                    (!string.IsNullOrEmpty(x.Receiver.LastName) && x.Receiver.LastName.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                    ($"{x.Receiver.FirstName} {x.Receiver.LastName}".Contains(term, StringComparison.OrdinalIgnoreCase))
+                                )) ||
+
+                                (x.OriginBranch != null && !string.IsNullOrEmpty(x.OriginBranch.Name) && x.OriginBranch.Name.Contains(term, StringComparison.OrdinalIgnoreCase)) ||
+                                (x.DestinationBranch != null && !string.IsNullOrEmpty(x.DestinationBranch.Name) && x.DestinationBranch.Name.Contains(term, StringComparison.OrdinalIgnoreCase))).ToList();
+
+                if (!string.IsNullOrWhiteSpace(status) && int.TryParse(status, out var statusId))
+                {
+                    cargos = cargos.Where(x => (int)x.CargoStatus == statusId).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(city) && city != "Tüm İller")
+                {
+                    branches = branches.Where(x => !string.IsNullOrEmpty(x.City.Name) &&
+                                           string.Equals(x.City.Name, city, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                }
+            }
+
+            return cargos.Adapt<List<ResultCargoDto>>();
+        }
+
+        public async Task<List<ResultCargoDto>> GetFilteredBranchCargosAsync(Guid branchId, string? search, string? status, string? type)
+        {
+            var allCargos = await _repository.GetAllAsync();
+            var branchCargos = allCargos.Where(x => x.OriginBranchId == branchId || x.DestinationBranchId == branchId).ToList();
+
+            if(!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                branchCargos = branchCargos.Where(x =>
+                (!string.IsNullOrEmpty(x.TrackCode) && x.TrackCode.Contains(term, StringComparison.CurrentCultureIgnoreCase)) ||
+                (x.Sender != null && $"{x.Sender.FirstName} {x.Sender.LastName}".Contains(term, StringComparison.CurrentCultureIgnoreCase)) ||
+                (x.Receiver != null && $"{x.Receiver.FirstName} {x.Receiver.LastName}".Contains(term, StringComparison.CurrentCultureIgnoreCase))).ToList();
+            }
+
+            if(!string.IsNullOrWhiteSpace(status) && Enum.TryParse<CargoStatus>(status, true, out var parsedStatus))
+            {
+                branchCargos = branchCargos.Where(x => x.CargoStatus == parsedStatus).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(type) && Enum.TryParse<CargoType>(status, true, out var parsedType))
+            {
+                branchCargos = branchCargos.Where(x => x.CargoType == parsedType).ToList();
+            }
+
+            return branchCargos.Adapt<List<ResultCargoDto>>();
         }
     }
 }

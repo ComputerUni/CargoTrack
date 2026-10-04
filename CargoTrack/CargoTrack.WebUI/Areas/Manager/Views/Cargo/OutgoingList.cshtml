@@ -1,4 +1,5 @@
 ﻿@using CargoTrack.Entity.Entities.Enums
+@using X.PagedList.Mvc.Core
 @model CargoIndexViewModel
 
 @{
@@ -315,37 +316,19 @@
                     }
                 </tbody>
             </table>
-        </div>
-        <!-- Pagination and Table Context Footer -->
-        <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
-                <span>Toplam <strong>184</strong> kargodan <strong>1-6</strong> arası gösteriliyor</span>
-                <div class="hidden md:flex items-center gap-space-xs">
-                    <span class="text-outline-variant">|</span>
-                    <label class="font-label-sm text-label-sm">Sayfa Başına:</label>
-                    <select class="bg-surface-container text-on-surface rounded px-1.5 py-0.5 text-code-dense font-code-dense focus:outline-none">
-                        <option selected="">6</option>
-                        <option>15</option>
-                        <option>30</option>
-                        <option>50</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Pagination Buttons -->
-            <div class="flex items-center gap-1">
-                <button class="px-2.5 py-1 rounded bg-surface-container text-outline opacity-50 cursor-not-allowed font-label-md text-label-md flex items-center gap-0.5" disabled="" type="button">
-                    <span class="material-symbols-outlined text-[15px]">chevron_left</span>
-                    <span>Önceki</span>
-                </button>
-                <button class="w-7 h-7 rounded bg-primary text-on-primary font-code-dense text-code-dense font-bold flex items-center justify-center shadow-sm" type="button">1</button>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">2</button>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">3</button>
-                <span class="px-1 text-outline font-code-dense">...</span>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">31</button>
-                <button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-0.5 transition-colors" type="button">
-                    <span>Sonraki</span>
-                    <span class="material-symbols-outlined text-[15px]">chevron_right</span>
-                </button>
+            <div class="mt-4">
+                @Html.PagedListPager(Model.Cargos, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "flex items-center gap-1 justify-right p-3" },
+                    LiElementClasses = new[] { "inline-flex" },
+                    PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+                    PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                    NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                    LinkToPreviousPageFormat = "←",
+                    LinkToNextPageFormat = "→"
+                })
             </div>
         </div>
     </div>

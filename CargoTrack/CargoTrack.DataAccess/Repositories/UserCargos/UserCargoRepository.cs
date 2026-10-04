@@ -17,6 +17,19 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
         {
         }
 
+        public async Task<List<Cargo>> GetAllByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+               .Include(x => x.OriginBranch)
+               .Include(x => x.DestinationBranch)
+               .Include(x => x.AssignedEmployee)
+               .Include(x => x.Sender)
+               .Include(x => x.Receiver)
+               .Where(x => x.ReceiverId == userId)
+               .OrderByDescending(x => x.CreatedDate)
+               .ToListAsync();
+        }
+
         public async Task<Cargo> GetByIdAsync(Guid userId, Guid cargoId)
         {
             return await _context.Cargos
@@ -39,6 +52,8 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
                 .Include(x => x.AssignedEmployee)
+                .Include(x => x.Sender)
+                .Include(x => x.Receiver)
                 .Where(x =>
                     (x.SenderId == userId || x.ReceiverId == userId) &&
                     x.CargoStatus != CargoStatus.Delivered &&
@@ -70,8 +85,52 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .Include(x => x.DestinationBranch)
                 .Include(x => x.AssignedEmployee)
                 .Include(x => x.DeliveryExceptions)
+                .Include(x => x.Receiver)
+                .Include(x => x.Sender)
                 .Where(x => (x.ReceiverId == userId || x.SenderId == userId) &&
                             (x.CargoStatus == CargoStatus.Delivered || x.CargoStatus == CargoStatus.ReturnedToSender))
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetFilteredDeliveredByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+               .Include(x => x.OriginBranch)
+               .Include(x => x.DestinationBranch)
+               .Include(x => x.AssignedEmployee)
+               .Include(x => x.DeliveryExceptions)
+               .Include(x => x.Receiver)
+               .Include(x => x.Sender)
+               .Where(x => (x.ReceiverId == userId || x.SenderId == userId) &&
+                           (x.CargoStatus == CargoStatus.Delivered || x.CargoStatus == CargoStatus.ReturnedToSender))
+               .OrderByDescending(x => x.CreatedDate)
+               .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetFilteredReceivedByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
+                .Include(x => x.Sender)
+                .Include(x => x.DeliveryExceptions)
+                .Where(x => x.ReceiverId == userId &&
+                            x.CargoStatus != CargoStatus.Delivered &&
+                            x.CargoStatus != CargoStatus.ReturnedToSender)
+                .OrderByDescending(x => x.CreatedDate)
+                .ToListAsync();
+        }
+
+        public async Task<List<Cargo>> GetFilteredSentByUserIdAsync(Guid userId)
+        {
+            return await _context.Cargos
+                .Include(x => x.OriginBranch)
+                .Include(x => x.DestinationBranch)
+                .Include(x => x.AssignedEmployee)
+                .Include(x => x.Receiver)
+                .Where(x => x.SenderId == userId)
                 .OrderByDescending(x => x.CreatedDate)
                 .ToListAsync();
         }
@@ -82,6 +141,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
                 .Include(x => x.AssignedEmployee)
+                .Include(x => x.Sender)
                 .Include(x => x.DeliveryExceptions)
                 .Where(x => x.ReceiverId == userId &&
                             x.CargoStatus != CargoStatus.Delivered &&
@@ -96,6 +156,7 @@ namespace CargoTrack.DataAccess.Repositories.UserCargos
                 .Include(x => x.OriginBranch)
                 .Include(x => x.DestinationBranch)
                 .Include(x => x.AssignedEmployee)
+                .Include(x => x.Receiver)
                 .Where(x => x.SenderId == userId)
                 .OrderByDescending(x => x.CreatedDate)
                 .ToListAsync();

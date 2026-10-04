@@ -3,6 +3,7 @@ using CargoTrack.DTO.DTOs.AboutDtos;
 using CargoTrack.DTO.DTOs.BranchDtos;
 using CargoTrack.Entity.Entities;
 using Mapster;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -50,6 +51,26 @@ namespace CargoTrack.Business.Services.Branches
             return branch.Adapt<UpdateBranchDto>();
         }
 
+        public async Task<List<ResultBranchDto>> GetFilteredBranchesAsync(string? search, string? city)
+        {
+            var branches = await _branchRepository.GetAllAsync();
+
+            if(!string.IsNullOrWhiteSpace(search))
+            {
+                var term = search.Trim();
+                branches = branches.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if(!string.IsNullOrEmpty(city) && city != "Tüm İller")
+            {
+                branches = branches.Where(x => !string.IsNullOrEmpty(x.City.Name) &&
+                                       string.Equals(x.City.Name, city, StringComparison.CurrentCultureIgnoreCase)).ToList();
+            }
+
+            return branches.Adapt<List<ResultBranchDto>>();
+        }
+
+    
         public async Task UpdateAsync(UpdateBranchDto updateBranchDto)
         {
             var branch = updateBranchDto.Adapt<Branch>();

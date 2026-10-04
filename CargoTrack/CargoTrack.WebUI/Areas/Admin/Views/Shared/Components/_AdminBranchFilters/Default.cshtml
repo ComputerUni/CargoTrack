@@ -1,38 +1,43 @@
-﻿<div class="bg-white rounded-xl border border-outline-variant p-4 mb-5 flex flex-wrap gap-3 items-end">
+﻿<form method="get"
+      asp-area="Admin"
+      asp-controller="Branch"
+      asp-action="Index"
+      class="bg-white rounded-xl border border-outline-variant p-4 mb-5 flex flex-wrap gap-3 items-end">
+
     <div class="flex-1 min-w-56">
-        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">ŞUBE ADI / KODU</label>
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">ŞUBE ADI</label>
         <div class="relative">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size:18px;">search</span>
-            <input type="text" placeholder="Örn: İstanbul Anadolu, BR-04..." class="w-full pl-9 pr-4 py-2 border border-outline-variant rounded-lg text-sm focus:outline-none" />
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   placeholder="Örn: Kadıköy Şubesi"
+                   class="w-full pl-9 pr-4 py-2 border border-outline-variant rounded-lg text-sm focus:outline-none" />
         </div>
     </div>
+
     <div class="w-44">
         <label class="block text-xs font-semibold mb-1" style="color:#43474e;">İL</label>
-        <select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white">
-            <option>Tüm İller</option>
-            <option>İstanbul</option>
-            <option>Ankara</option>
-            <option>İzmir</option>
-            <option>Bursa</option>
-            <option>Antalya</option>
+        <select name="city" class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none">
+            <option value="">Tüm İller</option>
+            @if (ViewBag.Cities != null)
+            {
+                foreach (string cityName in (List<string>)ViewBag.Cities)
+                {
+                    <option value="@cityName" selected="@(ViewBag.SelectedCity == cityName)">@cityName</option>
+                }
+            }
         </select>
     </div>
-    <div class="w-44">
-        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">BAĞLI TRANSFER MERKEZİ</label>
-        <select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white">
-            <option>Tümü</option>
-            <option>Marmara TM</option>
-            <option>İç Anadolu TM</option>
-            <option>Ege TM</option>
-        </select>
-    </div>
-    <div class="w-36">
-        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">DURUM</label>
-        <select class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white">
-            <option>Tümü</option>
-            <option>Aktif</option>
-            <option>Pasif / Bakımda</option>
-        </select>
-    </div>
-    <button class="px-4 py-2 rounded-lg text-sm font-semibold text-white" style="background:#001e3c;">Filtrele</button>
-</div>
+
+    <button type="submit" class="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90" style="background:#001e3c;">
+        Filtrele
+    </button>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Search) || !string.IsNullOrEmpty(ViewBag.SelectedCity))
+    {
+        <a asp-action="Index" class="px-3 py-2 rounded-lg text-sm font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-colors flex items-center justify-center" title="Filtreleri Sıfırla">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+        </a>
+    }
+</form>

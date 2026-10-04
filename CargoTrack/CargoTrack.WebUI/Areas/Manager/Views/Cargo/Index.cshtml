@@ -1,4 +1,5 @@
 ﻿@using CargoTrack.Entity.Entities.Enums
+@using X.PagedList.Mvc.Core
 @model CargoIndexViewModel
 
 @{
@@ -25,21 +26,6 @@
             <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
                 @ViewBag.OriginalName'ne bağlı gelen, çıkan, dağıtımdaki ve devir kargoların anlık manifestosu
             </p>
-        </div>
-        <!-- Quick Action Toolset -->
-        <div class="flex items-center flex-wrap gap-space-sm">
-            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[18px] text-secondary">table_view</span>
-                <span>Excel Raporu Al</span>
-            </button>
-            <button class="inline-flex items-center gap-space-xs bg-surface-container-lowest hover:bg-surface-container text-on-surface px-space-md py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[18px] text-secondary">print</span>
-                <span>Toplu Barkod Yazdır</span>
-            </button>
-            <button class="inline-flex items-center gap-space-xs bg-primary hover:bg-primary-container text-on-primary px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                <span class="material-symbols-outlined text-[19px]">add_box</span>
-                <span>+ Şube Kargo Kabulü</span>
-            </button>
         </div>
     </div>
     <!-- Operational Metric Quick Strip (4 compact cards) -->
@@ -95,87 +81,70 @@
             </div>
         </div>
     </div>
-    <!-- Operational Search & Multi-Filter Control Console -->
-    <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-md">
-        <!-- Top Search Row -->
-        <div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm mb-space-md">
-            <div class="relative flex-1">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
-                <input class="w-full pl-10 pr-10 py-2 bg-surface-container-low text-on-surface placeholder:text-outline rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" id="cargo-search-input" placeholder="Kargo Takip No (MYC-...), Alıcı/Gönderici Adı veya Telefon..." type="text" />
-                <button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" title="Barkod Okuyucu Başlat" type="button">
-                    <span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
-                </button>
-            </div>
-            <div class="flex items-center gap-space-xs shrink-0">
-                <button class="inline-flex items-center gap-space-xs bg-inverse-surface text-inverse-on-surface hover:bg-on-surface px-space-lg py-2 rounded-lg font-label-lg text-label-lg shadow-sm transition-all" type="button">
-                    <span class="material-symbols-outlined text-[17px]">filter_alt</span>
-                    <span>Filtrele</span>
-                </button>
-                <button class="inline-flex items-center gap-space-xs text-on-surface-variant hover:text-error px-space-md py-2 rounded-lg font-label-lg text-label-lg transition-colors" type="button">
-                    <span class="material-symbols-outlined text-[16px]">restart_alt</span>
-                    <span>Temizle</span>
-                </button>
-            </div>
-        </div>
-        <!-- Filter Multi-Select Fields Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
-            <!-- Filter: Direction -->
-            <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Kargo Yönü</label>
-                <div class="relative">
-                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
-                        <option selected="">Tümü (Gelen &amp; Giden)</option>
-                        <option>Şubeye Gelen (Varış)</option>
-                        <option>Şubeden Çıkan (Gönderici)</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+    <form method="get" asp-area="Manager" asp-action="Index">
+        <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-md">
+            <!-- Top Search Row -->
+            <div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm mb-space-md">
+                <div class="relative flex-1">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline">search</span>
+                    <input class="w-full pl-10 pr-10 py-2 bg-surface-container-low text-on-surface placeholder:text-outline rounded-lg font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" 
+                           id="cargo-search-input" 
+                           name="search" 
+                           value="@ViewBag.Search"
+                           placeholder="Kargo Takip No (MYC-...), Alıcı/Gönderici Adı veya Telefon..." 
+                           type="text" />
+                    <button class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" title="Barkod Okuyucu Başlat" type="button">
+                        <span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+                    </button>
+                </div>
+                <div class="flex items-center gap-space-xs shrink-0">
+                    <!-- DÜZELTİLDİ: type="submit" yapıldı -->
+                    <button class="inline-flex items-center gap-space-xs bg-inverse-surface text-inverse-on-surface hover:bg-on-surface px-space-lg py-2 rounded-lg font-label-lg text-label-lg shadow-sm transition-all" type="submit">
+                        <span class="material-symbols-outlined text-[17px]">filter_alt</span>
+                        <span>Filtrele</span>
+                    </button>
+                    @if (!string.IsNullOrEmpty(ViewBag.Search) || !string.IsNullOrEmpty(ViewBag.Status))
+                    {
+                        <a asp-action="Index" class="px-3 py-2 rounded-lg text-sm font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-colors flex items-center justify-center" title="Filtreleri Temizle">
+                            <span class="material-symbols-outlined text-[18px]">close</span>
+                        </a>
+                    }
                 </div>
             </div>
-            <!-- Filter: Operational Status -->
-            <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Operasyonel Durum</label>
-                <div class="relative">
-                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
-                        <option selected="">Tüm Durumlar (184)</option>
-                        <option>Varış Şubesinde (44)</option>
-                        <option>Dağıtıma Çıktı (68)</option>
-                        <option>Teslim Edildi (52)</option>
-                        <option>Sorunlu / Teslim Edilemedi (12)</option>
-                        <option>İade Sürecinde (8)</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+            <!-- Filter Multi-Select Fields Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-space-sm">
+                <!-- Filter: Operational Status -->
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Operasyonel Durum</label>
+                    <div class="relative">
+                        <select name="status" onchange="this.form.submit()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                            <option value="" selected="@(string.IsNullOrEmpty(ViewBag.Status))">Tüm Durumlar</option>
+                            <option value="OutForDelivery" selected="@(ViewBag.Status == "OutForDelivery")">Dağıtımda</option>
+                            <option value="InTransferCenter" selected="@(ViewBag.Status == "InTransferCenter")">Transfer Merkezinde</option>
+                            <option value="AtOriginBranch" selected="@(ViewBag.Status == "AtOriginBranch")">Çıkış Şubesinde</option>
+                            <option value="ArrivedAtDeliveryBranch" selected="@(ViewBag.Status == "ArrivedAtDeliveryBranch")">Varış Şubesinde</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                    </div>
                 </div>
-            </div>
-            <!-- Filter: Assigned Courier -->
-            <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Atanan Kurye</label>
-                <div class="relative">
-                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
-                        <option selected="">Tüm Kuryeler &amp; Hatlar</option>
-                        <option>Ahmet Yılmaz (Moda Sahası)</option>
-                        <option>Berkay Demir (Kalamış Sahası)</option>
-                        <option>Canan Şahin (Göztepe Sahası)</option>
-                        <option>Emre Koç (Koşuyolu Sahası)</option>
-                        <option class="text-error font-semibold">⚠️ Atama Bekleyenler (12)</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
-                </div>
-            </div>
-            <!-- Filter: Desi / Type -->
-            <div class="flex flex-col gap-1">
-                <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Desi / Kargo Tipi</label>
-                <div class="relative">
-                    <select class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
-                        <option selected="">Tümü (Desi &amp; Paket)</option>
-                        <option>Dosya / Evrak (1-2 Desi)</option>
-                        <option>Koli (3-15 Desi)</option>
-                        <option>Ağır Kargo (15+ Desi)</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                <!-- Filter: Desi / Type -->
+                <div class="flex flex-col gap-1">
+                    <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Kargo Tipi</label>
+                    <div class="relative">
+                        <select name="type" onchange="this.form.submit()" class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm py-2 px-3 pr-8 rounded-lg appearance-none focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary cursor-pointer">
+                            <option value="" selected="@(string.IsNullOrEmpty(ViewBag.Type))">Tümü</option>
+                            <option value="Standart" selected="@(ViewBag.Type == "Standart")">Standart</option>
+                            <option value="Urgent" selected="@(ViewBag.Type == "Urgent")">Acil</option>
+                            <option value="Fragile" selected="@(ViewBag.Type == "Fragile")">Kırılgan</option>
+                            <option value="Heavy" selected="@(ViewBag.Type == "Heavy")">Ağır</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-outline pointer-events-none">expand_more</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+   
     <!-- Main Cargo Operational Data Table -->
     <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-md">
         <!-- Active Table Action & Status Toolbar -->
@@ -278,7 +247,7 @@
 
                             <td class="px-space-md py-3">
                                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-semibold">
-                                    @cargo.CargoType
+                                    @cargo.CargoType.GetDisplayName()
                                 </span>
                             </td>
 
@@ -344,37 +313,19 @@
                     }
                 </tbody>
             </table>
-        </div>
-        <!-- Pagination and Table Context Footer -->
-        <div class="bg-surface-container-low px-space-md py-space-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
-            <div class="flex items-center gap-space-md font-body-sm text-body-sm text-on-surface-variant">
-                <span>Toplam <strong>184</strong> kargodan <strong>1-6</strong> arası gösteriliyor</span>
-                <div class="hidden md:flex items-center gap-space-xs">
-                    <span class="text-outline-variant">|</span>
-                    <label class="font-label-sm text-label-sm">Sayfa Başına:</label>
-                    <select class="bg-surface-container text-on-surface rounded px-1.5 py-0.5 text-code-dense font-code-dense focus:outline-none">
-                        <option selected="">6</option>
-                        <option>15</option>
-                        <option>30</option>
-                        <option>50</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Pagination Buttons -->
-            <div class="flex items-center gap-1">
-                <button class="px-2.5 py-1 rounded bg-surface-container text-outline opacity-50 cursor-not-allowed font-label-md text-label-md flex items-center gap-0.5" disabled="" type="button">
-                    <span class="material-symbols-outlined text-[15px]">chevron_left</span>
-                    <span>Önceki</span>
-                </button>
-                <button class="w-7 h-7 rounded bg-primary text-on-primary font-code-dense text-code-dense font-bold flex items-center justify-center shadow-sm" type="button">1</button>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">2</button>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">3</button>
-                <span class="px-1 text-outline font-code-dense">...</span>
-                <button class="w-7 h-7 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-dense text-code-dense font-medium flex items-center justify-center transition-colors" type="button">31</button>
-                <button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-0.5 transition-colors" type="button">
-                    <span>Sonraki</span>
-                    <span class="material-symbols-outlined text-[15px]">chevron_right</span>
-                </button>
+            <div class="mt-4">
+@Html.PagedListPager(Model.Cargos, page => Url.Action("Index", new { page, search = ViewBag.Search, status = ViewBag.Status }), new PagedListRenderOptions
+{
+    UlElementClasses = new[] { "flex items-center gap-1 justify-right p-3" },
+    LiElementClasses = new[] { "inline-flex" },
+    PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+    PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+    NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+    LinkToPreviousPageFormat = "←",
+    LinkToNextPageFormat = "→"
+})
             </div>
         </div>
     </div>

@@ -1,40 +1,101 @@
 ﻿@model List<ResultUserDto>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Kullanıcı Yönetimi";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     int count = 0;
 }
 
-<h1>Kullanıcı Listesi</h1>
+<div class="p-6 md:p-8 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Kullanıcı Yönetimi</h2>
+            <p class="text-sm text-gray-500 mt-1">Sistemdeki tüm kayıtlı kullanıcıları ve yetkilerini bu ekrandan yönetebilirsiniz.</p>
+        </div>
+        <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-gray-200 shadow-sm self-start sm:self-auto">
+            <span class="material-symbols-outlined text-primary text-[20px]">group</span>
+            <span class="text-xs font-medium text-gray-500">Toplam Kullanıcı:</span>
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700">@Model.Count</span>
+        </div>
+    </div>
 
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>#</th>
-        <th>Ad Soyad</th>
-        <th>Email</th>
-        <th>Kullanıcı</th>
-        <th>Roller</th>
-        <th>İşlemler</th>
-    </tr>
+    <div class="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="border-b border-gray-100 bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                        <th class="py-3.5 pl-6 pr-3 w-12">#</th>
+                        <th class="py-3.5 px-4">Kullanıcı</th>
+                        <th class="py-3.5 px-4">Kullanıcı Adı</th>
+                        <th class="py-3.5 px-4">Email</th>
+                        <th class="py-3.5 px-4">Atanmış Roller</th>
+                        <th class="py-3.5 pl-4 pr-6 text-right">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 text-sm">
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        var firstLetter = string.IsNullOrWhiteSpace(item.FullName) ? "?" : item.FullName.Substring(0, 1).ToUpper();
 
-    @foreach(var item in Model)
-    {
-        count++;
-        <tr>
-            <th>@count</th>
-            <td>@item.FullName</td>
-            <td>@item.Email</td>
-            <td>@item.UserName</td>
-            <td>
-                @foreach(var role in item.Roles)
-                {
-                    <span class="badge bg-danger text-white">@role</span>
-                }
-            </td>
-            <td>
-                <a href="/Admin/RoleAssign/GetUserForRoleAssign/@item.Id" class="btn btn-outline-secondary">Rol Ata</a>
-            </td>
-        </tr>
-    }
-</table>
+                        <tr class="hover:bg-gray-50/60 transition-colors">
+                            <td class="py-4 pl-6 pr-3 text-xs font-medium text-gray-400">@count</td>
 
+                            <td class="py-4 px-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 font-bold flex items-center justify-center text-sm shrink-0 border border-blue-100">
+                                        @firstLetter
+                                    </div>
+                                    <span class="font-semibold text-gray-900">@item.FullName</span>
+                                </div>
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <span class="inline-block px-2.5 py-1 rounded-md text-xs font-mono bg-gray-100 text-gray-600">
+                                    @item.UserName
+                                </span>
+                            </td>
+
+                            <td class="py-4 px-4 text-gray-500">
+                                @item.Email
+                            </td>
+
+                            <td class="py-4 px-4">
+                                <div class="flex flex-wrap gap-1.5">
+                                    @if (item.Roles != null && item.Roles.Any())
+                                    {
+                                        @foreach (var role in item.Roles)
+                                        {
+                                            var badgeStyle = role switch
+                                            {
+                                                "Admin" => "bg-red-50 text-red-700 border-red-200",
+                                                "Manager" => "bg-amber-50 text-amber-700 border-amber-200",
+                                                "Courier" => "bg-sky-50 text-sky-700 border-sky-200",
+                                                _ => "bg-gray-100 text-gray-700 border-gray-200"
+                                            };
+
+                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border @badgeStyle">
+                                                @role
+                                            </span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-xs text-gray-400 italic">Rol yok</span>
+                                    }
+                                </div>
+                            </td>
+
+                            <td class="py-4 pl-4 pr-6 text-right">
+                                <a href="/Admin/RoleAssign/GetUserForRoleAssign/@item.Id"
+                                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-gray-200 text-gray-700 hover:text-blue-600 hover:border-blue-200 hover:bg-blue-50/50 text-xs font-medium transition-all shadow-sm">
+                                    <span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+                                    <span>Rol Ata</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

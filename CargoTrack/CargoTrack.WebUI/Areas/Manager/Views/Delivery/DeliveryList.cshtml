@@ -1,4 +1,6 @@
-﻿@model List<ResultCargoDto>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultCargoDto>
 
 @{
     ViewData["Title"] = "Kargolarımız";
@@ -7,107 +9,16 @@
 
 <div>
     <header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-[18px] text-primary">store</span><span class="font-label-lg text-label-lg">@ViewBag.Delivery</span></div><div class="hidden md:flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span class="font-body-sm text-body-sm">@DateTime.Now.ToString("dd MM yyyy HH:mm")</span></div></div><div class="flex items-center gap-space-md"><button aria-label="Bildirimler" class="relative p-space-xs rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1 right-1 w-4 h-4 bg-error text-on-error rounded-full flex items-center justify-center font-label-sm text-label-sm font-bold leading-none">3</span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-lg text-label-lg text-on-surface">@ViewBag.Manager</span><span class="font-label-sm text-label-sm text-secondary">@ViewBag.Delivery Müdürü</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full px-margin pt-16 bg-surface min-h-[calc(100vh-32px)]">
-    <div class="flex flex-col w-full pb-12">
+    <div class="flex flex-col w-full">
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md py-space-md">
             <div class="flex flex-col gap-1">
                 <div class="flex items-center gap-space-xs font-label-md text-label-md text-secondary">
                     <span class="text-on-surface-variant font-medium">Operasyon</span>
                     <span class="text-outline-variant">•</span>
                     <span class="text-primary font-semibold">Dağıtım Listesi</span>
-                    <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-code-dense text-[11px] font-semibold tracking-wide">68 AKTİF GÖREV</span>
                 </div>
                 <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Dağıtım Listesi (Sahadaki Kargolar)</h1>
-                <p class="font-body-sm text-body-sm text-secondary">@ViewBag.Delivery bünyesinde bugün dağıtıma çıkarılan (“OutForDelivery”) ve kuryelerde zimmetli kargolar</p>
-            </div>
-            <div class="flex items-center gap-space-sm flex-wrap">
-                <button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm hover:bg-surface-container-high transition-colors font-label-lg text-label-lg font-medium" type="button">
-                    <span class="material-symbols-outlined text-[18px] text-secondary">print</span>
-                    <span>Toplu Dağıtım Fişi Yazdır (PDF)</span>
-                </button>
-                <button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary text-on-primary shadow-sm hover:bg-primary-container transition-colors font-label-lg text-label-lg font-semibold" id="toggleMapBtn" type="button">
-                    <span class="material-symbols-outlined text-[18px]">map</span>
-                    <span>Haritada Göster</span>
-                </button>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter py-space-sm">
-            <div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                    <div class="flex flex-col">
-                        <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Toplam Dağıtımda</span>
-                        <div class="flex items-baseline gap-2 mt-1">
-                            <span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">68</span>
-                            <span class="font-label-sm text-label-sm text-secondary">Kargo</span>
-                        </div>
-                    </div>
-                    <div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[22px]">local_shipping</span>
-                    </div>
-                </div>
-                <div class="mt-space-md pt-space-xs flex flex-col gap-1.5">
-                    <div class="flex justify-between items-center font-label-sm text-label-sm text-secondary">
-                        <span>Dağıtım İlerlemesi</span>
-                        <span class="text-primary font-bold">%37 Tamamlandı (26 Teslim)</span>
-                    </div>
-                    <div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
-                        <div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 37%"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                    <div class="flex flex-col">
-                        <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Aktif Kurye Sayısı</span>
-                        <div class="flex items-baseline gap-2 mt-1">
-                            <span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">4</span>
-                            <span class="font-label-sm text-label-sm text-secondary">Kurye Sahada</span>
-                        </div>
-                    </div>
-                    <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[22px]">two_wheeler</span>
-                    </div>
-                </div>
-                <div class="mt-space-md flex items-center gap-space-xs text-primary font-label-sm text-label-sm font-semibold">
-                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                    <span>Kadıköy Merkez Ringleri Kesintisiz</span>
-                </div>
-            </div>
-            <div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                    <div class="flex flex-col">
-                        <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Kalan Teslimat</span>
-                        <div class="flex items-baseline gap-2 mt-1">
-                            <span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">42</span>
-                            <span class="font-label-sm text-label-sm text-secondary">Paket</span>
-                        </div>
-                    </div>
-                    <div class="w-10 h-10 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[22px]">pending_actions</span>
-                    </div>
-                </div>
-                <div class="mt-space-md flex items-center gap-1 text-secondary font-label-sm text-label-sm">
-                    <span class="material-symbols-outlined text-[16px] text-tertiary">schedule</span>
-                    <span>Hedef: Bugün 18:00'e kadar</span>
-                </div>
-            </div>
-            <div class="relative overflow-hidden p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
-                <div class="flex items-start justify-between">
-                    <div class="flex flex-col">
-                        <span class="font-label-md text-label-md uppercase tracking-wider text-secondary">Ortalama Teslimat Süresi</span>
-                        <div class="flex items-baseline gap-1 mt-1">
-                            <span class="font-headline-xl text-headline-xl text-on-surface font-bold font-code-dense">22</span>
-                            <span class="font-headline-sm text-headline-sm text-on-surface font-semibold">dk</span>
-                            <span class="font-label-sm text-label-sm text-secondary">/ paket</span>
-                        </div>
-                    </div>
-                    <div class="w-10 h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[22px]">timer</span>
-                    </div>
-                </div>
-                <div class="mt-space-md flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
-                    <span class="material-symbols-outlined text-[16px]">trending_up</span>
-                    <span>Önceki vardiyaya kıyasla -4 dk hızlı</span>
-                </div>
+                <p class="font-body-sm text-body-sm text-secondary">@ViewBag.Delivery bünyesinde bugün dağıtıma çıkarılan ve kuryelerde zimmetli kargolar</p>
             </div>
         </div>
         <div class="hidden mb-space-md p-space-md rounded-xl bg-surface-container-lowest shadow-sm" id="mapDrawer">
@@ -191,7 +102,7 @@
                             <th class="py-3 px-space-md font-semibold">Çıkış &amp; Hedef</th>
                             <th class="py-3 px-space-md font-semibold">Teslimat Kodu</th>
                             <th class="py-3 px-space-md font-semibold">Durum</th>
-@*                             <th class="py-3 px-space-md font-semibold text-right">Hızlı Aksiyon</th> *@
+                            @*                             <th class="py-3 px-space-md font-semibold text-right">Hızlı Aksiyon</th> *@
                         </tr>
                     </thead>
                     <tbody class="font-body-md text-body-md text-on-surface" id="packageTableBody">
@@ -235,44 +146,24 @@
                                         <span>Dağıtıma Çıktı</span>
                                     </span>
                                 </td>
-
-                               @*  <td class="py-space-sm px-space-md text-right">
-                                    <div class="flex items-center justify-end gap-1.5">
-                                        <button class="px-2.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-colors shadow-sm"
-                                                onclick="openVerifyModal('@item.Id', '@item.TrackCode', '@item.ReceiverName')"
-                                                type="button">
-                                            Kodu Gir
-                                        </button>
-
-                                        <button class="p-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"
-                                                onclick="reportIssue('@item.Id', '@item.TrackCode')"
-                                                type="button">
-                                            <span class="material-symbols-outlined text-[18px]">warning</span>
-                                        </button>
-
-                                        <a asp-area="Manager" asp-controller="CargoMovement" asp-action="AddMovement" asp-route-id="@item.Id"
-                                           class="p-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors">
-                                            <span class="material-symbols-outlined text-[18px]">alt_route</span>
-                                        </a>
-                                    </div>
-                                </td> *@
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
-            <div class="p-space-sm bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-secondary">
-                <div class="flex items-center gap-space-xs">
-                    <span>Görüntülenen: <strong class="text-on-surface font-code-dense font-bold" id="visibleCount">5</strong> / 68 kargo</span>
-                    <span class="text-outline-variant">•</span>
-                    <span>Otomatik yenileme: 30 sn</span>
-                </div>
-                <div class="flex items-center gap-1 font-code-dense">
-                    <button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">Önceki</button>
-                    <button class="px-2 py-1 rounded bg-primary text-on-primary font-bold" type="button">1</button>
-                    <button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">2</button>
-                    <button class="px-2 py-1 rounded bg-surface text-secondary hover:text-on-surface" type="button">Sonraki</button>
-                </div>
+            <div class="mt-4">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                {
+                    UlElementClasses = new[] { "flex items-center gap-1 justify-right p-3" },
+                    LiElementClasses = new[] { "inline-flex" },
+                    PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+                    PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                    NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                    DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                    DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                    LinkToPreviousPageFormat = "←",
+                    LinkToNextPageFormat = "→"
+                })
             </div>
         </div>
         <div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="verifyModal">

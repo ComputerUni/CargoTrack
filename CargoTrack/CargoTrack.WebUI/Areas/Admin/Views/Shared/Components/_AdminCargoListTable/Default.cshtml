@@ -1,4 +1,6 @@
-﻿@model List<ResultCargoDto>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultCargoDto>
 @using CargoTrack.Business.Extensions
 
 @{
@@ -60,17 +62,16 @@
         </table>
     </div>
 
-    <!-- Pagination -->
-    <div class="flex items-center justify-between px-4 py-4" style="border-top:1px solid #c4c6ce;">
-        <span style="color:#43474e;font-size:13px;">1–10 / 847 kayıt gösteriliyor</span>
-        <div class="flex items-center gap-1">
-            <button class="px-3 py-1.5 rounded-lg text-sm border border-outline-variant" style="color:#43474e;" disabled>← Önceki</button>
-            <button class="px-3 py-1.5 rounded-lg text-sm font-bold" style="background:#001e3c;color:#fff;">1</button>
-            <button class="px-3 py-1.5 rounded-lg text-sm border border-outline-variant hover:bg-surface-container-low" style="color:#43474e;">2</button>
-            <button class="px-3 py-1.5 rounded-lg text-sm border border-outline-variant hover:bg-surface-container-low" style="color:#43474e;">3</button>
-            <span class="px-2 text-on-surface-variant">...</span>
-            <button class="px-3 py-1.5 rounded-lg text-sm border border-outline-variant hover:bg-surface-container-low" style="color:#43474e;">85</button>
-            <button class="px-3 py-1.5 rounded-lg text-sm border border-outline-variant hover:bg-surface-container-low" style="color:#43474e;">Sonraki →</button>
-        </div>
-    </div>
+    @Html.PagedListPager(Model, page => "?page=" + page, new PagedListRenderOptions
+    {
+        UlElementClasses = new[] { "flex items-center gap-1 mt-6 justify-left p-2" },
+        LiElementClasses = new[] { "inline-flex" },
+        PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+        PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+        NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        LinkToPreviousPageFormat = "←",
+        LinkToNextPageFormat = "→"
+    })
 </div>

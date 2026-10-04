@@ -1,5 +1,7 @@
 ﻿@using CargoTrack.Entity.Entities.Enums
-@model List<ResultCargoDto>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultCargoDto>
 
 @{
     ViewData["Title"] = "Kargolarımız";
@@ -26,87 +28,8 @@
                     </p>
                 </div>
             </div>
-@*             <!-- Right Header Actions -->
-            <div class="flex items-center gap-space-sm flex-wrap self-end lg:self-center">
-                <button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface font-label-lg text-label-lg hover:bg-surface-container-highest transition-colors shadow-sm" onclick="downloadReportModal()">
-                    <span class="material-symbols-outlined text-[18px]">download</span>
-                    <span>Sorun Raporu İndir (Excel)</span>
-                </button>
-                <button class="flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-error text-on-error font-label-lg text-label-lg hover:opacity-90 transition-opacity shadow-sm" onclick="openBatchReturnModal()">
-                    <span class="material-symbols-outlined text-[18px]">assignment_return</span>
-                    <span>Toplu İade Başlat</span>
-                </button>
-            </div> *@
         </div>
-        <!-- Status / KPI Summary Cards (Bento Metric Strip) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-6">
-            <!-- Card 1: Total Failed -->
-            <div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="font-label-md text-label-md uppercase text-secondary tracking-wider">Toplam Sorunlu / Askıda</span>
-                    <span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
-                        <span class="material-symbols-outlined text-[18px]">inventory_2</span>
-                    </span>
-                </div>
-                <div class="mt-3 flex items-baseline gap-space-xs">
-                    <span class="font-headline-xl text-headline-xl text-on-surface">12</span>
-                    <span class="font-body-sm text-body-sm text-secondary">kargo bekliyor</span>
-                </div>
-                <div class="mt-2 flex items-center gap-1 font-label-sm text-label-sm text-secondary">
-                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                    <span>Kadıköy BR-3401 Güncel Vardiyası</span>
-                </div>
-            </div>
-            <!-- Card 2: 1st Attempt -->
-            <div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="font-label-md text-label-md uppercase text-secondary tracking-wider">1. Deneme Başarısız</span>
-                    <span class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
-                        <span class="material-symbols-outlined text-[18px]">replay</span>
-                    </span>
-                </div>
-                <div class="mt-3 flex items-baseline gap-space-xs">
-                    <span class="font-headline-xl text-headline-xl text-primary">7</span>
-                    <span class="font-body-sm text-body-sm text-secondary">kargo</span>
-                </div>
-                <div class="mt-2 flex items-center gap-1 font-label-sm text-label-sm text-primary">
-                    <span class="material-symbols-outlined text-[14px]">check_circle</span>
-                    <span>Yeniden dağıtıma uygun</span>
-                </div>
-            </div>
-            <!-- Card 3: 2nd Attempt -->
-            <div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
-                <div class="flex items-center justify-between">
-                    <span class="font-label-md text-label-md uppercase text-secondary tracking-wider">2. Deneme Başarısız</span>
-                    <span class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
-                        <span class="material-symbols-outlined text-[18px]">notification_important</span>
-                    </span>
-                </div>
-                <div class="mt-3 flex items-baseline gap-space-xs">
-                    <span class="font-headline-xl text-headline-xl text-on-surface">3</span>
-                    <span class="font-body-sm text-body-sm text-secondary">kargo</span>
-                </div>
-                <div class="mt-2 flex items-center gap-1 font-label-sm text-label-sm text-secondary">
-                    <span class="material-symbols-outlined text-[14px]">call</span>
-                    <span>Müşteri teyidi bekliyor</span>
-                </div>
-            </div>
-            <!-- Card 4: 3rd Attempt (Critical Return) -->
-            <div class="rounded-xl bg-error-container p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between text-on-error-container">
-                <div class="flex items-center justify-between">
-                    <span class="font-label-md text-label-md uppercase tracking-wider font-bold">3. Başarısız Deneme</span>
-                    <span class="px-2 py-0.5 rounded-full font-label-sm text-label-sm bg-error text-on-error uppercase font-bold">3 / 3 Kritik</span>
-                </div>
-                <div class="mt-3 flex items-baseline gap-space-xs">
-                    <span class="font-headline-xl text-headline-xl text-on-error-container">2</span>
-                    <span class="font-body-sm text-body-sm text-on-error-container opacity-90">iade onayı bekleyen</span>
-                </div>
-                <div class="mt-2 flex items-center gap-1 font-label-sm text-label-sm font-semibold">
-                    <span class="material-symbols-outlined text-[14px]">assignment_returned</span>
-                    <span>İade prosedürü otomatik tetiklendi</span>
-                </div>
-            </div>
-        </div>
+
         <!-- Operational Filter Strip & Quick Search -->
         <div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm mb-6 flex flex-col gap-space-md">
             <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
@@ -292,21 +215,25 @@
                                         <span>İade Sevkiyatını Başlat</span>
                                     </a>
                                 }
-
-                                <button class="flex items-center gap-1 px-space-md py-space-xs rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-highest transition-colors"
-                                        onclick="openBranchPickupNotify('@cargo.TrackCode', '@cargo.ReceiverName')">
-                                    <span class="material-symbols-outlined text-[16px]">storefront</span>
-                                    <span>Şubeden Teslim Bildirimi</span>
-                                </button>
-
-                                <button class="p-space-xs rounded-lg bg-surface-container-low text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                                        onclick="quickDetailView('@cargo.TrackCode')" title="Detayları Görüntüle">
-                                    <span class="material-symbols-outlined text-[18px]">more_vert</span>
-                                </button>
                             </div>
                         </div>
                     </div>
                 }
+
+                <div class="mt-4">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+                    {
+                        UlElementClasses = new[] { "flex items-center gap-1 justify-right p-3" },
+                        LiElementClasses = new[] { "inline-flex" },
+                        PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+                        PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                        NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+                        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                        LinkToPreviousPageFormat = "←",
+                        LinkToNextPageFormat = "→"
+                    })
+                </div>
             }
 
         </div>

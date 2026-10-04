@@ -1,14 +1,16 @@
-﻿<form method="get" asp-action="ActiveList" class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+﻿<form method="get" asp-area="User" asp-controller="Cargo" asp-action="ActiveList" class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
     <div class="flex-1 relative">
-        <span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+        <button type="submit" class="absolute left-3.5 top-1/2 -translate-y-1/2 cursor-pointer">
+            <span class="material-symbols-outlined text-outline text-[20px]">search</span>
+        </button>
         <input name="search"
                value="@ViewBag.Search"
+               onkeydown="if(event.key==='Enter') this.form.submit()"
                class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:bg-surface-container-lowest transition-all"
                id="kargoSearch"
-               placeholder="Takip numarası, mağaza adı veya gönderici ara..."
+               placeholder="Takip numarası, şube adı veya gönderici ara..."
                type="text" />
     </div>
-
     <div class="flex flex-wrap items-center gap-3">
         <div class="relative">
             <select name="status"
@@ -28,9 +30,9 @@
                     onchange="this.form.submit()"
                     class="h-11 pl-3.5 pr-8 rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md appearance-none focus:outline-none cursor-pointer">
                 <option value="" selected="@(string.IsNullOrEmpty(ViewBag.DateRange))">Tüm Zamanlar</option>
-                <option value="30d" selected="@(ViewBag.DateRange == "30d")">Son 30 Gün</option>
-                <option value="90d" selected="@(ViewBag.DateRange == "90d")">Son 3 Ay</option>
-                <option value="this_year" selected="@(ViewBag.DateRange == "this_year")">Bu Yıl (@DateTime.Now.Year)</option>
+                <option value="3d" selected="@(ViewBag.DateRange == "3d")">Son 3 Gün</option>
+                <option value="7d" selected="@(ViewBag.DateRange == "7d")">Son 7 Gün</option>
+                <option value="14d" selected="@(ViewBag.DateRange == "14d")">Son 14 Gün</option>
             </select>
             <span class="material-symbols-outlined pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">calendar_today</span>
         </div>

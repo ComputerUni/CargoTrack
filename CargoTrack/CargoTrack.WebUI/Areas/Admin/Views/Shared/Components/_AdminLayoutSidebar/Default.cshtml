@@ -36,7 +36,7 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
         <a href="/Admin/Employee/Index" class="sidebar-link @(currentController == "Employee" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">badge</span>Personel
         </a>
-        <a href="06_user_list.html" class="sidebar-link @(currentController == "User" ? "active" : "")">
+        <a href="/Admin/RoleAssign/Index" class="sidebar-link @(currentController == "User" ? "active" : "")">
             <span class="nav-item material-symbols-outlined" style="font-size:20px;">manage_accounts</span>Kullanıcılar
         </a>
         <a href="/Admin/CargoPrice/Index" class="sidebar-link @(currentController == "CargoPrice" ? "active" : "") ">
@@ -51,13 +51,18 @@ var currentController = ViewContext.RouteData.Values["Controller"]?.ToString();
 
     <div class="px-3 py-4 border-t" style="border-color:#1a3050;">
         <div class="sidebar-link" style="cursor:default;">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:#fd8b00;">@ViewBag.FullName.Substring(0,1)</div>
+            <div class="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs select-none leading-none shadow-sm shrink-0"
+                 style="background:#fd8b00;">
+                @(string.IsNullOrWhiteSpace(ViewBag.FullName as string) ? "?" : ((string)ViewBag.FullName).Substring(0, 1).ToUpperInvariant())
+            </div>
             <div>
                 <div class="text-white text-sm font-semibold leading-tight">@ViewBag.FullName</div>
                 <div style="color:#6f87aa;font-size:11px;">@ViewBag.Role</div>
             </div>
-            <form asp-area-route="" asp-action="Logout" asp-controller="Login">
-                <button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış Yap" type="button"><span class="material-symbols-outlined text-[18px]">logout</span></button>
+            <form asp-area="" asp-action="Logout" asp-controller="Login">
+                <button class="w-8 h-8 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all shrink-0" title="Çıkış Yap" type="submit">
+                    <span class="material-symbols-outlined text-[18px]">logout</span>
+                </button>
             </form>
         </div>
     </div>

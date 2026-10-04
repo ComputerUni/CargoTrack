@@ -13,31 +13,40 @@ namespace CargoTrack.WebUI.Areas.User.Controllers
         public async Task<IActionResult> ActiveList(string search, string status, string dateRange, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargos = await _userCargoService.GetFilteredUserCargosAsync(user.Id, search, status, dateRange, onlyActive: true);
+            var cargos = await _userCargoService.GetFilteredActiveUserCargosAsync(user.Id, search, status, dateRange);
             ViewBag.Search = search;
             ViewBag.Status = status;
             ViewBag.DateRange = dateRange;
             return View(cargos);
         }
 
-        public async Task<IActionResult> SentList()
+        public async Task<IActionResult> SentList(string search, string status, string dateRange, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargos = await _userCargoService.GetSentByUserIdAsync(user.Id);
+            var cargos = await _userCargoService.GetFilteredSentUserCargosAsync(user.Id, search, status, dateRange);
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.DateRange = dateRange;
             return View(cargos);
         }
 
-        public async Task<IActionResult> ReceivedList()
+        public async Task<IActionResult> ReceivedList(string search, string status, string dateRange, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargos = await _userCargoService.GetReceivedByUserIdAsync(user.Id);
+            var cargos = await _userCargoService.GetFilteredReceivedUserCargosAsync(user.Id, search, status, dateRange);
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.DateRange = dateRange;
             return View(cargos);
         }
 
-        public async Task<IActionResult> DeliveredList()
+        public async Task<IActionResult> DeliveredList(string search, string status, string dateRange, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargos = await _userCargoService.GetDeliveredByUserIdAsync(user.Id);
+            var cargos = await _userCargoService.GetFilteredDeliveredUserCargosAsync(user.Id, search, status, dateRange);
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.DateRange = dateRange;
             return View(cargos);
         }
 

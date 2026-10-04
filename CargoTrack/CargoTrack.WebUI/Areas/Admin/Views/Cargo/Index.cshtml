@@ -13,7 +13,7 @@
 
         @await Component.InvokeAsync("_AdminCargoListResultCountExport")
 
-        @await Component.InvokeAsync("_AdminCargoListTable", new { cargos = Model })
+        @await Component.InvokeAsync("_AdminCargoListTable", new { cargos = Model, page = Context.Request.Query["page"].ToString() == "" ? 1 : int.Parse(Context.Request.Query["page"]) })
 
     </main>
 </div>

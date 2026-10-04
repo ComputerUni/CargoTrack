@@ -1,4 +1,5 @@
 ﻿using CargoTrack.DTO.DTOs.AdminDashboardDtos;
+using CargoTrack.DTO.DTOs.BranchDtos;
 using CargoTrack.DTO.DTOs.CargosDtos;
 using CargoTrack.DTO.DTOs.ManagerCargoDtos;
 using System;
@@ -27,5 +28,8 @@ namespace CargoTrack.Business.Services.Cargos
         Task<ManagerCargoIndexDto> GetBranchCargoSummaryAsync(Guid branchId);
         Task<IncomingCargoSummaryDto> GetIncomingCargoSummaryAsync(Guid branchId);
         Task<OutgoingCargoSummaryDto> GetOutgoingCargoSummaryAsync(Guid branchId);
+        Task<List<ResultCargoDto>> GetFilteredCargosAsync(string? search, string? city, string? status);
+        Task<List<ResultCargoDto>> GetFilteredBranchCargosAsync(Guid branchId, string? search, string? status, string? type);
+
     }
 }

@@ -1,50 +1,48 @@
-﻿<div class="bg-white rounded-xl border border-outline-variant p-5 mb-5">
-    <div class="flex flex-wrap gap-3 items-end">
-        <div class="flex-1 min-w-48">
-            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">ARAMA</label>
-            <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size:18px;">search</span>
-                <input type="text" placeholder="Takip no, gönderici, alıcı..." class="w-full pl-9 pr-4 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" />
-            </div>
+﻿@using CargoTrack.Business.Extensions
+@using CargoTrack.Entity.Entities.Enums
+<form method="get"
+asp-area="Admin"
+      asp-controller="Cargo"
+      asp-action="Index"
+      class="bg-white rounded-xl border border-outline-variant p-4 mb-5 flex flex-wrap gap-3 items-end">
+
+    <div class="flex-1 min-w-56">
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">ARAMA</label>
+        <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" style="font-size:18px;">search</span>
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   placeholder="Takip no, müşteri adı veya şube ara..."
+                   class="w-full pl-9 pr-4 py-2 border border-outline-variant rounded-lg text-sm focus:outline-none" />
         </div>
-        <div class="w-40">
-            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">DURUM</label>
-            <select class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white">
-                <option>Tümü</option>
-                <option>Oluşturuldu</option>
-                <option>Gönderici Şubesinde</option>
-                <option>Transfer Merkezinde</option>
-                <option>Varış Şubesinde</option>
-                <option>Dağıtıma Çıktı</option>
-                <option>Teslim Edildi</option>
-                <option>Gecikiyor</option>
-                <option>İade Sürecinde</option>
-            </select>
-        </div>
-        <div class="w-40">
-            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">ŞEHİR</label>
-            <select class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white">
-                <option>Tüm Şehirler</option>
-                <option>İstanbul</option>
-                <option>Ankara</option>
-                <option>İzmir</option>
-                <option>Bursa</option>
-                <option>Antalya</option>
-            </select>
-        </div>
-        <div class="w-40">
-            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">TARİH (BAŞLANGIÇ)</label>
-            <input type="date" class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white" />
-        </div>
-        <div class="w-40">
-            <label class="block text-xs font-semibold mb-1.5" style="color:#43474e;letter-spacing:.04em;">TARİH (BİTİŞ)</label>
-            <input type="date" class="w-full px-3 py-2.5 border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary-container bg-white" />
-        </div>
-        <button class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold" style="background:#001e3c;color:#fff;">
-            <span class="material-symbols-outlined" style="font-size:16px;">filter_list</span>Filtrele
-        </button>
-        <button class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-outline-variant" style="color:#43474e;">
-            <span class="material-symbols-outlined" style="font-size:16px;">clear</span>Temizle
-        </button>
     </div>
-</div>
+
+    <div class="w-48">
+        <label class="block text-xs font-semibold mb-1" style="color:#43474e;">DURUM</label>
+        <select name="status"
+                onchange="this.form.submit()"
+                class="w-full px-3 py-2 border border-outline-variant rounded-lg text-sm bg-white focus:outline-none cursor-pointer">
+            <option value="">Tüm Durumlar</option>
+            @foreach (CargoStatus statusEnum in Enum.GetValues(typeof(CargoStatus)))
+            {
+                var intVal = (int)statusEnum;
+                var isSelected = (ViewBag.Status as string) == intVal.ToString();
+                <option value="@intVal" selected="@(isSelected ? "selected" : null)">
+                    @statusEnum.GetDisplayName()
+                </option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="px-5 py-2 rounded-lg text-sm font-semibold text-white transition-opacity hover:opacity-90" style="background:#001e3c;">
+        Filtrele
+    </button>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Search) || !string.IsNullOrEmpty(ViewBag.Status))
+    {
+        <a asp-action="Index" class="px-3 py-2 rounded-lg text-sm font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-colors flex items-center justify-center" title="Filtreleri Temizle">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+        </a>
+    }
+</form>

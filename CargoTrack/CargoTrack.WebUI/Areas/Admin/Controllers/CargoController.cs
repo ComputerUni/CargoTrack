@@ -38,9 +38,13 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search, string? status, string? city)
         {
-            var cargos = await _cargoService.GetAllAsync();
+            var cargos = await _cargoService.GetFilteredCargosAsync(search, status, city);
+            var allCargos = await _cargoService.GetAllAsync();
+            ViewBag.Cities = allCargos.Where(x => !string.IsNullOrEmpty(x.OriginBranchCity)).Select(x => x.OriginBranchCity).Distinct().OrderBy(x => x).ToList();
+            ViewBag.Search = search;
+            ViewBag.Status = status;
             return View(cargos);
         }
 

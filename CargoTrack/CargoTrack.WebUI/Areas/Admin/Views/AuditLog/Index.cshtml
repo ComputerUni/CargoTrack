@@ -1,5 +1,6 @@
-﻿@using CargoTrack.DTO.DTOs.AuditLogDtos
-@model List<ResultAuditLogDto>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultAuditLogDto>
 
 @{
     ViewData["Title"] = "Loglar";
@@ -101,5 +102,19 @@
                 </tbody>
             </table>
         </div>
+        @Html.PagedListPager(Model, page => "?page=" + page, new PagedListRenderOptions
+        {
+            UlElementClasses = new[] { "flex items-center gap-1 m-5 justify-left" },
+            LiElementClasses = new[] { "inline-flex" },
+            PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+            PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+            NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+            DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+            DisplayLinkToLastPage = PagedListDisplayMode.Never,
+            LinkToPreviousPageFormat = "←",
+            LinkToNextPageFormat = "→"
+        })
     </div>
+
+
 </div>

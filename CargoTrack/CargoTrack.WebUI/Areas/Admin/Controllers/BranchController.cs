@@ -22,9 +22,13 @@ namespace CargoTrack.WebUI.Areas.Admin.Controllers
                               }).ToList();
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search, string? city)
         {
-            var branches = await _branchService.GetAllAsync();
+            var branches = await _branchService.GetFilteredBranchesAsync(search, city);
+            var allBranches = await _branchService.GetAllAsync();
+            ViewBag.Cities = allBranches.Where(x => !string.IsNullOrEmpty(x.City.Name)).Select(x => x.City.Name).Distinct().OrderBy(x => x).ToList();
+            ViewBag.Search = search;
+            ViewBag.SelectedCity = city;
             return View(branches);
         }
 
