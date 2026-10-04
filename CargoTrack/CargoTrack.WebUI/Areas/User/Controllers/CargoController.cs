@@ -3,16 +3,20 @@ using CargoTrack.Entity.Entities;
 using CargoTrack.WebUI.Consts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList.Extensions;
 
 namespace CargoTrack.WebUI.Areas.User.Controllers
 {
     [Area(Area.User)]
     public class CargoController(IUserCargoService _userCargoService, UserManager<AppUser> _userManager) : Controller
     {
-        public async Task<IActionResult> ActiveList()
+        public async Task<IActionResult> ActiveList(string search, string status, string dateRange, int page = 1)
         {
             var user = await _userManager.GetUserAsync(User);
-            var cargos = await _userCargoService.GetByUserIdAsync(user.Id);
+            var cargos = await _userCargoService.GetFilteredUserCargosAsync(user.Id, search, status, dateRange, onlyActive: true);
+            ViewBag.Search = search;
+            ViewBag.Status = status;
+            ViewBag.DateRange = dateRange;
             return View(cargos);
         }
 

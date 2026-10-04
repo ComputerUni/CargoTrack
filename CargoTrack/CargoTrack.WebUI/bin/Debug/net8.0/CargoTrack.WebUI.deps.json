@@ -10,7 +10,8 @@
         "dependencies": {
           "CargoTrack.Business": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "8.0.30",
-          "QuestPDF": "2026.9.1"
+          "QuestPDF": "2026.9.1",
+          "X.PagedList.Mvc.Core": "10.6.0"
         },
         "runtime": {
           "CargoTrack.WebUI.dll": {}
@@ -1109,6 +1110,25 @@
           }
         }
       },
+      "X.PagedList/10.6.0": {
+        "runtime": {
+          "lib/net8.0/X.PagedList.dll": {
+            "assemblyVersion": "10.6.0.0",
+            "fileVersion": "10.6.0.0"
+          }
+        }
+      },
+      "X.PagedList.Mvc.Core/10.6.0": {
+        "dependencies": {
+          "X.PagedList": "10.6.0"
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {
+            "assemblyVersion": "10.6.0.0",
+            "fileVersion": "10.6.0.0"
+          }
+        }
+      },
       "CargoTrack.Business/1.0.0": {
         "dependencies": {
           "CargoTrack.DTO": "1.0.0",
@@ -1678,6 +1698,20 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "X.PagedList/10.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qmz+RBQA3swsFZbEfO9XJi7bsInH9vu2S5/o/68BzkoxqiusqDfJY0Y0s2SCVfeK+EQW3RaPFenfKvEaQQa62Q==",
+      "path": "x.pagedlist/10.6.0",
+      "hashPath": "x.pagedlist.10.6.0.nupkg.sha512"
+    },
+    "X.PagedList.Mvc.Core/10.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JMXpLkP1UpKdgFowc7s0o0cBTh0R7bS9gJMWWsnqqz5qXQCBEa8J9+D6b+XWnHq9u8hhxVtQuI20EGwMtypUmw==",
+      "path": "x.pagedlist.mvc.core/10.6.0",
+      "hashPath": "x.pagedlist.mvc.core.10.6.0.nupkg.sha512"
     },
     "CargoTrack.Business/1.0.0": {
       "type": "project",

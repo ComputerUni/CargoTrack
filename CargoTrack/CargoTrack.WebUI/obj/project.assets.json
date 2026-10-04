@@ -2208,6 +2208,30 @@
           }
         }
       },
+      "X.PagedList/10.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/X.PagedList.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.dll": {}
+        }
+      },
+      "X.PagedList.Mvc.Core/10.6.0": {
+        "type": "package",
+        "dependencies": {
+          "X.PagedList": "10.6.0"
+        },
+        "compile": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/X.PagedList.Mvc.Core.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "CargoTrack.Business/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -5503,6 +5527,41 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "X.PagedList/10.6.0": {
+      "sha512": "qmz+RBQA3swsFZbEfO9XJi7bsInH9vu2S5/o/68BzkoxqiusqDfJY0Y0s2SCVfeK+EQW3RaPFenfKvEaQQa62Q==",
+      "type": "package",
+      "path": "x.pagedlist/10.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net10.0/X.PagedList.dll",
+        "lib/net6.0/X.PagedList.dll",
+        "lib/net8.0/X.PagedList.dll",
+        "lib/netstandard2.0/X.PagedList.dll",
+        "x-pagedlist.png",
+        "x.pagedlist.10.6.0.nupkg.sha512",
+        "x.pagedlist.nuspec"
+      ]
+    },
+    "X.PagedList.Mvc.Core/10.6.0": {
+      "sha512": "JMXpLkP1UpKdgFowc7s0o0cBTh0R7bS9gJMWWsnqqz5qXQCBEa8J9+D6b+XWnHq9u8hhxVtQuI20EGwMtypUmw==",
+      "type": "package",
+      "path": "x.pagedlist.mvc.core/10.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net10.0/X.PagedList.Mvc.Core.dll",
+        "lib/net6.0/X.PagedList.Mvc.Core.dll",
+        "lib/net8.0/X.PagedList.Mvc.Core.dll",
+        "x-pagedlist.png",
+        "x.pagedlist.mvc.core.10.6.0.nupkg.sha512",
+        "x.pagedlist.mvc.core.nuspec"
+      ]
+    },
     "CargoTrack.Business/1.0.0": {
       "type": "project",
       "path": "../CargoTrack.Business/CargoTrack.Business.csproj",
@@ -5528,7 +5587,8 @@
     "net8.0": [
       "CargoTrack.Business >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.30",
-      "QuestPDF >= 2026.9.1"
+      "QuestPDF >= 2026.9.1",
+      "X.PagedList.Mvc.Core >= 10.6.0"
     ]
   },
   "packageFolders": {
@@ -5597,6 +5657,10 @@
           "QuestPDF": {
             "target": "Package",
             "version": "[2026.9.1, )"
+          },
+          "X.PagedList.Mvc.Core": {
+            "target": "Package",
+            "version": "[10.6.0, )"
           }
         },
         "imports": [

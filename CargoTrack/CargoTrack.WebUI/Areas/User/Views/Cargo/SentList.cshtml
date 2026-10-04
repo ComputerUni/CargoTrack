@@ -11,11 +11,11 @@
 
             @await Component.InvokeAsync("_UserCargoSentListHeader")
 
-            @await Component.InvokeAsync("_UserCargoSentListFilterTabs")
+            @* @await Component.InvokeAsync("_UserCargoSentListFilterTabs") *@
 
             @await Component.InvokeAsync("_UserCargoSentListSearchFilter")
 
-            @await Component.InvokeAsync("_UserCargoSentListTable", new { cargos = Model })
+            @await Component.InvokeAsync("_UserCargoSentListTable", new { cargos = Model, page = Context.Request.Query["page"].ToString() == "" ? 1 : int.Parse(Context.Request.Query["page"]) })
 
             @await Component.InvokeAsync("_UserCargoActiveListRouteMap", new { cargo = Model?.FirstOrDefault() })
 

@@ -1,13 +1,15 @@
 ﻿using CargoTrack.DTO.DTOs.CargosDtos;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList.Extensions;
 
 namespace CargoTrack.WebUI.Areas.User.ViewComponents._UserCargoActiveListViewComponents
 {
     public class _UserCargoActiveListTableViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(List<ResultCargoDto> cargos)
+        public async Task<IViewComponentResult> InvokeAsync(List<ResultCargoDto> cargos, int page = 1)
         {
-            return View(cargos);
+            var pagedList = cargos.ToPagedList(page, 5);
+            return View(pagedList);
         }
     }
 }

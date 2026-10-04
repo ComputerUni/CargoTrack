@@ -283,9 +283,19 @@
                             </td>
 
                             <td class="px-space-md py-3">
-                                <div class="font-code-dense text-code-dense font-semibold text-on-surface">
-                                    @cargo.EstimatedArrivalDate.ToString("dd MMM yyyy")
-                                </div>
+                                @if (cargo.EstimatedArrivalDate < DateTime.Now && cargo.CargoStatus != CargoStatus.Delivered && cargo.CargoStatus != CargoStatus.ReturnedToSender)
+                                {
+                                    <span class="text-error text-xs font-bold flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">warning</span>
+                                        Gecikmiş
+                                    </span>
+                                }
+                                else
+                                {
+                                    <div class="font-code-dense text-code-dense font-semibold text-on-surface">
+                                        @cargo.EstimatedArrivalDate.ToString("dd MMM yyyy")
+                                    </div>
+                                }
                                 <div class="font-body-sm text-body-sm text-on-surface-variant">
                                     @cargo.Price.ToString("C2")
                                 </div>

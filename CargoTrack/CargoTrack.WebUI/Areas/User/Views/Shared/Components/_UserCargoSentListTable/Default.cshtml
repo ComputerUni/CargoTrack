@@ -1,4 +1,6 @@
-﻿@model List<ResultCargoDto>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultCargoDto>
 @using CargoTrack.Business.Extensions
 @using CargoTrack.Entity.Entities.Enums
 
@@ -128,4 +130,16 @@
             </article>
         }
     }
+    @Html.PagedListPager(Model, page => "?page=" + page, new PagedListRenderOptions
+    {
+        UlElementClasses = new[] { "flex items-center gap-1 mt-6 justify-left" },
+        LiElementClasses = new[] { "inline-flex" },
+        PageClasses = new[] { "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-sm font-semibold text-on-surface hover:bg-surface-container transition-colors" },
+        PreviousElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+        NextElementClass = "w-9 h-9 flex items-center justify-center rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container transition-colors",
+        DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+        DisplayLinkToLastPage = PagedListDisplayMode.Never,
+        LinkToPreviousPageFormat = "←",
+        LinkToNextPageFormat = "→"
+    })
 </div>
